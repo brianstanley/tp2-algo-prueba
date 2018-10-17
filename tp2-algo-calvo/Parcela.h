@@ -13,6 +13,7 @@ class Parcela {
 private:
 	std::string color;
 	void setColor();
+	int numero;
 public:
 	Parcela();
 	virtual ~Parcela();

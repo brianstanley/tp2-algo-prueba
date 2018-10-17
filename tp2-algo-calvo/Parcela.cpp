@@ -8,6 +8,7 @@
 #include "Parcela.h"
 
 Parcela::Parcela() {
+	this->numero = 5;
 	// TODO Auto-generated constructor stub
 
 }
