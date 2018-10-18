@@ -1,4 +1,6 @@
 /.metadata/
+.cproject
+.project
 /.cproject
 /.project
 /.settings/
