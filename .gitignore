@@ -4,4 +4,5 @@
 .settings/org.eclipse.cdt.codan.core.prefs
 .settings/org.eclipse.core.resources.prefs
 .settings/org.eclipse.core.runtime.prefs
+.settings/language.settings.xml
 /Debug/
