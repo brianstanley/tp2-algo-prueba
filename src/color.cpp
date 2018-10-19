@@ -11,6 +11,7 @@ Color::Color(){
 	this->red = 255;
 	this->green = 255;
 	this->blue = 255;
+
 }
 
 Color::Color(const Color& ColorAClonar){

@@ -11,7 +11,7 @@
 Celula::Celula(){
 	this->estadoCelula = false;
 	this->energiaCelula = 0;
-	this->colorCelula = Color();
+	this->colorCelula = 0;
 }
 
 Celula::Celula(float factorNacimiento, Color colorParcela){
