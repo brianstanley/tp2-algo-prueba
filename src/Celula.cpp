@@ -8,7 +8,7 @@ const int ENERGIA_MAX = 100;
 const bool MUERTA = false;
 const bool VIVA = true;
 
-#include"Celula.h"
+#include "Celula.h"
 
 
 Celula::Celula(){
@@ -34,7 +34,7 @@ void Celula::nacer(float factorNacimientoParecla, const RGB& RGBA, const RGB& RG
 	RGBCelula.calcularPromedioRGBes(RGBA, RGBB, RGBC);
 }
 
-const RGB& Celula:: getRGB(){
+const RGB& Celula::getRGB(){
 	return this->RGBCelula;
 }
 
