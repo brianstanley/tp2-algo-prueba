@@ -24,3 +24,15 @@ void RGB::calcularPromedioRGBes(const RGB& RGBA, const RGB& RGBB, const RGB& RGB
 	this->green= (RGBA.green + RGBB.green + RGBC.green) / 3;
 	this->blue = (RGBA.blue + RGBB.blue + RGBC.blue) / 3;
 }
+
+int RGB::getRed(){
+	return this->red;
+}
+
+int RGB::getGreen(){
+	return this->green;
+}
+
+int RGB::getBlue(){
+	return this->blue;
+}

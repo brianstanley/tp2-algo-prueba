@@ -25,6 +25,6 @@ void ImagenDeTablero::representarCelulaMuerta(int fila, int columna){
 }
 
 void ImagenDeTablero::guardarImagenTabero(int NumeroDeTurno){
-	std::string NombreArchivo = nombreTableroRepresentado + std::string(NumeroDeTurno);
+
 
 }
