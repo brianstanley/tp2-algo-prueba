@@ -1,7 +1,7 @@
 #include <iostream>
-#include "Lectura.h"
+#include "LecturaArchivoConfiguracion.h"
 int main() {
-	Lectura lectura;
-lectura.leerConfig("src/entrada.txt");
+	LecturaArchivoConfiguracion lectura;
+	lectura.procesarArchivo("src/entrada.txt");
 	return 0;
 }
