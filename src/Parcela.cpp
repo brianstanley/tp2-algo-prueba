@@ -7,12 +7,40 @@
 
 #include "Parcela.h"
 
-Parcela::Parcela() {
-	// TODO Auto-generated constructor stub
-
+//Si les parece la parcela puede recibir el objeto coordenada ya creado. Si no lo creamos dentro del constructor parcela
+Parcela::Parcela(CoordenadaParcela coordenadaParcela,float factorNacimiento,float factorMuerte, RGB RGBParcela) {
+	this->coordenadaParcela = coordenadaParcela;
+	this->factorNacimiento = factorNacimiento;
+	this->factorMuerte = factorMuerte;
+	this->RGBParcela = RGBParcela;
+	this->celula = Celula();
+	this->portal = NULL; /* ¿ACA COMO CREEN QUE PODRIA TRATAR AL PORTAL? */
 }
 
-Parcela::~Parcela() {
-	// TODO Auto-generated destructor stub
+void Parcela::generarPortal(bool esPortalDeOrigen, char tipoDelPortal,CoordenadaParcela parcelaPareja) {
+	this->portal = portal(esPortalDeOrigen, tipoDelPortal, parcelaPareja);
 }
 
+CoordenadaParcela Parcela::getCoordenadaParcela(){
+	return this->coordenadaParcela;
+}
+
+Celula Parcela::getCelula(){
+	return this->celula;
+}
+
+Portal Parcela::getPortal(){
+	return this->portal;
+}
+
+float Parcela::getfactorNacimiento(){
+	return this->factorNacimiento;
+}
+
+float Parcela::getfactorMuerte(){
+	return this->factorMuerte;
+}
+
+RGB Parcela::getRBGparcela(){
+	return this->RGBParcela;
+}
