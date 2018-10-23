@@ -35,11 +35,11 @@ void LecturaArchivoConfiguracion::procesarArchivo(std::string ruta) {
 }
 
 void LecturaArchivoConfiguracion::crearTablero(std::string nombreTablero, std::ifstream& archivoDeConfiguracion) {
-	int posX, posY;
+	int ancho, alto;
 	std::cout << "Crear tablero " << std::endl;
-	archivoDeConfiguracion >> posX;
-	archivoDeConfiguracion >> posY;
-	std::cout << "Recibe: tablero: " << nombreTablero << "  " << posX << " " << " posy: " << posY << std::endl;
+	archivoDeConfiguracion >> ancho;
+	archivoDeConfiguracion >> alto;
+	std::cout << "Recibe: tablero: " << nombreTablero << "  " << ancho << " " << " alto: " << alto << std::endl;
 	// Aca debería ir una intancia a la clase tablero
 }
 
@@ -56,14 +56,14 @@ void LecturaArchivoConfiguracion::crearPortal(std::string tableroId, std::ifstre
 
 void LecturaArchivoConfiguracion::crearParcela(std::string tableroId, std::ifstream& archivoDeConfiguracion) {
 	int posX, posY, red, green, blue;
-	double tazaNacimiento, tazaMortalidad;
+	double tasaNacimiento, tasaMortalidad;
 	archivoDeConfiguracion >> posX;
 	archivoDeConfiguracion >> posY;
 	archivoDeConfiguracion >> red;
 	archivoDeConfiguracion >> green;
 	archivoDeConfiguracion >> blue;
-	archivoDeConfiguracion >> tazaNacimiento;
-	archivoDeConfiguracion >> tazaMortalidad;
+	archivoDeConfiguracion >> tasaNacimiento;
+	archivoDeConfiguracion >> tasaMortalidad;
 	std::cout << "Recibe: parcela: " << posX << "  " << posY << " " << " red:: " << red << green << blue << std::endl;
 	// Aca debería ir una intancia a la clase parcela
 }
