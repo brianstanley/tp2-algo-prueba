@@ -6,8 +6,8 @@
  */
 #include "funciones_transformar_int_string.h"
 
-std::string enteroIndividualAString (int num){
-	switch (num){
+std::string enteroIndividualAString (int entero){
+	switch (entero){
 		case 1:
  		return "1";
 
@@ -50,11 +50,11 @@ std::string enteroIndividualAString (int num){
 	return 0;
 }
 
-void enteroAString(std::string& str, int entero){
+void enteroAString(std::string& enteroString, int entero){
 	if ((entero/factor) > 0){
-		enteroAString(str, (entero - entero%factor)/10);
+		enteroAString(enteroString, (entero - entero%factor)/10);
 	}
-	str = str + enteroIndividualAString(entero%factor);
+	enteroString = enteroString + enteroIndividualAString(entero%factor);
 }
 
 
