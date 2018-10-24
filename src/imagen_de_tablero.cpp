@@ -29,7 +29,10 @@ void ImagenDeTablero::representarCelulaMuerta(int fila, int columna){
 	this->archivoRepresentante(fila, columna)->Blue = valorRGBPorDefecto;
 }
 
-void ImagenDeTablero::guardarImagenTabero(int NumeroDeTurno){
+void ImagenDeTablero::guardarImagenTabero(int numeroDeTurno){
 
+
+	std::string nombreArchivo = nombreTableroRepresentado;
+	archivoRepresentante.WriteToFile(nombreArchivo.c_str());
 
 }

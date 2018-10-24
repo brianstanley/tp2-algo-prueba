@@ -30,7 +30,7 @@ public:
 	void representarCelulaViva(int fila, int columna, RGB& color);
 	/*
 	 * pre: los valores de fila y columna que se pasan deben estar dentro de las dimensiones del tablero de origen
-	 * post: deja el pixel que representa a la celula en cuestion en blanco (el color que representa a la muerte)
+	 * post: pinta el pixel que representa a la celula en cuestion en blanco (el color que representa a la muerte)
 	 */
 	void representarCelulaMuerta(int fila, int columna);
 	/*
