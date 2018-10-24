@@ -49,12 +49,6 @@ public:
 	 */
 	//Tablero getTablero();
 
-	/*
-	 * pre: -
-	 * post: devuelve la instancia de CoordenadaParcela
-	 */
-	CoordenadaParcela getCoordenadaParcela();
-
 };
 
 

@@ -8,7 +8,7 @@
 #include "Portal.h"
 
 Portal::Portal(bool esPortalDeOrigen, char tipoDelPortal,
-		CoordenadaParcela parcelaPareja) {
+		CoordenadaParcela * parcelaPareja) {
 	this->portalOrigen = esPortalDeOrigen;
 	this->tipoDePortal = tipoDelPortal;
 	this->parcelaAsociada = parcelaPareja;

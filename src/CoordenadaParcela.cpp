@@ -26,7 +26,5 @@ int CoordenadaParcela::getCoordenadaY() {
 //	return this->nombreDelTablero;
 //}
 
-CoordenadaParcela CoordenadaParcela::getCoordenadaParcela() {
-	return this;
 }
 

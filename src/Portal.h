@@ -34,11 +34,11 @@ private:
 	 */
 	const bool portalOrigen;
 	const char tipoDePortal;
-	CoordenadaParcela parcelaAsociada;
+	CoordenadaParcela * parcelaAsociada;
 
 public:
 	Portal(bool esPortalDeOrigen, char tipoDelPortal,
-			CoordenadaParcela parcelaPareja);
+			CoordenadaParcela * parcelaPareja);
 
 	char getTipoDePortal();
 
