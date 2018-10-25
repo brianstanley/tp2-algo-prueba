@@ -4,7 +4,7 @@
  *  Created on: Oct 24, 2018
  *      Author: german
  */
-#include "funciones_transformar_int_string.h"
+#include "funciones_string.h"
 
 std::string enteroIndividualAString (int entero){
 	switch (entero){

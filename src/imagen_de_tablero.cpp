@@ -6,8 +6,6 @@
  */
 
 #include "imagen_de_tablero.h"
-#include<string>
-#include<iostream>
 
 const std::string GUION_BAJO = "_";
 const int PROFUNDIDADCOLORSTANDAR = 8;
@@ -32,10 +30,13 @@ void ImagenDeTablero::representarCelulaMuerta(int fila, int columna){
 }
 
 void ImagenDeTablero::guardarImagenTablero(int numeroDeTurno){
-	std::string turno = "";
+	/*std::string turno = "";
 	enteroAString(turno, numeroDeTurno);
+	std::string nombreArchivo = nombreTableroRepresentado + GUION_BAJO + turno;*/
+	std::ostringstream auxiliar;
+	auxiliar << numeroDeTurno;
+	std::string turno(auxiliar.str());
 	std::string nombreArchivo = nombreTableroRepresentado + GUION_BAJO + turno;
-	std::cout<<nombreArchivo;
 	archivoBmp.WriteToFile(nombreArchivo.c_str());
 
 }

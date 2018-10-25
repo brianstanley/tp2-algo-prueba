@@ -9,9 +9,13 @@
 #define IMAGEN_DE_TABLERO_H_
 
 #include <string>
+#include <sstream>
+#include <iostream>
 #include "RGB.h"
 #include "../librerias/EasyBMP.h"
-#include "funciones_transformar_int_string.h"
+#include "funciones_string.h"
+
+
 
 class ImagenDeTablero{
 private:
