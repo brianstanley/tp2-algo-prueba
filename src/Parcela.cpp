@@ -7,8 +7,8 @@
 
 #include "Parcela.h"
 
-//Si les parece la parcela puede recibir el objeto coordenada ya creado. Si no lo creamos dentro del constructor parcela
-Parcela::Parcela(CoordenadaParcela coordenadaParcela,float factorNacimiento,float factorMuerte, RGB RGBParcela) {
+Parcela::Parcela(CoordenadaParcela coordenadaParcela, float factorNacimiento,
+		float factorMuerte, RGB RGBParcela) {
 	this->coordenadaParcela = coordenadaParcela;
 	this->factorNacimiento = factorNacimiento;
 	this->factorMuerte = factorMuerte;
@@ -17,8 +17,9 @@ Parcela::Parcela(CoordenadaParcela coordenadaParcela,float factorNacimiento,floa
 	this->portal = NULL; /* ¿ACA COMO CREEN QUE PODRIA TRATAR AL PORTAL? */
 }
 
-void Parcela::generarPortal(bool esPortalDeOrigen, char tipoDelPortal,CoordenadaParcela parcelaPareja) {
-	this->portal = portal(esPortalDeOrigen, tipoDelPortal, parcelaPareja);
+void Parcela::setPortal(bool esPortalDeOrigen, char tipoDelPortal,
+		CoordenadaParcela * parcelaPareja) {
+	this->portal = portal(esPortalDeOrigen, tipoDelPortal, *parcelaPareja);
 }
 
 CoordenadaParcela Parcela::getCoordenadaParcela(){

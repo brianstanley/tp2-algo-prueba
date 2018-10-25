@@ -21,20 +21,21 @@ public:
 	 */
 	Celula();
 	/*pre: -
-	 * post: se setea el estado de la celula a vivo, la energia en funcion del factor de
-	nacimiento de la parcela y con el RGB de la parcela
+	 * post: se setea el estado de la celula a vivo, la energia en funcion del
+	 * factor de nacimiento de la parcela y con el RGB de la parcela
 	 */
-	void nacerPorPrimeraVez(float factorNacimientoParecla, const RGB& RGBParcela);
+	void nacer(float factorNacimientoParcela, const RGB& RGBParcela);
+	/*pre: -
+	 * post: se setea el estado de la celula a vivo ,la energia en funcion del
+	 * factor de nacimiento de la parcela y el RGB como fruto del promedio de
+	 * los RGBes de las tres celulas circundantes
+	 */
+	void nacer(float factorNacimientoParcela, const RGB& RGBvecino1,
+			const RGB& RGBvecino2, const RGB& RGBvecino3);
 	/*pre: -
 	 * post: se setea el estado de la celula a muerto y la energia a 0
 	 */
 	void morir();
-	/*pre: -
-	 * post: se setea el estado de la celula a vivo ,la energia en funcion del factor de
-	nacimiento de la parcela y el RGB como fruto del promedio de los RGBes de las
-	tres celulas circundantes
-	*/
-	void nacer(float factorNacimiento, const RGB& RGBvecino1, const RGB& RGBvecino2, const RGB& RGBvecino3);
 	/*pre: -
 	 * post: se devuelve el RGB de la celula
 	 */

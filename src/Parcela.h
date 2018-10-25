@@ -24,13 +24,16 @@ private:
 
 public:
 	/*pre: la coordenada ha sido generada
-	 * post: se crea una parcela con su correspondiente coordenada, una celula muerta y sin portal.
+	 * post: se crea una parcela con su correspondiente coordenada,
+	 * una celula muerta y sin portal.
 	 */
-	Parcela(CoordenadaParcela coordenadaParcela,float factorNacimiento,float factorMuerte, RGB RGBParcela);
+	Parcela(CoordenadaParcela coordenadaParcela, float factorNacimiento,
+			float factorMuerte, RGB RGBParcela);
 	/*pre: -
-	 *post: se crea un portal asociado a la parcela... 	/* ESPERO PRIMITIVA DEL METODO EN CLASE PORTAL */
+	 *post: se crea un portal asociado a la parcela
 	 */
-	void generarPortal(bool esPortalDeOrigen, char tipoDelPortal,CoordenadaParcela parcelaPareja);
+	void setPortal(bool esPortalDeOrigen, char tipoDelPortal,
+			CoordenadaParcela * parcelaPareja);
 	/*pre: -
 	 * post: retorna el objeto coordenada asociado a la parcela.
 	 */
@@ -39,7 +42,7 @@ public:
 	 * post: retorna la celula asociada a la parcela.
 	 */
 	Celula Parcela::getCelula();
-	/*pre: la parcela posee un portal /*DE ACUERDO A COMO TRATEMOS EL PORTAL EN EL CONSTRUCTOR*/
+	/*pre: la parcela posee un portal
 	 * post: retorna el portal asociado a la parcela.
 	 */
 	Portal Parcela::getPortal();
