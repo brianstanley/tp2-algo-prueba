@@ -30,13 +30,13 @@ void ImagenDeTablero::representarCelulaMuerta(int fila, int columna){
 }
 
 void ImagenDeTablero::guardarImagenTablero(int numeroDeTurno){
-	/*std::string turno = "";
+	std::string turno = "";
 	enteroAString(turno, numeroDeTurno);
-	std::string nombreArchivo = nombreTableroRepresentado + GUION_BAJO + turno;*/
-	std::ostringstream auxiliar;
-	auxiliar << numeroDeTurno;
-	std::string turno(auxiliar.str());
 	std::string nombreArchivo = nombreTableroRepresentado + GUION_BAJO + turno;
+	/*std::ostringstream auxiliar;
+	auxiliar << numeroDeTurno;
+	std::string turno = auxiliar.str();
+	std::string nombreArchivo = nombreTableroRepresentado + GUION_BAJO + turno;*/
 	archivoBmp.WriteToFile(nombreArchivo.c_str());
 
 }
