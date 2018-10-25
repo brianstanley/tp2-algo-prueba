@@ -10,7 +10,7 @@
 
 #include <string>
 #include "RGB.h"
-#include "../libreria/EasyBMP.h"
+#include "../librerias/EasyBMP.h"
 #include "funciones_transformar_int_string.h"
 
 class ImagenDeTablero{

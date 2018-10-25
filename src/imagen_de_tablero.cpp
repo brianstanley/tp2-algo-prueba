@@ -10,14 +10,13 @@
 #include<iostream>
 
 const std::string GUION_BAJO = "_";
-
-const int profundidadDeColorStandar = 8;
-const int valorRGBPorDefecto = 255;
+const int PROFUNDIDADCOLORSTANDAR = 8;
+const int VALORRGBPORDEFECTO = 255;
 
 ImagenDeTablero::ImagenDeTablero(int alto, int ancho, std::string nombre){
 	this->nombreTableroRepresentado = nombre;
 	this->archivoRepresentante.SetSize(alto, ancho);
-	this->archivoRepresentante.SetBitDepth(profundidadDeColorStandar);
+	this->archivoRepresentante.SetBitDepth(PROFUNDIDADCOLORSTANDAR);
 }
 
 void ImagenDeTablero::representarCelulaViva(int fila, int columna, RGB& colorDeCelula){
@@ -27,9 +26,9 @@ void ImagenDeTablero::representarCelulaViva(int fila, int columna, RGB& colorDeC
 }
 
 void ImagenDeTablero::representarCelulaMuerta(int fila, int columna){
-	this->archivoRepresentante(fila, columna)->Red = valorRGBPorDefecto;
-	this->archivoRepresentante(fila, columna)->Green = valorRGBPorDefecto;
-	this->archivoRepresentante(fila, columna)->Blue = valorRGBPorDefecto;
+	this->archivoRepresentante(fila, columna)->Red = VALORRGBPORDEFECTO;
+	this->archivoRepresentante(fila, columna)->Green = VALORRGBPORDEFECTO;
+	this->archivoRepresentante(fila, columna)->Blue = VALORRGBPORDEFECTO;
 }
 
 void ImagenDeTablero::guardarImagenTabero(int numeroDeTurno){
