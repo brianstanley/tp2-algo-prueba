@@ -18,6 +18,6 @@ char Portal::getTipoDePortal() {
 	return this->tipoDePortal;
 }
 
-CoordenadaParcela Portal::getCoordenadaAsociada() {
+CoordenadaParcela * Portal::getCoordenadaAsociada() {
 	return this->parcelaAsociada;
 }

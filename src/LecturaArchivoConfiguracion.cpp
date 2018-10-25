@@ -21,11 +21,11 @@ void LecturaArchivoConfiguracion::procesarArchivo(std::string ruta) {
 		archivoDeConfiguracion >> tipoDeOperacion;
 		archivoDeConfiguracion >> nombreTablero;
 		if (tipoDeOperacion == PARCELA) {
-			this->crearParcela(nombreTablero, archivoDeConfiguracion);
+			this->leerParcela(nombreTablero, archivoDeConfiguracion);
 		} else if (tipoDeOperacion == PORTAL) {
-			this->crearPortal(nombreTablero, archivoDeConfiguracion);
+			this->leerPortal(nombreTablero, archivoDeConfiguracion);
 		} else if (tipoDeOperacion == TABLERO) {
-			this->crearTablero(nombreTablero, archivoDeConfiguracion);
+			this->leerTablero(nombreTablero, archivoDeConfiguracion);
 		} else {
 			ExcepcionesArchivo excepcion;
 			excepcion.operacionInvalida();
@@ -34,7 +34,7 @@ void LecturaArchivoConfiguracion::procesarArchivo(std::string ruta) {
 	archivo.cerrar(archivoDeConfiguracion);
 }
 
-void LecturaArchivoConfiguracion::crearTablero(std::string nombreTablero, std::ifstream& archivoDeConfiguracion) {
+void LecturaArchivoConfiguracion::leerTablero(std::string nombreTablero, std::ifstream& archivoDeConfiguracion) {
 	int ancho, alto;
 	std::cout << "Crear tablero " << std::endl;
 	archivoDeConfiguracion >> ancho;
@@ -43,18 +43,24 @@ void LecturaArchivoConfiguracion::crearTablero(std::string nombreTablero, std::i
 	// Aca debería ir una intancia a la clase tablero
 }
 
-void LecturaArchivoConfiguracion::crearPortal(std::string tableroId, std::ifstream& archivoDeConfiguracion) {
-	int posX, posY;
-	std::string tipoPortal;
+void LecturaArchivoConfiguracion::leerPortal(std::string tableroId, std::ifstream& archivoDeConfiguracion) {
+	int filaOrigen, columnaOrigen, filaDestino, columnaDestino;
+	std::string tableroDestino, tipoPortal;
 	std::cout << "Crear portal" << std::endl;
-	archivoDeConfiguracion >> posX;
-	archivoDeConfiguracion >> posY;
+	archivoDeConfiguracion >> tableroDestino;
+	archivoDeConfiguracion >> filaOrigen;
+	archivoDeConfiguracion >> columnaOrigen;
+	archivoDeConfiguracion >> filaDestino;
+	archivoDeConfiguracion >> columnaDestino;
 	archivoDeConfiguracion >> tipoPortal;
-	std::cout << "Recibe: portal: " << tipoPortal << "  " << posX << " " << " posy: " << posY << std::endl;
+	std::cout << "Tipo: portal: " << tipoPortal << " origen fila: " << filaOrigen << std::endl;
+	std::cout << "origen columna: " << columnaOrigen << std::endl;
+	std::cout << "destino fila: " << filaDestino << std::endl;
+	std::cout << "destino columna: " << columnaDestino << std::endl;
 	// Aca debería ir una intancia a la clase portal
 }
 
-void LecturaArchivoConfiguracion::crearParcela(std::string tableroId, std::ifstream& archivoDeConfiguracion) {
+void LecturaArchivoConfiguracion::leerParcela(std::string tableroId, std::ifstream& archivoDeConfiguracion) {
 	int posX, posY, red, green, blue;
 	double tasaNacimiento, tasaMortalidad;
 	archivoDeConfiguracion >> posX;

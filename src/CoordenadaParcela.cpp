@@ -26,5 +26,3 @@ int CoordenadaParcela::getCoordenadaY() {
 //	return this->nombreDelTablero;
 //}
 
-}
-
