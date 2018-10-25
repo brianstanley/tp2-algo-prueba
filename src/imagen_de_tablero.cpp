@@ -31,7 +31,7 @@ void ImagenDeTablero::representarCelulaMuerta(int fila, int columna){
 	this->archivoBmp(fila, columna)->Blue = VALORRGBPORDEFECTO;
 }
 
-void ImagenDeTablero::guardarImagenTabero(int numeroDeTurno){
+void ImagenDeTablero::guardarImagenTablero(int numeroDeTurno){
 	std::string turno = "";
 	enteroAString(turno, numeroDeTurno);
 	std::string nombreArchivo = nombreTableroRepresentado + GUION_BAJO + turno;

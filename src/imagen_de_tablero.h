@@ -31,14 +31,15 @@ public:
 	void representarCelulaViva(int fila, int columna, RGB& color);
 	/*
 	 * pre: los valores de fila y columna que se pasan deben estar dentro de las dimensiones del tablero de origen
-	 * post: pinta el pixel que representa a la celula en cuestion en blanco (el color que representa a la muerte)
+	 * post: pinta el pixel que representa a la celula en cuestion de blanco (el color por defecto para definir
+	 * a la muerte)
 	 */
 	void representarCelulaMuerta(int fila, int columna);
 	/*
 	 * pre: -
 	 * post: se guarda un archivo.bmp con la representacion de las celulas en el tablero
 	 */
-	void guardarImagenTabero(int NumeroDeTurno);
+	void guardarImagenTablero(int NumeroDeTurno);
 };
 
 #endif /* IMAGEN_DE_TABLERO_H_ */
