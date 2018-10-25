@@ -16,7 +16,7 @@
 class ImagenDeTablero{
 private:
 	std::string nombreTableroRepresentado;
-	BMP archivoRepresentante;
+	BMP archivoBmp;
 public:
 	/*
 	 * pre: -
