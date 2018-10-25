@@ -1,0 +1,4 @@
+Tablero table1 20 30
+Tablero table2 30 40
+Portal table1 table2 3 4 10 20 activo
+Parcela table1 5 6 255 255 255 3.0 4.4

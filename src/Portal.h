@@ -32,8 +32,8 @@ private:
 	/*
 	 * En el futuro necesitamos usar un puntero para apuntar al portal asociado.
 	 */
-	const bool portalOrigen;
-	const char tipoDePortal;
+	bool portalOrigen;
+	char tipoDePortal;
 	CoordenadaParcela * parcelaAsociada;
 
 public:
@@ -42,7 +42,7 @@ public:
 
 	char getTipoDePortal();
 
-	CoordenadaParcela getCoordenadaAsociada();
+	CoordenadaParcela * getCoordenadaAsociada();
 
 };
 
