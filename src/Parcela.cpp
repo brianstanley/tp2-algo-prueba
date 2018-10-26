@@ -13,35 +13,36 @@ Parcela::Parcela(CoordenadaParcela coordenadaParcela, float factorNacimiento,
 	this->factorNacimiento = factorNacimiento;
 	this->factorMuerte = factorMuerte;
 	this->RGBParcela = RGBParcela;
-	this->celula = Celula();
-	this->portal = NULL; /* ¿ACA COMO CREEN QUE PODRIA TRATAR AL PORTAL? */
+	//this->celula = Celula(); SE CONSTRUYE EN LA DECLARACION
+	//this->portal = NULL; portalNulo
 }
 
 void Parcela::setPortal(bool esPortalDeOrigen, char tipoDelPortal,
 		CoordenadaParcela * parcelaPareja) {
-	this->portal = portal(esPortalDeOrigen, tipoDelPortal, *parcelaPareja);
+	this->portal = Portal(esPortalDeOrigen, tipoDelPortal, parcelaPareja);
 }
 
-CoordenadaParcela Parcela::getCoordenadaParcela(){
+CoordenadaParcela Parcela::getCoordenadaParcela() {
 	return this->coordenadaParcela;
 }
 
-Celula Parcela::getCelula(){
+Celula Parcela::getCelula() {
 	return this->celula;
 }
 
-Portal Parcela::getPortal(){
+Portal Parcela::getPortal() {
 	return this->portal;
 }
 
-float Parcela::getfactorNacimiento(){
+float Parcela::getfactorNacimiento() {
 	return this->factorNacimiento;
 }
 
-float Parcela::getfactorMuerte(){
+float Parcela::getfactorMuerte() {
 	return this->factorMuerte;
 }
 
-RGB Parcela::getRBGparcela(){
+RGB Parcela::getRBGparcela() {
 	return this->RGBParcela;
 }
+

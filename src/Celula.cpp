@@ -13,7 +13,6 @@ const bool VIVA = true;
 Celula::Celula() {
 	this->estadoCelula = MUERTA;
 	this->energiaCelula = 0;
-	this->RGBCelula = RGB();
 }
 
 void Celula::morir() {
