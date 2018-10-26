@@ -1,6 +1,7 @@
 #include <iostream>
-
+#include "LecturaArchivoConfiguracion.h"
 int main() {
-	std::cout << "hola";
+	LecturaArchivoConfiguracion lectura;
+	lectura.procesarArchivo("src/entrada.txt");
 	return 0;
 }
