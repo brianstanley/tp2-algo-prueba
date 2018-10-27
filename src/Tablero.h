@@ -28,7 +28,7 @@ public:
 	string getNombre();
 	int getFilas();
 	int getColumnas();
-	virtual ~Tablero(); //No estoy seguro que si estoy liberando bien
+	~Tablero(); //No estoy seguro que si estoy liberando bien
 };
 
 #endif /* SRC_TABLERO_H_ */
