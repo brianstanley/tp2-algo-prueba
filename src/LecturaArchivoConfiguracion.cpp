@@ -45,6 +45,7 @@ void LecturaArchivoConfiguracion::leerTablero(std::string nombreTablero, std::if
 
 void LecturaArchivoConfiguracion::leerPortal(std::string tableroId, std::ifstream& archivoDeConfiguracion) {
 	int filaOrigen, columnaOrigen, filaDestino, columnaDestino;
+	bool esPortalOrigen;
 	std::string tableroDestino, tipoPortal;
 	std::cout << "Crear portal" << std::endl;
 	archivoDeConfiguracion >> tableroDestino;
@@ -53,10 +54,12 @@ void LecturaArchivoConfiguracion::leerPortal(std::string tableroId, std::ifstrea
 	archivoDeConfiguracion >> filaDestino;
 	archivoDeConfiguracion >> columnaDestino;
 	archivoDeConfiguracion >> tipoPortal;
+	archivoDeConfiguracion >> esPortalOrigen;
 	std::cout << "Tipo: portal: " << tipoPortal << " origen fila: " << filaOrigen << std::endl;
 	std::cout << "origen columna: " << columnaOrigen << std::endl;
 	std::cout << "destino fila: " << filaDestino << std::endl;
 	std::cout << "destino columna: " << columnaDestino << std::endl;
+	std::cout << "Es portal de origen? " << esPortalOrigen << std::endl;
 	// Aca debería ir una intancia a la clase portal
 }
 

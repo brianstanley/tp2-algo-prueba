@@ -12,6 +12,7 @@
 const char ACTIVO = 'A';
 const char NORMAL = 'N';
 const char PASIVO = 'P';
+const char NOPORTAL = '-';
 
 /*
  * La clase Portal esta siempre asociada con una parcela, por lo tanto no lleva las coordenadas de la parcela.
