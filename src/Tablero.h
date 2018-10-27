@@ -10,6 +10,7 @@
 
 #include <iostream>
 #include <string>
+#include <stdlib.h>
 using namespace std;
 
 #include "Parcela.h"
@@ -31,7 +32,7 @@ public:
 	/*pre:-
 	 * post: se devuelve la Parcela asociada al tablero[fila][columna]
 	 */
-	Parcela getParcela(int fila, int columna);
+	Parcela& getParcela(int fila, int columna);
 	/*pre:-
 	 * post: se devuelve el nombre del tablero
 	 */

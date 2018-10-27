@@ -6,19 +6,18 @@
  */
 
 #include "Tablero.h"
-#include <stdlib.h>
 
 Tablero::Tablero(string nombre, int filas, int columnas) {
 	this->nombre = nombre;
 	this->filas = filas;
 	this->columnas = columnas;
-	this->tablero = new Parcela*[filas]; //Punteros a Parcelas para las filas
+	this->tablero = new Parcela*[filas];
 	for(int i=0; i<filas; i++){
-		this->tablero[i] = new Parcela[columnas]; //Punteros a Parcelas para las columnas
+		this->tablero[i] = new Parcela[columnas];
 	}
 }
 
-Parcela Tablero::getParcela(int fila, int columna){
+Parcela& Tablero::getParcela(int fila, int columna){
 	return this->tablero[fila][columna];
 }
 
