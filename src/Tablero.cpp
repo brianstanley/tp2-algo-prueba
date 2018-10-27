@@ -8,7 +8,8 @@
 #include "Tablero.h"
 #include <stdlib.h>
 
-Tablero::Tablero(int filas, int columnas) {
+Tablero::Tablero(string nombre, int filas, int columnas) {
+	this->nombre = nombre;
 	this->filas = filas;
 	this->columnas = columnas;
 	this->tablero = new Parcela*[filas]; //Punteros a Parcelas para las filas
