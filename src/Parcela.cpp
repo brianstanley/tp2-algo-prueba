@@ -7,22 +7,23 @@
 
 #include "Parcela.h"
 
-Parcela::Parcela(CoordenadaParcela coordenadaParcela, float factorNacimiento,
-		float factorMuerte, RGB RGBParcela) {
+Parcela::Parcela(CoordenadaParcela * coordenadaParcela, float factorNacimiento, float factorMuerte, RGB RGBParcela) {
 	this->coordenadaParcela = coordenadaParcela;
 	this->factorNacimiento = factorNacimiento;
 	this->factorMuerte = factorMuerte;
 	this->RGBParcela = RGBParcela;
+	this->portal = 0;
 	//this->celula = Celula(); SE CONSTRUYE EN LA DECLARACION
 	//this->portal = NULL; portalNulo
 }
 
-void Parcela::setPortal(bool esPortalDeOrigen, char tipoDelPortal,
-		CoordenadaParcela * parcelaPareja) {
-	this->portal = Portal(esPortalDeOrigen, tipoDelPortal, parcelaPareja);
+//void Parcela::setPortal(bool esPortalDeOrigen, char tipoDelPortal,
+//		CoordenadaParcela * parcelaPareja) {
+void Parcela::setPortal(Portal * portal) {
+	this->portal = portal;
 }
 
-CoordenadaParcela Parcela::getCoordenadaParcela() {
+CoordenadaParcela * Parcela::getCoordenadaParcela() {
 	return this->coordenadaParcela;
 }
 
@@ -30,7 +31,7 @@ Celula Parcela::getCelula() {
 	return this->celula;
 }
 
-Portal Parcela::getPortal() {
+Portal * Parcela::getPortal() {
 	return this->portal;
 }
 

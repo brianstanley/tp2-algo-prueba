@@ -15,9 +15,9 @@
 
 class Parcela {
 private:
-	CoordenadaParcela coordenadaParcela;
+	CoordenadaParcela * coordenadaParcela;
 	Celula celula;
-	Portal portal;
+	Portal * portal;
 	float factorNacimiento;
 	float factorMuerte;
 	RGB RGBParcela;
@@ -27,17 +27,15 @@ public:
 	 * post: se crea una parcela con su correspondiente coordenada,
 	 * una celula muerta y sin portal.
 	 */
-	Parcela(CoordenadaParcela coordenadaParcela, float factorNacimiento,
-			float factorMuerte, RGB RGBParcela);
+	Parcela(CoordenadaParcela * coordenadaParcela, float factorNacimiento, float factorMuerte, RGB RGBParcela);
 	/*pre: -
 	 *post: se crea un portal asociado a la parcela
 	 */
-	void setPortal(bool esPortalDeOrigen, char tipoDelPortal,
-			CoordenadaParcela * parcelaPareja);
+	void setPortal(Portal * portal);
 	/*pre: -
 	 * post: retorna el objeto coordenada asociado a la parcela.
 	 */
-	CoordenadaParcela getCoordenadaParcela();
+	CoordenadaParcela * getCoordenadaParcela();
 	/*pre: -
 	 * post: retorna la celula asociada a la parcela.
 	 */
@@ -45,7 +43,7 @@ public:
 	/*pre: la parcela posee un portal
 	 * post: retorna el portal asociado a la parcela.
 	 */
-	Portal getPortal();
+	Portal * getPortal();
 	/*pre: -
 	 * post: retorna el factor de nacimiento de la parcela.
 	 */
@@ -59,6 +57,6 @@ public:
 	 */
 	RGB getRBGparcela();
 
-}
+};
 #endif /* SRC_PARCELA_H_ */
 

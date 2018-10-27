@@ -27,6 +27,10 @@ private:
 public:
 
 	/* pre: -
+		 * post: inicializa las coordenadas de la parcela
+		 */
+	CoordenadaParcela();
+	/* pre: -
 	 * post: inicializa las coordenadas de la parcela
 	 */
 	CoordenadaParcela(/* Tablero tableroLeido, */ int fila, int columna);
