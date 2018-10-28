@@ -15,8 +15,8 @@
 
 class CoordenadaParcela;
 class Portal;
-int const FACTOR_NACIMIENTO_DEFAULT = 255;
-int const FACTOR_MUERTE_DEFAULT = 255;
+int const FACTOR_NACIMIENTO_DEFAULT = 1;
+int const FACTOR_MUERTE_DEFAULT = 1;
 
 class Parcela {
 

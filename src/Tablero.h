@@ -26,7 +26,7 @@ public:
 	 * post: Se inicializa un tablero como una matriz dinamica de Parcelas
 	 * de acuerdo a la cantidad de filas y columnas indicadas.
 	 */
-	void inicializar(std::string nombre, int filas, int columnas);
+	Tablero(std::string nombre, int filas, int columnas);
 	/**
 	 * pre: El tablero debe estar inicializado
 	 * pos: Asigna los punteros a parcelas en la matriz dinámica

@@ -7,13 +7,13 @@
 
 #include "Tablero.h"
 
-void Tablero::inicializar(std::string nombre, int filas, int columnas) {
+Tablero::Tablero(std::string nombre, int filas, int columnas) {
 	this->nombre = nombre;
 	this->filas = filas;
 	this->columnas = columnas;
 	this->parcelas = new Parcela*[this->filas];
 	for(int i = 0; i < this->filas; i++){
-		this->parcelas[i] = new Parcela[columnas];
+		this->parcelas[i] = new Parcela[this->columnas];
 	}
 }
 

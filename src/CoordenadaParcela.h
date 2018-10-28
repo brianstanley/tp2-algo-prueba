@@ -3,6 +3,9 @@
  *
  *  Created on: 21 oct. 2018
  *      Author: yorickvinesse
+
+ * El objetivo de esta clase es de tener una manera unica de localizar una parcela.
+ * Lleva la pareja de coordenadas (x, y) y el tablero asociado.
  */
 
 #ifndef SRC_COORDENADAPARCELA_H_

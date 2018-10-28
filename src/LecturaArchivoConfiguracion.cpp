@@ -69,8 +69,7 @@ void LecturaArchivoConfiguracion::procesarParcela(std::string tableroId, std::if
 }
 
 void LecturaArchivoConfiguracion::crearTablero(std::string nombreTablero, int ancho, int alto) {
-	Tablero tablero;
-	tablero.inicializar(nombreTablero, alto, ancho);
+	Tablero tablero(nombreTablero, alto, ancho);
 	tablero.crearParcelas();
 }
 
