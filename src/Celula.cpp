@@ -33,8 +33,8 @@ void Celula::nacer(float factorNacimientoParecla, RGB* RGBA, RGB* RGBB, RGB* RGB
 	RGBCelula.calcularPromedioRGBes(RGBA, RGBB, RGBC);
 }
 
-const RGB& Celula::getRGB() {
-	return this->RGBCelula;
+RGB* Celula::getRGB() {
+	return &(this->RGBCelula);
 }
 
 bool Celula::getEstado() {

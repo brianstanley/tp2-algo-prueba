@@ -38,7 +38,7 @@ public:
 	/*pre: -
 	 * post: se devuelve el RGB de la celula
 	 */
-	const RGB& getRGB();
+	RGB* getRGB();
 	/*pre: -
 	 * post: se devuelve true si la celula esta viva y false en caso contrario
 	 */
