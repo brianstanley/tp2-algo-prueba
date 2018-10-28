@@ -18,14 +18,14 @@ void Turno::marcarCambiosARealizarParaSiguienteTurno(){
 	for(int fila=0; fila < this->tableroAsociado->getFilas(); fila++){
 		for(int columna=0; columna < this->tableroAsociado->getColumnas(); columna++){
 			RGB* coloresCelulasVivasCircundantes [3];
-			int celulasCircundantesVivas = chequearCelulasCircundantes(fila, columna);
+			int celulasCircundantesVivas = chequearCelulasCircundantes(fila, columna,coloresCelulasVivasCircundantes);
 			decidirVidaOMuerte(celulasCircundantesVivas, this->tableroAsociado->getParcela(fila,columna).getCoordenadaParcela());
 		//parcela deberia tener un metodo que devuelva sus coordenadas			}
 		}
 	}
 }
 
-int Turno::chequearCelulasCircundantes(int fila, int columna){
+int Turno::chequearCelulasCircundantes(int fila, int columna, RGB* coloresCelulasVivasCircundantes[]){
 	int celulasCircundantesVivas;
 	if(this->tableroAsociado->getParcela(fila, columna).getCelula()->getEstado()){
 		celulasCircundantesVivas --;
@@ -36,6 +36,10 @@ int Turno::chequearCelulasCircundantes(int fila, int columna){
 				if (j > 0){
 					if(this->tableroAsociado->getParcela(i, j).getCelula()->getEstado()){ // A MIRAR
 						celulasCircundantesVivas ++;
+						if (celulasCircundantesVivas < 4){
+							coloresCelulasVivasCircundantes[celulasCircundantesVivas-1] =
+							this->tableroAsociado->getParcela(i, j).getCelula()->getRGB();
+						}
 					}
 				}
 			}
@@ -44,7 +48,7 @@ int Turno::chequearCelulasCircundantes(int fila, int columna){
 	return celulasCircundantesVivas;
 }
 
-void Turno::decidirVidaOMuerte(int celulasVivasCircundanes, CoordenadaParcela* coordenadaEnCuestion){
+void Turno::decidirVidaOMuerte(int celulasVivasCircundanes, CoordenadaParcela* coordenadaEnCuestion, RGB* coloresCeluasVivasCircundantes[]){
 	int x = coordenadaEnCuestion->getCoordenadaX();
 	int y = coordenadaEnCuestion->getCoordenadaY();
 	if (this->tableroAsociado->getParcela(x,y).getCelula()->getEstado()){ //en este caso la celula estaria viva
@@ -54,6 +58,9 @@ void Turno::decidirVidaOMuerte(int celulasVivasCircundanes, CoordenadaParcela* c
 	}
 	else{ //esta muerta
 		if (celulasVivasCircundanes == 3){
+			RGB colorParaCelulaANacer;
+			colorParaCelulaANacer.calcularPromedioRGBes(coloresCeluasVivasCircundantes[0],
+			coloresCeluasVivasCircundantes[1], coloresCeluasVivasCircundantes[2]);
 			marcarCelulaNacer(coordenadaEnCuestion);
 		}
 	}
