@@ -36,8 +36,10 @@ int Turno::chequearCelulasCircundantes(int fila, int columna, RGB* coloresCelula
 				if (j > 0){
 					if(this->tableroAsociado->getParcela(i, j).getCelula().getEstado()){ // A MIRAR
 						celulasCircundantesVivas ++;
-						coloresCelulasVivasCircundantes[celulasCircundantesVivas-1] = &(this->tableroAsociado->getParcela(i, j).getCelula()
-						.getRGB());
+						if (celulasCircundantesVivas < 4){
+							coloresCelulasVivasCircundantes[celulasCircundantesVivas-1] = &(this->tableroAsociado->getParcela(i, j).getCelula()
+							.getRGB());
+						}
 					}
 				}
 			}
