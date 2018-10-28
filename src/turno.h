@@ -17,13 +17,13 @@ private:
 	int numeroDeTurno;
 	Tablero* tableroAsociado;
 
-	int chequearCelulasCircundantes(int fila, int columna);
+	int chequearCelulasCircundantes(int fila, int columna, RGB* coloresCelulasVivasCircundantes);
 
 	void marcarCelulaNacer(CoordenadaParcela coordenadaEnCuestion);
 
 	void marcarCelulaMorir(CoordenadaParcela coordenadaEnCuestion);
 
-	void decidirVidaOMuerte(int celulasVivasCircundantes,  CoordenadaParcela coordenadaEnCuestion);
+	void decidirVidaOMuerte(int celulasVivasCircundantes,  CoordenadaParcela coordenadaEnCuestion, RGB* coloresCelulasVivasCircundantes);
 public:
 	/*
 	 * pre: -

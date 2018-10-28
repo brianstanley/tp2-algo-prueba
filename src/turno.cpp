@@ -17,14 +17,15 @@ Turno::Turno(Tablero* tableroAsociado){
 void Turno::marcarCambiosARealizarParaSiguienteTurno(){
 	for(int fila=0; fila < this->tableroAsociado->getFilas(); fila++){
 		for(int columna=0; columna < this->tableroAsociado->getColumnas(); columna++){
-			int celulasCircundantesVivas = chequearCelulasCircundantes(fila, columna);
-			decidirVidaOMuerte(celulasCircundantesVivas, this->tableroAsociado->getParcela().getCoordenada);
+			RGB* coloresCelulasVivasCircundantes[3];
+			int celulasCircundantesVivas = chequearCelulasCircundantes(fila, columna, &coloresCelulasVivasCircundantes);
+			decidirVidaOMuerte(celulasCircundantesVivas, this->tableroAsociado->getParcela().getCoordenada, coloresCelulasVivasCircundantes);
 		//parcela deberia tener un metodo que devuelva sus coordenadas			}
 		}
 	}
 }
 
-int Turno::chequearCelulasCircundantes(int fila, int columna){
+int Turno::chequearCelulasCircundantes(int fila, int columna, RGB* coloresCelulasVivasCircundantes){
 	int celulasCircundantesVivas;
 	if(this->tableroAsociado->getParcela(fila, columna).getCelula().getEstado()){
 		celulasCircundantesVivas --;
@@ -35,6 +36,8 @@ int Turno::chequearCelulasCircundantes(int fila, int columna){
 				if (j > 0){
 					if(this->tableroAsociado->getParcela(i, j).getCelula().getEstado()){ // A MIRAR
 						celulasCircundantesVivas ++;
+						coloresCelulasVivasCircundantes[celulasCircundantesVivas-1] = &(this->tableroAsociado->getParcela(i, j).getCelula()
+						.getRGB());
 					}
 				}
 			}
