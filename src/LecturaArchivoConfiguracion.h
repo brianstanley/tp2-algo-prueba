@@ -16,9 +16,10 @@ std::string const TABLERO = "Tablero";
 
 class LecturaArchivoConfiguracion {
 private:
-	void leerTablero(std::string nombreTablero, std::ifstream&);
-	void leerPortal(std::string nombreTablero, std::ifstream&);
-	void leerParcela(std::string nombreTablero, std::ifstream&);
+	void procesarTablero(std::string nombreTablero, std::ifstream&);
+	void procesarPortal(std::string nombreTablero, std::ifstream&);
+	void procesarParcela(std::string nombreTablero, std::ifstream&);
+	void crearTablero(std::string, int, int);
 public:
 	/**
 	 * pre: Ruta al archivo del cual se desea leer la configuración de

@@ -13,13 +13,6 @@ const bool VIVA = true;
 Celula::Celula() {
 	this->estadoCelula = MUERTA;
 	this->energiaCelula = 0;
-	this->RGBCelula = RGB();
-}
-
-Celula::Celula(float factorNacimientoParecla, RGB RGBParcela) {
-	this->estadoCelula = VIVA;
-	this->energiaCelula = ENERGIA_MAX * factorNacimientoParecla;
-	this->RGBCelula = RGB(RGBParcela);
 }
 
 void Celula::morir() {
@@ -27,11 +20,17 @@ void Celula::morir() {
 	this->energiaCelula = 0;
 }
 
-void Celula::nacer(float factorNacimientoParecla, const RGB& RGBA,
-		const RGB& RGBB, const RGB& RGBC) {
+void Celula::nacer(float factorNacimientoParcela, const RGB& RGBParcela){
 	this->estadoCelula = VIVA;
-	this->energiaCelula = ENERGIA_MAX * factorNacimientoParecla;
-	RGBCelula.calcularPromedioRGBes(RGBA, RGBB, RGBC);
+	this->energiaCelula = ENERGIA_MAX * factorNacimientoParcela;
+	this->RGBCelula = RGBParcela;
+}
+
+void Celula::nacer(float factorNacimientoParcela, const RGB& RGBvecino1,
+		const RGB& RGBvecino2, const RGB& RGBvecino3) {
+	this->estadoCelula = VIVA;
+	this->energiaCelula = ENERGIA_MAX * factorNacimientoParcela;
+	RGBCelula.calcularPromedioRGBes(RGBvecino1, RGBvecino2, RGBvecino3);
 }
 
 const RGB& Celula::getRGB() {
