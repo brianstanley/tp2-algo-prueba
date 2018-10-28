@@ -14,7 +14,7 @@ Turno::Turno(Tablero* tableroAsociado){
 	this->tableroAsociado = tableroAsociado;
 }
 
-void Turno::recorrerTablero(){
+void Turno::marcarCambiosARealizarParaSiguienteTurno(){
 	for(int fila=0; fila < this->tableroAsociado->getFilas(); fila++){
 		for(int columna=0; columna < this->tableroAsociado->getColumnas(); columna++){
 			int celulasCircundantesVivas = chequearCelulasCircundantes(fila, columna);

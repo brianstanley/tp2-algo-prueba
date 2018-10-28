@@ -40,7 +40,3 @@ float DatosPartida::getPromedioMuertas(){
 	return this->promedioMuertas;
 }
 
-DatosPartida::~DatosPartida() {
-	// TODO Auto-generated destructor stub
-}
-
