@@ -19,7 +19,7 @@ private:
 
 	int chequearCelulasCircundantes(int fila, int columna, RGB* coloresCeluasVivasCircundantes[]);
 
-	void marcarCelulaNacer(CoordenadaParcela* coordenadaEnCuestion, RGB* coloresCeluasVivasCircundantes[]);
+	void marcarCelulaNacer(CoordenadaParcela* coordenadaEnCuestion, RGB* colorCelulaANacer);
 
 	void marcarCelulaMorir(CoordenadaParcela* coordenadaEnCuestion);
 

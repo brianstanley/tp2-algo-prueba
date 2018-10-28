@@ -61,7 +61,7 @@ void Turno::decidirVidaOMuerte(int celulasVivasCircundanes, CoordenadaParcela* c
 			RGB colorParaCelulaANacer;
 			colorParaCelulaANacer.calcularPromedioRGBes(coloresCeluasVivasCircundantes[0],
 			coloresCeluasVivasCircundantes[1], coloresCeluasVivasCircundantes[2]);
-			marcarCelulaNacer(coordenadaEnCuestion);
+			marcarCelulaNacer(coordenadaEnCuestion, &colorParaCelulaANacer);
 		}
 	}
 }
