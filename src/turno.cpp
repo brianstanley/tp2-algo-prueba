@@ -17,8 +17,9 @@ Turno::Turno(Tablero* tableroAsociado){
 void Turno::marcarCambiosARealizarParaSiguienteTurno(){
 	for(int fila=0; fila < this->tableroAsociado->getFilas(); fila++){
 		for(int columna=0; columna < this->tableroAsociado->getColumnas(); columna++){
+			RGB* coloresCelulasVivasCircundantes [3];
 			int celulasCircundantesVivas = chequearCelulasCircundantes(fila, columna);
-			decidirVidaOMuerte(celulasCircundantesVivas, this->tableroAsociado->getParcela().getCoordenada);
+			decidirVidaOMuerte(celulasCircundantesVivas, this->tableroAsociado->getParcela(fila,columna).getCoordenadaParcela());
 		//parcela deberia tener un metodo que devuelva sus coordenadas			}
 		}
 	}
@@ -26,14 +27,14 @@ void Turno::marcarCambiosARealizarParaSiguienteTurno(){
 
 int Turno::chequearCelulasCircundantes(int fila, int columna){
 	int celulasCircundantesVivas;
-	if(this->tableroAsociado->getParcela(fila, columna).getCelula().getEstado()){
+	if(this->tableroAsociado->getParcela(fila, columna).getCelula()->getEstado()){
 		celulasCircundantesVivas --;
 	}
 	for (int i=fila-1; i <=fila+1; i++){
 		if (i > 0){
 			for(int j=fila-1; j <=fila+1; j++){
 				if (j > 0){
-					if(this->tableroAsociado->getParcela(i, j).getCelula().getEstado()){ // A MIRAR
+					if(this->tableroAsociado->getParcela(i, j).getCelula()->getEstado()){ // A MIRAR
 						celulasCircundantesVivas ++;
 					}
 				}
@@ -43,10 +44,10 @@ int Turno::chequearCelulasCircundantes(int fila, int columna){
 	return celulasCircundantesVivas;
 }
 
-void Turno::decidirVidaOMuerte(int celulasVivasCircundanes, CoordenadaParcela coordenadaEnCuestion){
-	int x = coordenadaEnCuestion.getCoordenadaX();
-	int y = coordenadaEnCuestion.getCoordenadaY();
-	if (this->tableroAsociado->getParcela(x,y).getCelula().getEstado()){ //en este caso la celula estaria viva
+void Turno::decidirVidaOMuerte(int celulasVivasCircundanes, CoordenadaParcela* coordenadaEnCuestion){
+	int x = coordenadaEnCuestion->getCoordenadaX();
+	int y = coordenadaEnCuestion->getCoordenadaY();
+	if (this->tableroAsociado->getParcela(x,y).getCelula()->getEstado()){ //en este caso la celula estaria viva
 		if (celulasVivasCircundanes != 3){
 			marcarCelulaMorir(coordenadaEnCuestion);
 		}

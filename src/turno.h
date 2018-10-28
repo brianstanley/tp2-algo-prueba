@@ -19,11 +19,11 @@ private:
 
 	int chequearCelulasCircundantes(int fila, int columna);
 
-	void marcarCelulaNacer(CoordenadaParcela coordenadaEnCuestion);
+	void marcarCelulaNacer(CoordenadaParcela* coordenadaEnCuestion);
 
-	void marcarCelulaMorir(CoordenadaParcela coordenadaEnCuestion);
+	void marcarCelulaMorir(CoordenadaParcela* coordenadaEnCuestion);
 
-	void decidirVidaOMuerte(int celulasVivasCircundantes,  CoordenadaParcela coordenadaEnCuestion);
+	void decidirVidaOMuerte(int celulasVivasCircundantes, CoordenadaParcela* coordenadaEnCuestion);
 public:
 	/*
 	 * pre: -
