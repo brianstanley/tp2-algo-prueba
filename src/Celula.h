@@ -34,7 +34,7 @@ public:
 	nacimiento de la parcela y el RGB como fruto del promedio de los RGBes de las
 	tres celulas circundantes
 	*/
-	void nacer(float factorNacimiento, const RGB& RGBA, const RGB& RGBB, const RGB& RGBC);
+	void nacer(float factorNacimiento, RGB* RGBA, RGB* RGBB, RGB* RGBC);
 	/*pre: -
 	 * post: se devuelve el RGB de la celula
 	 */
