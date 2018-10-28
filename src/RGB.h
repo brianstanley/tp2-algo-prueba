@@ -26,7 +26,7 @@ public:
 	/*pre: -
 	 * post: se devuelve un RGB que es el promedio de los tres RGBes pasados por paremetro
 	 */
-	void calcularPromedioRGBes(const RGB& RGBA, const RGB& RGBB, const RGB& RGBC);
+	void calcularPromedioRGBes(RGB* RGBA, RGB* RGBB, RGB* RGBC);
 	/*
 	 * pre: -
 	 * post: devuelve el valor de rojo del objeto RGB
