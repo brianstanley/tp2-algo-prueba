@@ -19,7 +19,7 @@ void Turno::marcarCambiosARealizarParaSiguienteTurno(){
 		for(int columna=0; columna < this->tableroAsociado->getColumnas(); columna++){
 			RGB* coloresCelulasVivasCircundantes [3];
 			int celulasCircundantesVivas = chequearCelulasCircundantes(fila, columna,coloresCelulasVivasCircundantes);
-			decidirVidaOMuerte(celulasCircundantesVivas, this->tableroAsociado->getParcela(fila,columna).getCoordenadaParcela());
+			decidirVidaOMuerte(celulasCircundantesVivas, this->tableroAsociado->getParcela(fila,columna).getCoordenadaParcela(), coloresCelulasVivasCircundantes);
 		//parcela deberia tener un metodo que devuelva sus coordenadas			}
 		}
 	}

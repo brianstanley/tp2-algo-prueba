@@ -26,8 +26,7 @@ void Celula::nacer(float factorNacimientoParcela, const RGB& RGBParcela){
 	this->RGBCelula = RGBParcela;
 }
 
-void Celula::nacer(float factorNacimientoParcela, const RGB& RGBvecino1,
-		const RGB& RGBvecino2, const RGB& RGBvecino3) {
+void Celula::nacer(float factorNacimientoParcela, RGB* RGBvecino1, RGB* RGBvecino2, RGB* RGBvecino3) {
 	this->estadoCelula = VIVA;
 	this->energiaCelula = ENERGIA_MAX * factorNacimientoParcela;
 	RGBCelula.calcularPromedioRGBes(RGBvecino1, RGBvecino2, RGBvecino3);

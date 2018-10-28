@@ -30,8 +30,7 @@ public:
 	 * factor de nacimiento de la parcela y el RGB como fruto del promedio de
 	 * los RGBes de las tres celulas circundantes
 	 */
-	void nacer(float factorNacimientoParcela, const RGB& RGBvecino1,
-			const RGB& RGBvecino2, const RGB& RGBvecino3);
+	void nacer(float factorNacimientoParcela, RGB* RGBvecino1, RGB* RGBvecino2, RGB* RGBvecino3);
 	/*pre: -
 	 * post: se setea el estado de la celula a muerto y la energia a 0
 	 */
