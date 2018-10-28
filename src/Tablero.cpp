@@ -23,8 +23,6 @@ void Tablero::crearParcelas() {
 			RGB rgb;
 			CoordenadaParcela coordenadaParcela;
 			coordenadaParcela.setCoordenada(this, i, j);
-			this->parcelas[i][j].setFactorNacimiento(i+1);
-			this->parcelas[i][j].setFactorMuerte(i+1);
 			this->parcelas[i][j].setCoordenadaParcela(&coordenadaParcela);
 			this->parcelas[i][j].setRBGparcela(rgb);
 		}
