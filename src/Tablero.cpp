@@ -7,21 +7,35 @@
 
 #include "Tablero.h"
 
-Tablero::Tablero(string nombre, int filas, int columnas) {
+void Tablero::inicializar(std::string nombre, int filas, int columnas) {
 	this->nombre = nombre;
 	this->filas = filas;
 	this->columnas = columnas;
-	this->tablero = new Parcela*[filas];
-	for(int i=0; i<filas; i++){
-		this->tablero[i] = new Parcela[columnas];
+	this->parcelas = new Parcela*[this->filas];
+	for(int i = 0; i < this->filas; i++){
+		this->parcelas[i] = new Parcela[columnas];
+	}
+}
+
+void Tablero::crearParcelas() {
+	for(int i=0; i < this->filas; i++){
+		for(int j=0; j < this->columnas; j++){
+			RGB rgb;
+			CoordenadaParcela coordenadaParcela;
+			coordenadaParcela.setCoordenada(this, i, j);
+			this->parcelas[i][j].setFactorNacimiento(i+1);
+			this->parcelas[i][j].setFactorMuerte(i+1);
+			this->parcelas[i][j].setCoordenadaParcela(&coordenadaParcela);
+			this->parcelas[i][j].setRBGparcela(rgb);
+		}
 	}
 }
 
 Parcela& Tablero::getParcela(int fila, int columna){
-	return this->tablero[fila][columna];
+	return this->parcelas[fila][columna];
 }
 
-string Tablero::getNombre(){
+std::string Tablero::getNombre(){
 	return this->nombre;
 }
 
@@ -35,9 +49,9 @@ int Tablero::getColumnas(){
 
 
 Tablero::~Tablero() {
-	for(int i=0; i<this->filas; i++){
-		delete[] this->tablero[i];
+	for(int i = 0; i < this->filas; i++){
+		delete[] this->parcelas[i];
 	}
-	delete[] this->tablero;
+	delete[] this->parcelas;
 }
 

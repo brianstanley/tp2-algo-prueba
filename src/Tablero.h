@@ -10,45 +10,53 @@
 
 #include <iostream>
 #include <string>
-using namespace std;
-
 #include "Parcela.h"
+
+class Parcela;
 
 class Tablero {
 private:
-	//Cuando usas formaciones1, el tamaño debe ser conocido en tiempo de
-	//compilación o debes usar memoria dinámica
-	string nombre;
+	std::string nombre;
 	int filas;
 	int columnas;
-	Parcela **tablero;
+	Parcela **parcelas;
 public:
-	/*pre:-
-	 * post: Se crea un tablero dinamico de Parcelas de acuerdo a las filas y
-	 * columnas indicadas. Con el nombre indicado para el tablero.
+	/*
+	 * pre: El nombre del tablero, la cantidad de filas y columnas.
+	 * post: Se inicializa un tablero como una matriz dinamica de Parcelas
+	 * de acuerdo a la cantidad de filas y columnas indicadas.
 	 */
-	Tablero(string nombre, int filas, int columnas);
-	/*pre:-
-	 * post: se devuelve la Parcela asociada al tablero[fila][columna]
+	void inicializar(std::string nombre, int filas, int columnas);
+	/**
+	 * pre: El tablero debe estar inicializado
+	 * pos: Asigna los punteros a parcelas en la matriz dinámica
+	 */
+	void crearParcelas();
+	/*
+	 * pre: Fila y Columna dentro del rango de la matriz dinámica de parcelas.
+	 * post: Se devuelve una referencia a la parcela en la posición indicada.
 	 */
 	Parcela& getParcela(int fila, int columna);
-	/*pre:-
+	/*
+	 * pre:-
 	 * post: se devuelve el nombre del tablero
 	 */
-	string getNombre();
-	/*pre:-
-	 * post: se devuelve el numero de filas del tablero
+	std::string getNombre();
+	/*
+	 * pre:-
+	 * post: Devuelve el numero de filas del tablero
 	 */
 	int getFilas();
-	/*pre:-
-	 * post: se devuelve el numero de columnas del tablero
+	/*
+	 * pre:-
+	 * post: Devuelve el numero de columnas del tablero
 	 */
 	int getColumnas();
-	/*pre:-
+	/*
+	 * pre:-
 	 * post: se libera la memoria asociada al tablero
 	 */
-	~Tablero(); // NO ESTOY SEGURO DE ESTAR LIBERANDO CORRECTAMENTE
-				//(tengo otro projecto parecido para correr en valgrind y ver si esta bien esto)
+	~Tablero();
 };
 
 #endif /* SRC_TABLERO_H_ */
