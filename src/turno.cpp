@@ -18,7 +18,8 @@ void Turno::marcarCambiosARealizarParaSiguienteTurno(){
 	for(int fila=0; fila < this->tableroAsociado->getFilas(); fila++){
 		for(int columna=0; columna < this->tableroAsociado->getColumnas(); columna++){
 			RGB* coloresCelulasVivasCircundantes [3];
-			int celulasCircundantesVivas = chequearCelulasCircundantes(fila, columna,coloresCelulasVivasCircundantes);
+			int celulasCircundantesVivas = 0;
+			celulasCircundantesVivas = chequearCelulasCircundantes(fila, columna,coloresCelulasVivasCircundantes);
 			decidirVidaOMuerte(celulasCircundantesVivas, this->tableroAsociado->getParcela(fila,columna).getCoordenadaParcela(), coloresCelulasVivasCircundantes);
 		}
 	}
