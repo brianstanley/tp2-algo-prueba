@@ -36,12 +36,6 @@ public:
 	 */
 	void morir();
 	/*pre: -
-	 * post: se setea el estado de la celula a vivo ,la energia en funcion del factor de
-	nacimiento de la parcela y el RGB como fruto del promedio de los RGBes de las
-	tres celulas circundantes
-	*/
-	void nacer(float factorNacimiento, RGB* RGBA, RGB* RGBB, RGB* RGBC);
-	/*pre: -
 	 * post: se devuelve el RGB de la celula
 	 */
 	RGB* getRGB();
