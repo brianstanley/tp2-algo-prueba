@@ -17,27 +17,14 @@ private:
 	int numeroDeTurno;
 	Tablero* tableroAsociado;
 
-	/*
-	 * pre: el numero de celulas y columnas que se recive debe ser coherente con el alto y ancho del tablero
-	 * post: se miran todas las celulas al rededor de la celula apuntada verificando si estan vivas o muertas y copiando sus colores
-	 */
-	int chequearCelulasCircundantes(int fila, int columna, RGB* coloresCelulasVivasCircundantes);
-	/*
-	 * pre: -
-	 * post:
-	 */
-	void marcarCelulaNacer(CoordenadaParcela coordenadaEnCuestion, RGB* ColorParaCelulaANacer);
-	/*
-	 * pre: -
-	 * post:
-	 */
-	void marcarCelulaMorir(CoordenadaParcela coordenadaEnCuestion);
-	/*
-	 * pre: -
-	 * post: teniendo en cuenta el estado actual de la celula y la cantidad de celulas vivas circundantes se decide si en el proximo
-	 * turno dicha celula nacera o morira
-	 */
-	void decidirVidaOMuerte(int celulasVivasCircundantes,  CoordenadaParcela coordenadaEnCuestion, RGB* coloresCelulasVivasCircundantes);
+	int chequearCelulasCircundantes(int fila, int columna, RGB* coloresCeluasVivasCircundantes[]);
+
+	void marcarCelulaNacer(CoordenadaParcela* coordenadaEnCuestion, RGB* colorCelulaANacer);
+
+	void marcarCelulaMorir(CoordenadaParcela* coordenadaEnCuestion);
+
+	void decidirVidaOMuerte(int celulasVivasCircundantes, CoordenadaParcela* coordenadaEnCuestion,
+	RGB* coloresCeluasVivasCircundantes[]);
 public:
 	/*
 	 * pre: -

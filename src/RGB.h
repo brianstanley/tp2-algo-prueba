@@ -28,6 +28,12 @@ public:
 	 */
 	void calcularPromedioRGBes(RGB* RGBA, RGB* RGBB, RGB* RGBC);
 	/*
+	 *pre: -
+	 * post: se le asigna al objeto RGB en cuestion los valores de red, green y blue pasados
+	 * por parametro
+	 */
+	void setRGB(int red, int green, int blue);
+	/*
 	 * pre: -
 	 * post: devuelve el valor de rojo del objeto RGB
 	 */

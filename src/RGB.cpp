@@ -25,6 +25,12 @@ void RGB::calcularPromedioRGBes(RGB* RGBA, RGB* RGBB, RGB* RGBC){
 	this->blue = (RGBA->blue + RGBB->blue + RGBC->blue) / 3;
 }
 
+void RGB::setRGB(int red, int green, int blue){
+	this->red = red;
+	this->green = green;
+	this->blue = blue;
+}
+
 int RGB::getRed(){
 	return this->red;
 }

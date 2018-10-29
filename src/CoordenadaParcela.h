@@ -3,33 +3,30 @@
  *
  *  Created on: 21 oct. 2018
  *      Author: yorickvinesse
+
+ * El objetivo de esta clase es de tener una manera unica de localizar una parcela.
+ * Lleva la pareja de coordenadas (x, y) y el tablero asociado.
  */
 
 #ifndef SRC_COORDENADAPARCELA_H_
 #define SRC_COORDENADAPARCELA_H_
+#include "Tablero.h"
 
-
-/*
- * El objetivo de esa clase es de tener una manera unica de localizar una parcela.
- * Lleva la pareja de coordenadas (x, y) y el tablero asociado.
- * Por ahora, el objeto Tablero esta puesto en comentarios en todas sus instancias porque
- * aun no lo definimos.
- */
-
+class Tablero;
 class CoordenadaParcela {
 
 private:
-
-	// Tablero nombreDelTablero;
+	Tablero * tablero;
 	int coordenadaX;
 	int coordenadaY;
 
 public:
-
 	/* pre: -
 	 * post: inicializa las coordenadas de la parcela
 	 */
-	CoordenadaParcela(/* Tablero tableroLeido, */ int fila, int columna);
+	void setCoordenada(Tablero * tablero, int fila, int columna);
+
+	CoordenadaParcela * getCoordenada();
 
 	/*
 	 * pre: -
@@ -45,9 +42,10 @@ public:
 
 	/*
 	 * pre: -
-	 * post: devuelve el tablero de la parcela
+	 * post: devuelve un puntero al tablero que contiene
+	 * a la parcela.
 	 */
-	//Tablero getTablero();
+	Tablero * getTablero();
 
 };
 

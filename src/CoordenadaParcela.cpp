@@ -7,9 +7,10 @@
 
 #include "CoordenadaParcela.h"
 
-CoordenadaParcela::CoordenadaParcela(/* Tablero tableroLeido, */int fila,
+void CoordenadaParcela::setCoordenada(Tablero * tablero, int fila,
 		int columna) {
 	//this->nombreDelTablero = tableroLeido;
+	this->tablero = tablero;
 	this->coordenadaX = fila;
 	this->coordenadaY = columna;
 }
@@ -22,7 +23,6 @@ int CoordenadaParcela::getCoordenadaY() {
 	return this->coordenadaY;
 }
 
-//Tablero CoordenadaParcela::getTablero() {
-//	return this->nombreDelTablero;
-//}
-
+Tablero * CoordenadaParcela::getTablero() {
+	return this->tablero;
+}
