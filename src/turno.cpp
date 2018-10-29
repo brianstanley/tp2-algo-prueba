@@ -10,7 +10,7 @@
 Turno::Turno(Tablero* tableroAsociado){
 	this->celulasMuertasTurno = 0;
 	this->celulasNacidasTurno = 0;
-	this->numeroDeTurno = 0; //capaz que lo ponemos en 1
+	this->numeroDeTurno = 1;
 	this->tableroAsociado = tableroAsociado;
 }
 
