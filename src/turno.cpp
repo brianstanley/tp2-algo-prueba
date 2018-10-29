@@ -7,6 +7,8 @@
 
 #include<turno.h>
 
+const int MAX_CANTIDAD_CELULAS_CIRCUNDANTES = 4;
+
 Turno::Turno(Tablero* tableroAsociado){
 	this->celulasMuertasTurno = 0;
 	this->celulasNacidasTurno = 0;
@@ -36,7 +38,7 @@ int Turno::chequearCelulasCircundantes(int fila, int columna, RGB* coloresCelula
 				if (j > 0){
 					if(this->tableroAsociado->getParcela(i, j).getCelula()->getEstado()){ // A MIRAR
 						celulasCircundantesVivas ++;
-						if (celulasCircundantesVivas < 4){
+						if (celulasCircundantesVivas < MAX_CANTIDAD_CELULAS_CIRCUNDANTES){
 							coloresCelulasVivasCircundantes[celulasCircundantesVivas-1] =
 							this->tableroAsociado->getParcela(i, j).getCelula()->getRGB();
 						}
