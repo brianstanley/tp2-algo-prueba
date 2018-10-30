@@ -7,7 +7,7 @@
 
 #include<turno.h>
 
-const int MAX_CANTIDAD_CELULAS_CIRCUNDANTES = 4;
+const int MAX_CANTIDAD_CELULAS_CIRCUNDANTES = 3;
 
 Turno::Turno(Tablero* tableroAsociado){
 	this->celulasMuertasTurno = 0;
@@ -20,28 +20,29 @@ void Turno::marcarCambiosARealizarParaSiguienteTurno(){
 	for(int fila=0; fila < this->tableroAsociado->getFilas(); fila++){
 		for(int columna=0; columna < this->tableroAsociado->getColumnas(); columna++){
 			RGB* coloresCelulasVivasCircundantes [3];
-			int celulasCircundantesVivas = 0;
-			celulasCircundantesVivas = chequearCelulasCircundantes(fila, columna,coloresCelulasVivasCircundantes);
+			int celulasCircundantesVivas = chequearCelulasCircundantes(fila, columna, coloresCelulasVivasCircundantes);
 			decidirVidaOMuerte(celulasCircundantesVivas, this->tableroAsociado->getParcela(fila,columna).getCoordenadaParcela(), coloresCelulasVivasCircundantes);
 		}
 	}
 }
 
-int Turno::chequearCelulasCircundantes(int fila, int columna, RGB* coloresCelulasVivasCircundantes[]){
-	int celulasCircundantesVivas;
-	if(this->tableroAsociado->getParcela(fila, columna).getCelula()->getEstado()){
-		celulasCircundantesVivas --;
+void Turno::guardarColorCelulasCircundantes(RGB* coloresCeluasVivasCircundantes[], int celulasCircundantesVivas, int fila, int columna){
+	if (celulasCircundantesVivas < MAX_CANTIDAD_CELULAS_CIRCUNDANTES){
+		coloresCeluasVivasCircundantes[celulasCircundantesVivas-1] =
+		this->tableroAsociado->getParcela(fila, columna).getCelula()->getRGB();
 	}
+}
+
+int Turno::chequearCelulasCircundantes(int fila, int columna, RGB* coloresCelulasVivasCircundantes[]){
+	int celulasCircundantesVivas = 0;
 	for (int i=fila-1; i <=fila+1; i++){
-		if (i > 0){
+		if (i > 0 && i <= this->tableroAsociado->getFilas()){
 			for(int j=fila-1; j <=fila+1; j++){
-				if (j > 0){
-					if(this->tableroAsociado->getParcela(i, j).getCelula()->getEstado()){ // A MIRAR
+				if (j > 0 && j <= this->tableroAsociado->getColumnas()){
+					bool mismaCelula = (i == fila && j == columna);
+					if(this->tableroAsociado->getParcela(i, j).getCelula()->getEstado() && !mismaCelula){
+						guardarColorCelulasCircundantes(coloresCelulasVivasCircundantes, celulasCircundantesVivas, i, j);
 						celulasCircundantesVivas ++;
-						if (celulasCircundantesVivas < MAX_CANTIDAD_CELULAS_CIRCUNDANTES){
-							coloresCelulasVivasCircundantes[celulasCircundantesVivas-1] =
-							this->tableroAsociado->getParcela(i, j).getCelula()->getRGB();
-						}
 					}
 				}
 			}
@@ -50,20 +51,25 @@ int Turno::chequearCelulasCircundantes(int fila, int columna, RGB* coloresCelula
 	return celulasCircundantesVivas;
 }
 
-void Turno::decidirVidaOMuerte(int celulasVivasCircundanes, CoordenadaParcela* coordenadaEnCuestion, RGB* coloresCeluasVivasCircundantes[]){
+RGB* Turno::promedioColoresCelulasCircundantes(RGB* coloresCelulasVivasCircundantes[]){
+	RGB colorParaCelulaANacer;
+	colorParaCelulaANacer.calcularPromedioRGBes(coloresCelulasVivasCircundantes[0],
+	coloresCelulasVivasCircundantes[1], coloresCelulasVivasCircundantes[2]);
+	return &colorParaCelulaANacer;
+}
+
+void Turno::decidirVidaOMuerte(int celulasVivasCircundantes, CoordenadaParcela* coordenadaEnCuestion, RGB* coloresCelulasVivasCircundantes[]){
 	int x = coordenadaEnCuestion->getCoordenadaX();
 	int y = coordenadaEnCuestion->getCoordenadaY();
 	if (this->tableroAsociado->getParcela(x,y).getCelula()->getEstado()){ //en este caso la celula estaria viva
-		if (celulasVivasCircundanes != 3){
+		if (celulasVivasCircundantes != 3){
 			marcarCelulaMorir(coordenadaEnCuestion); // como no tiene 3 celulas vivas circundantes se marcaria como muerta
 		}
 	}
 	else{ // en este caso la celula estaria muerta
-		if (celulasVivasCircundanes == 3){
-			RGB colorParaCelulaANacer;
-			colorParaCelulaANacer.calcularPromedioRGBes(coloresCeluasVivasCircundantes[0],
-			coloresCeluasVivasCircundantes[1], coloresCeluasVivasCircundantes[2]);
-			marcarCelulaNacer(coordenadaEnCuestion, &colorParaCelulaANacer);
+		if (celulasVivasCircundantes == 3){
+			RGB* colorParaCelulaANacer = promedioColoresCelulasCircundantes(coloresCelulasVivasCircundantes);
+			marcarCelulaNacer(coordenadaEnCuestion, colorParaCelulaANacer);
 		}
 	}
 }

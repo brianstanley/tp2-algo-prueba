@@ -17,12 +17,39 @@ private:
 	int numeroDeTurno;
 	Tablero* tableroAsociado;
 
+	/*
+	 * pre: -
+	 * post: se devuelve la cantidad de celulas vivas circundantes a una celula
+	 */
 	int chequearCelulasCircundantes(int fila, int columna, RGB* coloresCeluasVivasCircundantes[]);
 
+	/*
+	 * pre: -
+	 * post: se guardan los colores de las celulas circundantes en un arreglo
+	 */
+	void guardarColorCelulasCircundantes(RGB* coloresCeluasVivasCircundantes[], int celulasCircundantesVivas, int fila, int columna);
+
+	/*
+	 * pre:-
+	 * post: se devuelve un puntero al promedio de los colores de las celulas vivas circundantes
+	 */
+	RGB* promedioColoresCelulasCircundantes(RGB* coloresCelulasVivasCircundantes[]);
+
+	/*
+	 * pre: -
+	 * post: se
+	 */
 	void marcarCelulaNacer(CoordenadaParcela* coordenadaEnCuestion, RGB* colorCelulaANacer);
 
+	/*
+	 *
+	 *
+	 */
 	void marcarCelulaMorir(CoordenadaParcela* coordenadaEnCuestion);
-
+	/*
+	 * pre:-
+	 * post: se chequea si las celulas que deben nacer ya estan vivas o si las celulas para morir ya estan muertas
+	 */
 	void decidirVidaOMuerte(int celulasVivasCircundantes, CoordenadaParcela* coordenadaEnCuestion,
 	RGB* coloresCeluasVivasCircundantes[]);
 public:
