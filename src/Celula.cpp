@@ -13,6 +13,7 @@ const bool VIVA = true;
 Celula::Celula() {
 	this->estadoCelula = MUERTA;
 	this->energiaCelula = 0;
+	this->RGBCelula = 0;
 }
 
 void Celula::morir() {
@@ -33,7 +34,7 @@ void Celula::nacer(float factorNacimientoParcela, RGB* RGBvecino1, RGB* RGBvecin
 }
 
 RGB* Celula::getRGB() {
-	return &(this->RGBCelula);
+	return this->RGBCelula;
 }
 
 bool Celula::getEstado() {

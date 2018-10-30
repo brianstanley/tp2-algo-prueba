@@ -14,7 +14,7 @@ class Celula{
 private:
 	bool estadoCelula;
 	int energiaCelula;
-	RGB RGBCelula;
+	RGB* RGBCelula;
 public:
 	/*pre: -
 	 * post: se crea una celula muerta con RGB nulo y energia 0
