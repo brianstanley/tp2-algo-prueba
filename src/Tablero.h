@@ -12,6 +12,7 @@
 #include <string>
 #include "Parcela.h"
 #include "DatosTablero.h"
+#include "imagen_de_tablero.h"
 
 class Parcela;
 
@@ -22,6 +23,7 @@ private:
 	int columnas;
 	Parcela **parcelas;
 	DatosTablero* datosDelTablero;
+	ImagenDeTablero* archivoDelTablero;
 
 public:
 	/*
@@ -64,6 +66,18 @@ public:
 	 * pre:-
 	 * post: se libera la memoria asociada al tablero
 	 */
+	/*
+	 * pre: -
+	 * post: guarda las celulas de tablero en el archivo bmp
+	 */
+	void generarBMP();
+
+	/*
+	 * pre: -
+	 * post: guarda los datos de archivoDelTablero en un archivo .bmp
+	 */
+	void guardarBMP(int numeroTurno);
+
 	~Tablero();
 
 };

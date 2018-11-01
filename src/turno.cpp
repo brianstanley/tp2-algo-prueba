@@ -106,6 +106,7 @@ void Turno::concretarCambios(){
 }
 
 void Turno::plasmarCambiosEnArchivo(){
-	this->tableroAsociado
+	this->tableroAsociado->generarBMP();
+	this->tableroAsociado->guardarBMP(this->numeroDeTurno);
 }
 
