@@ -6,11 +6,10 @@
  */
 
 #include "LecturaArchivoConfiguracion.h"
-#include <string>
-#include "Lectura.h"
-#include "Excepciones/ExcepcionesArchivo.h"
-#include "Tablero.h"
+
+
 void LecturaArchivoConfiguracion::procesarArchivo(std::string ruta) {
+	StringHelper stringHelper;
 	std::ifstream archivoDeConfiguracion;
 	std::string tipoDeOperacion, nombreTablero;
 	Lectura archivo;
@@ -19,6 +18,7 @@ void LecturaArchivoConfiguracion::procesarArchivo(std::string ruta) {
 
 	while (!archivoDeConfiguracion.eof()) {
 		archivoDeConfiguracion >> tipoDeOperacion;
+		tipoDeOperacion = stringHelper.aMinuscula(tipoDeOperacion);
 		archivoDeConfiguracion >> nombreTablero;
 		if (tipoDeOperacion == PARCELA) {
 			this->procesarParcela(nombreTablero, archivoDeConfiguracion);
@@ -26,6 +26,8 @@ void LecturaArchivoConfiguracion::procesarArchivo(std::string ruta) {
 			this->procesarPortal(nombreTablero, archivoDeConfiguracion);
 		} else if (tipoDeOperacion == TABLERO) {
 			this->procesarTablero(nombreTablero, archivoDeConfiguracion);
+		} else if (tipoDeOperacion == CELULA) {
+			this->procesarCelula(nombreTablero, archivoDeConfiguracion);
 		} else {
 			ExcepcionesArchivo excepcion;
 			excepcion.operacionInvalida();
@@ -68,9 +70,20 @@ void LecturaArchivoConfiguracion::procesarParcela(std::string tableroId, std::if
 	// Aca debería ir una intancia a la clase parcela
 }
 
+void LecturaArchivoConfiguracion::procesarCelula(std::string nombreTablero, std::ifstream& archivoDeConfiguracion) {
+	int fila, columna;
+	archivoDeConfiguracion >> fila;
+	archivoDeConfiguracion >> columna;
+	this->crearCelula(nombreTablero, fila, columna);
+}
+
+
 void LecturaArchivoConfiguracion::crearTablero(std::string nombreTablero, int ancho, int alto) {
 	Tablero tablero(nombreTablero, alto, ancho);
 	tablero.crearParcelas();
 }
 
-
+void LecturaArchivoConfiguracion::crearCelula(std::string tableroId, int fila, int columna) {
+	std::cout << "ENel tablero " << tableroId << " en la fila: " << fila << " columna: " << columna << "hay que agregar una celula"<<std::endl;
+	// aca deberíamos ver como recorrer la lista de tableros hasta el tablero indicado
+}
