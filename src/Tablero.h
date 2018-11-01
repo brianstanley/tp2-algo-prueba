@@ -11,6 +11,7 @@
 #include <iostream>
 #include <string>
 #include "Parcela.h"
+#include "DatosTablero.h"
 
 class Parcela;
 
@@ -20,6 +21,8 @@ private:
 	int filas;
 	int columnas;
 	Parcela **parcelas;
+	DatosTablero* datosDelTablero;
+
 public:
 	/*
 	 * pre: El nombre del tablero, la cantidad de filas y columnas.
