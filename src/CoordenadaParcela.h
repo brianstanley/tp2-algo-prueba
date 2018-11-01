@@ -27,8 +27,6 @@ public:
 	 */
 	void setCoordenada(Tablero * tablero, int fila, int columna);
 
-	CoordenadaParcela * getCoordenada();
-
 	/*
 	 * pre: -
 	 * post: devuelve la coordenada X de la parcela
