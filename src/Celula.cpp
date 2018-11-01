@@ -28,7 +28,7 @@ void Celula::nacer(float factorNacimientoParcela, RGB* RGBParcela){
 }
 
 RGB* Celula::getRGB() {
-	return &(this->RGBCelula);
+	return this->RGBCelula;
 }
 
 bool Celula::getEstado() {

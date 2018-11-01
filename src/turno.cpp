@@ -76,26 +76,36 @@ void Turno::decidirVidaOMuerte(int celulasVivasCircundantes, CoordenadaParcela* 
 
 void Turno::marcarCelulaMorir(CoordenadaParcela* coordenadaEnCuestion){
 	ParcelaAfectada* celulaAMorir = new(ParcelaAfectada(coordenadaEnCuestion));
-	this->ParcelasAfectadas.altaPrincipio(celulaAMorir);
+	this->ParcelasAfectadas.acolar(celulaAMorir);
 }
 
 void Turno::marcarCelulaNacer(CoordenadaParcela* coordenadaEnCuestion, RGB* colorCelulaANacer){
 	ParcelaAfectada* celulaANacer = new(ParcelaAfectada(coordenadaEnCuestion, colorCelulaANacer));
-	this->ParcelasAfectadas.altaPrincipio(celulaANacer);
+	this->ParcelasAfectadas.acolar(celulaANacer);
 }
 
 void Turno::concretarCambios(){
 	while (! this->ParcelasAfectadas.estaVacia()){
 		ParcelaAfectada* CambioARealizar = this->ParcelasAfectadas.desacolar();
-		int fila = CambioARealizar.getCoordenada().getCoordenadaX();
-		int columna = CambioARealizar.getCoordenada().getCoordenadaY();
-		if (CambioARealizar.getDestino()){
-			float factorNacimientoParcela = this->tableroAsociado->getParcela(fila, columna).getfactorNacimiento();
-			this->tableroAsociado->getParcela(fila, columna).getCelula()->nacer(factorNacimientoParcela, CambioARealizar->getcolor());
+		if (CambioARealizar->naceLaCelula()){
+			float factorNacimientoParcela = CambioARealizar->getParcela().getfactorNacimiento();
+			CambioARealizar->getParcela().getCelula()->nacer(factorNacimientoParcela, CambioARealizar->getColorPromedio());
+			this->celulasNacidasTurno ++;
+			//SUMAR UNO A LA CANTIDAD DE CELULAS VIVAS
 		}
 		else{
-			this->tableroAsociado->getParcela(fila, columna).getCelula()->morir();
+			CambioARealizar->getParcela().getCelula()->morir();
+			this->celulasMuertasTurno ++;
+			//RESTAR UNO A LA CANTIDAD DE CELULAS VIVAS
 		}
-		//portal
+		if (CambioARealizar->hayPortal()){
+			CambioARealizar->getParcela().getPortal()->accionarPortal(CambioARealizar->naceLaCelula(), CambioARealizar->getColorPromedio());
+		}
+
 	}
 }
+
+void Turno::plasmarCambiosEnArchivo(){
+	this->tableroAsociado
+}
+

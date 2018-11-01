@@ -10,7 +10,8 @@
 
 #include "Tablero.h"
 #include "Cola.h"
-#include "parcela_afectada.h"
+#include "ParcelaAfectada.h"
+
 
 class Turno{
 private:
@@ -74,12 +75,21 @@ public:
 
 	/*
 	 * pre: -
-	 * post: se recorre la lista de cambios, realizando los cambios y eliminando los nodos de la lista
+	 * post: se ejecutan las muertes y nacimientos de las celulas necesarios
 	 */
 	void concretarCambios();
 
+	/*
+	 * pre: -
+	 * post: se llama al portal de la celula asociada par que lleve a cabo sus operaciones
+	 */
 	void accionarPortal();
 
+	/*
+	 * pre: -
+	 * post: se plasma el estado definitivo del tablero en un archivo .bmp
+	 */
+	void plasmarCambiosEnArchivo();
 };
 
 
