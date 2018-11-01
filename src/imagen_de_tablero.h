@@ -13,7 +13,7 @@
 #include <iostream>
 #include "RGB.h"
 #include "../librerias/EasyBMP.h"
-#include "funciones_string.h"
+#include "StringHelper.h"
 
 
 
