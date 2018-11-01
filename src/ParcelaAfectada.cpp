@@ -9,16 +9,41 @@
 
 ParcelaAfectada::ParcelaAfectada(CoordenadaParcela * coordenadaParcela) {
 	coordenadaParcelaTocada = coordenadaParcela;
-	parcelaTocada = coordenadaParcelaTocada.getTablero()->getParcela(coordenadaParcelaTocada.getCoordenadaX(), coordenadaParcelaTocada.getCoordenadaX());
+	Portal * portalAsociado = coordenadaParcela->getParcela().getPortal();
 	celulaNace = false;
-	tipoDePortal = &(parcelaTocada.getPortal())->getTipoDePortal();
-
+	if (portalAsociado) {
+		tienePortal = true;
+	}
+	else {
+		tienePortal = false;
+	}
 }
 
 ParcelaAfectada::ParcelaAfectada(CoordenadaParcela * coordenadaParcela, RGB colorRecibido) {
 	coordenadaParcelaTocada = coordenadaParcela;
-	parcelaTocada = coordenadaParcelaTocada.getTablero()->getParcela(coordenadaParcelaTocada.getCoordenadaX(), coordenadaParcelaTocada.getCoordenadaX());
+	Portal * portalAsociado = coordenadaParcela->getParcela().getPortal();
 	celulaNace = true;
-	tipoDePortal = &(parcelaTocada.getPortal())->getTipoDePortal();
+	if (portalAsociado) {
+		tienePortal = true;
+	}
+	else {
+		tienePortal = false;
+	}
 	colorPromedioVecinos = colorRecibido;
+}
+
+Parcela & ParcelaAfectada::getParcela() {
+	return this->coordenadaParcelaTocada->getParcela();
+}
+
+bool ParcelaAfectada::naceLaCelula() {
+	return this->celulaNace;
+}
+
+bool ParcelaAfectada::hayPortal() {
+	return this->tienePortal;
+}
+
+RGB ParcelaAfectada::getColorPromedio() {
+	return this->colorPromedioVecinos;
 }

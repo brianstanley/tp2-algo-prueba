@@ -24,16 +24,17 @@
 class ParcelaAfectada {
 
 private:
-	CoordenadaParcela coordenadaParcelaTocada;
-	Parcela parcelaTocada;
+	CoordenadaParcela * coordenadaParcelaTocada;
 	bool celulaNace; //permite saber si hacemos un promedio de los colores vecinos o no.
-	char tipoDePortal;
+	bool tienePortal;
 	RGB colorPromedioVecinos;
 
 
 public:
 	/*
-	 * Caso cuando muere, no ponemos los colores de los vecinos en argumento
+	 * Caso cuando muere, no ponemos los colores de los vecinos en argumento.
+	 * Este constructor se fija si hay un portal asociado. En el caso de que haya, asigna el char correspondiente
+	 * a tipoDePortal. Si no, el tipoDeportal esta inicializado a NOPORTAL.
 	 */
 	ParcelaAfectada(CoordenadaParcela * coordenadaParcela);
 
@@ -42,7 +43,13 @@ public:
 	 */
 	ParcelaAfectada(CoordenadaParcela * coordenadaParcela, RGB colorRecibido);
 
+	Parcela & getParcela();
 
+	bool naceLaCelula();
+
+	bool hayPortal();
+
+	RGB getColorPromedio();
 };
 
 
