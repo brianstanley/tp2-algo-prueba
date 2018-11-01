@@ -1,7 +1,7 @@
 #ifndef CURSOR_H_
 #define CURSOR_H_
 
-#include"nodo.h"
+#include "Nodo.h"
 
 template<class T> class Cursor{
 private:

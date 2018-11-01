@@ -1,7 +1,7 @@
 #ifndef LISTA_H_
 #define LISTA_H_
 
-#include"cursor.h"
+#include "Cursor.h"
 
 template<class T> class Lista{
 
