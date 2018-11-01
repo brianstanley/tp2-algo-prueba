@@ -31,7 +31,8 @@ void ImagenDeTablero::representarCelulaMuerta(int fila, int columna){
 
 void ImagenDeTablero::guardarImagenTablero(int numeroDeTurno){
 	std::string turno = "";
-	enteroAString(turno, numeroDeTurno);
+	StringHelper stringHelper;
+	stringHelper.enteroAString(turno, numeroDeTurno);
 	std::string nombreArchivo = nombreTableroRepresentado + GUION_BAJO + turno;
 	/*std::ostringstream auxiliar;
 	auxiliar << numeroDeTurno;

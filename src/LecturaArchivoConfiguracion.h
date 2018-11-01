@@ -9,17 +9,25 @@
 #define SRC_LECTURAARCHIVOCONFIGURACION_H_
 #include <string>
 #include <fstream>
+#include "Lectura.h"
+#include "Excepciones/ExcepcionesArchivo.h"
+#include "Tablero.h"
+#include "StringHelper.h"
 
-std::string const PARCELA = "Parcela";
-std::string const PORTAL = "Portal";
-std::string const TABLERO = "Tablero";
+
+std::string const PARCELA = "parcela";
+std::string const PORTAL = "portal";
+std::string const TABLERO = "tablero";
+std::string const CELULA = "celula";
 
 class LecturaArchivoConfiguracion {
 private:
 	void procesarTablero(std::string nombreTablero, std::ifstream&);
 	void procesarPortal(std::string nombreTablero, std::ifstream&);
 	void procesarParcela(std::string nombreTablero, std::ifstream&);
-	void crearTablero(std::string, int, int);
+	void procesarCelula(std::string nombreTablero, std::ifstream&);
+	void crearTablero(std::string, int ancho, int alto);
+	void crearCelula(std::string, int fila, int columna);
 public:
 	/**
 	 * pre: Ruta al archivo del cual se desea leer la configuración de
