@@ -52,10 +52,10 @@ int Turno::chequearCelulasCircundantes(int fila, int columna, RGB* coloresCelula
 }
 
 RGB* Turno::promedioColoresCelulasCircundantes(RGB* coloresCelulasVivasCircundantes[]){
-	RGB colorParaCelulaANacer;
-	colorParaCelulaANacer.calcularPromedioRGBes(coloresCelulasVivasCircundantes[0],
+	RGB* colorParaCelulaANacer = new RGB();
+	colorParaCelulaANacer->calcularPromedioRGBes(coloresCelulasVivasCircundantes[0],
 	coloresCelulasVivasCircundantes[1], coloresCelulasVivasCircundantes[2]);
-	return &colorParaCelulaANacer;
+	return colorParaCelulaANacer;
 }
 
 void Turno::decidirVidaOMuerte(int celulasVivasCircundantes, CoordenadaParcela* coordenadaEnCuestion, RGB* coloresCelulasVivasCircundantes[]){
@@ -75,13 +75,13 @@ void Turno::decidirVidaOMuerte(int celulasVivasCircundantes, CoordenadaParcela* 
 }
 
 void Turno::marcarCelulaMorir(CoordenadaParcela* coordenadaEnCuestion){
-	ParcelaAfectada* celulaAMorir = new(ParcelaAfectada(coordenadaEnCuestion));
+	ParcelaAfectada* celulaAMorir = new ParcelaAfectada(coordenadaEnCuestion);
 	this->ParcelasAfectadas.acolar(celulaAMorir);
 }
 
 void Turno::marcarCelulaNacer(CoordenadaParcela* coordenadaEnCuestion, RGB* colorCelulaANacer){
-	ParcelaAfectada* celulaANacer = new(ParcelaAfectada(coordenadaEnCuestion, colorCelulaANacer));
-	this->ParcelasAfectadas.acolar(celulaANacer);
+	ParcelaAfectada* CelulaANacer = new ParcelaAfectada(coordenadaEnCuestion, colorCelulaANacer);
+	this->ParcelasAfectadas.acolar(CelulaANacer);
 }
 
 void Turno::concretarCambios(){
