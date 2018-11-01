@@ -9,7 +9,7 @@
 #define SRC_TURNO_H_
 
 #include "Tablero.h"
-#include "Cola.h"
+#include "Listas/Cola.h"
 #include "ParcelaAfectada.h"
 
 

@@ -5,7 +5,7 @@
  *      Author: nazareno
  */
 
-#include<turno.h>
+#include "turno.h"
 
 const int MAX_CANTIDAD_CELULAS_CIRCUNDANTES = 3;
 
