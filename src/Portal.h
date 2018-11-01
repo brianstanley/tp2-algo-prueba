@@ -38,6 +38,38 @@ private:
 	char tipoDePortal;
 	CoordenadaParcela * parcelaAsociada;
 
+	/*
+	 *
+	 *
+	 */
+	void accionarPortalActivo(bool nace, RGB* color);
+
+	/*
+	 *
+	 *
+	 */
+	void accionarPortalNormal(bool nace, RGB* color);
+
+	/*
+	 *
+	 *
+	 */
+	void accionarPortalPasivo(bool nace, RGB* color);
+
+	/*
+	 *
+	 */
+	void nacioOrigenEntoncesNaceDestino(RGB* color);
+
+	/*
+	 *
+	 */
+	void murioOrigenEntoncesMuereDestino();
+
+	/*
+	 *
+	 */
+	void murioDestinoEntoncesMuereOrigen();
 public:
 	Portal(bool esPortalDeOrigen, char tipoDelPortal,
 			CoordenadaParcela * parcelaPareja);
@@ -45,6 +77,19 @@ public:
 	char getTipoDePortal();
 
 	CoordenadaParcela * getCoordenadaAsociada();
+
+	/*
+	 * pre: -
+	 * post: de acuerdo con el tipo de portal, hace cambios en el tablero de origen y destino
+	 */
+
+	/*
+	 * pre:-
+	 * post:
+	 */
+	void accionarPortal(bool nace, RGB* color);
+
+
 
 };
 

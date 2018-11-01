@@ -8,9 +8,9 @@
 #ifndef SRC_TURNO_H_
 #define SRC_TURNO_H_
 
-#include "Tablero.h";
-#include "lista.h";
-#include "parcela_afectada.h";
+#include "Tablero.h"
+#include "Cola.h"
+#include "parcela_afectada.h"
 
 class Turno{
 private:
@@ -18,7 +18,7 @@ private:
 	int celulasMuertasTurno;
 	int numeroDeTurno;
 	Tablero* tableroAsociado;
-	Lista<ParcelaAfectada*> ParcelasAfectadas;
+	Cola<ParcelaAfectada*> ParcelasAfectadas;
 
 	/*
 	 * pre: -
@@ -55,6 +55,7 @@ private:
 	 */
 	void decidirVidaOMuerte(int celulasVivasCircundantes, CoordenadaParcela* coordenadaEnCuestion,
 	RGB* coloresCeluasVivasCircundantes[]);
+
 public:
 	/*
 	 * pre: -
@@ -75,7 +76,9 @@ public:
 	 * pre: -
 	 * post: se recorre la lista de cambios, realizando los cambios y eliminando los nodos de la lista
 	 */
-	void ConcretarCambios();
+	void concretarCambios();
+
+	void accionarPortal();
 
 };
 

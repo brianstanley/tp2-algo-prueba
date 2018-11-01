@@ -84,9 +84,18 @@ void Turno::marcarCelulaNacer(CoordenadaParcela* coordenadaEnCuestion, RGB* colo
 	this->ParcelasAfectadas.altaPrincipio(celulaANacer);
 }
 
-void Turno::ConcretarCambios(){
+void Turno::concretarCambios(){
 	while (! this->ParcelasAfectadas.estaVacia()){
-		ParcelaAfectada* CambioARealizar = this->ParcelasAfectadas.desapilar();
-
+		ParcelaAfectada* CambioARealizar = this->ParcelasAfectadas.desacolar();
+		int fila = CambioARealizar.getCoordenada().getCoordenadaX();
+		int columna = CambioARealizar.getCoordenada().getCoordenadaY();
+		if (CambioARealizar.getDestino()){
+			float factorNacimientoParcela = this->tableroAsociado->getParcela(fila, columna).getfactorNacimiento();
+			this->tableroAsociado->getParcela(fila, columna).getCelula()->nacer(factorNacimientoParcela, CambioARealizar->getcolor());
+		}
+		else{
+			this->tableroAsociado->getParcela(fila, columna).getCelula()->morir();
+		}
+		//portal
 	}
 }
