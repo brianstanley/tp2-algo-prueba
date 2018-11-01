@@ -55,16 +55,19 @@ void Portal::nacioOrigenEntoncesNaceDestino(RGB* color){
 	int columna = this->parcelaAsociada->getCoordenadaY();
 	float factorNacimiento = this->parcelaAsociada->getTablero()->getParcela(fila, columna).getfactorNacimiento();
 	this->parcelaAsociada->getTablero()->getParcela(fila,columna).getCelula()->nacer(factorNacimiento,color);
+	this->parcelaAsociada->getTablero()->getDatosTablero()->sumarCelulaViva();
 }
 
 void Portal::murioOrigenEntoncesMuereDestino(){
 	int fila = this->parcelaAsociada->getCoordenadaX();
 	int columna = this->parcelaAsociada->getCoordenadaY();
 	this->parcelaAsociada->getTablero()->getParcela(fila,columna).getCelula()->morir();
+	this->parcelaAsociada->getTablero()->getDatosTablero()->sumarCelulaMuerta();
 }
 
 void Portal::murioDestinoEntoncesMuereOrigen(){
 	int fila = this->parcelaAsociada->getCoordenadaX();
 	int columna = this->parcelaAsociada->getCoordenadaY();
 	this->parcelaAsociada->getTablero()->getParcela(fila,columna).getCelula()->morir();
+	this->parcelaAsociada->getTablero()->getDatosTablero()->sumarCelulaMuerta();
 }

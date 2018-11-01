@@ -56,10 +56,16 @@ public:
 	 */
 	int getColumnas();
 	/*
+	 * pre: -
+	 * post: devuelve un puntero a los datos asociados al tablero
+	 */
+	DatosTablero* getDatosTablero();
+	/*
 	 * pre:-
 	 * post: se libera la memoria asociada al tablero
 	 */
 	~Tablero();
+
 };
 
 #endif /* SRC_TABLERO_H_ */

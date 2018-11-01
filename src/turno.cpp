@@ -91,12 +91,12 @@ void Turno::concretarCambios(){
 			float factorNacimientoParcela = CambioARealizar->getParcela().getfactorNacimiento();
 			CambioARealizar->getParcela().getCelula()->nacer(factorNacimientoParcela, CambioARealizar->getColorPromedio());
 			this->celulasNacidasTurno ++;
-			//SUMAR UNO A LA CANTIDAD DE CELULAS VIVAS
+			this->tableroAsociado->getDatosTablero()->sumarCelulaViva();
 		}
 		else{
 			CambioARealizar->getParcela().getCelula()->morir();
 			this->celulasMuertasTurno ++;
-			//RESTAR UNO A LA CANTIDAD DE CELULAS VIVAS
+			this->tableroAsociado->getDatosTablero()->sumarCelulaMuerta();
 		}
 		if (CambioARealizar->hayPortal()){
 			CambioARealizar->getParcela().getPortal()->accionarPortal(CambioARealizar->naceLaCelula(), CambioARealizar->getColorPromedio());

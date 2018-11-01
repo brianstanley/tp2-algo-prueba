@@ -46,6 +46,9 @@ int Tablero::getColumnas(){
 	return this->columnas;
 }
 
+DatosTablero* Tablero::getDatosTablero(){
+	return this->datosDelTablero;
+}
 
 Tablero::~Tablero() {
 	for(int i = 0; i < this->filas; i++){
