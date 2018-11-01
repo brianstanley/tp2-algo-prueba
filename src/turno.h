@@ -9,6 +9,8 @@
 #define SRC_TURNO_H_
 
 #include "Tablero.h";
+#include "lista.h";
+#include "parcela_afectada.h";
 
 class Turno{
 private:
@@ -16,6 +18,7 @@ private:
 	int celulasMuertasTurno;
 	int numeroDeTurno;
 	Tablero* tableroAsociado;
+	Lista<ParcelaAfectada*> ParcelasAfectadas;
 
 	/*
 	 * pre: -
@@ -37,13 +40,13 @@ private:
 
 	/*
 	 * pre: -
-	 * post: se
+	 * post: se lista la parcela obtenida para nacer
 	 */
 	void marcarCelulaNacer(CoordenadaParcela* coordenadaEnCuestion, RGB* colorCelulaANacer);
 
 	/*
-	 *
-	 *
+	 *pre: -
+	 *post: se lista la parcela obtenida para morir
 	 */
 	void marcarCelulaMorir(CoordenadaParcela* coordenadaEnCuestion);
 	/*
@@ -67,6 +70,12 @@ public:
 	 * Con esta informacion se llama a metodos que marcan la parcela para morir o nacer
 	 */
 	void marcarCambiosARealizarParaSiguienteTurno();
+
+	/*
+	 * pre: -
+	 * post: se recorre la lista de cambios, realizando los cambios y eliminando los nodos de la lista
+	 */
+	void ConcretarCambios();
 
 };
 

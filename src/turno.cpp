@@ -73,3 +73,20 @@ void Turno::decidirVidaOMuerte(int celulasVivasCircundantes, CoordenadaParcela* 
 		}
 	}
 }
+
+void Turno::marcarCelulaMorir(CoordenadaParcela* coordenadaEnCuestion){
+	ParcelaAfectada* celulaAMorir = new(ParcelaAfectada(coordenadaEnCuestion));
+	this->ParcelasAfectadas.altaPrincipio(celulaAMorir);
+}
+
+void Turno::marcarCelulaNacer(CoordenadaParcela* coordenadaEnCuestion, RGB* colorCelulaANacer){
+	ParcelaAfectada* celulaANacer = new(ParcelaAfectada(coordenadaEnCuestion, colorCelulaANacer));
+	this->ParcelasAfectadas.altaPrincipio(celulaANacer);
+}
+
+void Turno::ConcretarCambios(){
+	while (! this->ParcelasAfectadas.estaVacia()){
+		ParcelaAfectada* CambioARealizar = this->ParcelasAfectadas.desapilar();
+
+	}
+}
