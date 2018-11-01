@@ -33,8 +33,6 @@ private:
 public:
 	/*
 	 * Caso cuando muere, no ponemos los colores de los vecinos en argumento.
-	 * Este constructor se fija si hay un portal asociado. En el caso de que haya, asigna el char correspondiente
-	 * a tipoDePortal. Si no, el tipoDeportal esta inicializado a NOPORTAL.
 	 */
 	ParcelaAfectada(CoordenadaParcela * coordenadaParcela);
 
@@ -43,12 +41,28 @@ public:
 	 */
 	ParcelaAfectada(CoordenadaParcela * coordenadaParcela, RGB colorRecibido);
 
+	/*
+	 * pre: -
+	 * post: devuelve la parcela correspondiente a la CoordenadaParcela de entrada
+	 */
 	Parcela & getParcela();
 
+	/*
+	 * pre: -
+	 * post: devuelve "true" si naceLaCelula y "false" sino.
+	 */
 	bool naceLaCelula();
 
+	/*
+	 * pre: -
+	 * post: devuelve "true" si la parcela tiene un portal asociado, y "false" sino.
+	 */
 	bool hayPortal();
 
+	/*
+	 * pre: -
+	 * post: devuelve el color que a va a recibir la parcela al siguiente turno.
+	 */
 	RGB getColorPromedio();
 };
 

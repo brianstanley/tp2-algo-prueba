@@ -11,11 +11,9 @@ ParcelaAfectada::ParcelaAfectada(CoordenadaParcela * coordenadaParcela) {
 	coordenadaParcelaTocada = coordenadaParcela;
 	Portal * portalAsociado = coordenadaParcela->getParcela().getPortal();
 	celulaNace = false;
+	tienePortal = false;
 	if (portalAsociado) {
 		tienePortal = true;
-	}
-	else {
-		tienePortal = false;
 	}
 }
 
@@ -23,11 +21,9 @@ ParcelaAfectada::ParcelaAfectada(CoordenadaParcela * coordenadaParcela, RGB colo
 	coordenadaParcelaTocada = coordenadaParcela;
 	Portal * portalAsociado = coordenadaParcela->getParcela().getPortal();
 	celulaNace = true;
+	tienePortal = false;
 	if (portalAsociado) {
 		tienePortal = true;
-	}
-	else {
-		tienePortal = false;
 	}
 	colorPromedioVecinos = colorRecibido;
 }
