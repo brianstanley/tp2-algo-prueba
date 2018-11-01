@@ -12,6 +12,7 @@
 #define SRC_COORDENADAPARCELA_H_
 #include "Tablero.h"
 
+class Parcela;
 class Tablero;
 class CoordenadaParcela {
 
@@ -25,8 +26,6 @@ public:
 	 * post: inicializa las coordenadas de la parcela
 	 */
 	void setCoordenada(Tablero * tablero, int fila, int columna);
-
-	CoordenadaParcela * getCoordenada();
 
 	/*
 	 * pre: -
@@ -46,6 +45,13 @@ public:
 	 * a la parcela.
 	 */
 	Tablero * getTablero();
+
+
+	/*
+	 * pre: -
+	 * post: devuelve la parcela asociada a la coordenada.
+	 */
+	Parcela & getParcela();
 
 };
 
