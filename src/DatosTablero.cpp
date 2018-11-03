@@ -16,7 +16,7 @@ DatosTablero::DatosTablero() {
 	this->promedioMuertas = 0;
 	this->promedioNacidas = 0;
 	this->turnosCongelado = 0;
-	this->numeroTurno = 1;
+	this->numeroTurno = 0;
 	this->congeladoTurnoActual = true;
 }
 

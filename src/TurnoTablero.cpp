@@ -122,8 +122,8 @@ unsigned int TurnoTablero::getMuertasEnTurno(){
 }
 
 void TurnoTablero::jugarTurno(){
+	this->tableroAsociado->getDatosTablero()->avanzarUnTurno();
 	this->marcarCambiosARealizarParaSiguienteTurno();
 	this->concretarCambios();
 	this->plasmarCambiosEnArchivo();
-	this->tableroAsociado->getDatosTablero()->avanzarUnTurno();
 }
