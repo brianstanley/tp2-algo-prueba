@@ -7,9 +7,9 @@
 
 #include "LecturaArchivoConfiguracion.h"
 
-
 void LecturaArchivoConfiguracion::procesarArchivo(std::string ruta) {
 	StringHelper stringHelper;
+	this->tableros = new ListaEnlazada<Tablero*>;
 	std::ifstream archivoDeConfiguracion;
 	std::string tipoDeOperacion, nombreTablero;
 	Lectura archivo;
@@ -40,7 +40,7 @@ void LecturaArchivoConfiguracion::procesarTablero(std::string nombreTablero, std
 	int ancho, alto;
 	archivoDeConfiguracion >> ancho;
 	archivoDeConfiguracion >> alto;
-	this->crearTablero(nombreTablero, alto, ancho);
+	this->crearTablero(nombreTablero, ancho, alto);
 }
 
 void LecturaArchivoConfiguracion::procesarPortal(std::string tableroId, std::ifstream& archivoDeConfiguracion) {
@@ -78,12 +78,17 @@ void LecturaArchivoConfiguracion::procesarCelula(std::string nombreTablero, std:
 }
 
 
-void LecturaArchivoConfiguracion::crearTablero(std::string nombreTablero, int ancho, int alto) {
-	Tablero tablero(nombreTablero, alto, ancho);
-	tablero.crearParcelas();
+void LecturaArchivoConfiguracion::crearTablero(std::string nombreTablero, int fila, int columna) {
+	Tablero * tablero = new Tablero(nombreTablero, fila, columna);
+	tablero->crearParcelas();
+	this->tableros->agregar(tablero);
 }
 
 void LecturaArchivoConfiguracion::crearCelula(std::string tableroId, int fila, int columna) {
 	std::cout << "ENel tablero " << tableroId << " en la fila: " << fila << " columna: " << columna << "hay que agregar una celula"<<std::endl;
 	// aca deberíamos ver como recorrer la lista de tableros hasta el tablero indicado
+}
+
+ListaEnlazada<Tablero*>* LecturaArchivoConfiguracion::obtenerListaTableros() {
+	return this->tableros;
 }

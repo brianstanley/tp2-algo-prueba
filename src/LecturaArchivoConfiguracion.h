@@ -13,7 +13,7 @@
 #include "Excepciones/ExcepcionesArchivo.h"
 #include "Tablero.h"
 #include "StringHelper.h"
-
+#include "Listas/ListaEnlazada.h"
 
 std::string const PARCELA = "parcela";
 std::string const PORTAL = "portal";
@@ -22,6 +22,7 @@ std::string const CELULA = "celula";
 
 class LecturaArchivoConfiguracion {
 private:
+	ListaEnlazada<Tablero*>* tableros;
 	void procesarTablero(std::string nombreTablero, std::ifstream&);
 	void procesarPortal(std::string nombreTablero, std::ifstream&);
 	void procesarParcela(std::string nombreTablero, std::ifstream&);
@@ -38,6 +39,11 @@ public:
 	 * que se encuentran indicadas en el archivo.
 	 */
 	void procesarArchivo(std::string);
+	/**
+	 * pre: Lista inicializada
+	 * pos: Lista de tableros creados a partir del archivo de texto
+	 */
+	ListaEnlazada<Tablero*>* obtenerListaTableros();
 };
 
 #endif /* SRC_LECTURAARCHIVOCONFIGURACION_H_ */
