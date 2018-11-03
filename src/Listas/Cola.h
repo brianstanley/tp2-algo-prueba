@@ -70,7 +70,7 @@ void Cola<T>::acolar(T elemento) {
 		this->frente = nuevoFondo;
 
 	} else {
-		this->fondo->setSiguiente(nuevoFondo);
+		this->fondo->cambiarSiguiente(nuevoFondo);
 	}
 
 	this->fondo = nuevoFondo;
@@ -85,14 +85,14 @@ T Cola<T>::desacolar() {
 
 	/* remueve el frente de la estructura */
 	Nodo<T>* frenteAnterior = this->frente;
-	this->frente = frenteAnterior->getSiguiente();
+	this->frente = frenteAnterior->obtenerSiguiente();
 
 	if (this->frente == NULL) {
 		this->fondo = NULL;
 	}
 
 	/* devuelve el elemento y libera los recursos asociados */
-	T elemento = frenteAnterior->getDato();
+	T elemento = frenteAnterior->obtenerDato();
 	delete frenteAnterior;
 
 	return elemento;
