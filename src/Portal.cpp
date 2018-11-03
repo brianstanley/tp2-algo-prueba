@@ -42,7 +42,7 @@ void Portal::accionarPortal(bool nace, RGB* color){
 			}
 		}
 	} else if(this->portalOrigen  && nace) { //Pasivo
-			this->nacer(color);
+		this->nacer(color);
 	}
 }
 
