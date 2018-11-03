@@ -41,13 +41,8 @@ void Portal::accionarPortal(bool nace, RGB* color){
 				this->morir();
 			}
 		}
-	}
-	else{ //Pasivo
-		if(this->portalOrigen){
-			if(nace){
-				this->nacer(color);
-			}
-		}
+	} else if(this->portalOrigen  && nace) { //Pasivo
+			this->nacer(color);
 	}
 }
 
