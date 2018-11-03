@@ -38,9 +38,9 @@ void LecturaArchivoConfiguracion::procesarArchivo(std::string ruta) {
 
 void LecturaArchivoConfiguracion::procesarTablero(std::string nombreTablero, std::ifstream& archivoDeConfiguracion) {
 	int ancho, alto;
-	archivoDeConfiguracion >> ancho;
 	archivoDeConfiguracion >> alto;
-	this->crearTablero(nombreTablero, ancho, alto);
+	archivoDeConfiguracion >> ancho;
+	this->crearTablero(nombreTablero, alto, ancho);
 }
 
 void LecturaArchivoConfiguracion::procesarPortal(std::string tableroId, std::ifstream& archivoDeConfiguracion) {
@@ -85,7 +85,7 @@ void LecturaArchivoConfiguracion::crearTablero(std::string nombreTablero, int fi
 }
 
 void LecturaArchivoConfiguracion::crearCelula(std::string tableroId, int fila, int columna) {
-	std::cout << "ENel tablero " << tableroId << " en la fila: " << fila << " columna: " << columna << "hay que agregar una celula"<<std::endl;
+	std::cout << "En  el tablero " << tableroId << " en la fila: " << fila << " columna: " << columna << "hay que agregar una celula"<<std::endl;
 	// aca deberíamos ver como recorrer la lista de tableros hasta el tablero indicado
 }
 
