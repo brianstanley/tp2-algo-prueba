@@ -15,6 +15,8 @@ private:
 	unsigned int muertasTotal;
 	float promedioNacidas;
 	float promedioMuertas;
+	unsigned int turnosCongelado;
+	bool congeladoTurnoActual;
 
 public:
 	/*
@@ -57,5 +59,25 @@ public:
 	*post: devueleve el valor de promedioMuertas
 	*/
 	float getPromedioMuertas();
+
+	/*
+	 * pre: -
+	 * post: si el tablero se encuentra congelado (no hay nuuevas muertes ni nacimientos)
+	 * suma uno a la cantidad de turnos que el tablero lleva congelado
+	 */
+	void analizarCongelamientoDelTablero();
+
+	/*
+	 * pre: -
+	 * post: se setea el atributo congeladoTurnoActual al valor pasado por parametro
+	 */
+	void setCongeladoTurnoActual(bool estadoDeCongelamiento);
+
+	/*
+	 * pre: -
+	 * post: si el tablero lleva dos o mas turnos congelado se devuelve true, en caso
+	 * contrario se devuelve false
+	 */
+	bool getCongelamiento();
 };
 #endif /* SRC_DATOSTABLERO_H_ */

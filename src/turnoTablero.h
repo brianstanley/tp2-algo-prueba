@@ -5,20 +5,19 @@
  *      Author: nazareno
  */
 
-#ifndef SRC_TURNO_H_
-#define SRC_TURNO_H_
+#ifndef SRC_TURNOTABLERO_H_
+#define SRC_TURNOTABLERO_H_
 
 #include "Tablero.h"
 #include "Listas/Cola.h"
 #include "ParcelaAfectada.h"
 
 
-class Turno{
+class TurnoTablero{
 private:
 	unsigned int celulasNacidasTurno;
 	unsigned int celulasMuertasTurno;
 	unsigned int numeroDeTurno;
-	unsigned int turnosCongelado;
 	Tablero* tableroAsociado;
 	Cola<ParcelaAfectada*> ParcelasAfectadas;
 
@@ -62,7 +61,7 @@ private:
 	 * post: se crea una instancia de la clase turno con un puntero a un tablero pasado
 	 * por parametro
 	 */
-	Turno(Tablero* tableroAsociado);
+	TurnoTablero(Tablero* tableroAsociado);
 
 	/*
 	 * pre: -
@@ -86,13 +85,6 @@ private:
 
 	/*
 	 * pre: -
-	 * post: se verifica la cantidad de muertes y nacimientos en un turno para verificar si el juego
-	 * esta congelado o no
-	 */
-	void chequearCongelamiento();
-
-	/*
-	 * pre: -
 	 * post: se devuelve la cantidad de celulas nacidas en un turno
 	 */
 	unsigned int getNacidasEnTurno();
@@ -101,12 +93,6 @@ private:
 	 * post: se devuelve la cantidad de celulas muertas en un turno
 	 */
 	unsigned int getMuertasEnTurno();
-
-	/*
-	 * pre: -
-	 * post: devuelve true si el tablero asociado esta congelado y false en caso contrario
-	 */
-	bool getTurnoCongelado();
 
 public:
 
@@ -118,4 +104,4 @@ public:
 };
 
 
-#endif /* SRC_TURNO_H_ */
+#endif /* SRC_TURNOTABLERO_H_ */

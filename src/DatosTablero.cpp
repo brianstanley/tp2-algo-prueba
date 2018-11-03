@@ -15,6 +15,8 @@ DatosTablero::DatosTablero() {
 	this->nacidasTotal = 0;
 	this->promedioMuertas = 0;
 	this->promedioNacidas = 0;
+	this->turnosCongelado = 0;
+	this->congeladoTurnoActual = true;
 }
 
 unsigned int DatosTablero::getCantidadCelulasVivas(){
@@ -40,4 +42,21 @@ float DatosTablero::getPromedioNacidas(){
 }
 float DatosTablero::getPromedioMuertas(){
 	return this->promedioMuertas;
+}
+
+void DatosTablero::setCongeladoTurnoActual(bool estadoDeCongelamiento){
+	this->congeladoTurnoActual = estadoDeCongelamiento;
+}
+
+void DatosTablero::analizarCongelamientoDelTablero(){
+	if(this->congeladoTurnoActual){
+		this->turnosCongelado ++;
+	}
+	else{
+		this->turnosCongelado = 0;
+	}
+}
+
+bool DatosTablero::getCongelamiento(){
+	return (this->turnosCongelado >= 2);
 }
