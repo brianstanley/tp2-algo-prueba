@@ -15,9 +15,10 @@ ParcelaAfectada::ParcelaAfectada(CoordenadaParcela * coordenadaParcela) {
 	if (portalAsociado) {
 		tienePortal = true;
 	}
+	colorPromedioVecinos = 0;
 }
 
-ParcelaAfectada::ParcelaAfectada(CoordenadaParcela * coordenadaParcela, RGB colorRecibido) {
+ParcelaAfectada::ParcelaAfectada(CoordenadaParcela * coordenadaParcela, RGB* colorRecibido) {
 	coordenadaParcelaTocada = coordenadaParcela;
 	Portal * portalAsociado = coordenadaParcela->getParcela().getPortal();
 	celulaNace = true;
@@ -40,6 +41,6 @@ bool ParcelaAfectada::hayPortal() {
 	return this->tienePortal;
 }
 
-RGB ParcelaAfectada::getColorPromedio() {
+RGB* ParcelaAfectada::getColorPromedio() {
 	return this->colorPromedioVecinos;
 }

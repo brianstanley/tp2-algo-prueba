@@ -16,6 +16,7 @@ Tablero::Tablero(std::string nombre, int filas, int columnas) {
 		this->parcelas[i] = new Parcela[this->columnas];
 	}
 	datosDelTablero = new DatosTablero();
+	BMPDelTablero = new ImagenDeTablero(filas, columnas, nombre);
 }
 
 void Tablero::crearParcelas() {
@@ -46,6 +47,26 @@ int Tablero::getColumnas(){
 	return this->columnas;
 }
 
+DatosTablero* Tablero::getDatosTablero(){
+	return this->datosDelTablero;
+}
+
+void Tablero::generarBMP(){
+	for(int fila=0; fila < this->filas; fila++){
+		for(int columna=0; columna < this->columnas; columna++){
+			if(this->getParcela(fila,columna).getCelula()->getEstado()){
+				this->BMPDelTablero->representarCelulaViva(fila, columna, this->getParcela(fila, columna).getCelula()->getRGB());
+			}
+			else{
+				this->BMPDelTablero->representarCelulaMuerta(fila, columna);
+			}
+		}
+	}
+}
+
+void Tablero::guardarBMP(int numeroTurno){
+	this->BMPDelTablero->guardarImagenTablero(numeroTurno);
+}
 
 Tablero::~Tablero() {
 	for(int i = 0; i < this->filas; i++){

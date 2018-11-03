@@ -17,10 +17,10 @@ ImagenDeTablero::ImagenDeTablero(int alto, int ancho, std::string nombre){
 	this->archivoBmp.SetBitDepth(PROFUNDIDADCOLORSTANDAR);
 }
 
-void ImagenDeTablero::representarCelulaViva(int fila, int columna, RGB& colorDeCelula){
-	this->archivoBmp(fila, columna)->Red = colorDeCelula.getRed();
-	this->archivoBmp(fila, columna)->Green = colorDeCelula.getGreen();
-	this->archivoBmp(fila, columna)->Blue = colorDeCelula.getBlue();
+void ImagenDeTablero::representarCelulaViva(int fila, int columna, RGB* colorDeCelula){
+	this->archivoBmp(fila, columna)->Red = colorDeCelula->getRed();
+	this->archivoBmp(fila, columna)->Green = colorDeCelula->getGreen();
+	this->archivoBmp(fila, columna)->Blue = colorDeCelula->getBlue();
 }
 
 void ImagenDeTablero::representarCelulaMuerta(int fila, int columna){
@@ -34,10 +34,6 @@ void ImagenDeTablero::guardarImagenTablero(int numeroDeTurno){
 	StringHelper stringHelper;
 	stringHelper.enteroAString(turno, numeroDeTurno);
 	std::string nombreArchivo = nombreTableroRepresentado + GUION_BAJO + turno;
-	/*std::ostringstream auxiliar;
-	auxiliar << numeroDeTurno;
-	std::string turno = auxiliar.str();
-	std::string nombreArchivo = nombreTableroRepresentado + GUION_BAJO + turno;*/
 	archivoBmp.WriteToFile(nombreArchivo.c_str());
 
 }
