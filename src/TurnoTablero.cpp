@@ -12,7 +12,6 @@ const int MAX_CANTIDAD_CELULAS_CIRCUNDANTES = 3;
 TurnoTablero::TurnoTablero(Tablero* tableroAsociado){
 	this->celulasMuertasTurno = 0;
 	this->celulasNacidasTurno = 0;
-	this->numeroDeTurno = 1;
 	this->tableroAsociado = tableroAsociado;
 }
 
@@ -123,8 +122,6 @@ unsigned int TurnoTablero::getMuertasEnTurno(){
 }
 
 void TurnoTablero::jugarTurno(){
-	this->celulasMuertasTurno = 0;
-	this->celulasNacidasTurno = 0;
 	this->marcarCambiosARealizarParaSiguienteTurno();
 	this->concretarCambios();
 	this->plasmarCambiosEnArchivo();
