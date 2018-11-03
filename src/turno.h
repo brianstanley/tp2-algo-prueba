@@ -18,8 +18,7 @@ private:
 	unsigned int celulasNacidasTurno;
 	unsigned int celulasMuertasTurno;
 	unsigned int numeroDeTurno;
-	bool congeladoUnTurno;
-	bool congeladoMasDeUnTurno;
+	unsigned int turnosCongelado;
 	Tablero* tableroAsociado;
 	Cola<ParcelaAfectada*> ParcelasAfectadas;
 

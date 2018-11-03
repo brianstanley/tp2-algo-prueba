@@ -19,51 +19,51 @@ char Portal::getTipoDePortal() {
 }
 
 void Portal::accionarPortal(bool nace, RGB* color){
-	if(this->tipoDePortal == ACTIVO) this->accionarPortalActivo(nace, color);
-	else if(this->tipoDePortal == NORMAL) this->accionarPortalNormal(nace, color);
-	else if(this->tipoDePortal == PASIVO) this->accionarPortalPasivo(nace, color);
-
-}
-
-void Portal::accionarPortalActivo(bool nace, RGB* color){
-	if(this->portalOrigen){
-		if(nace) this->nacioOrigenEntoncesNaceDestino(color);
-		else this->murioOrigenEntoncesMuereDestino();
+	if(this->tipoDePortal == ACTIVO){
+		if(this->portalOrigen){
+			if(nace){
+				this->nacer(color);
+			}
+			else{
+				this->morir();
+			}
+		}
+		else if (!nace){
+			this->morir();
+		}
 	}
-	else if (!nace) this->murioDestinoEntoncesMuereOrigen();
-}
-
-void Portal::accionarPortalNormal(bool nace, RGB* color){
-	if(this->portalOrigen){
-		if(nace) this->nacioOrigenEntoncesNaceDestino(color);
-		else this->murioOrigenEntoncesMuereDestino();
+	else if(this->tipoDePortal == NORMAL){
+		if(this->portalOrigen){
+			if(nace){
+				this->nacer(color);
+			}
+			else{
+				this->morir();
+			}
+		}
+	}
+	else{ //Pasivo
+		if(this->portalOrigen){
+			if(nace){
+				this->nacer(color);
+			}
+		}
 	}
 }
 
-void Portal::accionarPortalPasivo(bool nace, RGB* color){
-	if(this->portalOrigen){
-		if(nace) this->nacioOrigenEntoncesNaceDestino(color);
-	}
-}
-
-void Portal::nacioOrigenEntoncesNaceDestino(RGB* color){
+void Portal::nacer(RGB* color){
 	int fila = this->parcelaAsociada->getCoordenadaX();
 	int columna = this->parcelaAsociada->getCoordenadaY();
 	float factorNacimiento = this->parcelaAsociada->getTablero()->getParcela(fila, columna).getfactorNacimiento();
-	this->parcelaAsociada->getTablero()->getParcela(fila,columna).getCelula()->nacer(factorNacimiento,color);
-	this->parcelaAsociada->getTablero()->getDatosTablero()->sumarCelulaViva();
+	Tablero * tableroAsociado = this->parcelaAsociada->getTablero();
+	tableroAsociado->getParcela(fila,columna).getCelula()->nacer(factorNacimiento,color);
+	tableroAsociado->getDatosTablero()->sumarCelulaViva();
 }
 
-void Portal::murioOrigenEntoncesMuereDestino(){
+void Portal::morir(){
 	int fila = this->parcelaAsociada->getCoordenadaX();
 	int columna = this->parcelaAsociada->getCoordenadaY();
-	this->parcelaAsociada->getTablero()->getParcela(fila,columna).getCelula()->morir();
-	this->parcelaAsociada->getTablero()->getDatosTablero()->sumarCelulaMuerta();
-}
-
-void Portal::murioDestinoEntoncesMuereOrigen(){
-	int fila = this->parcelaAsociada->getCoordenadaX();
-	int columna = this->parcelaAsociada->getCoordenadaY();
-	this->parcelaAsociada->getTablero()->getParcela(fila,columna).getCelula()->morir();
-	this->parcelaAsociada->getTablero()->getDatosTablero()->sumarCelulaMuerta();
+	Tablero * tableroAsociado = this->parcelaAsociada->getTablero();
+	tableroAsociado->getParcela(fila,columna).getCelula()->morir();
+	tableroAsociado->getDatosTablero()->sumarCelulaMuerta();
 }

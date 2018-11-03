@@ -17,7 +17,7 @@ DatosTablero::DatosTablero() {
 	this->promedioNacidas = 0;
 }
 
-int DatosTablero::getCantidadCelulasVivas(){
+unsigned int DatosTablero::getCantidadCelulasVivas(){
 	return this->cantidadCelulasVivas;
 }
 void DatosTablero::sumarCelulaViva(){
@@ -31,7 +31,7 @@ void DatosTablero::sumarCelulaMuerta(){
 int DatosTablero::getNacidasTotal(){
 	return this->nacidasTotal;
 }
-int DatosTablero::getMuertasTotal(){
+unsigned int DatosTablero::getMuertasTotal(){
 	return this->muertasTotal;
 }
 float DatosTablero::getPromedioNacidas(){

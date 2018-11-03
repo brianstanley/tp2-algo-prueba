@@ -13,8 +13,7 @@ Turno::Turno(Tablero* tableroAsociado){
 	this->celulasMuertasTurno = 0;
 	this->celulasNacidasTurno = 0;
 	this->numeroDeTurno = 1;
-	this->congeladoUnTurno = false;
-	this->congeladoMasDeUnTurno = false;
+	this->turnosCongelado = 0;
 	this->tableroAsociado = tableroAsociado;
 }
 
@@ -114,16 +113,10 @@ void Turno::plasmarCambiosEnArchivo(){
 
 void Turno::chequearCongelamiento(){
 	if(this->celulasNacidasTurno == 0 && this->celulasMuertasTurno == 0){
-		if(this->congeladoUnTurno){
-			this->congeladoMasDeUnTurno = true;
-		}
-		else{
-			this->congeladoUnTurno = true;
-		}
+		this->turnosCongelado ++;
 	}
 	else{
-		this->congeladoUnTurno = false;
-		this->congeladoMasDeUnTurno = false;
+		this->turnosCongelado = 0;
 	}
 }
 
@@ -136,7 +129,7 @@ unsigned int Turno::getMuertasEnTurno(){
 }
 
 bool Turno::getTurnoCongelado(){
-	return this->congeladoMasDeUnTurno;
+	return (this->turnosCongelado >= 2);
 }
 
 void Turno::jugarTurno(){

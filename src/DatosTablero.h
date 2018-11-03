@@ -10,9 +10,9 @@
 
 class DatosTablero {
 private:
-	int cantidadCelulasVivas;
-	int nacidasTotal;
-	int muertasTotal;
+	unsigned int cantidadCelulasVivas;
+	unsigned int nacidasTotal;
+	unsigned int muertasTotal;
 	float promedioNacidas;
 	float promedioMuertas;
 
@@ -26,7 +26,7 @@ public:
 	 *pre: -
 	 *post: devueleve el valor de la cantidadCelulasVivas
 	 */
-	int getCantidadCelulasVivas();
+	unsigned int getCantidadCelulasVivas();
 	/*
 	*pre: -
 	*post: contabiliza un nacimiento de celula
@@ -46,7 +46,7 @@ public:
 	*pre: -
 	*post: devueleve el valor de muertasTotal
 	*/
-	int getMuertasTotal();
+	unsigned int getMuertasTotal();
 	/*
 	*pre: -
 	*post: devueleve el valor de promedioNacidas

@@ -23,7 +23,7 @@ private:
 	int columnas;
 	Parcela **parcelas;
 	DatosTablero* datosDelTablero;
-	ImagenDeTablero* archivoDelTablero;
+	ImagenDeTablero* BMPDelTablero;
 
 public:
 	/*
