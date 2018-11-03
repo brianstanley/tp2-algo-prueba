@@ -19,10 +19,10 @@ RGB::RGB(const RGB& RGBAClonar){
 	this->blue = RGBAClonar.blue;
 }
 
-void RGB::calcularPromedioRGBes(const RGB& RGBA, const RGB& RGBB, const RGB& RGBC){
-	this->red = (RGBA.red + RGBB.red + RGBC.red) / 3;
-	this->green= (RGBA.green + RGBB.green + RGBC.green) / 3;
-	this->blue = (RGBA.blue + RGBB.blue + RGBC.blue) / 3;
+void RGB::calcularPromedioRGBes(RGB* RGBA, RGB* RGBB, RGB* RGBC){
+	this->red = (RGBA->red + RGBB->red + RGBC->red) / 3;
+	this->green= (RGBA->green + RGBB->green + RGBC->green) / 3;
+	this->blue = (RGBA->blue + RGBB->blue + RGBC->blue) / 3;
 }
 
 void RGB::setRGB(int red, int green, int blue){
