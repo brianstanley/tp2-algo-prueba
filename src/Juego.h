@@ -9,12 +9,12 @@
 #define JUEGO_H_
 
 #include "Tablero.h"
-#include "ListaEnlazada.h"
+#include "Listas/ListaEnlazada.h"
 #include "LecturaArchivoConfiguracion.h"
 
-const char EJECUTAR_TURNO = "e";
-const char INICIAR_JUEGO = "r";
-const char TERMINAR_JUEGO = "t";
+const std::string EJECUTAR_TURNO = "e";
+const std::string INICIAR_JUEGO = "r";
+const std::string TERMINAR_JUEGO = "t";
 
 /*
  * Clase conteniendo todos los datos del juego y que se instancia al principio de la partida.
@@ -29,19 +29,11 @@ private:
 
 
 public:
-
-	/*
-	 * pre: recibe un archivo de texto valido con toda la informacion del juego
-	 * post: asigna la lista de tableros creada por la lectura del archivo al atributo tablerosDelJuego.
-	 * y la lista de DatosTablero a datosDelJuego
-	 */
-	Juego(std::string archivoDelJuego);
-
 	/*
 	 * pre: recibe los tableros del juego en el estado del turno anterior.
 	 * post: Aplica la ejecucion de un turno para cada uno de los tableros cambiando las parcelas.
 	 */
-	void ejecutarTurno(ListaEnlazada<Tablero*> tablerosJuego);
+	void ejecutarTurno(ListaEnlazada<Tablero*>* tablerosJuego);
 
 	/*
 	 * pre: -

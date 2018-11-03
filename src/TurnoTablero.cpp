@@ -20,7 +20,7 @@ void TurnoTablero::marcarCambiosARealizarParaSiguienteTurno(){
 		for(int columna=0; columna < this->tableroAsociado->getColumnas(); columna++){
 			RGB* coloresCelulasVivasCircundantes [3];
 			int celulasCircundantesVivas = chequearCelulasCircundantes(fila, columna, coloresCelulasVivasCircundantes);
-			decidirVidaOMuerte(celulasCircundantesVivas, this->tableroAsociado->getParcela(fila,columna).getCoordenadaParcela(), coloresCelulasVivasCircundantes);
+//			decidirVidaOMuerte(celulasCircundantesVivas, this->tableroAsociado->getParcela(fila,columna).getCoordenadaParcela(), coloresCelulasVivasCircundantes);
 		}
 	}
 }
@@ -34,12 +34,12 @@ void TurnoTablero::guardarColorCelulasCircundantes(RGB* coloresCeluasVivasCircun
 
 int TurnoTablero::chequearCelulasCircundantes(int fila, int columna, RGB* coloresCelulasVivasCircundantes[]){
 	int celulasCircundantesVivas = 0;
-	for (int i=fila-1; i <=fila+1; i++){
+	for (int i=fila-1; i <fila+1; i++){
 		if (i > 0 && i <= this->tableroAsociado->getFilas()){
-			for(int j=fila-1; j <=fila+1; j++){
+			for(int j=columna-1; j <columna+1; j++){
 				if (j > 0 && j <= this->tableroAsociado->getColumnas()){
 					bool mismaCelula = (i == fila && j == columna);
-					if(this->tableroAsociado->getParcela(i, j).getCelula()->getEstado() && !mismaCelula){
+					if(!mismaCelula && this->tableroAsociado->getParcela(i, j).getCelula()->getEstado()){
 						guardarColorCelulasCircundantes(coloresCelulasVivasCircundantes, celulasCircundantesVivas, i, j);
 						celulasCircundantesVivas ++;
 					}

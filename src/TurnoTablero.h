@@ -19,7 +19,6 @@ private:
 	unsigned int celulasMuertasTurno;
 	Tablero* tableroAsociado;
 	Cola<ParcelaAfectada*> ParcelasAfectadas;
-
 	/*
 	 * pre: -
 	 * post: se devuelve la cantidad de celulas vivas circundantes a una celula
@@ -54,14 +53,7 @@ private:
 	 * post: se chequea si las celulas que deben nacer ya estan vivas o si las celulas para morir ya estan muertas
 	 */
 	void decidirVidaOMuerte(int celulasVivasCircundantes, CoordenadaParcela* coordenadaEnCuestion,
-	RGB* coloresCeluasVivasCircundantes[]);
-
-	 /* pre: -
-	 * post: se crea una instancia de la clase turno con un puntero a un tablero pasado
-	 * por parametro
-	 */
-	TurnoTablero(Tablero* tableroAsociado);
-
+			RGB* coloresCeluasVivasCircundantes[]);
 	/*
 	 * pre: -
 	 * post: se recorre el tablero asociado a turno parando en cada parcela. para cada parcela
@@ -81,7 +73,17 @@ private:
 	 * post: se plasma el estado definitivo del tablero en un archivo .bmp
 	 */
 	void plasmarCambiosEnArchivo();
-
+public:
+	/* pre: -
+	 * post: se crea una instancia de la clase turno con un puntero a un tablero pasado
+	 * por parametro
+	 */
+	TurnoTablero(Tablero* tableroAsociado);
+	/*
+	 * pre: -
+	 * post: se ejecutan todas las acciones pertinentes al turno
+	 */
+	void jugarTurno();
 	/*
 	 * pre: -
 	 * post: se devuelve la cantidad de celulas nacidas en un turno
@@ -92,14 +94,6 @@ private:
 	 * post: se devuelve la cantidad de celulas muertas en un turno
 	 */
 	unsigned int getMuertasEnTurno();
-
-public:
-
-	/*
-	 * pre: -
-	 * post: se ejecutan todas las acciones pertinentes al turno
-	 */
-	void jugarTurno();
 };
 
 
