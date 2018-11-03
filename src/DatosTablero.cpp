@@ -16,6 +16,7 @@ DatosTablero::DatosTablero() {
 	this->promedioMuertas = 0;
 	this->promedioNacidas = 0;
 	this->turnosCongelado = 0;
+	this->numeroTurno = 1;
 	this->congeladoTurnoActual = true;
 }
 
@@ -59,4 +60,12 @@ void DatosTablero::setCantidadTurnosCongeladosTablero(){
 
 bool DatosTablero::estaCongelado(){
 	return (this->turnosCongelado >= 2);
+}
+
+unsigned int DatosTablero::getTurno(){
+	return this->numeroTurno;
+}
+
+void DatosTablero::avanzarUnTurno(){
+	this->numeroTurno ++;
 }

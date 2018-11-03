@@ -17,6 +17,7 @@ private:
 	float promedioMuertas;
 	unsigned int turnosCongelado;
 	bool congeladoTurnoActual;
+	unsigned int numeroTurno;
 
 public:
 	/*
@@ -80,5 +81,17 @@ public:
 	 * contrario se devuelve false
 	 */
 	bool estaCongelado();
+
+	/*
+	 * pre: -
+	 * post: devuelve el numero de turno actual
+	 */
+	unsigned int getTurno();
+
+	/*
+	 * pre: -
+	 * post: se suma uno al numero de turnos
+	 */
+	void avanzarUnTurno();
 };
 #endif /* SRC_DATOSTABLERO_H_ */

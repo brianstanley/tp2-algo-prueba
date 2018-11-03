@@ -110,7 +110,7 @@ void TurnoTablero::concretarCambios(){
 
 void TurnoTablero::plasmarCambiosEnArchivo(){
 	this->tableroAsociado->generarBMP();
-	this->tableroAsociado->guardarBMP(this->numeroDeTurno);
+	this->tableroAsociado->guardarBMP(this->tableroAsociado->getDatosTablero()->getTurno());
 }
 
 unsigned int TurnoTablero::getNacidasEnTurno(){
