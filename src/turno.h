@@ -15,9 +15,11 @@
 
 class Turno{
 private:
-	int celulasNacidasTurno;
-	int celulasMuertasTurno;
-	int numeroDeTurno;
+	unsigned int celulasNacidasTurno;
+	unsigned int celulasMuertasTurno;
+	unsigned int numeroDeTurno;
+	bool congeladoUnTurno;
+	bool congeladoMasDeUnTurno;
 	Tablero* tableroAsociado;
 	Cola<ParcelaAfectada*> ParcelasAfectadas;
 
@@ -57,9 +59,7 @@ private:
 	void decidirVidaOMuerte(int celulasVivasCircundantes, CoordenadaParcela* coordenadaEnCuestion,
 	RGB* coloresCeluasVivasCircundantes[]);
 
-public:
-	/*
-	 * pre: -
+	 /* pre: -
 	 * post: se crea una instancia de la clase turno con un puntero a un tablero pasado
 	 * por parametro
 	 */
@@ -81,15 +81,41 @@ public:
 
 	/*
 	 * pre: -
-	 * post: se llama al portal de la celula asociada par que lleve a cabo sus operaciones
-	 */
-	void accionarPortal();
-
-	/*
-	 * pre: -
 	 * post: se plasma el estado definitivo del tablero en un archivo .bmp
 	 */
 	void plasmarCambiosEnArchivo();
+
+	/*
+	 * pre: -
+	 * post: se verifica la cantidad de muertes y nacimientos en un turno para verificar si el juego
+	 * esta congelado o no
+	 */
+	void chequearCongelamiento();
+
+	/*
+	 * pre: -
+	 * post: se devuelve la cantidad de celulas nacidas en un turno
+	 */
+	unsigned int getNacidasEnTurno();
+	/*
+	 * pre: -
+	 * post: se devuelve la cantidad de celulas muertas en un turno
+	 */
+	unsigned int getMuertasEnTurno();
+
+	/*
+	 * pre: -
+	 * post: devuelve true si el tablero asociado esta congelado y false en caso contrario
+	 */
+	bool getTurnoCongelado();
+
+public:
+
+	/*
+	 * pre: -
+	 * post: se ejecutan todas las acciones pertinentes al turno
+	 */
+	void jugarTurno();
 };
 
 

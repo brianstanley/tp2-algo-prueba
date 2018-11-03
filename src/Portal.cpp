@@ -18,10 +18,6 @@ char Portal::getTipoDePortal() {
 	return this->tipoDePortal;
 }
 
-CoordenadaParcela * Portal::getCoordenadaAsociada() {
-	return this->parcelaAsociada;
-}
-
 void Portal::accionarPortal(bool nace, RGB* color){
 	if(this->tipoDePortal == ACTIVO) this->accionarPortalActivo(nace, color);
 	else if(this->tipoDePortal == NORMAL) this->accionarPortalNormal(nace, color);

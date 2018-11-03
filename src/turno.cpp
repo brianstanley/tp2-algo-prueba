@@ -13,6 +13,8 @@ Turno::Turno(Tablero* tableroAsociado){
 	this->celulasMuertasTurno = 0;
 	this->celulasNacidasTurno = 0;
 	this->numeroDeTurno = 1;
+	this->congeladoUnTurno = false;
+	this->congeladoMasDeUnTurno = false;
 	this->tableroAsociado = tableroAsociado;
 }
 
@@ -110,3 +112,38 @@ void Turno::plasmarCambiosEnArchivo(){
 	this->tableroAsociado->guardarBMP(this->numeroDeTurno);
 }
 
+void Turno::chequearCongelamiento(){
+	if(this->celulasNacidasTurno == 0 && this->celulasMuertasTurno == 0){
+		if(this->congeladoUnTurno){
+			this->congeladoMasDeUnTurno = true;
+		}
+		else{
+			this->congeladoUnTurno = true;
+		}
+	}
+	else{
+		this->congeladoUnTurno = false;
+		this->congeladoMasDeUnTurno = false;
+	}
+}
+
+unsigned int Turno::getNacidasEnTurno(){
+	return this->celulasNacidasTurno;
+}
+
+unsigned int Turno::getMuertasEnTurno(){
+	return this->celulasMuertasTurno;
+}
+
+bool Turno::getTurnoCongelado(){
+	return this->congeladoMasDeUnTurno;
+}
+
+void Turno::jugarTurno(){
+	this->celulasMuertasTurno = 0;
+	this->celulasNacidasTurno = 0;
+	this->marcarCambiosARealizarParaSiguienteTurno();
+	this->concretarCambios();
+	this->plasmarCambiosEnArchivo();
+	this->chequearCongelamiento();
+}

@@ -39,58 +39,58 @@ private:
 	CoordenadaParcela * parcelaAsociada;
 
 	/*
-	 *
-	 *
+	 *pre: -
+	 *post: se transportan las celulas con las reglas de un portal activo
 	 */
 	void accionarPortalActivo(bool nace, RGB* color);
 
 	/*
-	 *
-	 *
+	 *pre: -
+	 *post: se transportan las celulas con las reglas de un portal normal
 	 */
 	void accionarPortalNormal(bool nace, RGB* color);
 
 	/*
-	 *
-	 *
+	 *pre: -
+	 *post: se transportan las celulas con las reglas de un portal pasivo
 	 */
 	void accionarPortalPasivo(bool nace, RGB* color);
 
 	/*
-	 *
+	 *pre: -
+	 *post: hace nacer en el destino del portal la misma celula que la que esta en el origen
 	 */
 	void nacioOrigenEntoncesNaceDestino(RGB* color);
 
 	/*
-	 *
+	 *pre: -
+	 *post: hace morir en el destino del portal la celula que alli vive
 	 */
 	void murioOrigenEntoncesMuereDestino();
 
 	/*
-	 *
+	 *pre: -
+	 *post: hace morir en el origen del portal la celula que alli vive
 	 */
 	void murioDestinoEntoncesMuereOrigen();
 public:
-	Portal(bool esPortalDeOrigen, char tipoDelPortal,
-			CoordenadaParcela * parcelaPareja);
-
-	char getTipoDePortal();
-
-	CoordenadaParcela * getCoordenadaAsociada();
+	/*
+	 * pre: -
+	 * post: se crea una instancia de portal
+	 */
+	Portal(bool esPortalDeOrigen, char tipoDelPortal,CoordenadaParcela * parcelaPareja);
 
 	/*
 	 * pre: -
-	 * post: de acuerdo con el tipo de portal, hace cambios en el tablero de origen y destino
+	 * post: se devuelve el tipo de portal
 	 */
+	char getTipoDePortal();
 
 	/*
-	 * pre:-
-	 * post:
+	 * pre: -
+	 * post: se acciona el portal correspondiente
 	 */
 	void accionarPortal(bool nace, RGB* color);
-
-
-
 };
 
 #endif /* PORTAL_H_ */
