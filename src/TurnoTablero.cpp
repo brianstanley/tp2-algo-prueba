@@ -125,4 +125,5 @@ void TurnoTablero::jugarTurno(){
 	this->marcarCambiosARealizarParaSiguienteTurno();
 	this->concretarCambios();
 	this->plasmarCambiosEnArchivo();
+	this->tableroAsociado->getDatosTablero()->avanzarUnTurno();
 }
