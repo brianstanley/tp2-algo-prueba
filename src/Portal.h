@@ -38,14 +38,27 @@ private:
 	char tipoDePortal;
 	CoordenadaParcela * parcelaAsociada;
 
-public:
-	Portal(bool esPortalDeOrigen, char tipoDelPortal,
-			CoordenadaParcela * parcelaPareja);
+	void nacer(RGB* color);
 
+	void morir();
+public:
+	/*
+	 * pre: -
+	 * post: se crea una instancia de portal
+	 */
+	Portal(bool esPortalDeOrigen, char tipoDelPortal, CoordenadaParcela * parcelaPareja);
+
+	/*
+	 * pre: -
+	 * post: se devuelve el tipo de portal
+	 */
 	char getTipoDePortal();
 
-	CoordenadaParcela * getCoordenadaAsociada();
-
+	/*
+	 * pre: -
+	 * post: se acciona el portal correspondiente
+	 */
+	void accionarPortal(bool nace, RGB* color);
 };
 
 #endif /* PORTAL_H_ */

@@ -10,15 +10,19 @@
 
 class DatosTablero {
 private:
-	int cantidadCelulasVivas;
-	int nacidasTotal;
-	int muertasTotal;
+	unsigned int cantidadCelulasVivas;
+	unsigned int nacidasTotal;
+	unsigned int muertasTotal;
 	float promedioNacidas;
 	float promedioMuertas;
+	unsigned int turnosCongelado;
+	bool congeladoTurnoActual;
+	unsigned int numeroTurno;
 
 public:
 	/*
-	 * pre: -
+	 * pre: turnosCongelado se setea a true por defecto porque se parte de la hipotesis de que todo tablero se
+	 * considera congelado hasta que se pruebe lo conntrario, lease, alguna celula nazca o muera
 	 * post:inicializa una instancia de DatosPartida con los valores en 0
 	 */
 	DatosTablero();
@@ -26,7 +30,7 @@ public:
 	 *pre: -
 	 *post: devueleve el valor de la cantidadCelulasVivas
 	 */
-	int getCantidadCelulasVivas();
+	unsigned int getCantidadCelulasVivas();
 	/*
 	*pre: -
 	*post: contabiliza un nacimiento de celula
@@ -46,7 +50,7 @@ public:
 	*pre: -
 	*post: devueleve el valor de muertasTotal
 	*/
-	int getMuertasTotal();
+	unsigned int getMuertasTotal();
 	/*
 	*pre: -
 	*post: devueleve el valor de promedioNacidas
@@ -57,5 +61,37 @@ public:
 	*post: devueleve el valor de promedioMuertas
 	*/
 	float getPromedioMuertas();
+
+	/*
+	 * pre: -
+	 * post: si el tablero se encuentra congelado (no hay nuuevas muertes ni nacimientos)
+	 * suma uno a la cantidad de turnos que el tablero lleva congelado
+	 */
+	void setCantidadTurnosCongeladosTablero();
+
+	/*
+	 * pre: -
+	 * post: se setea el atributo congeladoTurnoActual al valor pasado por parametro
+	 */
+	void setCongeladoTurnoActual(bool estadoDeCongelamiento);
+
+	/*
+	 * pre: -
+	 * post: si el tablero lleva dos o mas turnos congelado se devuelve true, en caso
+	 * contrario se devuelve false
+	 */
+	bool estaCongelado();
+
+	/*
+	 * pre: -
+	 * post: devuelve el numero de turno actual
+	 */
+	unsigned int getTurno();
+
+	/*
+	 * pre: -
+	 * post: se suma uno al numero de turnos
+	 */
+	void avanzarUnTurno();
 };
 #endif /* SRC_DATOSTABLERO_H_ */

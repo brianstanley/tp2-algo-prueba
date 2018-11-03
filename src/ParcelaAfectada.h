@@ -27,7 +27,7 @@ private:
 	CoordenadaParcela * coordenadaParcelaTocada;
 	bool celulaNace; //permite saber si hacemos un promedio de los colores vecinos o no.
 	bool tienePortal;
-	RGB colorPromedioVecinos;
+	RGB* colorPromedioVecinos;
 
 
 public:
@@ -39,7 +39,7 @@ public:
 	/*
 	 * Sobrecarga de la ParcelaAfectada cuando la célula nace, ingresamos los colores de los vecinos.
 	 */
-	ParcelaAfectada(CoordenadaParcela * coordenadaParcela, RGB colorRecibido);
+	ParcelaAfectada(CoordenadaParcela * coordenadaParcela, RGB* colorRecibido);
 
 	/*
 	 * pre: -
@@ -63,7 +63,7 @@ public:
 	 * pre: -
 	 * post: devuelve el color que a va a recibir la parcela al siguiente turno.
 	 */
-	RGB getColorPromedio();
+	RGB* getColorPromedio();
 };
 
 

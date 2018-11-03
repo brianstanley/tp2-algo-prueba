@@ -32,7 +32,7 @@ public:
 	 * pre: los valores de fila y columna que se pasan deben estar dentro de las dimensiones del tablero de origen
 	 * post: se pinta el pixel que representa a la celula en cuestion con el color recibido
 	 */
-	void representarCelulaViva(int fila, int columna, RGB& color);
+	void representarCelulaViva(int fila, int columna, RGB* color);
 	/*
 	 * pre: los valores de fila y columna que se pasan deben estar dentro de las dimensiones del tablero de origen
 	 * post: pinta el pixel que representa a la celula en cuestion de blanco (el color por defecto para definir
