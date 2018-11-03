@@ -18,6 +18,8 @@ private:
 	unsigned int turnosCongelado;
 	bool congeladoTurnoActual;
 	unsigned int numeroTurno;
+	unsigned int nacidasEnUltimoTurno;
+	unsigned int muertasEnUltimoTurno;
 
 public:
 	/*
@@ -93,5 +95,23 @@ public:
 	 * post: se suma uno al numero de turnos
 	 */
 	void avanzarUnTurno();
+
+	/*
+	 * pre: -
+	 * post: devuelve el numero de celulas que han nacido en el ultimo turno
+	 */
+	unsigned int getNacidasEnUltimoTurno();
+
+	/*
+	 * pre: -
+	 * post: devuelve el numero de celulas han muerto en el ultimo turno
+	 */
+	unsigned int getMuertasEnUltimoTurno();
+
+	/*
+	 * pre: -
+	 * post: Reinicia el contador de nacidasEnUltimoTurno y muertesEnUltimoTurno
+	 */
+	void reiniciarContadorNacidasMuertasEnUltimoTurno();
 };
 #endif /* SRC_DATOSTABLERO_H_ */

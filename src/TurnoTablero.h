@@ -15,8 +15,8 @@
 
 class TurnoTablero{
 private:
-	unsigned int celulasNacidasTurno;
-	unsigned int celulasMuertasTurno;
+	//unsigned int celulasNacidasTurno;
+	//unsigned int celulasMuertasTurno;
 	Tablero* tableroAsociado;
 	Cola<ParcelaAfectada*> ParcelasAfectadas;
 
@@ -56,12 +56,6 @@ private:
 	void decidirVidaOMuerte(int celulasVivasCircundantes, CoordenadaParcela* coordenadaEnCuestion,
 	RGB* coloresCeluasVivasCircundantes[]);
 
-	 /* pre: -
-	 * post: se crea una instancia de la clase turno con un puntero a un tablero pasado
-	 * por parametro
-	 */
-	TurnoTablero(Tablero* tableroAsociado);
-
 	/*
 	 * pre: -
 	 * post: se recorre el tablero asociado a turno parando en cada parcela. para cada parcela
@@ -82,18 +76,13 @@ private:
 	 */
 	void plasmarCambiosEnArchivo();
 
-	/*
-	 * pre: -
-	 * post: se devuelve la cantidad de celulas nacidas en un turno
-	 */
-	unsigned int getNacidasEnTurno();
-	/*
-	 * pre: -
-	 * post: se devuelve la cantidad de celulas muertas en un turno
-	 */
-	unsigned int getMuertasEnTurno();
-
 public:
+
+	 /* pre: -
+	 * post: se crea una instancia de la clase turno con un puntero a un tablero pasado
+	 * por parametro
+	 */
+	TurnoTablero(Tablero* tableroAsociado);
 
 	/*
 	 * pre: -

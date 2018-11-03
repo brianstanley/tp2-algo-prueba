@@ -18,16 +18,20 @@ DatosTablero::DatosTablero() {
 	this->turnosCongelado = 0;
 	this->numeroTurno = 0;
 	this->congeladoTurnoActual = true;
+	this->nacidasEnUltimoTurno = 0;
+	this->muertasEnUltimoTurno = 0;
 }
 
 unsigned int DatosTablero::getCantidadCelulasVivas(){
 	return this->cantidadCelulasVivas;
 }
 void DatosTablero::sumarCelulaViva(){
+	this->nacidasEnUltimoTurno ++;
 	this->cantidadCelulasVivas ++;
 	this->nacidasTotal ++;
 }
 void DatosTablero::sumarCelulaMuerta(){
+	this->muertasEnUltimoTurno ++;
 	this->cantidadCelulasVivas --;
 	this->muertasTotal ++;
 }
@@ -68,4 +72,17 @@ unsigned int DatosTablero::getTurno(){
 
 void DatosTablero::avanzarUnTurno(){
 	this->numeroTurno ++;
+}
+
+unsigned int DatosTablero::getNacidasEnUltimoTurno(){
+	return this->nacidasEnUltimoTurno;
+}
+
+unsigned int DatosTablero::getMuertasEnUltimoTurno(){
+	return this->muertasEnUltimoTurno;
+}
+
+void DatosTablero::reiniciarContadorNacidasMuertasEnUltimoTurno(){
+	this->nacidasEnUltimoTurno = 0;
+	this->muertasEnUltimoTurno = 0;
 }

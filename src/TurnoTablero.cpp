@@ -10,8 +10,6 @@
 const int MAX_CANTIDAD_CELULAS_CIRCUNDANTES = 3;
 
 TurnoTablero::TurnoTablero(Tablero* tableroAsociado){
-	this->celulasMuertasTurno = 0;
-	this->celulasNacidasTurno = 0;
 	this->tableroAsociado = tableroAsociado;
 }
 
@@ -90,12 +88,12 @@ void TurnoTablero::concretarCambios(){
 		if (CambioARealizar->naceLaCelula()){
 			float factorNacimientoParcela = CambioARealizar->getParcela().getfactorNacimiento();
 			CambioARealizar->getParcela().getCelula()->nacer(factorNacimientoParcela, CambioARealizar->getColorPromedio());
-			this->celulasNacidasTurno ++;
+			//this->celulasNacidasTurno ++;
 			this->tableroAsociado->getDatosTablero()->sumarCelulaViva();
 		}
 		else{
 			CambioARealizar->getParcela().getCelula()->morir();
-			this->celulasMuertasTurno ++;
+			//this->celulasMuertasTurno ++;
 			this->tableroAsociado->getDatosTablero()->sumarCelulaMuerta();
 		}
 		if (CambioARealizar->hayPortal()){
@@ -103,7 +101,8 @@ void TurnoTablero::concretarCambios(){
 		}
 
 	}
-	if(this->celulasNacidasTurno != 0 || this->celulasMuertasTurno != 0){
+	if(this->tableroAsociado->getDatosTablero()->getNacidasEnUltimoTurno() != 0 ||
+			this->tableroAsociado->getDatosTablero()->getMuertasEnUltimoTurno() != 0){
 		this->tableroAsociado->getDatosTablero()->setCongeladoTurnoActual(false);
 	}
 }
@@ -111,14 +110,6 @@ void TurnoTablero::concretarCambios(){
 void TurnoTablero::plasmarCambiosEnArchivo(){
 	this->tableroAsociado->generarBMP();
 	this->tableroAsociado->guardarBMP(this->tableroAsociado->getDatosTablero()->getTurno());
-}
-
-unsigned int TurnoTablero::getNacidasEnTurno(){
-	return this->celulasNacidasTurno;
-}
-
-unsigned int TurnoTablero::getMuertasEnTurno(){
-	return this->celulasMuertasTurno;
 }
 
 void TurnoTablero::jugarTurno(){
