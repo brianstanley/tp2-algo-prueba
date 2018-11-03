@@ -20,7 +20,8 @@ private:
 
 public:
 	/*
-	 * pre: -
+	 * pre: turnosCongelado se setea a true por defecto porque se parte de la hipotesis de que todo tablero se
+	 * considera congelado hasta que se pruebe lo conntrario, lease, alguna celula nazca o muera
 	 * post:inicializa una instancia de DatosPartida con los valores en 0
 	 */
 	DatosTablero();
@@ -65,7 +66,7 @@ public:
 	 * post: si el tablero se encuentra congelado (no hay nuuevas muertes ni nacimientos)
 	 * suma uno a la cantidad de turnos que el tablero lleva congelado
 	 */
-	void analizarCongelamientoDelTablero();
+	void setCantidadTurnosCongeladosTablero();
 
 	/*
 	 * pre: -
@@ -78,6 +79,6 @@ public:
 	 * post: si el tablero lleva dos o mas turnos congelado se devuelve true, en caso
 	 * contrario se devuelve false
 	 */
-	bool getCongelamiento();
+	bool estaCongelado();
 };
 #endif /* SRC_DATOSTABLERO_H_ */

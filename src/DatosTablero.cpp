@@ -48,7 +48,7 @@ void DatosTablero::setCongeladoTurnoActual(bool estadoDeCongelamiento){
 	this->congeladoTurnoActual = estadoDeCongelamiento;
 }
 
-void DatosTablero::analizarCongelamientoDelTablero(){
+void DatosTablero::setCantidadTurnosCongeladosTablero(){
 	if(this->congeladoTurnoActual){
 		this->turnosCongelado ++;
 	}
@@ -57,6 +57,6 @@ void DatosTablero::analizarCongelamientoDelTablero(){
 	}
 }
 
-bool DatosTablero::getCongelamiento(){
+bool DatosTablero::estaCongelado(){
 	return (this->turnosCongelado >= 2);
 }

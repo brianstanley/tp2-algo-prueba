@@ -58,7 +58,9 @@ void Portal::nacer(RGB* color){
 	Tablero * tableroAsociado = this->parcelaAsociada->getTablero();
 	tableroAsociado->getParcela(fila,columna).getCelula()->nacer(factorNacimiento,color);
 	tableroAsociado->getDatosTablero()->sumarCelulaViva();
-	tableroAsociado->getDatosTablero()->setCongeladoTurnoActual(false);
+	if(tableroAsociado->getDatosTablero()->estaCongelado()){
+		tableroAsociado->getDatosTablero()->setCongeladoTurnoActual(false);
+	}
 }
 
 void Portal::morir(){
@@ -67,5 +69,7 @@ void Portal::morir(){
 	Tablero * tableroAsociado = this->parcelaAsociada->getTablero();
 	tableroAsociado->getParcela(fila,columna).getCelula()->morir();
 	tableroAsociado->getDatosTablero()->sumarCelulaMuerta();
-	tableroAsociado->getDatosTablero()->setCongeladoTurnoActual(false);
+	if(tableroAsociado->getDatosTablero()->estaCongelado()){
+		tableroAsociado->getDatosTablero()->setCongeladoTurnoActual(false);
+	}
 }

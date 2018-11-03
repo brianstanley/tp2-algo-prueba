@@ -5,7 +5,7 @@
  *      Author: nazareno
  */
 
-#include "turnoTablero.h"
+#include "TurnoTablero.h"
 
 const int MAX_CANTIDAD_CELULAS_CIRCUNDANTES = 3;
 
@@ -93,18 +93,19 @@ void TurnoTablero::concretarCambios(){
 			CambioARealizar->getParcela().getCelula()->nacer(factorNacimientoParcela, CambioARealizar->getColorPromedio());
 			this->celulasNacidasTurno ++;
 			this->tableroAsociado->getDatosTablero()->sumarCelulaViva();
-			this->tableroAsociado->getDatosTablero()->setCongeladoTurnoActual(false);
 		}
 		else{
 			CambioARealizar->getParcela().getCelula()->morir();
 			this->celulasMuertasTurno ++;
 			this->tableroAsociado->getDatosTablero()->sumarCelulaMuerta();
-			this->tableroAsociado->getDatosTablero()->setCongeladoTurnoActual(false);
 		}
 		if (CambioARealizar->hayPortal()){
 			CambioARealizar->getParcela().getPortal()->accionarPortal(CambioARealizar->naceLaCelula(), CambioARealizar->getColorPromedio());
 		}
 
+	}
+	if(this->celulasNacidasTurno != 0 || this->celulasMuertasTurno != 0){
+		this->tableroAsociado->getDatosTablero()->setCongeladoTurnoActual(false);
 	}
 }
 
