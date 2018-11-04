@@ -62,8 +62,11 @@ void Portal::morir(){
 	int fila = this->parcelaAsociada->getCoordenadaX();
 	int columna = this->parcelaAsociada->getCoordenadaY();
 	Tablero * tableroAsociado = this->parcelaAsociada->getTablero();
-	tableroAsociado->getParcela(fila,columna).getCelula()->morir();
-	tableroAsociado->getDatosTablero()->sumarCelulaMuerta();
+	float factorMuerteParcelaAsociada = tableroAsociado->getParcela(fila,columna).getfactorMuerte();
+	bool murio = tableroAsociado->getParcela(fila,columna).getCelula()->morir(factorMuerteParcelaAsociada);
+	if (murio){
+		tableroAsociado->getDatosTablero()->sumarCelulaMuerta();
+	}
 	if(tableroAsociado->getDatosTablero()->estaCongelado()){
 		tableroAsociado->getDatosTablero()->setCongeladoTurnoActual(false);
 	}

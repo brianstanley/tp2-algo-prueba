@@ -91,8 +91,11 @@ void TurnoTablero::concretarCambios(){
 			this->tableroAsociado->getDatosTablero()->sumarCelulaViva();
 		}
 		else{
-			CambioARealizar->getParcela().getCelula()->morir();
-			this->tableroAsociado->getDatosTablero()->sumarCelulaMuerta();
+			float factorMuerteParcelaAsociada = CambioARealizar->getParcela().getfactorMuerte();
+			bool murio = CambioARealizar->getParcela().getCelula()->morir(factorMuerteParcelaAsociada);
+			if (murio){
+				this->tableroAsociado->getDatosTablero()->sumarCelulaMuerta();
+			}
 		}
 		if (CambioARealizar->hayPortal()){
 			CambioARealizar->getParcela().getPortal()->accionarPortal(CambioARealizar->naceLaCelula(), CambioARealizar->getColorPromedio());
