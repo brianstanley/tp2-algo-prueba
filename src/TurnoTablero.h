@@ -15,8 +15,6 @@
 
 class TurnoTablero{
 private:
-	//unsigned int celulasNacidasTurno;
-	//unsigned int celulasMuertasTurno;
 	Tablero* tableroAsociado;
 	Cola<ParcelaAfectada*> ParcelasAfectadas;
 

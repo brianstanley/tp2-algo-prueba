@@ -92,7 +92,6 @@ void TurnoTablero::concretarCambios(){
 		}
 		else{
 			CambioARealizar->getParcela().getCelula()->morir();
-			//this->celulasMuertasTurno ++;
 			this->tableroAsociado->getDatosTablero()->sumarCelulaMuerta();
 		}
 		if (CambioARealizar->hayPortal()){
