@@ -10,6 +10,8 @@
 
 #include "Tablero.h"
 
+class Tablero;
+
 
 class DatosTablero {
 private:

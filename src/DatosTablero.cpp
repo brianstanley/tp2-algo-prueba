@@ -88,7 +88,7 @@ void DatosTablero::reiniciarContadorNacidasMuertasEnUltimoTurno(){
 }
 
 void DatosTablero::mostrarDatosTablero(){
-	std::cout<< "tablero: " << this->tableroAsociado->getNombre() << ", turno nro " << this->numeroTurno << std::endl;
+	std::cout<< "tablero: " << this->tableroAsociado->getNombre() << ", turno numero " << this->numeroTurno << std::endl;
 	std::cout<< "celulas vivas: " << this->cantidadCelulasVivas << std::endl;
 	std::cout<< "celulas nacidas en total: " << this->nacidasTotal << std::endl;
 	std::cout<< "celulas muertas en total: " << this->muertasTotal << std::endl;
