@@ -94,8 +94,8 @@ void DatosTablero::mostrarDatosTablero(){
 	std::cout<< "celulas muertas en total: " << this->muertasTotal << std::endl;
 	std::cout<< "celulas nacidas en el turno actual: " << this->nacidasEnUltimoTurno << std::endl;
 	std::cout<< "celulas muertas en el turno actual: " << this->muertasEnUltimoTurno << std::endl;
-	std::cout<< "promedio de nacimientos: " << this->promedioNacidas << std::endl;
-	std::cout<< "promedio de muertes: " << this->promedioMuertas << std::endl;
+	std::cout<< "promedio de nacimientos: " << this->getPromedioNacidas() << std::endl;
+	std::cout<< "promedio de muertes: " << this->getPromedioMuertas() << std::endl;
 	if (this->estaCongelado()){
 		std::cout<< "El tablero se encuentra congelado"<< std::endl;
 	}
