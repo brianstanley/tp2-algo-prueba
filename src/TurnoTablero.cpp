@@ -92,13 +92,16 @@ void TurnoTablero::concretarCambios(){
 		}
 		else{
 			float factorMuerteParcelaAsociada = CambioARealizar->getParcela().getfactorMuerte();
-			bool murio = CambioARealizar->getParcela().getCelula()->morir(factorMuerteParcelaAsociada);
+			bool murio = CambioARealizar->getParcela().getCelula()->restarEnergia(factorMuerteParcelaAsociada);
 			if (murio){
 				this->tableroAsociado->getDatosTablero()->sumarCelulaMuerta();
 			}
 		}
 		if (CambioARealizar->hayPortal()){
-			CambioARealizar->getParcela().getPortal()->accionarPortal(CambioARealizar->naceLaCelula(), CambioARealizar->getColorPromedio());
+			bool factorMuertetoOrigen = CambioARealizar->getParcela().getfactorMuerte();
+			bool factorNacimientoOrigen = CambioARealizar->getParcela().getfactorNacimiento();
+			bool nacer = CambioARealizar->naceLaCelula();
+			CambioARealizar->getParcela().getPortal()->accionarPortal(nacer, CambioARealizar->getColorPromedio(), factorNacimientoOrigen, factorMuertetoOrigen);
 		}
 
 	}

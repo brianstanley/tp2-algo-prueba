@@ -38,9 +38,9 @@ private:
 	char tipoDePortal;
 	CoordenadaParcela * parcelaAsociada;
 
-	void nacer(RGB* color);
+	void nacer(RGB* color, bool factorNacimientoOrigen);
 
-	void morir();
+	void morir(bool factorMuerteOrigen);
 public:
 	/*
 	 * pre: -
@@ -58,7 +58,7 @@ public:
 	 * pre: -
 	 * post: se acciona el portal correspondiente
 	 */
-	void accionarPortal(bool nace, RGB* color);
+	void accionarPortal(bool nace, RGB* color, bool factorNacimientoOrigen, bool factorMuerteOrigen);
 };
 
 #endif /* PORTAL_H_ */

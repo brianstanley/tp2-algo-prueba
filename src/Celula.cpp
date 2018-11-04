@@ -16,7 +16,12 @@ Celula::Celula() {
 	this->RGBCelula = 0;
 }
 
-bool Celula::morir(float factorMuerteParcela) {
+void Celula::morir(){
+	this->energiaCelula = 0;
+	this->estadoCelula = MUERTA;
+}
+
+bool Celula::restarEnergia(float factorMuerteParcela) {
 	bool murio = true;
 	int energiaAPerder = ENERGIA_MAX * factorMuerteParcela;
 	if (this->energiaCelula > energiaAPerder){
