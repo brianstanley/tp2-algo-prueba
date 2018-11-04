@@ -7,7 +7,7 @@
 
 #include "DatosTablero.h"
 
-DatosTablero::DatosTablero(std::string nombreDelTablero) {
+DatosTablero::DatosTablero(Tablero* tableroAsociado) {
 	this->cantidadCelulasVivas = 0;
 	this->muertasTotal = 0;
 	this->nacidasTotal = 0;
@@ -18,7 +18,7 @@ DatosTablero::DatosTablero(std::string nombreDelTablero) {
 	this->congeladoTurnoActual = true;
 	this->nacidasEnUltimoTurno = 0;
 	this->muertasEnUltimoTurno = 0;
-	this->nombretablero = nombreDelTablero;
+	this->tableroAsociado = tableroAsociado;
 }
 
 unsigned int DatosTablero::getCantidadCelulasVivas(){
@@ -88,7 +88,7 @@ void DatosTablero::reiniciarContadorNacidasMuertasEnUltimoTurno(){
 }
 
 void DatosTablero::mostrarDatosTablero(){
-	std::cout<< "tablero: " << this->nombretablero << ", turno nro " << this->numeroTurno << std::endl;
+	std::cout<< "tablero: " << this->tableroAsociado->getNombre() << ", turno nro " << this->numeroTurno << std::endl;
 	std::cout<< "celulas vivas: " << this->cantidadCelulasVivas << std::endl;
 	std::cout<< "celulas nacidas en total: " << this->nacidasTotal << std::endl;
 	std::cout<< "celulas muertas en total: " << this->muertasTotal << std::endl;
