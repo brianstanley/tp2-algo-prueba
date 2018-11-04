@@ -120,7 +120,7 @@ public:
 
 	/*
 	 * pre: -
-	 * post: muestra por pantalla los datos del tablero en cuestion
+	 * post: muestran por pantalla los datos del tablero en cuestion
 	 */
 	void mostrarDatosTablero();
 };
