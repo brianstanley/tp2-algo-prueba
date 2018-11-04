@@ -19,7 +19,7 @@ Celula::Celula() {
 bool Celula::morir(float factorMuerteParcela) {
 	bool murio = true;
 	int energiaAPerder = ENERGIA_MAX * factorMuerteParcela;
-	if (this->energiaCelula >= energiaAPerder){
+	if (this->energiaCelula > energiaAPerder){
 		this->energiaCelula -= energiaAPerder;
 		murio = false;
 	}
