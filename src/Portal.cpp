@@ -46,7 +46,7 @@ void Portal::accionarPortal(bool nace, RGB* color, float factorNacimientoOrigen,
 	}
 }
 
-void Portal::nacer(RGB* color, bool factorNacimientoOrigen){
+void Portal::nacer(RGB* color, float factorNacimientoOrigen){
 	int fila = this->parcelaAsociada->getCoordenadaX();
 	int columna = this->parcelaAsociada->getCoordenadaY();
 	Tablero * tableroAsociado = this->parcelaAsociada->getTablero();
@@ -57,7 +57,7 @@ void Portal::nacer(RGB* color, bool factorNacimientoOrigen){
 	}
 }
 
-void Portal::morir(bool factorMuerteOrigen){
+void Portal::morir(float factorMuerteOrigen){
 	int fila = this->parcelaAsociada->getCoordenadaX();
 	int columna = this->parcelaAsociada->getCoordenadaY();
 	Tablero * tableroAsociado = this->parcelaAsociada->getTablero();

@@ -38,9 +38,9 @@ private:
 	char tipoDePortal;
 	CoordenadaParcela * parcelaAsociada;
 
-	void nacer(RGB* color, bool factorNacimientoOrigen);
+	void nacer(RGB* color, float factorNacimientoOrigen);
 
-	void morir(bool factorMuerteOrigen);
+	void morir(float factorMuerteOrigen);
 public:
 	/*
 	 * pre: -
