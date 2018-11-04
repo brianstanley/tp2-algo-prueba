@@ -85,3 +85,19 @@ void DatosTablero::reiniciarContadorNacidasMuertasEnUltimoTurno(){
 	this->nacidasEnUltimoTurno = 0;
 	this->muertasEnUltimoTurno = 0;
 }
+
+void DatosTablero::mostrarDatosTablero(){
+	std::cout<< "tablero: " << this->nombretablero << ",turno nro " << this->numeroTurno << std::endl;
+	std::cout<< "celulas vivas: " << this->cantidadCelulasVivas << std::endl;
+	std::cout<< "celulas nacidas en total: " << this->nacidasTotal << std::endl;
+	std::cout<< "celulas muertas en total: " << this->muertasTotal << std::endl;
+	std::cout<< "celulas nacidas en el turno actual: " << this->nacidasEnUltimoTurno << std::endl;
+	std::cout<< "celulas muertas en el turno actual: " << this->muertasEnUltimoTurno << std::endl;
+	std::cout<< "promedio de nacimientos: " << this->promedioNacidas << std::endl;
+	std::cout<< "promedio de muertes: " << this->promedioMuertas << std::endl;
+	if (this->estaCongelado()){
+		std::cout<< "El tablero se encuentra congelado"<< std::endl;
+	}
+	std::cout << std::endl;
+
+}

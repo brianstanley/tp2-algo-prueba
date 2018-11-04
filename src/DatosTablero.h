@@ -117,5 +117,11 @@ public:
 	 * post: Reinicia el contador de nacidasEnUltimoTurno y muertesEnUltimoTurno
 	 */
 	void reiniciarContadorNacidasMuertasEnUltimoTurno();
+
+	/*
+	 * pre: -
+	 * post: muestra por pantalla los datos del tablero en cuestion
+	 */
+	void mostrarDatosTablero();
 };
 #endif /* SRC_DATOSTABLERO_H_ */
