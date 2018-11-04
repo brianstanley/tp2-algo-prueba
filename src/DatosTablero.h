@@ -8,6 +8,8 @@
 #ifndef SRC_DATOSTABLERO_H_
 #define SRC_DATOSTABLERO_H_
 
+
+
 class DatosTablero {
 private:
 	unsigned int cantidadCelulasVivas;
@@ -20,6 +22,7 @@ private:
 	unsigned int numeroTurno;
 	unsigned int nacidasEnUltimoTurno;
 	unsigned int muertasEnUltimoTurno;
+	std::string nombretablero;
 
 public:
 	/*
@@ -27,7 +30,7 @@ public:
 	 * considera congelado hasta que se pruebe lo conntrario, lease, alguna celula nazca o muera
 	 * post:inicializa una instancia de DatosPartida con los valores en 0
 	 */
-	DatosTablero();
+	DatosTablero(std::string nombreDelTablero);
 	/*
 	 *pre: -
 	 *post: devueleve el valor de la cantidadCelulasVivas

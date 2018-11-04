@@ -7,7 +7,7 @@
 
 #include "DatosTablero.h"
 
-DatosTablero::DatosTablero() {
+DatosTablero::DatosTablero(std::string nombreDelTablero) {
 	this->cantidadCelulasVivas = 0;
 	this->muertasTotal = 0;
 	this->nacidasTotal = 0;
@@ -18,6 +18,7 @@ DatosTablero::DatosTablero() {
 	this->congeladoTurnoActual = true;
 	this->nacidasEnUltimoTurno = 0;
 	this->muertasEnUltimoTurno = 0;
+	this->nombretablero = nombreDelTablero;
 }
 
 unsigned int DatosTablero::getCantidadCelulasVivas(){
