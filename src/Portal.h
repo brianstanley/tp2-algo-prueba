@@ -58,7 +58,7 @@ public:
 	 * pre: -
 	 * post: se acciona el portal correspondiente
 	 */
-	void accionarPortal(bool nace, RGB* color, bool factorNacimientoOrigen, bool factorMuerteOrigen);
+	void accionarPortal(bool nace, RGB* color, float factorNacimientoOrigen, float factorMuerteOrigen);
 };
 
 #endif /* PORTAL_H_ */

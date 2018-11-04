@@ -98,8 +98,8 @@ void TurnoTablero::concretarCambios(){
 			}
 		}
 		if (CambioARealizar->hayPortal()){
-			bool factorMuertetoOrigen = CambioARealizar->getParcela().getfactorMuerte();
-			bool factorNacimientoOrigen = CambioARealizar->getParcela().getfactorNacimiento();
+			float factorMuertetoOrigen = CambioARealizar->getParcela().getfactorMuerte();
+			float factorNacimientoOrigen = CambioARealizar->getParcela().getfactorNacimiento();
 			bool nacer = CambioARealizar->naceLaCelula();
 			CambioARealizar->getParcela().getPortal()->accionarPortal(nacer, CambioARealizar->getColorPromedio(), factorNacimientoOrigen, factorMuertetoOrigen);
 		}

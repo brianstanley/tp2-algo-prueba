@@ -18,7 +18,7 @@ char Portal::getTipoDePortal() {
 	return this->tipoDePortal;
 }
 
-void Portal::accionarPortal(bool nace, RGB* color, bool factorNacimientoOrigen, bool factorMuerteOrigen){
+void Portal::accionarPortal(bool nace, RGB* color, float factorNacimientoOrigen, float factorMuerteOrigen){
 	if(this->tipoDePortal == ACTIVO){
 		if(this->portalOrigen){
 			if(nace){
