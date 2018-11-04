@@ -41,10 +41,11 @@ unsigned int DatosTablero::getMuertasTotal(){
 	return this->muertasTotal;
 }
 float DatosTablero::getPromedioNacidas(){
-
+	this->promedioNacidas = this->nacidasTotal/this->numeroTurno;
 	return this->promedioNacidas;
 }
 float DatosTablero::getPromedioMuertas(){
+	this->promedioMuertas = this->muertasTotal/this->numeroTurno;
 	return this->promedioMuertas;
 }
 
@@ -87,7 +88,7 @@ void DatosTablero::reiniciarContadorNacidasMuertasEnUltimoTurno(){
 }
 
 void DatosTablero::mostrarDatosTablero(){
-	std::cout<< "tablero: " << this->nombretablero << ",turno nro " << this->numeroTurno << std::endl;
+	std::cout<< "tablero: " << this->nombretablero << ", turno nro " << this->numeroTurno << std::endl;
 	std::cout<< "celulas vivas: " << this->cantidadCelulasVivas << std::endl;
 	std::cout<< "celulas nacidas en total: " << this->nacidasTotal << std::endl;
 	std::cout<< "celulas muertas en total: " << this->muertasTotal << std::endl;
