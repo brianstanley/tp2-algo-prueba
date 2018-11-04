@@ -28,14 +28,6 @@ private:
 
 
 public:
-
-	/*
-	 * pre: -
-	 * post: instancia un nuevo juego sin datos.
-	 */
-	Juego();
-
-
 	/*
 	 * pre:
 	 * post: Aplica la ejecucion de un turno para cada uno de los tableros cambiando las parcelas.

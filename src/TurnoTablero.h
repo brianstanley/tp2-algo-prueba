@@ -17,7 +17,6 @@ class TurnoTablero{
 private:
 	Tablero* tableroAsociado;
 	Cola<ParcelaAfectada*> ParcelasAfectadas;
-
 	/*
 	 * pre: -
 	 * post: se devuelve la cantidad de celulas vivas circundantes a una celula
@@ -87,6 +86,16 @@ public:
 	 * post: se ejecutan todas las acciones pertinentes al turno
 	 */
 	void jugarTurno();
+	/*
+	 * pre: -
+	 * post: se devuelve la cantidad de celulas nacidas en un turno
+	 */
+	unsigned int getNacidasEnTurno();
+	/*
+	 * pre: -
+	 * post: se devuelve la cantidad de celulas muertas en un turno
+	 */
+	unsigned int getMuertasEnTurno();
 };
 
 

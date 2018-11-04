@@ -6,9 +6,7 @@
  */
 
 #include "Juego.h"
-
-Juego::Juego() {
-}
+#include "TurnoTablero.h"
 
 std::string Juego::pedirProximoTurno() {
 	std::string proximoTurno;
@@ -20,11 +18,12 @@ std::string Juego::pedirProximoTurno() {
 }
 
 void Juego::iniciarJuego() {
-	delete this->datosDelJuego;
-	delete this->tablerosDelJuego;
+//	delete this->datosDelJuego;
+//	delete this->tablerosDelJuego;
 	std::string rutaDelArchivo;
 	std::cout << "Ingresa la ruta del archivo de texto que quieres utilizar: \n";
 	std::cin >> rutaDelArchivo;
+
 	LecturaArchivoConfiguracion lectura;
 	lectura.procesarArchivo(rutaDelArchivo);
 	ListaEnlazada<Tablero*>* tableros = lectura.obtenerListaTableros();
@@ -40,5 +39,18 @@ void Juego::terminarJuego() {
 	std::cout << "\n Terminaste el juego\n";
 	delete this->datosDelJuego;
 	delete this->tablerosDelJuego;
+}
 
+void Juego::ejecutarTurno() {
+	std::cout << "Entro";
+	tablerosDelJuego->iniciarCursor();
+	if (!tablerosDelJuego->estaVacia()) {
+		while(tablerosDelJuego->avanzarCursor()) {
+			Tablero * tablero = tablerosDelJuego->obtenerCursor();
+			TurnoTablero turno(tablero);
+			turno.jugarTurno();
+			DatosTablero * datosTablero = tablero->getDatosTablero();
+			std::cout  << "Hasta aca un turno.: " << datosTablero->getTurno() << std::endl;
+		}
+	}
 }

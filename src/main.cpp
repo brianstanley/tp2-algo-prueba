@@ -1,6 +1,15 @@
 #include <iostream>
 #include "LecturaArchivoConfiguracion.h"
 #include "Juego.h"
+//<<<<<<< HEAD
+//int main() {
+//	LecturaArchivoConfiguracion lectura;
+//	lectura.procesarArchivo("src/entrada.txt");
+//	ListaEnlazada<Tablero*>* tableros = lectura.obtenerListaTableros();
+//	std::cout << "Hasta aca ";
+//	Juego juego;
+//	juego.ejecutarTurno(tableros);
+//=======
 
 int main() {
 //	LecturaArchivoConfiguracion lectura;
@@ -26,7 +35,7 @@ int main() {
 		}
 		nuevoTurno = miJuego.pedirProximoTurno();
 	}
-//el usuario pidio que se termino el juego.
+	//el usuario pidio que se termino el juego.
 	miJuego.terminarJuego();
 	return 0;
 }
