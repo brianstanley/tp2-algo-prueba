@@ -88,7 +88,6 @@ void TurnoTablero::concretarCambios(){
 		if (CambioARealizar->naceLaCelula()){
 			float factorNacimientoParcela = CambioARealizar->getParcela().getfactorNacimiento();
 			CambioARealizar->getParcela().getCelula()->nacer(factorNacimientoParcela, CambioARealizar->getColorPromedio());
-			//this->celulasNacidasTurno ++;
 			this->tableroAsociado->getDatosTablero()->sumarCelulaViva();
 		}
 		else{

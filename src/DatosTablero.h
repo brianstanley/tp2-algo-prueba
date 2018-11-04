@@ -109,7 +109,8 @@ public:
 	unsigned int getMuertasEnUltimoTurno();
 
 	/*
-	 * pre: -
+	 * pre: cada vez que se itera un turno en la clase Datostablero se almacena la informacion de las celulas nacidas y muertas en
+	 * el turno, por eso hace falta un metodo que las resetee a cero cada vez que se comienza un nuevo turno
 	 * post: Reinicia el contador de nacidasEnUltimoTurno y muertesEnUltimoTurno
 	 */
 	void reiniciarContadorNacidasMuertasEnUltimoTurno();

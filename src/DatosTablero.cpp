@@ -7,8 +7,6 @@
 
 #include "DatosTablero.h"
 
-#include "DatosTablero.h"
-
 DatosTablero::DatosTablero() {
 	this->cantidadCelulasVivas = 0;
 	this->muertasTotal = 0;
