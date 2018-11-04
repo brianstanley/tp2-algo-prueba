@@ -18,14 +18,14 @@ void TurnoTablero::marcarCambiosARealizarParaSiguienteTurno(){
 		for(int columna=0; columna < this->tableroAsociado->getColumnas(); columna++){
 			RGB* coloresCelulasVivasCircundantes [3];
 			int celulasCircundantesVivas = chequearCelulasCircundantes(fila, columna, coloresCelulasVivasCircundantes);
-//			decidirVidaOMuerte(celulasCircundantesVivas, this->tableroAsociado->getParcela(fila,columna).getCoordenadaParcela(), coloresCelulasVivasCircundantes);
+			decidirVidaOMuerte(celulasCircundantesVivas, this->tableroAsociado->getParcela(fila,columna).getCoordenadaParcela(), coloresCelulasVivasCircundantes);
 		}
 	}
 }
 
-void TurnoTablero::guardarColorCelulasCircundantes(RGB* coloresCeluasVivasCircundantes[], int celulasCircundantesVivas, int fila, int columna){
+void TurnoTablero::guardarColorCelulasCircundantes(RGB* coloresCelulasVivasCircundantes[], int celulasCircundantesVivas, int fila, int columna){
 	if (celulasCircundantesVivas < MAX_CANTIDAD_CELULAS_CIRCUNDANTES){
-		coloresCeluasVivasCircundantes[celulasCircundantesVivas-1] =
+		coloresCelulasVivasCircundantes[celulasCircundantesVivas-1] =
 		this->tableroAsociado->getParcela(fila, columna).getCelula()->getRGB();
 	}
 }

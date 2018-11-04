@@ -29,6 +29,8 @@ private:
 	void procesarCelula(std::string nombreTablero, std::ifstream&);
 	void crearTablero(std::string, int ancho, int alto);
 	void crearCelula(std::string, int fila, int columna);
+	void crearPortal(std::string, int fila, int columno, std::string tipoDePortal, bool esOrigen);
+	Tablero * string2punteroTablero(std::string);
 public:
 	/**
 	 * pre: Ruta al archivo del cual se desea leer la configuración de

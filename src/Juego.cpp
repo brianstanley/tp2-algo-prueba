@@ -6,7 +6,6 @@
  */
 
 #include "Juego.h"
-#include "TurnoTablero.h"
 
 std::string Juego::pedirProximoTurno() {
 	std::string proximoTurno;
@@ -18,21 +17,20 @@ std::string Juego::pedirProximoTurno() {
 }
 
 void Juego::iniciarJuego() {
-//	delete this->datosDelJuego;
-//	delete this->tablerosDelJuego;
 	std::string rutaDelArchivo;
 	std::cout << "Ingresa la ruta del archivo de texto que quieres utilizar: \n";
 	std::cin >> rutaDelArchivo;
-
 	LecturaArchivoConfiguracion lectura;
 	lectura.procesarArchivo(rutaDelArchivo);
 	ListaEnlazada<Tablero*>* tableros = lectura.obtenerListaTableros();
 	this->tablerosDelJuego = tableros;
+	ListaEnlazada<DatosTablero*> * datos = new ListaEnlazada<DatosTablero*>;
 	tableros->iniciarCursor();
 	while(tableros->avanzarCursor()) {
 		DatosTablero * datosDelTablero = tableros->obtenerCursor()->getDatosTablero();
-		this->datosDelJuego->agregar(datosDelTablero);
+		datos->agregar(datosDelTablero);
 	}
+	this->datosDelJuego = datos;
 }
 
 void Juego::terminarJuego() {

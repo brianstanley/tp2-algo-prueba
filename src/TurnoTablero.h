@@ -21,13 +21,13 @@ private:
 	 * pre: -
 	 * post: se devuelve la cantidad de celulas vivas circundantes a una celula
 	 */
-	int chequearCelulasCircundantes(int fila, int columna, RGB* coloresCeluasVivasCircundantes[]);
+	int chequearCelulasCircundantes(int fila, int columna, RGB* coloresCelulasVivasCircundantes[]);
 
 	/*
 	 * pre: -
 	 * post: se guardan los colores de las celulas circundantes en un arreglo
 	 */
-	void guardarColorCelulasCircundantes(RGB* coloresCeluasVivasCircundantes[], int celulasCircundantesVivas, int fila, int columna);
+	void guardarColorCelulasCircundantes(RGB* coloresCelulasVivasCircundantes[], int celulasCircundantesVivas, int fila, int columna);
 
 	/*
 	 * pre:-

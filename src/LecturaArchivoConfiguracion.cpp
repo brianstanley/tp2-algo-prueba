@@ -45,7 +45,7 @@ void LecturaArchivoConfiguracion::procesarTablero(std::string nombreTablero, std
 
 void LecturaArchivoConfiguracion::procesarPortal(std::string tableroId, std::ifstream& archivoDeConfiguracion) {
 	int filaOrigen, columnaOrigen, filaDestino, columnaDestino;
-	bool esPortalOrigen;
+	//bool esPortalOrigen;
 	std::string tableroDestino, tipoPortal;
 	archivoDeConfiguracion >> tableroDestino;
 	archivoDeConfiguracion >> filaOrigen;
@@ -53,12 +53,14 @@ void LecturaArchivoConfiguracion::procesarPortal(std::string tableroId, std::ifs
 	archivoDeConfiguracion >> filaDestino;
 	archivoDeConfiguracion >> columnaDestino;
 	archivoDeConfiguracion >> tipoPortal;
-	archivoDeConfiguracion >> esPortalOrigen;
+	//archivoDeConfiguracion >> esPortalOrigen;
+	this->crearPortal(tableroId, filaOrigen - 1, columnaOrigen - 1, tipoPortal, 1);
+	this->crearPortal(tableroDestino, filaDestino - 1, columnaDestino - 1, tipoPortal, 0);
 }
 
 void LecturaArchivoConfiguracion::procesarParcela(std::string tableroId, std::ifstream& archivoDeConfiguracion) {
 	int posX, posY, red, green, blue;
-	double tasaNacimiento, tasaMortalidad;
+	float tasaNacimiento, tasaMortalidad;
 	archivoDeConfiguracion >> posX;
 	archivoDeConfiguracion >> posY;
 	archivoDeConfiguracion >> red;
@@ -67,14 +69,20 @@ void LecturaArchivoConfiguracion::procesarParcela(std::string tableroId, std::if
 	archivoDeConfiguracion >> tasaNacimiento;
 	archivoDeConfiguracion >> tasaMortalidad;
 	std::cout << "Recibe: parcela: " << posX << "  " << posY << " " << " red:: " << red << green << blue << std::endl;
-	// Aca debería ir una intancia a la clase parcela
+	Tablero * tablero = this->string2punteroTablero(tableroId);
+	RGB rgbDeParcela;
+	rgbDeParcela.setRGB(red, green, blue);
+	Parcela & parcelaASetear = tablero->getParcela(posX - 1, posY - 1);
+	parcelaASetear.setFactorMuerte(tasaMortalidad);
+	parcelaASetear.setFactorNacimiento(tasaNacimiento);
+	parcelaASetear.setRBGparcela(rgbDeParcela);
 }
 
 void LecturaArchivoConfiguracion::procesarCelula(std::string nombreTablero, std::ifstream& archivoDeConfiguracion) {
 	int fila, columna;
 	archivoDeConfiguracion >> fila;
 	archivoDeConfiguracion >> columna;
-	this->crearCelula(nombreTablero, fila, columna);
+	this->crearCelula(nombreTablero, fila - 1, columna - 1);
 }
 
 
@@ -85,8 +93,35 @@ void LecturaArchivoConfiguracion::crearTablero(std::string nombreTablero, int fi
 }
 
 void LecturaArchivoConfiguracion::crearCelula(std::string tableroId, int fila, int columna) {
-	std::cout << "En  el tablero " << tableroId << " en la fila: " << fila << " columna: " << columna << "hay que agregar una celula"<<std::endl;
-	// aca deberíamos ver como recorrer la lista de tableros hasta el tablero indicado
+	std::cout << "En  el tablero " << tableroId << " en la fila: " << fila + 1 << " columna: " << columna + 1 << " hay que agregar una celula"<<std::endl;
+	Tablero * tablero = this->string2punteroTablero(tableroId);
+	Parcela & parcelaAsociada = tablero->getParcela(fila, columna);
+	RGB rgbCelula = parcelaAsociada.getRBGparcela();
+	float tasaNacimiento = parcelaAsociada.getfactorNacimiento();
+	Celula * celulaASetear = parcelaAsociada.getCelula();
+	celulaASetear->nacer(tasaNacimiento, &rgbCelula);
+}
+
+Tablero* LecturaArchivoConfiguracion::string2punteroTablero(
+		std::string tableroId) {
+	this->tableros->iniciarCursor();
+	bool encontramosTablero = false;
+	Tablero * tableroBuscado;
+	while((this->tableros->avanzarCursor()) && !encontramosTablero) {
+		if (tableroId == this->tableros->obtenerCursor()->getNombre()) {
+			encontramosTablero = true;
+			tableroBuscado = this->tableros->obtenerCursor();
+		}
+	}
+	return tableroBuscado;
+}
+
+void LecturaArchivoConfiguracion::crearPortal(std::string tableroId, int fila,
+		int columna, std::string tipoDePortal, bool esOrigen) {
+	Tablero * tablero = this->string2punteroTablero(tableroId);
+	Parcela & parcela = tablero->getParcela(fila, columna);
+	Portal portal(esOrigen, tipoDePortal, parcela.getCoordenadaParcela());
+	parcela.setPortal(&portal);
 }
 
 ListaEnlazada<Tablero*>* LecturaArchivoConfiguracion::obtenerListaTableros() {

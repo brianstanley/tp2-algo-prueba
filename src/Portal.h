@@ -9,10 +9,10 @@
 #define PORTAL_H_
 #include "CoordenadaParcela.h"
 
-const char ACTIVO = 'A';
-const char NORMAL = 'N';
-const char PASIVO = 'P';
-const char NOPORTAL = '-';
+const std::string ACTIVO = "A";
+const std::string NORMAL = "N";
+const std::string PASIVO = "P";
+const std::string NOPORTAL = "-";
 
 class CoordenadaParcela;
 /*
@@ -35,7 +35,7 @@ private:
 	 * En el futuro necesitamos usar un puntero para apuntar al portal asociado.
 	 */
 	bool portalOrigen;
-	char tipoDePortal;
+	std::string tipoDePortal;
 	CoordenadaParcela * parcelaAsociada;
 
 	void nacer(RGB* color);
@@ -46,13 +46,13 @@ public:
 	 * pre: -
 	 * post: se crea una instancia de portal
 	 */
-	Portal(bool esPortalDeOrigen, char tipoDelPortal, CoordenadaParcela * parcelaPareja);
+	Portal(bool esPortalDeOrigen, std::string tipoDelPortal, CoordenadaParcela * parcelaPareja);
 
 	/*
 	 * pre: -
 	 * post: se devuelve el tipo de portal
 	 */
-	char getTipoDePortal();
+	std::string getTipoDePortal();
 
 	/*
 	 * pre: -

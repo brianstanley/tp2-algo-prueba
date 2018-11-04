@@ -11,6 +11,7 @@
 #include "Tablero.h"
 #include "Listas/ListaEnlazada.h"
 #include "LecturaArchivoConfiguracion.h"
+#include "TurnoTablero.h"
 
 const std::string EJECUTAR_TURNO = "e";
 const std::string INICIAR_JUEGO = "r";
