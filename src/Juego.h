@@ -22,18 +22,17 @@ const std::string TERMINAR_JUEGO = "t";
 
 class Juego {
 private:
-	ListaEnlazada<Tablero*> tablerosDelJuego;
-	ListaEnlazada<DatosTablero*> datosDelJuego;
+	ListaEnlazada<Tablero*>* tablerosDelJuego;
+	ListaEnlazada<DatosTablero*>* datosDelJuego;
 	//LecturaArchivoConfiguracion lectura;
-	char proximaAccion;
 
 
 public:
 	/*
-	 * pre: recibe los tableros del juego en el estado del turno anterior.
+	 * pre:
 	 * post: Aplica la ejecucion de un turno para cada uno de los tableros cambiando las parcelas.
 	 */
-	void ejecutarTurno(ListaEnlazada<Tablero*>* tablerosJuego);
+	void ejecutarTurno();
 
 	/*
 	 * pre: -
@@ -45,15 +44,20 @@ public:
 	 * pre: este método pide al usuario de ingresar lo que quiere hacer al proximo turno.
 	 * post: devuelve un caracter correspondiente a la proxima accion.
 	 */
-	char pedirProximoTurno();
+	std::string pedirProximoTurno();
 
 	/*
-	 * pre: -
-	 * post: inicia o reinicia el juego seteando los datos a sus valores originales.
+	 * pre: pide al usuario la ruta del archivo de texto valido que contiene los datos para el juego
+	 * post: inicia o reinicia el juego seteando los datos a sus valores originales y armando los tableros,
+	 * parcelas, celulas.
 	 */
 	void iniciarJuego();
 
-
+	/*
+	 * pre: el juego ya esta inciciado
+	 * post: termina el juego y cierra las representaciones BMP de los tableros.
+	 */
+	void terminarJuego();
 
 };
 
