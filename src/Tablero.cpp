@@ -23,12 +23,13 @@ void Tablero::crearParcelas() {
 	for(int i=0; i < this->filas; i++){
 		for(int j=0; j < this->columnas; j++){
 			RGB rgb;
-			CoordenadaParcela coordenadaParcela;
-			coordenadaParcela.setCoordenada(this, i, j);
-			this->parcelas[i][j].setCoordenadaParcela(&coordenadaParcela);
+			CoordenadaParcela * coordenadaParcela = new CoordenadaParcela;
+			coordenadaParcela->setCoordenada(this, i, j);
+			this->parcelas[i][j].setCoordenadaParcela(coordenadaParcela);
 			this->parcelas[i][j].setRBGparcela(rgb);
 		}
 	}
+
 }
 
 Parcela& Tablero::getParcela(int fila, int columna){

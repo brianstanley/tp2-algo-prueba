@@ -10,7 +10,7 @@
 Parcela::Parcela() {
 	this->coordenadaParcela = NULL;
 	this->portal = NULL;
-	this->celula = NULL;
+	this->celula = new Celula;
 	this->factorNacimiento = FACTOR_NACIMIENTO_DEFAULT;
 	this->factorMuerte = FACTOR_MUERTE_DEFAULT;
 	this->RGBParcela = RGBParcela;

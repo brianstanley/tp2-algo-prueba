@@ -17,18 +17,17 @@ class TurnoTablero{
 private:
 	Tablero* tableroAsociado;
 	Cola<ParcelaAfectada*> ParcelasAfectadas;
-
 	/*
 	 * pre: -
 	 * post: se devuelve la cantidad de celulas vivas circundantes a una celula
 	 */
-	int chequearCelulasCircundantes(int fila, int columna, RGB* coloresCeluasVivasCircundantes[]);
+	int chequearCelulasCircundantes(int fila, int columna, RGB* coloresCelulasVivasCircundantes[]);
 
 	/*
 	 * pre: -
 	 * post: se guardan los colores de las celulas circundantes en un arreglo
 	 */
-	void guardarColorCelulasCircundantes(RGB* coloresCeluasVivasCircundantes[], int celulasCircundantesVivas, int fila, int columna);
+	void guardarColorCelulasCircundantes(RGB* coloresCelulasVivasCircundantes[], int celulasCircundantesVivas, int fila, int columna);
 
 	/*
 	 * pre:-
@@ -87,6 +86,16 @@ public:
 	 * post: se ejecutan todas las acciones pertinentes al turno
 	 */
 	void jugarTurno();
+	/*
+	 * pre: -
+	 * post: se devuelve la cantidad de celulas nacidas en un turno
+	 */
+	unsigned int getNacidasEnTurno();
+	/*
+	 * pre: -
+	 * post: se devuelve la cantidad de celulas muertas en un turno
+	 */
+	unsigned int getMuertasEnTurno();
 };
 
 

@@ -7,14 +7,14 @@
 
 #include "Portal.h"
 
-Portal::Portal(bool esPortalDeOrigen, char tipoDelPortal,
+Portal::Portal(bool esPortalDeOrigen, std::string tipoDelPortal,
 		CoordenadaParcela * parcelaPareja) {
 	this->portalOrigen = esPortalDeOrigen;
 	this->tipoDePortal = tipoDelPortal;
 	this->parcelaAsociada = parcelaPareja;
 }
 
-char Portal::getTipoDePortal() {
+std::string Portal::getTipoDePortal() {
 	return this->tipoDePortal;
 }
 
