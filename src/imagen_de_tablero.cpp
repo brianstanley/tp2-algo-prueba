@@ -36,7 +36,7 @@ void ImagenDeTablero::representarCelulaMuerta(int fila, int columna){
 		}
 	}
 }
-
+  
 void ImagenDeTablero::guardarImagenTablero(int numeroDeTurno){
 	std::string turno = "";
 	StringHelper stringHelper;
