@@ -19,8 +19,8 @@ class Parcela;
 class Tablero {
 private:
 	std::string nombre;
-	int filas;
-	int columnas;
+	unsigned int filas;
+	unsigned int columnas;
 	Parcela **parcelas;
 	DatosTablero* datosDelTablero;
 	ImagenDeTablero* BMPDelTablero;
@@ -51,12 +51,12 @@ public:
 	 * pre:-
 	 * post: Devuelve el numero de filas del tablero
 	 */
-	int getFilas();
+	unsigned int getFilas();
 	/*
 	 * pre:-
 	 * post: Devuelve el numero de columnas del tablero
 	 */
-	int getColumnas();
+	unsigned int getColumnas();
 	/*
 	 * pre: -
 	 * post: devuelve un puntero a los datos asociados al tablero
