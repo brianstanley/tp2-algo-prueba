@@ -30,9 +30,9 @@ void ImagenDeTablero::representarCelulaMuerta(int fila, int columna){
 	int columnaDeImagen = columna*FACTOR_AUMENTO_IMAGEN;
 	for(int i = filaDeImagen; i<filaDeImagen+FACTOR_AUMENTO_IMAGEN; i++){
 		for (int j = columnaDeImagen; j<columnaDeImagen+FACTOR_AUMENTO_IMAGEN; j++){
-			this->archivoBmp(columnaDeImagen, filaDeImagen)->Red = (ebmpBYTE) VALORRGBPORDEFECTO;
-			this->archivoBmp(columnaDeImagen, filaDeImagen)->Green = (ebmpBYTE) VALORRGBPORDEFECTO;
-			this->archivoBmp(columnaDeImagen, filaDeImagen)->Blue = (ebmpBYTE) VALORRGBPORDEFECTO;
+			this->archivoBmp(j, i)->Red = (ebmpBYTE) VALORRGBPORDEFECTO;
+			this->archivoBmp(j, i)->Green = (ebmpBYTE) VALORRGBPORDEFECTO;
+			this->archivoBmp(j, i)->Blue = (ebmpBYTE) VALORRGBPORDEFECTO;
 		}
 	}
 }
