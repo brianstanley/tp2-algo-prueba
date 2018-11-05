@@ -96,10 +96,10 @@ void LecturaArchivoConfiguracion::crearCelula(std::string tableroId, int fila, i
 	std::cout << "En  el tablero " << tableroId << " en la fila: " << fila + 1 << " columna: " << columna + 1 << " hay que agregar una celula"<<std::endl;
 	Tablero * tablero = this->string2punteroTablero(tableroId);
 	Parcela & parcelaAsociada = tablero->getParcela(fila, columna);
-	RGB rgbCelula = parcelaAsociada.getRBGparcela();
+	RGB* rgbCelula = parcelaAsociada.getRBGparcela();
 	float tasaNacimiento = parcelaAsociada.getfactorNacimiento();
 	Celula * celulaASetear = parcelaAsociada.getCelula();
-	celulaASetear->nacer(tasaNacimiento, &rgbCelula);
+	celulaASetear->nacer(tasaNacimiento, rgbCelula);
 	tablero->getDatosTablero()->sumarCelulaViva();
 	tablero->getDatosTablero()->reiniciarContadorDeNacidasYMuertasEnUltimoTurno(); //Para que no las cuente como nacidas en primer turno
 }

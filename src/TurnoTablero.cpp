@@ -25,7 +25,7 @@ void TurnoTablero::marcarCambiosARealizarParaSiguienteTurno(){
 }
 
 void TurnoTablero::guardarColorCelulasCircundantes(RGB* coloresCelulasVivasCircundantes[], int celulasCircundantesVivas, int fila, int columna){
-	if (celulasCircundantesVivas < MAX_CANTIDAD_CELULAS_CIRCUNDANTES){
+	if (celulasCircundantesVivas <= MAX_CANTIDAD_CELULAS_CIRCUNDANTES){
 		coloresCelulasVivasCircundantes[celulasCircundantesVivas-1] =
 		this->tableroAsociado->getParcela(fila, columna).getCelula()->getRGB();
 	}
@@ -41,8 +41,8 @@ int TurnoTablero::chequearCelulasCircundantes(unsigned int fila, unsigned int co
 				if (j >= 0 && j < (int)this->tableroAsociado->getColumnas()){
 					bool mismaCelula = (i == (int)fila && j == (int)columna);
 					if(!mismaCelula && this->tableroAsociado->getParcela(i, j).getCelula()->getEstado()){
-						guardarColorCelulasCircundantes(coloresCelulasVivasCircundantes, celulasCircundantesVivas, i, j);
 						celulasCircundantesVivas ++;
+						guardarColorCelulasCircundantes(coloresCelulasVivasCircundantes, celulasCircundantesVivas, i, j);
 					}
 				}
 			}

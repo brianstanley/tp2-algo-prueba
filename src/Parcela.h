@@ -92,7 +92,7 @@ public:
 	 * pre: -
 	 * post: retorna el RGB de la parcela.
 	 */
-	RGB getRBGparcela();
+	RGB* getRBGparcela();
 
 };
 #endif /* SRC_PARCELA_H_ */
