@@ -13,20 +13,20 @@ const int VALORRGBPORDEFECTO = 255;
 
 ImagenDeTablero::ImagenDeTablero(int alto, int ancho, std::string nombre){
 	this->nombreTableroRepresentado = nombre;
-	this->archivoBmp.SetSize(alto, ancho);
+	this->archivoBmp.SetSize(ancho, alto);
 	this->archivoBmp.SetBitDepth(PROFUNDIDADCOLORSTANDAR);
 }
 
 void ImagenDeTablero::representarCelulaViva(int fila, int columna, RGB* colorDeCelula){
-	this->archivoBmp(fila, columna)->Red = (ebmpBYTE) colorDeCelula->getRed();
-	this->archivoBmp(fila, columna)->Green = (ebmpBYTE) colorDeCelula->getGreen();
-	this->archivoBmp(fila, columna)->Blue = (ebmpBYTE) colorDeCelula->getBlue();
+	this->archivoBmp(columna, fila)->Red = (ebmpBYTE) colorDeCelula->getRed();
+	this->archivoBmp(columna, fila)->Green = (ebmpBYTE) colorDeCelula->getGreen();
+	this->archivoBmp(columna, fila)->Blue = (ebmpBYTE) colorDeCelula->getBlue();
 }
 
 void ImagenDeTablero::representarCelulaMuerta(int fila, int columna){
-	this->archivoBmp(fila, columna)->Red = (ebmpBYTE) VALORRGBPORDEFECTO;
-	this->archivoBmp(fila, columna)->Green = (ebmpBYTE) VALORRGBPORDEFECTO;
-	this->archivoBmp(fila, columna)->Blue = (ebmpBYTE) VALORRGBPORDEFECTO;
+	this->archivoBmp(columna, fila)->Red = (ebmpBYTE) VALORRGBPORDEFECTO;
+	this->archivoBmp(columna, fila)->Green = (ebmpBYTE) VALORRGBPORDEFECTO;
+	this->archivoBmp(columna, fila)->Blue = (ebmpBYTE) VALORRGBPORDEFECTO;
 }
 
 void ImagenDeTablero::guardarImagenTablero(int numeroDeTurno){
