@@ -14,9 +14,10 @@ TurnoTablero::TurnoTablero(Tablero* tableroAsociado){
 }
 
 void TurnoTablero::marcarCambiosARealizarParaSiguienteTurno(){
-	for(int fila=0; fila < this->tableroAsociado->getFilas(); fila++){
-		for(int columna=0; columna < this->tableroAsociado->getColumnas(); columna++){
+	for(unsigned int fila=0; fila < this->tableroAsociado->getFilas(); fila++){
+		for(unsigned int columna=0; columna < this->tableroAsociado->getColumnas(); columna++){
 			RGB* coloresCelulasVivasCircundantes [3];
+			unsigned int copiaColumna = columna;
 			int celulasCircundantesVivas = chequearCelulasCircundantes(fila, columna, coloresCelulasVivasCircundantes);
 			decidirVidaOMuerte(celulasCircundantesVivas, this->tableroAsociado->getParcela(fila,columna).getCoordenadaParcela(), coloresCelulasVivasCircundantes);
 		}
@@ -30,12 +31,13 @@ void TurnoTablero::guardarColorCelulasCircundantes(RGB* coloresCelulasVivasCircu
 	}
 }
 
-int TurnoTablero::chequearCelulasCircundantes(int fila, int columna, RGB* coloresCelulasVivasCircundantes[]){
+int TurnoTablero::chequearCelulasCircundantes(unsigned int fila, unsigned int columna, RGB* coloresCelulasVivasCircundantes[]){
 	int celulasCircundantesVivas = 0;
-	for (int i=fila-1; i <fila+1; i++){
-		if (i > 0 && i <= this->tableroAsociado->getFilas()){
-			for(int j=columna-1; j <columna+1; j++){
-				if (j > 0 && j <= this->tableroAsociado->getColumnas()){
+
+	for (unsigned int i=fila-1; i <fila+1; i++){
+		if (i >= 0 && i < this->tableroAsociado->getFilas()){
+			for(unsigned int j = columna-1; j <columna + 1; j++){
+				if (j >= 0 && j < this->tableroAsociado->getColumnas()){
 					bool mismaCelula = (i == fila && j == columna);
 					if(!mismaCelula && this->tableroAsociado->getParcela(i, j).getCelula()->getEstado()){
 						guardarColorCelulasCircundantes(coloresCelulasVivasCircundantes, celulasCircundantesVivas, i, j);
@@ -56,9 +58,10 @@ RGB* TurnoTablero::promedioColoresCelulasCircundantes(RGB* coloresCelulasVivasCi
 }
 
 void TurnoTablero::decidirVidaOMuerte(int celulasVivasCircundantes, CoordenadaParcela* coordenadaEnCuestion, RGB* coloresCelulasVivasCircundantes[]){
-	int x = coordenadaEnCuestion->getCoordenadaX();
-	int y = coordenadaEnCuestion->getCoordenadaY();
-	if (this->tableroAsociado->getParcela(x,y).getCelula()->getEstado()){ //en este caso la celula estaria viva
+	unsigned int x = coordenadaEnCuestion->getCoordenadaX();
+	unsigned int y = coordenadaEnCuestion->getCoordenadaY();
+
+ 	if (this->tableroAsociado->getParcela(x,y).getCelula()->getEstado()){ //en este caso la celula estaria viva
 		if (celulasVivasCircundantes != 3){
 			marcarCelulaMorir(coordenadaEnCuestion); // como no tiene 3 celulas vivas circundantes se marcaria como muerta
 		}

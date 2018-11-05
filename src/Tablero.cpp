@@ -40,11 +40,11 @@ std::string Tablero::getNombre(){
 	return this->nombre;
 }
 
-int Tablero::getFilas(){
+unsigned int Tablero::getFilas(){
 	return this->filas;
 }
 
-int Tablero::getColumnas(){
+unsigned int Tablero::getColumnas(){
 	return this->columnas;
 }
 
@@ -53,8 +53,8 @@ DatosTablero* Tablero::getDatosTablero(){
 }
 
 void Tablero::generarBMP(){
-	for(int fila=0; fila < this->filas; fila++){
-		for(int columna=0; columna < this->columnas; columna++){
+	for(unsigned int fila=0; fila < this->filas; fila++){
+		for(unsigned int columna=0; columna < this->columnas; columna++){
 			if(this->getParcela(fila,columna).getCelula()->getEstado()){
 				this->BMPDelTablero->representarCelulaViva(fila, columna, this->getParcela(fila, columna).getCelula()->getRGB());
 			}
@@ -70,7 +70,7 @@ void Tablero::guardarBMP(int numeroTurno){
 }
 
 Tablero::~Tablero() {
-	for(int i = 0; i < this->filas; i++){
+	for(unsigned int i = 0; i < this->filas; i++){
 		delete[] this->parcelas[i];
 	}
 	delete[] this->parcelas;
