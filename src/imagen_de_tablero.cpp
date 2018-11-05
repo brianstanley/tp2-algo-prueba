@@ -1,32 +1,40 @@
-/*
- * imagen_de_tablero.cpp
- *
- *  Created on: Oct 21, 2018
- *      Author: german
- */
-
 #include "imagen_de_tablero.h"
 
+const int FACTOR_AUMENTO_IMAGEN = 30;
 const std::string GUION_BAJO = "_";
 const int PROFUNDIDADCOLORSTANDAR = 8;
 const int VALORRGBPORDEFECTO = 255;
 
 ImagenDeTablero::ImagenDeTablero(int alto, int ancho, std::string nombre){
 	this->nombreTableroRepresentado = nombre;
-	this->archivoBmp.SetSize(ancho, alto);
+	int altoDeImagen = alto*FACTOR_AUMENTO_IMAGEN;
+	int anchoDeImagen = ancho*FACTOR_AUMENTO_IMAGEN;
+	this->archivoBmp.SetSize(anchoDeImagen, altoDeImagen);
 	this->archivoBmp.SetBitDepth(PROFUNDIDADCOLORSTANDAR);
 }
 
 void ImagenDeTablero::representarCelulaViva(int fila, int columna, RGB* colorDeCelula){
-	this->archivoBmp(columna, fila)->Red = (ebmpBYTE) colorDeCelula->getRed();
-	this->archivoBmp(columna, fila)->Green = (ebmpBYTE) colorDeCelula->getGreen();
-	this->archivoBmp(columna, fila)->Blue = (ebmpBYTE) colorDeCelula->getBlue();
+	int filaDeImagen = fila*FACTOR_AUMENTO_IMAGEN;
+	int columnaDeImagen = columna*FACTOR_AUMENTO_IMAGEN;
+	for(int i = filaDeImagen; i<filaDeImagen+FACTOR_AUMENTO_IMAGEN; i++){
+		for (int j = columnaDeImagen; j<columnaDeImagen+FACTOR_AUMENTO_IMAGEN; j++){
+			this->archivoBmp(j, i)->Red = (ebmpBYTE) colorDeCelula->getRed();
+			this->archivoBmp(j, i)->Green = (ebmpBYTE) colorDeCelula->getGreen();
+			this->archivoBmp(j, i)->Blue = (ebmpBYTE) colorDeCelula->getBlue();
+		}
+	}
 }
 
 void ImagenDeTablero::representarCelulaMuerta(int fila, int columna){
-	this->archivoBmp(columna, fila)->Red = (ebmpBYTE) VALORRGBPORDEFECTO;
-	this->archivoBmp(columna, fila)->Green = (ebmpBYTE) VALORRGBPORDEFECTO;
-	this->archivoBmp(columna, fila)->Blue = (ebmpBYTE) VALORRGBPORDEFECTO;
+	int filaDeImagen = fila*FACTOR_AUMENTO_IMAGEN;
+	int columnaDeImagen = columna*FACTOR_AUMENTO_IMAGEN;
+	for(int i = filaDeImagen; i<filaDeImagen+FACTOR_AUMENTO_IMAGEN; i++){
+		for (int j = columnaDeImagen; j<columnaDeImagen+100; j++){
+			this->archivoBmp(columnaDeImagen, filaDeImagen)->Red = (ebmpBYTE) VALORRGBPORDEFECTO;
+			this->archivoBmp(columnaDeImagen, filaDeImagen)->Green = (ebmpBYTE) VALORRGBPORDEFECTO;
+			this->archivoBmp(columnaDeImagen, filaDeImagen)->Blue = (ebmpBYTE) VALORRGBPORDEFECTO;
+		}
+	}
 }
 
 void ImagenDeTablero::guardarImagenTablero(int numeroDeTurno){
