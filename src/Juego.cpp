@@ -50,8 +50,12 @@ void Juego::ejecutarTurno() {
 			Tablero * tablero = tablerosDelJuego->obtenerCursor();
 			TurnoTablero turno(tablero);
 			turno.jugarTurno();
-			DatosTablero * datosTablero = tablero->getDatosTablero();
-			std::cout  << "Hasta aca un turno.: " << datosTablero->getTurno() << std::endl;
+		}
+		tablerosDelJuego->iniciarCursor();
+		while(tablerosDelJuego->avanzarCursor()){
+			Tablero * tablero = tablerosDelJuego->obtenerCursor();
+			tablero->getDatosTablero()->mostrarDatosTablero();
+			tablero->getDatosTablero()->reiniciarContadorDeNacidasYMuertasEnUltimoTurno();
 		}
 	}
 }

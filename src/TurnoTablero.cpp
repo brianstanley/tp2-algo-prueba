@@ -33,12 +33,13 @@ void TurnoTablero::guardarColorCelulasCircundantes(RGB* coloresCelulasVivasCircu
 
 int TurnoTablero::chequearCelulasCircundantes(unsigned int fila, unsigned int columna, RGB* coloresCelulasVivasCircundantes[]){
 	int celulasCircundantesVivas = 0;
-
-	for (unsigned int i=fila-1; i <fila+1; i++){
-		if (i >= 0 && i < this->tableroAsociado->getFilas()){
-			for(unsigned int j = columna-1; j <columna + 1; j++){
-				if (j >= 0 && j < this->tableroAsociado->getColumnas()){
-					bool mismaCelula = (i == fila && j == columna);
+	int filaAchequear = (int)fila;
+	int columnaAchequear = (int)columna;
+	for (int i=filaAchequear-1; i <=filaAchequear+1; i++){
+		if (i >= 0 && i < (int)this->tableroAsociado->getFilas()){
+			for(int j = columnaAchequear-1; j <=columnaAchequear + 1; j++){
+				if (j >= 0 && j < (int)this->tableroAsociado->getColumnas()){
+					bool mismaCelula = (i == (int)fila && j == (int)columna);
 					if(!mismaCelula && this->tableroAsociado->getParcela(i, j).getCelula()->getEstado()){
 						guardarColorCelulasCircundantes(coloresCelulasVivasCircundantes, celulasCircundantesVivas, i, j);
 						celulasCircundantesVivas ++;
