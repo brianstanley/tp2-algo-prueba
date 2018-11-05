@@ -13,7 +13,7 @@
 class Celula{
 private:
 	bool estadoCelula;
-	int energiaCelula;
+	float energiaCelula;
 	RGB* RGBCelula;
 public:
 	/*pre: -
