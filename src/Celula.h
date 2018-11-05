@@ -25,10 +25,13 @@ public:
 	 * factor de nacimiento de la parcela y con el RGB de la parcela
 	 */
 	void nacer(float factorNacimientoParcela, RGB* RGBParcela);
+
 	/*pre: -
-	 * post: se setea el estado de la celula a muerto y la energia a 0
-	 */
-	void morir();
+	* post: se le resta a la celula la energia correspondiente al factor de muerte de
+	* su parcela asociada. si la celula muere se devuelve true, si no false
+	*/
+	bool restarEnergia(float factorMuerteParcela);
+
 	/*pre: -
 	 * post: se devuelve el RGB de la celula
 	 */

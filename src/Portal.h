@@ -38,9 +38,9 @@ private:
 	std::string tipoDePortal;
 	CoordenadaParcela * parcelaAsociada;
 
-	void nacer(RGB* color);
+	void nacer(RGB* color, float factorNacimientoOrigen);
 
-	void morir();
+	void morir(float factorMuerteOrigen);
 public:
 	/*
 	 * pre: -
@@ -58,7 +58,7 @@ public:
 	 * pre: -
 	 * post: se acciona el portal correspondiente
 	 */
-	void accionarPortal(bool nace, RGB* color);
+	void accionarPortal(bool nace, RGB* color, float factorNacimientoOrigen, float factorMuerteOrigen);
 };
 
 #endif /* PORTAL_H_ */
