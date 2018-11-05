@@ -64,8 +64,8 @@ void Parcela::setRBGparcela(RGB RGBParcela) {
 	this->RGBParcela = RGBParcela;
 }
 
-RGB Parcela::getRBGparcela() {
-	return this->RGBParcela;
+RGB* Parcela::getRBGparcela() {
+	return &this->RGBParcela;
 }
 
 
