@@ -55,7 +55,7 @@ void Juego::ejecutarTurno() {
 		while(tablerosDelJuego->avanzarCursor()){
 			Tablero * tablero = tablerosDelJuego->obtenerCursor();
 			tablero->getDatosTablero()->mostrarDatosTablero();
-			tablero->getDatosTablero()->reiniciarContadorNacidasMuertasEnUltimoTurno();
+			tablero->getDatosTablero()->reiniciarContadorDeNacidasYMuertasEnUltimoTurno();
 		}
 	}
 }

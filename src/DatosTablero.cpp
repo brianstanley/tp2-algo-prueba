@@ -82,7 +82,7 @@ unsigned int DatosTablero::getMuertasEnUltimoTurno(){
 	return this->muertasEnUltimoTurno;
 }
 
-void DatosTablero::reiniciarContadorNacidasMuertasEnUltimoTurno(){
+void DatosTablero::reiniciarContadorDeNacidasYMuertasEnUltimoTurno(){
 	this->nacidasEnUltimoTurno = 0;
 	this->muertasEnUltimoTurno = 0;
 }

@@ -101,7 +101,7 @@ void LecturaArchivoConfiguracion::crearCelula(std::string tableroId, int fila, i
 	Celula * celulaASetear = parcelaAsociada.getCelula();
 	celulaASetear->nacer(tasaNacimiento, &rgbCelula);
 	tablero->getDatosTablero()->sumarCelulaViva();
-	tablero->getDatosTablero()->reiniciarContadorNacidasMuertasEnUltimoTurno(); //Para que no las cuente como nacidas en primer turno
+	tablero->getDatosTablero()->reiniciarContadorDeNacidasYMuertasEnUltimoTurno(); //Para que no las cuente como nacidas en primer turno
 }
 
 Tablero* LecturaArchivoConfiguracion::string2punteroTablero(

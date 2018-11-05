@@ -119,7 +119,7 @@ public:
 	 * el turno, por eso hace falta un metodo que las resetee a cero cada vez que se comienza un nuevo turno
 	 * post: Reinicia el contador de nacidasEnUltimoTurno y muertesEnUltimoTurno
 	 */
-	void reiniciarContadorNacidasMuertasEnUltimoTurno();
+	void reiniciarContadorDeNacidasYMuertasEnUltimoTurno();
 
 	/*
 	 * pre: -
