@@ -7,7 +7,7 @@
 
 #include "DatosTablero.h"
 
-DatosTablero::DatosTablero() {
+DatosTablero::DatosTablero(Tablero* tableroAsociado) {
 	this->cantidadCelulasVivas = 0;
 	this->muertasTotal = 0;
 	this->nacidasTotal = 0;
@@ -18,6 +18,7 @@ DatosTablero::DatosTablero() {
 	this->congeladoTurnoActual = true;
 	this->nacidasEnUltimoTurno = 0;
 	this->muertasEnUltimoTurno = 0;
+	this->tableroAsociado = tableroAsociado;
 }
 
 unsigned int DatosTablero::getCantidadCelulasVivas(){
@@ -40,10 +41,11 @@ unsigned int DatosTablero::getMuertasTotal(){
 	return this->muertasTotal;
 }
 float DatosTablero::getPromedioNacidas(){
-
+	this->promedioNacidas = this->nacidasTotal/this->numeroTurno;
 	return this->promedioNacidas;
 }
 float DatosTablero::getPromedioMuertas(){
+	this->promedioMuertas = this->muertasTotal/this->numeroTurno;
 	return this->promedioMuertas;
 }
 
@@ -83,4 +85,20 @@ unsigned int DatosTablero::getMuertasEnUltimoTurno(){
 void DatosTablero::reiniciarContadorNacidasMuertasEnUltimoTurno(){
 	this->nacidasEnUltimoTurno = 0;
 	this->muertasEnUltimoTurno = 0;
+}
+
+void DatosTablero::mostrarDatosTablero(){
+	std::cout<< "tablero: " << this->tableroAsociado->getNombre() << ", turno numero " << this->numeroTurno << std::endl;
+	std::cout<< "celulas vivas: " << this->cantidadCelulasVivas << std::endl;
+	std::cout<< "celulas nacidas en total: " << this->nacidasTotal << std::endl;
+	std::cout<< "celulas muertas en total: " << this->muertasTotal << std::endl;
+	std::cout<< "celulas nacidas en el turno actual: " << this->nacidasEnUltimoTurno << std::endl;
+	std::cout<< "celulas muertas en el turno actual: " << this->muertasEnUltimoTurno << std::endl;
+	std::cout<< "promedio de nacimientos: " << this->getPromedioNacidas() << std::endl;
+	std::cout<< "promedio de muertes: " << this->getPromedioMuertas() << std::endl;
+	if (this->estaCongelado()){
+		std::cout<< "El tablero se encuentra congelado"<< std::endl;
+	}
+	std::cout << std::endl;
+
 }

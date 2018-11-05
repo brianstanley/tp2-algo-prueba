@@ -8,6 +8,11 @@
 #ifndef SRC_DATOSTABLERO_H_
 #define SRC_DATOSTABLERO_H_
 
+#include "Tablero.h"
+
+class Tablero;
+
+
 class DatosTablero {
 private:
 	unsigned int cantidadCelulasVivas;
@@ -20,6 +25,7 @@ private:
 	unsigned int numeroTurno;
 	unsigned int nacidasEnUltimoTurno;
 	unsigned int muertasEnUltimoTurno;
+	Tablero* tableroAsociado;
 
 public:
 	/*
@@ -27,7 +33,7 @@ public:
 	 * considera congelado hasta que se pruebe lo conntrario, lease, alguna celula nazca o muera
 	 * post:inicializa una instancia de DatosPartida con los valores en 0
 	 */
-	DatosTablero();
+	DatosTablero(Tablero* tableroAsociado);
 	/*
 	 *pre: -
 	 *post: devueleve el valor de la cantidadCelulasVivas
@@ -114,5 +120,11 @@ public:
 	 * post: Reinicia el contador de nacidasEnUltimoTurno y muertesEnUltimoTurno
 	 */
 	void reiniciarContadorNacidasMuertasEnUltimoTurno();
+
+	/*
+	 * pre: -
+	 * post: muestran por pantalla los datos del tablero en cuestion
+	 */
+	void mostrarDatosTablero();
 };
 #endif /* SRC_DATOSTABLERO_H_ */

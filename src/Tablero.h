@@ -15,6 +15,7 @@
 #include "imagen_de_tablero.h"
 
 class Parcela;
+class DatosTablero;
 
 class Tablero {
 private:

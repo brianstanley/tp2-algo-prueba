@@ -15,7 +15,7 @@ Tablero::Tablero(std::string nombre, int filas, int columnas) {
 	for(int i = 0; i < this->filas; i++){
 		this->parcelas[i] = new Parcela[this->columnas];
 	}
-	datosDelTablero = new DatosTablero();
+	datosDelTablero = new DatosTablero(this);
 	BMPDelTablero = new ImagenDeTablero(filas, columnas, nombre);
 }
 
