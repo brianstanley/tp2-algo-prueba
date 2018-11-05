@@ -41,8 +41,8 @@ int TurnoTablero::chequearCelulasCircundantes(unsigned int fila, unsigned int co
 				if (j >= 0 && j < (int)this->tableroAsociado->getColumnas()){
 					bool mismaCelula = (i == (int)fila && j == (int)columna);
 					if(!mismaCelula && this->tableroAsociado->getParcela(i, j).getCelula()->getEstado()){
-						guardarColorCelulasCircundantes(coloresCelulasVivasCircundantes, celulasCircundantesVivas, i, j);
 						celulasCircundantesVivas ++;
+						guardarColorCelulasCircundantes(coloresCelulasVivasCircundantes, celulasCircundantesVivas, i, j);
 					}
 				}
 			}
