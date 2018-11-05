@@ -88,6 +88,11 @@ public:
 	void jugarTurno();
 	/*
 	 * pre: -
+	 * post: Se guarda el archivo BMP del tablero
+	 */
+	void guardarBMP();
+	/*
+	 * pre: -
 	 * post: se devuelve la cantidad de celulas nacidas en un turno
 	 */
 	unsigned int getNacidasEnTurno();

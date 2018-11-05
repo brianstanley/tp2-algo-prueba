@@ -29,8 +29,11 @@ void Juego::iniciarJuego() {
 	while(tableros->avanzarCursor()) {
 		DatosTablero * datosDelTablero = tableros->obtenerCursor()->getDatosTablero();
 		datos->agregar(datosDelTablero);
+		TurnoTablero turno(tableros->obtenerCursor());
+		turno.guardarBMP();
 	}
 	this->datosDelJuego = datos;
+
 }
 
 void Juego::terminarJuego() {
