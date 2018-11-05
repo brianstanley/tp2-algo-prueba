@@ -18,15 +18,15 @@ ImagenDeTablero::ImagenDeTablero(int alto, int ancho, std::string nombre){
 }
 
 void ImagenDeTablero::representarCelulaViva(int fila, int columna, RGB* colorDeCelula){
-	this->archivoBmp(fila, columna)->Red = colorDeCelula->getRed();
-	this->archivoBmp(fila, columna)->Green = colorDeCelula->getGreen();
-	this->archivoBmp(fila, columna)->Blue = colorDeCelula->getBlue();
+	this->archivoBmp(fila, columna)->Red = (ebmpBYTE) colorDeCelula->getRed();
+	this->archivoBmp(fila, columna)->Green = (ebmpBYTE) colorDeCelula->getGreen();
+	this->archivoBmp(fila, columna)->Blue = (ebmpBYTE) colorDeCelula->getBlue();
 }
 
 void ImagenDeTablero::representarCelulaMuerta(int fila, int columna){
-	this->archivoBmp(fila, columna)->Red = VALORRGBPORDEFECTO;
-	this->archivoBmp(fila, columna)->Green = VALORRGBPORDEFECTO;
-	this->archivoBmp(fila, columna)->Blue = VALORRGBPORDEFECTO;
+	this->archivoBmp(fila, columna)->Red = (ebmpBYTE) VALORRGBPORDEFECTO;
+	this->archivoBmp(fila, columna)->Green = (ebmpBYTE) VALORRGBPORDEFECTO;
+	this->archivoBmp(fila, columna)->Blue = (ebmpBYTE) VALORRGBPORDEFECTO;
 }
 
 void ImagenDeTablero::guardarImagenTablero(int numeroDeTurno){
