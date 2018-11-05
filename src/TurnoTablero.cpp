@@ -116,7 +116,6 @@ void TurnoTablero::concretarCambios(){
 
 void TurnoTablero::plasmarCambiosEnArchivo(){
 	this->tableroAsociado->generarBMP();
-	std::cout << "el turno es" << this->tableroAsociado->getDatosTablero()->getTurno() << std::endl;
 	this->tableroAsociado->guardarBMP(this->tableroAsociado->getDatosTablero()->getTurno());
 }
 
