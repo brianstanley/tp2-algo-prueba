@@ -1,4 +1,4 @@
-Tablero table1 20 30
+Tablero table1 50 100
 Tablero table2 30 40
 Portal table1 table2 3 4 10 20 activo
 Parcela table1 5 6 200 200 200 0.1 0.1
@@ -6,11 +6,13 @@ Parcela table1 7 5 250 25 25 0.5 0.5
 Parcela table1 14 14 255 25 50 0.5 0.3
 Parcela table2 5 6 4 2 180 0.2 0.2
 Parcela table2 15 23 4 2 180 0.5 0.2
-Celula table1 10 10
+Celula table1 10 100
+Celula table1 11 100
+Celula table1 12 100
 Celula table1 5 6
 Celula table1 7 5
 Celula table1 14 14
 Celula table1 18 29
-Celula table2 30 6
+Celula table2 30 15
 Celula table2 5 6
 Celula table2 15 23
