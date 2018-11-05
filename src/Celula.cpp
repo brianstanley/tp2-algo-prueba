@@ -13,7 +13,7 @@ const bool VIVA = true;
 Celula::Celula() {
 	this->estadoCelula = MUERTA;
 	this->energiaCelula = 0;
-	this->RGBCelula = 0;
+	this->RGBCelula = new RGB;
 }
 
 bool Celula::restarEnergia(float factorMuerteParcela) {
