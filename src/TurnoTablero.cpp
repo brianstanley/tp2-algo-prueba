@@ -25,7 +25,7 @@ void TurnoTablero::marcarCambiosARealizarParaSiguienteTurno(){
 }
 
 void TurnoTablero::guardarColorCelulasCircundantes(RGB* coloresCelulasVivasCircundantes[], int celulasCircundantesVivas, int fila, int columna){
-	if (celulasCircundantesVivas < MAX_CANTIDAD_CELULAS_CIRCUNDANTES){
+	if (celulasCircundantesVivas <= MAX_CANTIDAD_CELULAS_CIRCUNDANTES){
 		coloresCelulasVivasCircundantes[celulasCircundantesVivas-1] =
 		this->tableroAsociado->getParcela(fila, columna).getCelula()->getRGB();
 	}
