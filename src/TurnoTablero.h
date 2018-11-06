@@ -10,6 +10,7 @@
 
 #include "Tablero.h"
 #include "Listas/Cola.h"
+#include "Listas/ListaEnlazada.h"
 #include "ParcelaAfectada.h"
 
 
@@ -17,6 +18,7 @@ class TurnoTablero{
 private:
 	Tablero* tableroAsociado;
 	Cola<ParcelaAfectada*> ParcelasAfectadas;
+	ListaEnlazada<ParcelaAfectada*> cambiosPorPortal;
 	/*
 	 * pre: -
 	 * post: se devuelve la cantidad de celulas vivas circundantes a una celula
@@ -101,6 +103,12 @@ public:
 	 * post: se devuelve la cantidad de celulas muertas en un turno
 	 */
 	unsigned int getMuertasEnTurno();
+
+	/**
+	 * pre: -
+	 * post: devuelve las parcelas afectadas por un portal portal
+	 */
+	ListaEnlazada<ParcelaAfectada*> &  getCambiosPorPortal();
 };
 
 

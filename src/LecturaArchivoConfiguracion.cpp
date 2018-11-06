@@ -126,8 +126,6 @@ void LecturaArchivoConfiguracion::crearPortales(std::string tableroId, std::stri
 	Parcela & parcelaDestino = tableroDeDestino->getParcela(filaDestino, columnaDestino);
 
 	Portal * portalOrigen = new Portal(true, tipoDePortal, parcelaDestino.getCoordenadaParcela());
-
-
 	Portal * portalDestino = new Portal(false, tipoDePortal, parcelaOrigen.getCoordenadaParcela());
 
 	parcelaOrigen.setPortal(portalOrigen);

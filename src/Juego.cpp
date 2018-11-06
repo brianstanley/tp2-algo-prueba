@@ -43,14 +43,32 @@ void Juego::terminarJuego() {
 }
 
 void Juego::ejecutarTurno() {
-	std::cout << "Entro";
 	tablerosDelJuego->iniciarCursor();
 	if (!tablerosDelJuego->estaVacia()) {
+		TurnoTablero ** turnos = new TurnoTablero*[10];
+		int topeTurnos = 0;
 		while(tablerosDelJuego->avanzarCursor()) {
 			Tablero * tablero = tablerosDelJuego->obtenerCursor();
-			TurnoTablero turno(tablero);
-			turno.jugarTurno();
+			TurnoTablero * turno = new TurnoTablero(tablero);
+			turno->jugarTurno();
+			turnos[topeTurnos] = turno;
+			topeTurnos++;
 		}
+		tablerosDelJuego->iniciarCursor();
+		for(int i = 0; i < topeTurnos; i++) {
+			TurnoTablero * turno = turnos[i];
+			ListaEnlazada<ParcelaAfectada*> cambiosPorPortal = turno->getCambiosPorPortal();
+			cambiosPorPortal.iniciarCursor();
+			while(cambiosPorPortal.avanzarCursor()) {
+				ParcelaAfectada* CambioARealizar = cambiosPorPortal.obtenerCursor();
+				float factorMuertetoOrigen = CambioARealizar->getParcela().getfactorMuerte();
+				float factorNacimientoOrigen = CambioARealizar->getParcela().getfactorNacimiento();
+				bool nacer = CambioARealizar->naceLaCelula();
+				CambioARealizar->getParcela().getPortal()->accionarPortal(nacer, CambioARealizar->getColorPromedio(), factorNacimientoOrigen, factorMuertetoOrigen);
+			}
+			turno->guardarBMP();
+		}
+		delete [] turnos;
 		tablerosDelJuego->iniciarCursor();
 		while(tablerosDelJuego->avanzarCursor()){
 			Tablero * tablero = tablerosDelJuego->obtenerCursor();
