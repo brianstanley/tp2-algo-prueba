@@ -54,8 +54,7 @@ void LecturaArchivoConfiguracion::procesarPortal(std::string tableroId, std::ifs
 	archivoDeConfiguracion >> columnaDestino;
 	archivoDeConfiguracion >> tipoPortal;
 	//archivoDeConfiguracion >> esPortalOrigen;
-	this->crearPortal(tableroId, filaOrigen - 1, columnaOrigen - 1, tipoPortal, 1);
-	this->crearPortal(tableroDestino, filaDestino - 1, columnaDestino - 1, tipoPortal, 0);
+	crearPortales(tableroId, tableroDestino, filaOrigen - 1, columnaOrigen - 1, filaDestino - 1, columnaDestino - 1, tipoPortal);
 }
 
 void LecturaArchivoConfiguracion::procesarParcela(std::string tableroId, std::ifstream& archivoDeConfiguracion) {
@@ -118,12 +117,21 @@ Tablero* LecturaArchivoConfiguracion::string2punteroTablero(
 	return tableroBuscado;
 }
 
-void LecturaArchivoConfiguracion::crearPortal(std::string tableroId, int fila,
-		int columna, std::string tipoDePortal, bool esOrigen) {
-	Tablero * tablero = this->string2punteroTablero(tableroId);
-	Parcela & parcela = tablero->getParcela(fila, columna);
-	Portal portal(esOrigen, tipoDePortal, parcela.getCoordenadaParcela());
-	parcela.setPortal(&portal);
+void LecturaArchivoConfiguracion::crearPortales(std::string tableroId, std::string tableroDestino, int filaOrigen,
+		int columnaOrigen, int filaDestino, int columnaDestino, std::string tipoDePortal) {
+	Tablero * tableroOrigen = this->string2punteroTablero(tableroId);
+	Tablero * tableroDeDestino = this->string2punteroTablero(tableroDestino);
+
+	Parcela & parcelaOrigen = tableroOrigen->getParcela(filaOrigen, columnaOrigen);
+	Parcela & parcelaDestino = tableroDeDestino->getParcela(filaDestino, columnaDestino);
+
+	Portal * portalOrigen = new Portal(true, tipoDePortal, parcelaDestino.getCoordenadaParcela());
+
+
+	Portal * portalDestino = new Portal(false, tipoDePortal, parcelaOrigen.getCoordenadaParcela());
+
+	parcelaOrigen.setPortal(portalOrigen);
+	parcelaDestino.setPortal(portalDestino);
 }
 
 ListaEnlazada<Tablero*>* LecturaArchivoConfiguracion::obtenerListaTableros() {

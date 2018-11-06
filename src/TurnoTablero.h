@@ -16,7 +16,7 @@
 class TurnoTablero{
 private:
 	Tablero* tableroAsociado;
-	Cola<ParcelaAfectada*> ParcelasAfectadas;
+	Cola<ParcelaAfectada*> * ParcelasAfectadasTurno;
 	/*
 	 * pre: -
 	 * post: se devuelve la cantidad de celulas vivas circundantes a una celula
@@ -65,7 +65,7 @@ private:
 	 * pre: -
 	 * post: se ejecutan las muertes y nacimientos de las celulas necesarios
 	 */
-	void concretarCambios();
+//	void concretarCambios();
 
 	/*
 	 * pre: -
@@ -101,6 +101,8 @@ public:
 	 * post: se devuelve la cantidad de celulas muertas en un turno
 	 */
 	unsigned int getMuertasEnTurno();
+
+	Cola<ParcelaAfectada*> * obtenerColaDeCambios();
 };
 
 

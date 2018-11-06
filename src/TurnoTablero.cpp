@@ -11,6 +11,7 @@ const int MAX_CANTIDAD_CELULAS_CIRCUNDANTES = 3;
 
 TurnoTablero::TurnoTablero(Tablero* tableroAsociado){
 	this->tableroAsociado = tableroAsociado;
+	this->ParcelasAfectadasTurno = NULL;
 }
 
 void TurnoTablero::marcarCambiosARealizarParaSiguienteTurno(){
@@ -61,14 +62,12 @@ RGB* TurnoTablero::promedioColoresCelulasCircundantes(RGB* coloresCelulasVivasCi
 void TurnoTablero::decidirVidaOMuerte(int celulasVivasCircundantes, CoordenadaParcela* coordenadaEnCuestion, RGB* coloresCelulasVivasCircundantes[]){
 	unsigned int x = coordenadaEnCuestion->getCoordenadaX();
 	unsigned int y = coordenadaEnCuestion->getCoordenadaY();
-
- 	if (this->tableroAsociado->getParcela(x,y).getCelula()->getEstado()){ //en este caso la celula estaria viva
-		if (celulasVivasCircundantes != 3){
-			marcarCelulaMorir(coordenadaEnCuestion); // como no tiene 3 celulas vivas circundantes se marcaria como muerta
-		}
+	bool estaViva = this->tableroAsociado->getParcela(x,y).getCelula()->getEstado();
+ 	if (estaViva && (celulasVivasCircundantes < 2 || celulasVivasCircundantes > 3)){ //en este caso la celula estaria viva
+ 		marcarCelulaMorir(coordenadaEnCuestion); // como no tiene 3 celulas vivas circundantes se marcaria como muerta
 	}
 	else{ // en este caso la celula estaria muerta
-		if (celulasVivasCircundantes == 3){
+		if (!estaViva && (celulasVivasCircundantes == 3)){
 			RGB* colorParaCelulaANacer = promedioColoresCelulasCircundantes(coloresCelulasVivasCircundantes);
 			marcarCelulaNacer(coordenadaEnCuestion, colorParaCelulaANacer);
 		}
@@ -77,43 +76,43 @@ void TurnoTablero::decidirVidaOMuerte(int celulasVivasCircundantes, CoordenadaPa
 
 void TurnoTablero::marcarCelulaMorir(CoordenadaParcela* coordenadaEnCuestion){
 	ParcelaAfectada* celulaAMorir = new ParcelaAfectada(coordenadaEnCuestion);
-	this->ParcelasAfectadas.acolar(celulaAMorir);
+	this->ParcelasAfectadasTurno->acolar(celulaAMorir);
 }
 
 void TurnoTablero::marcarCelulaNacer(CoordenadaParcela* coordenadaEnCuestion, RGB* colorCelulaANacer){
 	ParcelaAfectada* CelulaANacer = new ParcelaAfectada(coordenadaEnCuestion, colorCelulaANacer);
-	this->ParcelasAfectadas.acolar(CelulaANacer);
+	this->ParcelasAfectadasTurno->acolar(CelulaANacer);
 }
 
-void TurnoTablero::concretarCambios(){
-	this->tableroAsociado->getDatosTablero()->setCongeladoTurnoActual(true);
-	while (! this->ParcelasAfectadas.estaVacia()){
-		ParcelaAfectada* CambioARealizar = this->ParcelasAfectadas.desacolar();
-		if (CambioARealizar->naceLaCelula()){
-			float factorNacimientoParcela = CambioARealizar->getParcela().getfactorNacimiento();
-			CambioARealizar->getParcela().getCelula()->nacer(factorNacimientoParcela, CambioARealizar->getColorPromedio());
-			this->tableroAsociado->getDatosTablero()->sumarCelulaViva();
-		}
-		else{
-			float factorMuerteParcelaAsociada = CambioARealizar->getParcela().getfactorMuerte();
-			bool murio = CambioARealizar->getParcela().getCelula()->restarEnergia(factorMuerteParcelaAsociada);
-			if (murio){
-				this->tableroAsociado->getDatosTablero()->sumarCelulaMuerta();
-			}
-		}
-		if (CambioARealizar->hayPortal()){
-			float factorMuertetoOrigen = CambioARealizar->getParcela().getfactorMuerte();
-			float factorNacimientoOrigen = CambioARealizar->getParcela().getfactorNacimiento();
-			bool nacer = CambioARealizar->naceLaCelula();
-			CambioARealizar->getParcela().getPortal()->accionarPortal(nacer, CambioARealizar->getColorPromedio(), factorNacimientoOrigen, factorMuertetoOrigen);
-		}
-
-	}
-	if(this->tableroAsociado->getDatosTablero()->getNacidasEnUltimoTurno() != 0 ||
-			this->tableroAsociado->getDatosTablero()->getMuertasEnUltimoTurno() != 0){
-		this->tableroAsociado->getDatosTablero()->setCongeladoTurnoActual(false);
-	}
-}
+//void TurnoTablero::concretarCambios(){
+//	this->tableroAsociado->getDatosTablero()->setCongeladoTurnoActual(true);
+//	while (! this->ParcelasAfectadasTurno->estaVacia()){
+//		ParcelaAfectada* CambioARealizar = this->ParcelasAfectadasTurno->desacolar();
+//		if (CambioARealizar->naceLaCelula()){
+//			float factorNacimientoParcela = CambioARealizar->getParcela().getfactorNacimiento();
+//			CambioARealizar->getParcela().getCelula()->nacer(factorNacimientoParcela, CambioARealizar->getColorPromedio());
+//			this->tableroAsociado->getDatosTablero()->sumarCelulaViva();
+//		}
+//		else{
+//			float factorMuerteParcelaAsociada = CambioARealizar->getParcela().getfactorMuerte();
+//			bool murio = CambioARealizar->getParcela().getCelula()->restarEnergia(factorMuerteParcelaAsociada);
+//			if (murio){
+//				this->tableroAsociado->getDatosTablero()->sumarCelulaMuerta();
+//			}
+//		}
+//		if (CambioARealizar->hayPortal()){
+//			float factorMuertetoOrigen = CambioARealizar->getParcela().getfactorMuerte();
+//			float factorNacimientoOrigen = CambioARealizar->getParcela().getfactorNacimiento();
+//			bool nacer = CambioARealizar->naceLaCelula();
+//			CambioARealizar->getParcela().getPortal()->accionarPortal(nacer, CambioARealizar->getColorPromedio(), factorNacimientoOrigen, factorMuertetoOrigen);
+//		}
+//
+//	}
+//	if(this->tableroAsociado->getDatosTablero()->getNacidasEnUltimoTurno() != 0 ||
+//			this->tableroAsociado->getDatosTablero()->getMuertasEnUltimoTurno() != 0){
+//		this->tableroAsociado->getDatosTablero()->setCongeladoTurnoActual(false);
+//	}
+//}
 
 void TurnoTablero::plasmarCambiosEnArchivo(){
 	this->tableroAsociado->generarBMP();
@@ -123,10 +122,14 @@ void TurnoTablero::plasmarCambiosEnArchivo(){
 void TurnoTablero::jugarTurno(){
 	this->tableroAsociado->getDatosTablero()->avanzarUnTurno();
 	this->marcarCambiosARealizarParaSiguienteTurno();
-	this->concretarCambios();
-	this->guardarBMP();
+//	this->concretarCambios();
+//	this->guardarBMP();
 }
 
 void TurnoTablero::guardarBMP(){
 	this->plasmarCambiosEnArchivo();
+}
+
+Cola<ParcelaAfectada*> * TurnoTablero::obtenerColaDeCambios() {
+	return this->ParcelasAfectadasTurno;
 }

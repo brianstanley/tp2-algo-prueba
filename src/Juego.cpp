@@ -42,6 +42,53 @@ void Juego::terminarJuego() {
 	delete this->tablerosDelJuego;
 }
 
+void Juego::pasarCambios(TurnoTablero turno) {
+	Cola<ParcelaAfectada*> * colaDelTurno = turno.obtenerColaDeCambios();
+	while (!colaDelTurno->estaVacia()){
+		this->ParcelasAfectadas->acolar(colaDelTurno->desacolar());
+	}
+}
+
+
+void Juego::concretarCambios(){
+//	this->tableroAsociado->getDatosTablero()->setCongeladoTurnoActual(true);
+	Tablero * tableroLeido = NULL;
+	while (! this->ParcelasAfectadas->estaVacia()){
+		ParcelaAfectada* CambioARealizar = this->ParcelasAfectadas->desacolar();
+		Tablero * tableroAsociado = CambioARealizar->getParcela().getCoordenadaParcela()->getTablero();
+		if (!tableroLeido) {
+			Tablero * tableroLeido = CambioARealizar->getParcela().getCoordenadaParcela()->getTablero();
+		} else if((tableroLeido != tableroAsociado)) {
+			bool debeCambiarCongelado = tableroLeido->getDatosTablero()->getNacidasEnUltimoTurno() != 0 ||
+					tableroLeido->getDatosTablero()->getMuertasEnUltimoTurno() != 0;
+			if (debeCambiarCongelado) {
+				tableroLeido->getDatosTablero()->setCongeladoTurnoActual(false);
+			}
+			tableroLeido = tableroAsociado;
+		}
+
+		if (CambioARealizar->naceLaCelula()){
+			float factorNacimientoParcela = CambioARealizar->getParcela().getfactorNacimiento();
+			CambioARealizar->getParcela().getCelula()->nacer(factorNacimientoParcela, CambioARealizar->getColorPromedio());
+			tableroAsociado->getDatosTablero()->sumarCelulaViva();
+		}
+		else{
+			float factorMuerteParcelaAsociada = CambioARealizar->getParcela().getfactorMuerte();
+			bool murio = CambioARealizar->getParcela().getCelula()->restarEnergia(factorMuerteParcelaAsociada);
+			if (murio){
+				tableroAsociado->getDatosTablero()->sumarCelulaMuerta();
+			}
+		}
+		if (CambioARealizar->hayPortal()){
+			float factorMuertetoOrigen = CambioARealizar->getParcela().getfactorMuerte();
+			float factorNacimientoOrigen = CambioARealizar->getParcela().getfactorNacimiento();
+			bool nacer = CambioARealizar->naceLaCelula();
+			CambioARealizar->getParcela().getPortal()->accionarPortal(nacer, CambioARealizar->getColorPromedio(), factorNacimientoOrigen, factorMuertetoOrigen);
+		}
+
+	}
+}
+
 void Juego::ejecutarTurno() {
 	std::cout << "Entro";
 	tablerosDelJuego->iniciarCursor();
@@ -50,10 +97,14 @@ void Juego::ejecutarTurno() {
 			Tablero * tablero = tablerosDelJuego->obtenerCursor();
 			TurnoTablero turno(tablero);
 			turno.jugarTurno();
+			this->pasarCambios(turno);
 		}
+		this->concretarCambios();
 		tablerosDelJuego->iniciarCursor();
 		while(tablerosDelJuego->avanzarCursor()){
 			Tablero * tablero = tablerosDelJuego->obtenerCursor();
+			tablero->generarBMP();
+			tablero->guardarBMP(tablero->getDatosTablero()->getTurno());
 			tablero->getDatosTablero()->mostrarDatosTablero();
 			tablero->getDatosTablero()->reiniciarContadorDeNacidasYMuertasEnUltimoTurno();
 		}

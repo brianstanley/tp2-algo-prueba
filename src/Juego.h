@@ -25,6 +25,7 @@ class Juego {
 private:
 	ListaEnlazada<Tablero*>* tablerosDelJuego;
 	ListaEnlazada<DatosTablero*>* datosDelJuego;
+	Cola<ParcelaAfectada*>* ParcelasAfectadas;
 	//LecturaArchivoConfiguracion lectura;
 
 
@@ -40,6 +41,12 @@ public:
 	 * post: devuelve por pantalla los tableros en formato BMP.
 	 */
 	void mostrarJuego();
+
+
+
+	void pasarCambios(TurnoTablero turno);
+
+	void concretarCambios();
 
 	/*
 	 * pre: este método pide al usuario de ingresar lo que quiere hacer al proximo turno.
