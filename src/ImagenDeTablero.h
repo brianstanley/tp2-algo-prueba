@@ -1,10 +1,3 @@
-/*
- * imagen_de_tablero.h
- *
- *  Created on: Oct 21, 2018
- *      Author: german
- */
-
 #ifndef IMAGEN_DE_TABLERO_H_
 #define IMAGEN_DE_TABLERO_H_
 
@@ -15,12 +8,11 @@
 #include "../librerias/EasyBMP.h"
 #include "StringHelper.h"
 
-
-
-class ImagenDeTablero{
+class ImagenDeTablero {
 private:
 	std::string nombreTableroRepresentado;
 	BMP archivoBmp;
+
 public:
 	/*
 	 * pre: -
@@ -28,17 +20,20 @@ public:
 	 de tablero igual que el nombre pasado por parametro (va a ser el mismo nombre que el del tablero que representa)
 	 */
 	ImagenDeTablero(int alto, int ancho, std::string nombre);
+
 	/*
 	 * pre: los valores de fila y columna que se pasan deben estar dentro de las dimensiones del tablero de origen
 	 * post: se pinta el pixel que representa a la celula en cuestion con el color recibido
 	 */
 	void representarCelulaViva(int fila, int columna, RGB* color);
+
 	/*
 	 * pre: los valores de fila y columna que se pasan deben estar dentro de las dimensiones del tablero de origen
 	 * post: pinta el pixel que representa a la celula en cuestion de blanco (el color por defecto para definir
 	 * a la muerte)
 	 */
 	void representarCelulaMuerta(int fila, int columna);
+
 	/*
 	 * pre: -
 	 * post: se guarda un archivo.bmp con la representacion de las celulas en el tablero

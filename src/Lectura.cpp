@@ -1,9 +1,3 @@
-/*
- * Lectura.cpp
- *
- *  Created on: Oct 21, 2018
- *      Author: brianstanley
- */
 #include "Lectura.h"
 #include <iostream>
 #include <fstream>

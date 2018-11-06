@@ -1,16 +1,10 @@
-/*
- * JuegoNuevo.cpp
- *
- *  Created on: Nov 1, 2018
- *      Author: yorickvinesse
- */
-
 #include "Juego.h"
 
 std::string Juego::pedirProximoTurno() {
 	std::string proximoTurno;
-	std::cout << "Qué quieres hacer ahora?\n- Para reiniciar el juego, presiona la tecla 'r'\n"
-			"- Para ejecutar un turno, presiona la tecla 'e'\n"
+	std::cout
+			<< "\nQué quieres hacer ahora?\n- Para reiniciar el juego, presiona la tecla 'r'\n"
+					"- Para ejecutar un turno, presiona la tecla 'e'\n"
 					"- Para terminar el juego, presiona la tecla 't'\n\n";
 	std::cin >> proximoTurno;
 	return proximoTurno;
@@ -18,7 +12,8 @@ std::string Juego::pedirProximoTurno() {
 
 void Juego::iniciarJuego() {
 	std::string rutaDelArchivo;
-	std::cout << "Ingresa la ruta del archivo de texto que quieres utilizar: \n";
+	std::cout
+			<< "Ingresa la ruta del archivo de texto que quieres utilizar: \n";
 	std::cin >> rutaDelArchivo;
 	LecturaArchivoConfiguracion lectura;
 	lectura.procesarArchivo(rutaDelArchivo);
@@ -26,8 +21,9 @@ void Juego::iniciarJuego() {
 	this->tablerosDelJuego = tableros;
 	ListaEnlazada<DatosTablero*> * datos = new ListaEnlazada<DatosTablero*>;
 	tableros->iniciarCursor();
-	while(tableros->avanzarCursor()) {
-		DatosTablero * datosDelTablero = tableros->obtenerCursor()->getDatosTablero();
+	while (tableros->avanzarCursor()) {
+		DatosTablero * datosDelTablero =
+				tableros->obtenerCursor()->getDatosTablero();
 		datos->agregar(datosDelTablero);
 		TurnoTablero turno(tableros->obtenerCursor());
 		turno.guardarBMP();
@@ -37,27 +33,32 @@ void Juego::iniciarJuego() {
 }
 
 void Juego::terminarJuego() {
-	std::cout << "\n Terminaste el juego\n";
+	std::cout << "\nTerminaste el juego\n";
 	delete this->datosDelJuego;
 	delete this->tablerosDelJuego;
 }
 
 void Juego::afectarCambiosPortalPorTablero(TurnoTablero * turnoTablero) {
-	ListaEnlazada<ParcelaAfectada*> cambiosPorPortal = turnoTablero->getCambiosPorPortal();
+	ListaEnlazada<ParcelaAfectada*> cambiosPorPortal =
+			turnoTablero->getCambiosPorPortal();
 	cambiosPorPortal.iniciarCursor();
-	while(cambiosPorPortal.avanzarCursor()) {
+	while (cambiosPorPortal.avanzarCursor()) {
 		ParcelaAfectada* CambioARealizar = cambiosPorPortal.obtenerCursor();
-		float factorMuertetoOrigen = CambioARealizar->getParcela().getfactorMuerte();
-		float factorNacimientoOrigen = CambioARealizar->getParcela().getfactorNacimiento();
+		float factorMuertetoOrigen =
+				CambioARealizar->getParcela().getfactorMuerte();
+		float factorNacimientoOrigen =
+				CambioARealizar->getParcela().getfactorNacimiento();
 		bool nacer = CambioARealizar->naceLaCelula();
-		CambioARealizar->getParcela().getPortal()->accionarPortal(nacer, CambioARealizar->getColorPromedio(), factorNacimientoOrigen, factorMuertetoOrigen);
+		CambioARealizar->getParcela().getPortal()->accionarPortal(nacer,
+				CambioARealizar->getColorPromedio(), factorNacimientoOrigen,
+				factorMuertetoOrigen);
 	}
 	turnoTablero->guardarBMP();
 }
 
 void Juego::jugarTurnosTableros(TurnoTablero ** turnos) {
 	int topeTablero = 0;
-	while(tablerosDelJuego->avanzarCursor()) {
+	while (tablerosDelJuego->avanzarCursor()) {
 		Tablero * tablero = tablerosDelJuego->obtenerCursor();
 		TurnoTablero * turnoDelTablero = new TurnoTablero(tablero);
 		turnoDelTablero->jugarTurnoTablero();
@@ -68,13 +69,12 @@ void Juego::jugarTurnosTableros(TurnoTablero ** turnos) {
 
 void Juego::procesarDatos() {
 	tablerosDelJuego->iniciarCursor();
-	while(tablerosDelJuego->avanzarCursor()){
+	while (tablerosDelJuego->avanzarCursor()) {
 		Tablero * tablero = tablerosDelJuego->obtenerCursor();
 		tablero->getDatosTablero()->mostrarDatosTablero();
 		tablero->getDatosTablero()->reiniciarContadorDeNacidasYMuertasEnUltimoTurno();
 	}
 }
-
 
 void Juego::ejecutarTurno() {
 	tablerosDelJuego->iniciarCursor();
@@ -83,11 +83,11 @@ void Juego::ejecutarTurno() {
 		TurnoTablero ** turnos = new TurnoTablero*[cantidadTableros];
 		jugarTurnosTableros(turnos);
 		tablerosDelJuego->iniciarCursor();
-		for(int i = 0; i < cantidadTableros - 1; i++) {
+		for (int i = 0; i < cantidadTableros - 1; i++) {
 			TurnoTablero * turnoDelTablero = turnos[i];
 			this->afectarCambiosPortalPorTablero(turnoDelTablero);
 		}
-		delete [] turnos;
+		delete[] turnos;
 		procesarDatos();
 	}
 }

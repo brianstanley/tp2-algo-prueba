@@ -1,10 +1,3 @@
-/*
- * JuegoNuevo.h
- *
- *  Created on: Oct 27, 2018
- *      Author: german
- */
-
 #ifndef JUEGO_H_
 #define JUEGO_H_
 
@@ -25,8 +18,6 @@ class Juego {
 private:
 	ListaEnlazada<Tablero*>* tablerosDelJuego;
 	ListaEnlazada<DatosTablero*>* datosDelJuego;
-	//LecturaArchivoConfiguracion lectura;
-
 
 	/*
 	 * pre: recibe un turnoTablero* procesado que lleva los portales afectados.
@@ -79,6 +70,5 @@ public:
 	void terminarJuego();
 
 };
-
 
 #endif /* JUEGO_H_ */

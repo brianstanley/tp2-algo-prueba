@@ -1,19 +1,15 @@
-/*
- * CoordenadaParcela.h
- *
- *  Created on: 21 oct. 2018
- *      Author: yorickvinesse
-
- * El objetivo de esta clase es de tener una manera unica de localizar una parcela.
- * Lleva la pareja de coordenadas (x, y) y el tablero asociado.
- */
-
 #ifndef SRC_COORDENADAPARCELA_H_
 #define SRC_COORDENADAPARCELA_H_
 #include "Tablero.h"
 
 class Parcela;
 class Tablero;
+
+/*
+ * El objetivo de esta clase es de tener una manera unica de localizar una parcela.
+ * Lleva la pareja de coordenadas (x, y) y el tablero asociado.
+ */
+
 class CoordenadaParcela {
 
 private:
@@ -46,7 +42,6 @@ public:
 	 */
 	Tablero * getTablero();
 
-
 	/*
 	 * pre: -
 	 * post: devuelve la parcela asociada a la coordenada.
@@ -54,6 +49,5 @@ public:
 	Parcela & getParcela();
 
 };
-
 
 #endif /* SRC_COORDENADAPARCELA_H_ */

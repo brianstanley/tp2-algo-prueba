@@ -1,10 +1,3 @@
-/*
- * Portal.cpp
- *
- *  Created on: 21 oct. 2018
- *      Author: yorickvinesse
- */
-
 #include "Portal.h"
 
 Portal::Portal(bool esPortalDeOrigen, std::string tipoDelPortal,
@@ -18,54 +11,54 @@ std::string Portal::getTipoDePortal() {
 	return this->tipoDePortal;
 }
 
-void Portal::accionarPortal(bool nace, RGB* color, float factorNacimientoOrigen, float factorMuerteOrigen){
-	if(this->tipoDePortal == "activo"){
-		if(this->portalOrigen){
-			if(nace){
+void Portal::accionarPortal(bool nace, RGB* color, float factorNacimientoOrigen,
+		float factorMuerteOrigen) {
+	if (this->tipoDePortal == "activo") {
+		if (this->portalOrigen) {
+			if (nace) {
 				this->nacer(color, factorNacimientoOrigen);
-			}
-			else{
+			} else {
 				this->morir(factorMuerteOrigen);
 			}
-		}
-		else if (!nace){
+		} else if (!nace) {
 			this->morir(factorMuerteOrigen);
 		}
-	}
-	else if(this->tipoDePortal == NORMAL){
-		if(this->portalOrigen){
-			if(nace){
+	} else if (this->tipoDePortal == NORMAL) {
+		if (this->portalOrigen) {
+			if (nace) {
 				this->nacer(color, factorNacimientoOrigen);
-			}
-			else{
+			} else {
 				this->morir(factorMuerteOrigen);
 			}
 		}
-	} else if(this->portalOrigen  && nace) { //Pasivo
+	} else if (this->portalOrigen && nace) { //Pasivo
 		this->nacer(color, factorNacimientoOrigen);
 	}
 }
 
-void Portal::nacer(RGB* color, float factorNacimientoOrigen){
+void Portal::nacer(RGB* color, float factorNacimientoOrigen) {
 	int fila = this->parcelaAsociada->getCoordenadaX();
 	int columna = this->parcelaAsociada->getCoordenadaY();
 	Tablero * tableroAsociado = this->parcelaAsociada->getTablero();
-	tableroAsociado->getParcela(fila,columna).getCelula()->nacer(factorNacimientoOrigen,color);
+	tableroAsociado->getParcela(fila, columna).getCelula()->nacer(
+			factorNacimientoOrigen, color);
 	tableroAsociado->getDatosTablero()->sumarCelulaViva();
-	if(tableroAsociado->getDatosTablero()->estaCongelado()){
+	if (tableroAsociado->getDatosTablero()->estaCongelado()) {
 		tableroAsociado->getDatosTablero()->setCongeladoTurnoActual(false);
 	}
 }
 
-void Portal::morir(float factorMuerteOrigen){
+void Portal::morir(float factorMuerteOrigen) {
 	int fila = this->parcelaAsociada->getCoordenadaX();
 	int columna = this->parcelaAsociada->getCoordenadaY();
 	Tablero * tableroAsociado = this->parcelaAsociada->getTablero();
-	bool murio = tableroAsociado->getParcela(fila,columna).getCelula()->restarEnergia(factorMuerteOrigen);
-	if (murio){
+	bool murio =
+			tableroAsociado->getParcela(fila, columna).getCelula()->restarEnergia(
+					factorMuerteOrigen);
+	if (murio) {
 		tableroAsociado->getDatosTablero()->sumarCelulaMuerta();
 	}
-	if(tableroAsociado->getDatosTablero()->estaCongelado()){
+	if (tableroAsociado->getDatosTablero()->estaCongelado()) {
 		tableroAsociado->getDatosTablero()->setCongeladoTurnoActual(false);
 	}
 }
