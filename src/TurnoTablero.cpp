@@ -62,7 +62,7 @@ void TurnoTablero::decidirVidaOMuerte(int celulasVivasCircundantes, CoordenadaPa
     unsigned int x = coordenadaEnCuestion->getCoordenadaX();
     unsigned int y = coordenadaEnCuestion->getCoordenadaY();
     bool estaViva = this->tableroAsociado->getParcela(x,y).getCelula()->getEstado();
-     if (estaViva && (celulasVivasCircundantes < 2 || celulasVivasCircundantes > 3)){ //en este caso la celula estaria viva
+     if (estaViva && (celulasVivasCircundantes <= 2 || celulasVivasCircundantes > 3)){ //en este caso la celula estaria viva
          marcarCelulaMorir(coordenadaEnCuestion); // como no tiene 3 celulas vivas circundantes se marcaria como muerta
     }
     else{ // en este caso la celula estaria muerta
