@@ -108,6 +108,7 @@ void TurnoTablero::concretarCambios(){
 			this->tableroAsociado->getDatosTablero()->getMuertasEnUltimoTurno() != 0){
 		this->tableroAsociado->getDatosTablero()->setCongeladoTurnoActual(false);
 	}
+	this->tableroAsociado->getDatosTablero()->setCantidadTurnosCongeladosTablero();
 }
 
 void TurnoTablero::plasmarCambiosEnArchivo(){
