@@ -19,7 +19,7 @@ std::string Portal::getTipoDePortal() {
 }
 
 void Portal::accionarPortal(bool nace, RGB* color, float factorNacimientoOrigen, float factorMuerteOrigen){
-	if(this->tipoDePortal == ACTIVO){
+	if(this->tipoDePortal == "activo"){
 		if(this->portalOrigen){
 			if(nace){
 				this->nacer(color, factorNacimientoOrigen);

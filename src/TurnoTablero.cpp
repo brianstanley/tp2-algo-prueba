@@ -59,20 +59,18 @@ RGB* TurnoTablero::promedioColoresCelulasCircundantes(RGB* coloresCelulasVivasCi
 }
 
 void TurnoTablero::decidirVidaOMuerte(int celulasVivasCircundantes, CoordenadaParcela* coordenadaEnCuestion, RGB* coloresCelulasVivasCircundantes[]){
-	unsigned int x = coordenadaEnCuestion->getCoordenadaX();
-	unsigned int y = coordenadaEnCuestion->getCoordenadaY();
-
- 	if (this->tableroAsociado->getParcela(x,y).getCelula()->getEstado()){ //en este caso la celula estaria viva
-		if (celulasVivasCircundantes != 3){
-			marcarCelulaMorir(coordenadaEnCuestion); // como no tiene 3 celulas vivas circundantes se marcaria como muerta
-		}
-	}
-	else{ // en este caso la celula estaria muerta
-		if (celulasVivasCircundantes == 3){
-			RGB* colorParaCelulaANacer = promedioColoresCelulasCircundantes(coloresCelulasVivasCircundantes);
-			marcarCelulaNacer(coordenadaEnCuestion, colorParaCelulaANacer);
-		}
-	}
+    unsigned int x = coordenadaEnCuestion->getCoordenadaX();
+    unsigned int y = coordenadaEnCuestion->getCoordenadaY();
+    bool estaViva = this->tableroAsociado->getParcela(x,y).getCelula()->getEstado();
+     if (estaViva && (celulasVivasCircundantes < 2 || celulasVivasCircundantes > 3)){ //en este caso la celula estaria viva
+         marcarCelulaMorir(coordenadaEnCuestion); // como no tiene 3 celulas vivas circundantes se marcaria como muerta
+    }
+    else{ // en este caso la celula estaria muerta
+        if (!estaViva && (celulasVivasCircundantes == 3)){
+            RGB* colorParaCelulaANacer = promedioColoresCelulasCircundantes(coloresCelulasVivasCircundantes);
+            marcarCelulaNacer(coordenadaEnCuestion, colorParaCelulaANacer);
+        }
+    }
 }
 
 void TurnoTablero::marcarCelulaMorir(CoordenadaParcela* coordenadaEnCuestion){

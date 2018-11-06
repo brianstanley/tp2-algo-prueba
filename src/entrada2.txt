@@ -1,0 +1,19 @@
+Tablero table1 3 5
+Tablero table2 4 4
+Portal table1 table2 3 4 4 4 pasivo
+Portal table2 table1 1 1 2 2 pasivo
+Celula table1 1 1
+Celula table1 11 100
+Celula table1 12 100
+Celula table1 3 4
+Celula table1 3 5 
+Celula table1 4 6
+Celula table1 7 5
+Celula table1 14 14
+Celula table1 18 29
+Celula table2 30 15
+Celula table2 5 6
+Celula table2 20 20
+Celula table2 21 20
+Celula table2 22 21
+Celula table2 15 23
