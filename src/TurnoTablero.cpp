@@ -100,10 +100,7 @@ void TurnoTablero::concretarCambios(){
 			}
 		}
 		if (CambioARealizar->hayPortal()){
-			float factorMuertetoOrigen = CambioARealizar->getParcela().getfactorMuerte();
-			float factorNacimientoOrigen = CambioARealizar->getParcela().getfactorNacimiento();
-			bool nacer = CambioARealizar->naceLaCelula();
-			CambioARealizar->getParcela().getPortal()->accionarPortal(nacer, CambioARealizar->getColorPromedio(), factorNacimientoOrigen, factorMuertetoOrigen);
+			cambiosPorPortal.agregar(CambioARealizar);
 		}
 
 	}
@@ -118,13 +115,17 @@ void TurnoTablero::plasmarCambiosEnArchivo(){
 	this->tableroAsociado->guardarBMP(this->tableroAsociado->getDatosTablero()->getTurno());
 }
 
-void TurnoTablero::jugarTurno(){
+void TurnoTablero::jugarTurnoTablero(){
 	this->tableroAsociado->getDatosTablero()->avanzarUnTurno();
 	this->marcarCambiosARealizarParaSiguienteTurno();
 	this->concretarCambios();
-	this->guardarBMP();
+//	this->guardarBMP();
 }
 
 void TurnoTablero::guardarBMP(){
 	this->plasmarCambiosEnArchivo();
+}
+
+ListaEnlazada<ParcelaAfectada*> & TurnoTablero::getCambiosPorPortal() {
+	return this->cambiosPorPortal;
 }

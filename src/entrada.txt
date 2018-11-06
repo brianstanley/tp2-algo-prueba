@@ -8,3 +8,7 @@ Parcela america 2 2 255 0 0 0.1 0.1
 Celula america 1 2
 Celula america 2 1
 Celula america 2 2
+Parcela africa 1 2 255 0 0 0.1 0.1
+Parcela africa 2 1 255 0 0 0.1 0.1
+Celula africa 1 2
+Celula africa 2 1
