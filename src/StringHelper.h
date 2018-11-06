@@ -1,18 +1,9 @@
-/*
- * funciones_transformar_int_string.h
- *
- *  Created on: Oct 24, 2018
- *      Author: german
- */
-
 #ifndef FUNCIONES_TRANSFORMAR_INT_STRING_H_
 #define FUNCIONES_TRANSFORMAR_INT_STRING_H_
 
-#include<iostream>
+#include <iostream>
 #include <algorithm>
-#include<string>
-
-
+#include <string>
 
 const int FACTOR = 10;
 class StringHelper {

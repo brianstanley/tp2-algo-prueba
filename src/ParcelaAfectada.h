@@ -1,13 +1,5 @@
-/*
- * ParcelaAfectada.h
- *
- *  Created on: Oct 27, 2018
- *      Author: yorickvinesse
- */
-
 #ifndef SRC_PARCELAAFECTADA_H_
 #define SRC_PARCELAAFECTADA_H_
-
 
 #include "RGB.h"
 #include "CoordenadaParcela.h"
@@ -18,7 +10,7 @@
  * Contiene la parcela y almacena los datos necesarios a la actualizacion:
  * nace o muere? qué tipo de portal es? el color de los vecinos.
  * El objetivo es armar una lista de esas parcelas de origen. Las parcelas asociadas con portal seran cambiadas
- * justo después las células de origen con las mismas caracteristicas, por eso no es necesario almacenarlas todas.
+ * después las células de origen con las mismas caracteristicas, por eso no es necesario almacenarlas todas.
  */
 
 class ParcelaAfectada {
@@ -28,7 +20,6 @@ private:
 	bool celulaNace; //permite saber si hacemos un promedio de los colores vecinos o no.
 	bool tienePortal;
 	RGB* colorPromedioVecinos;
-
 
 public:
 	/*
@@ -65,6 +56,5 @@ public:
 	 */
 	RGB* getColorPromedio();
 };
-
 
 #endif /* SRC_PARCELAAFECTADA_H_ */

@@ -1,10 +1,3 @@
-/*
- * Parcela.h
- *
- *  Created on: Oct 17, 2018
- *      Author: brian
- */
-
 #ifndef SRC_PARCELA_H_
 #define SRC_PARCELA_H_
 
@@ -34,57 +27,67 @@ public:
 	 * apuntando los punteros a NULL
 	 */
 	Parcela();
+
 	/*
 	 * pre: Puntero a una objeto portal
 	 * post: Se modifica el miembro puntero a portal.
 	 */
 	void setPortal(Portal * portal);
+
 	/*
 	 * pre: -
 	 * post: retorna un puntero al objeto CoordenadaParcela
 	 * asociado a la parcela.
 	 */
 	CoordenadaParcela * getCoordenadaParcela();
+
 	/*
 	 * pre: -
 	 * post: retorna un puntero a la celula asociada a la parcela.
 	 */
 	Celula * getCelula();
+
 	/*
 	 * pre:  la parcela posee un portal
 	 * post: retorna el portal asociado a la parcela.
 	 */
 	Portal * getPortal();
 
-	/**
-	 * pre: Numero mayor a cero
-	 * pos: Modifica el atributo factor nacimiento
+	/*
+	 * pre: recibe un numero mayor a cero
+	 * post: Modifica el atributo factor nacimiento
 	 * de la parcela.
 	 */
 	void setFactorNacimiento(float);
 
 	/**
-	 * pre: Numero mayor a cero
-	 * pos: Modifica el atributo factor muerte
+	 * pre: recibe un numero mayor a cero
+	 * post: modifica el atributo factor muerte
 	 * de la parcela.
 	 */
 	void setFactorMuerte(float);
-	/*pre: -
+
+	/*
+	 * pre: -
 	 * post: retorna el factor de nacimiento de la parcela.
 	 */
 	float getfactorNacimiento();
-	/*pre: -
+
+	/*
+	 * pre: -
 	 * post: retorna el factor de muerte de la parcela.
 	 */
 	float getfactorMuerte();
-	/**
-	 * pre: Puntero a un objeto CoordenadaParcela
-	 * pos: Modifica el atributo coordenadaParcela
+
+	/*
+	 * pre: recibe un puntero a un objeto CoordenadaParcela
+	 * post: modifica el atributo coordenadaParcela
 	 */
 	void setCoordenadaParcela(CoordenadaParcela * coordenadaParcela);
-	/**
+
+	/*
 	 * pre: objeto del tipo RGB
-	 * pos: Modifica el atributo RGBParcela
+	 * post: Modifica el atributo RGBParcela
 	 */
 	void setRBGparcela(RGB RGBParcela);
 
@@ -95,5 +98,5 @@ public:
 	RGB* getRBGparcela();
 
 };
-#endif /* SRC_PARCELA_H_ */
 
+#endif /* SRC_PARCELA_H_ */

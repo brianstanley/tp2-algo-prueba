@@ -1,17 +1,9 @@
-/*
- * DatosTablero.h
- *
- *  Created on: 1 nov. 2018
- *      Author: nazareno
- */
-
 #ifndef SRC_DATOSTABLERO_H_
 #define SRC_DATOSTABLERO_H_
 
 #include "Tablero.h"
 
 class Tablero;
-
 
 class DatosTablero {
 private:
@@ -30,44 +22,51 @@ private:
 public:
 	/*
 	 * pre: turnosCongelado se setea a true por defecto porque se parte de la hipotesis de que todo tablero se
-	 * considera congelado hasta que se pruebe lo conntrario, lease, alguna celula nazca o muera
-	 * post:inicializa una instancia de DatosPartida con los valores en 0
+	 * considera congelado hasta que se pruebe lo contrario, lease, alguna celula nazca o muera
+	 * post: inicializa una instancia de DatosPartida con los valores en 0
 	 */
 	DatosTablero(Tablero* tableroAsociado);
+
 	/*
-	 *pre: -
-	 *post: devueleve el valor de la cantidadCelulasVivas
+	 * pre: -
+	 * post: devuelve el valor de la cantidadCelulasVivas
 	 */
 	unsigned int getCantidadCelulasVivas();
+
 	/*
-	*pre: -
-	*post: contabiliza un nacimiento de celula
-	*/
+	 * pre: -
+	 * post: contabiliza un nacimiento de celula
+	 */
 	void sumarCelulaViva();
+
 	/*
-	*pre: -
-	*post: contabiliza una muerte de celula
-	*/
+	 * pre: -
+	 * post: contabiliza una muerte de celula
+	 */
 	void sumarCelulaMuerta();
+
 	/*
-	*pre: -
-	*post: devueleve el valor de nacidasTotal
-	*/
+	 * pre: -
+	 * post: devuelve el valor de nacidasTotal
+	 */
 	int getNacidasTotal();
+
 	/*
-	*pre: -
-	*post: devueleve el valor de muertasTotal
-	*/
+	 * pre: -
+	 * post: devuelve el valor de muertasTotal
+	 */
 	unsigned int getMuertasTotal();
+
 	/*
-	*pre: -
-	*post: devueleve el valor de promedioNacidas
-	*/
+	 * pre: -
+	 * post: devuelve el valor de promedioNacidas
+	 */
 	float getPromedioNacidas();
+
 	/*
-	 *pre: -
-	*post: devueleve el valor de promedioMuertas
-	*/
+	 * pre: -
+	 * post: devuelve el valor de promedioMuertas
+	 */
 	float getPromedioMuertas();
 
 	/*

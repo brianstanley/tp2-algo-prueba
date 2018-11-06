@@ -1,10 +1,3 @@
-/*
- * Portal.h
- *
- *  Created on: 21 oct. 2018
- *      Author: yorickvinesse
- */
-
 #ifndef PORTAL_H_
 #define PORTAL_H_
 #include "CoordenadaParcela.h"
@@ -17,7 +10,6 @@ const std::string NOPORTAL = "-";
 class CoordenadaParcela;
 /*
  * La clase Portal esta siempre asociada con una parcela, por lo tanto no lleva las coordenadas de la parcela.
- *
  */
 
 class Portal {
@@ -31,9 +23,6 @@ private:
 	 * la dicha parcela (true) o en la parcela asociada (false).
 	 */
 
-	/*
-	 * En el futuro necesitamos usar un puntero para apuntar al portal asociado.
-	 */
 	bool portalOrigen;
 	std::string tipoDePortal;
 	CoordenadaParcela * parcelaAsociada;
@@ -41,12 +30,14 @@ private:
 	void nacer(RGB* color, float factorNacimientoOrigen);
 
 	void morir(float factorMuerteOrigen);
+
 public:
 	/*
 	 * pre: -
 	 * post: se crea una instancia de portal
 	 */
-	Portal(bool esPortalDeOrigen, std::string tipoDelPortal, CoordenadaParcela * parcelaPareja);
+	Portal(bool esPortalDeOrigen, std::string tipoDelPortal,
+			CoordenadaParcela * parcelaPareja);
 
 	/*
 	 * pre: -
@@ -56,9 +47,10 @@ public:
 
 	/*
 	 * pre: -
-	 * post: se acciona el portal correspondiente
+	 * post: se acciona el portal correspondiente, es decir hace nacer o morir segun el tipo de portal que lleva.
 	 */
-	void accionarPortal(bool nace, RGB* color, float factorNacimientoOrigen, float factorMuerteOrigen);
+	void accionarPortal(bool nace, RGB* color, float factorNacimientoOrigen,
+			float factorMuerteOrigen);
 };
 
 #endif /* PORTAL_H_ */

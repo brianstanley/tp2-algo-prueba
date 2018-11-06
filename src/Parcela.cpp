@@ -1,10 +1,3 @@
-/*
- * Parcela.cpp
- *
- *  Created on: Oct 17, 2018
- *      Author: brian
- */
-
 #include "Parcela.h"
 
 Parcela::Parcela() {
@@ -67,5 +60,4 @@ void Parcela::setRBGparcela(RGB RGBParcela) {
 RGB* Parcela::getRBGparcela() {
 	return &this->RGBParcela;
 }
-
 

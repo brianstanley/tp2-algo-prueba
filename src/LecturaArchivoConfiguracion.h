@@ -1,10 +1,3 @@
-/*
- * LecturaArchivoConfiguracion.h
- *
- *  Created on: Oct 22, 2018
- *      Author: brian
- */
-
 #ifndef SRC_LECTURAARCHIVOCONFIGURACION_H_
 #define SRC_LECTURAARCHIVOCONFIGURACION_H_
 #include <string>
@@ -30,10 +23,11 @@ private:
 	void crearTablero(std::string, int ancho, int alto);
 	void crearCelula(std::string, int fila, int columna);
 	Tablero * string2punteroTablero(std::string);
-	void crearPortales(std::string tableroId, std::string tableroDestino, int filaOrigen,
-			int columnaOrigen, int filaDestino, int columnaDestino, std::string tipoDePortal);
+	void crearPortales(std::string tableroId, std::string tableroDestino,
+			int filaOrigen, int columnaOrigen, int filaDestino,
+			int columnaDestino, std::string tipoDePortal);
 public:
-	/**
+	/*
 	 * pre: Ruta al archivo del cual se desea leer la configuración de
 	 * inicio del juego. La ruta tiene que ser a un archivo que exista,
 	 * tenga un formato valido como  específica la documentación y
@@ -42,7 +36,8 @@ public:
 	 * que se encuentran indicadas en el archivo.
 	 */
 	void procesarArchivo(std::string);
-	/**
+
+	/*
 	 * pre: Lista inicializada
 	 * pos: Lista de tableros creados a partir del archivo de texto
 	 */

@@ -1,10 +1,3 @@
-/*
- * Tablero.h
- *
- *  Created on: 27 oct. 2018
- *      Author: nazareno
- */
-
 #ifndef SRC_TABLERO_H_
 #define SRC_TABLERO_H_
 
@@ -12,7 +5,7 @@
 #include <string>
 #include "Parcela.h"
 #include "DatosTablero.h"
-#include "imagen_de_tablero.h"
+#include "ImagenDeTablero.h"
 
 class Parcela;
 class DatosTablero;
@@ -33,40 +26,43 @@ public:
 	 * de acuerdo a la cantidad de filas y columnas indicadas.
 	 */
 	Tablero(std::string nombre, int filas, int columnas);
-	/**
+
+	/*
 	 * pre: El tablero debe estar inicializado
 	 * pos: Asigna los punteros a parcelas en la matriz dinámica
 	 */
 	void crearParcelas();
+
 	/*
 	 * pre: Fila y Columna dentro del rango de la matriz dinámica de parcelas.
 	 * post: Se devuelve una referencia a la parcela en la posición indicada.
 	 */
 	Parcela& getParcela(int fila, int columna);
+
 	/*
-	 * pre:-
+	 * pre: -
 	 * post: se devuelve el nombre del tablero
 	 */
 	std::string getNombre();
+
 	/*
 	 * pre:-
-	 * post: Devuelve el numero de filas del tablero
+	 * post: devuelve el numero de filas del tablero
 	 */
 	unsigned int getFilas();
+
 	/*
 	 * pre:-
 	 * post: Devuelve el numero de columnas del tablero
 	 */
 	unsigned int getColumnas();
+
 	/*
 	 * pre: -
 	 * post: devuelve un puntero a los datos asociados al tablero
 	 */
 	DatosTablero* getDatosTablero();
-	/*
-	 * pre:-
-	 * post: se libera la memoria asociada al tablero
-	 */
+
 	/*
 	 * pre: -
 	 * post: guarda las celulas de tablero en el archivo bmp
