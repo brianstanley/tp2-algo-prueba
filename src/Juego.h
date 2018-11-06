@@ -28,6 +28,24 @@ private:
 	//LecturaArchivoConfiguracion lectura;
 
 
+	/*
+	 * pre: recibe un turnoTablero* procesado que lleva los portales afectados.
+	 * post: cambia los portales afectados una vez que todos los tableros son recorridos.
+	 */
+	void afectarCambiosPortalPorTablero(TurnoTablero * turnoTablero);
+
+	/*
+	 * pre: recibe un array nuevo de turnos
+	 * post: ejecuta los turnos para cada tablero
+	 */
+	void jugarTurnosTableros(TurnoTablero ** turnos);
+
+	/*
+	 * pre: -
+	 * post: muestra los datos por pantalla y resetea los contadores del ultimo turno.
+	 */
+	void procesarDatos();
+
 public:
 	/*
 	 * pre:

@@ -42,38 +42,52 @@ void Juego::terminarJuego() {
 	delete this->tablerosDelJuego;
 }
 
+void Juego::afectarCambiosPortalPorTablero(TurnoTablero * turnoTablero) {
+	ListaEnlazada<ParcelaAfectada*> cambiosPorPortal = turnoTablero->getCambiosPorPortal();
+	cambiosPorPortal.iniciarCursor();
+	while(cambiosPorPortal.avanzarCursor()) {
+		ParcelaAfectada* CambioARealizar = cambiosPorPortal.obtenerCursor();
+		float factorMuertetoOrigen = CambioARealizar->getParcela().getfactorMuerte();
+		float factorNacimientoOrigen = CambioARealizar->getParcela().getfactorNacimiento();
+		bool nacer = CambioARealizar->naceLaCelula();
+		CambioARealizar->getParcela().getPortal()->accionarPortal(nacer, CambioARealizar->getColorPromedio(), factorNacimientoOrigen, factorMuertetoOrigen);
+	}
+	turnoTablero->guardarBMP();
+}
+
+void Juego::jugarTurnosTableros(TurnoTablero ** turnos) {
+	int topeTablero = 0;
+	while(tablerosDelJuego->avanzarCursor()) {
+		Tablero * tablero = tablerosDelJuego->obtenerCursor();
+		TurnoTablero * turnoDelTablero = new TurnoTablero(tablero);
+		turnoDelTablero->jugarTurnoTablero();
+		turnos[topeTablero] = turnoDelTablero;
+		topeTablero++;
+	}
+}
+
+void Juego::procesarDatos() {
+	tablerosDelJuego->iniciarCursor();
+	while(tablerosDelJuego->avanzarCursor()){
+		Tablero * tablero = tablerosDelJuego->obtenerCursor();
+		tablero->getDatosTablero()->mostrarDatosTablero();
+		tablero->getDatosTablero()->reiniciarContadorDeNacidasYMuertasEnUltimoTurno();
+	}
+}
+
+
 void Juego::ejecutarTurno() {
 	tablerosDelJuego->iniciarCursor();
 	if (!tablerosDelJuego->estaVacia()) {
-		TurnoTablero ** turnos = new TurnoTablero*[10];
-		int topeTurnos = 0;
-		while(tablerosDelJuego->avanzarCursor()) {
-			Tablero * tablero = tablerosDelJuego->obtenerCursor();
-			TurnoTablero * turno = new TurnoTablero(tablero);
-			turno->jugarTurno();
-			turnos[topeTurnos] = turno;
-			topeTurnos++;
-		}
+		int cantidadTableros = tablerosDelJuego->contarElementos();
+		TurnoTablero ** turnos = new TurnoTablero*[cantidadTableros];
+		jugarTurnosTableros(turnos);
 		tablerosDelJuego->iniciarCursor();
-		for(int i = 0; i < topeTurnos; i++) {
-			TurnoTablero * turno = turnos[i];
-			ListaEnlazada<ParcelaAfectada*> cambiosPorPortal = turno->getCambiosPorPortal();
-			cambiosPorPortal.iniciarCursor();
-			while(cambiosPorPortal.avanzarCursor()) {
-				ParcelaAfectada* CambioARealizar = cambiosPorPortal.obtenerCursor();
-				float factorMuertetoOrigen = CambioARealizar->getParcela().getfactorMuerte();
-				float factorNacimientoOrigen = CambioARealizar->getParcela().getfactorNacimiento();
-				bool nacer = CambioARealizar->naceLaCelula();
-				CambioARealizar->getParcela().getPortal()->accionarPortal(nacer, CambioARealizar->getColorPromedio(), factorNacimientoOrigen, factorMuertetoOrigen);
-			}
-			turno->guardarBMP();
+		for(int i = 0; i < cantidadTableros - 1; i++) {
+			TurnoTablero * turnoDelTablero = turnos[i];
+			this->afectarCambiosPortalPorTablero(turnoDelTablero);
 		}
 		delete [] turnos;
-		tablerosDelJuego->iniciarCursor();
-		while(tablerosDelJuego->avanzarCursor()){
-			Tablero * tablero = tablerosDelJuego->obtenerCursor();
-			tablero->getDatosTablero()->mostrarDatosTablero();
-			tablero->getDatosTablero()->reiniciarContadorDeNacidasYMuertasEnUltimoTurno();
-		}
+		procesarDatos();
 	}
 }

@@ -115,7 +115,7 @@ void TurnoTablero::plasmarCambiosEnArchivo(){
 	this->tableroAsociado->guardarBMP(this->tableroAsociado->getDatosTablero()->getTurno());
 }
 
-void TurnoTablero::jugarTurno(){
+void TurnoTablero::jugarTurnoTablero(){
 	this->tableroAsociado->getDatosTablero()->avanzarUnTurno();
 	this->marcarCambiosARealizarParaSiguienteTurno();
 	this->concretarCambios();

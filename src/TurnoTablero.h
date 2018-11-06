@@ -87,7 +87,7 @@ public:
 	 * pre: -
 	 * post: se ejecutan todas las acciones pertinentes al turno
 	 */
-	void jugarTurno();
+	void jugarTurnoTablero();
 	/*
 	 * pre: -
 	 * post: Se guarda el archivo BMP del tablero
