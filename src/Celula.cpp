@@ -34,5 +34,7 @@ bool Celula::getEstado() {
 }
 
 Celula::~Celula(){
-	delete this->RGBCelula;
+	if (this->RGBCelula){
+		delete this->RGBCelula;
+	}
 }
