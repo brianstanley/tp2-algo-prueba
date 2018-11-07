@@ -118,6 +118,9 @@ void TurnoTablero::concretarCambios() {
 		if (CambioARealizar->hayPortal()) {
 			cambiosPorPortal.agregar(CambioARealizar);
 		}
+		else{
+			delete CambioARealizar;
+		}
 
 	}
 	if (this->tableroAsociado->getDatosTablero()->getNacidasEnUltimoTurno() != 0
