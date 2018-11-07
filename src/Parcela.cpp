@@ -61,3 +61,11 @@ RGB* Parcela::getRBGparcela() {
 	return &this->RGBParcela;
 }
 
+Parcela::~Parcela(){
+	delete this->celula;
+	delete this->coordenadaParcela;
+	if (this->portal){
+		delete this->portal;
+	}
+}
+
