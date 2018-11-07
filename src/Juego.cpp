@@ -53,7 +53,6 @@ void Juego::afectarCambiosPortalPorTablero(TurnoTablero * turnoTablero) {
 				CambioARealizar->getColorPromedio(), factorNacimientoOrigen,
 				factorMuertetoOrigen);
 	}
-	turnoTablero->actualizarBMP();
 }
 
 void Juego::jugarTurnosTableros(TurnoTablero ** turnos) {
