@@ -23,7 +23,7 @@ void Portal::accionarPortal(bool nace, RGB* color, float factorNacimientoOrigen,
 		} else if (!nace) {
 			this->morir(factorMuerteOrigen);
 		}
-	} else if (this->tipoDePortal == NORMAL) {
+	} else if (this->tipoDePortal == "normal") {
 		if (this->portalOrigen) {
 			if (nace) {
 				this->nacer(color, factorNacimientoOrigen);
