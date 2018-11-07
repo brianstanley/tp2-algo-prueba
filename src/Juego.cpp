@@ -26,7 +26,7 @@ void Juego::iniciarJuego() {
 				tableros->obtenerCursor()->getDatosTablero();
 		datos->agregar(datosDelTablero);
 		TurnoTablero turno(tableros->obtenerCursor());
-		turno.guardarBMP();
+		turno.actualizarBMP();
 	}
 	this->datosDelJuego = datos;
 
@@ -53,7 +53,6 @@ void Juego::afectarCambiosPortalPorTablero(TurnoTablero * turnoTablero) {
 				CambioARealizar->getColorPromedio(), factorNacimientoOrigen,
 				factorMuertetoOrigen);
 	}
-	turnoTablero->guardarBMP();
 }
 
 void Juego::jugarTurnosTableros(TurnoTablero ** turnos) {
@@ -83,11 +82,15 @@ void Juego::ejecutarTurno() {
 		TurnoTablero ** turnos = new TurnoTablero*[cantidadTableros];
 		jugarTurnosTableros(turnos);
 		tablerosDelJuego->iniciarCursor();
-		for (int i = 0; i < cantidadTableros - 1; i++) {
+		for (int i = 0; i < cantidadTableros; i++) {
 			TurnoTablero * turnoDelTablero = turnos[i];
 			this->afectarCambiosPortalPorTablero(turnoDelTablero);
 		}
-		delete[] turnos;
 		procesarDatos();
+		for (int i = 0; i < cantidadTableros; i++) {
+			TurnoTablero * turnoDelTablero = turnos[i];
+			turnoDelTablero->actualizarBMP();
+		}
+		delete[] turnos;
 	}
 }
