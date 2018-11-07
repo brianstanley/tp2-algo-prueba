@@ -3,7 +3,7 @@
 Celula::Celula() {
 	this->estadoCelula = MUERTA;
 	this->energiaCelula = 0;
-	this->RGBCelula = new RGB;
+	this->RGBCelula = 0;
 }
 
 bool Celula::restarEnergia(float factorMuerteParcela) {
