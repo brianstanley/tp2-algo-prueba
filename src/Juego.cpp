@@ -34,6 +34,14 @@ void Juego::iniciarJuego() {
 
 void Juego::terminarJuego() {
 	std::cout << "\nTerminaste el juego\n";
+	this->datosDelJuego->iniciarCursor();
+	this->tablerosDelJuego->iniciarCursor();
+	while(this->datosDelJuego->avanzarCursor()){
+		delete this->datosDelJuego->obtenerCursor();
+	}
+	while(this->tablerosDelJuego->avanzarCursor()){
+		delete this->tablerosDelJuego->obtenerCursor();
+	}
 	delete this->datosDelJuego;
 	delete this->tablerosDelJuego;
 }
