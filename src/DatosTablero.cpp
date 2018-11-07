@@ -34,11 +34,11 @@ unsigned int DatosTablero::getMuertasTotal() {
 	return this->muertasTotal;
 }
 float DatosTablero::getPromedioNacidas() {
-	this->promedioNacidas = this->nacidasTotal / this->numeroTurno;
+	this->promedioNacidas = ((float) this->nacidasTotal )/ this->numeroTurno;
 	return this->promedioNacidas;
 }
 float DatosTablero::getPromedioMuertas() {
-	this->promedioMuertas = this->muertasTotal / this->numeroTurno;
+	this->promedioMuertas = ((float) this->muertasTotal )/ this->numeroTurno;
 	return this->promedioMuertas;
 }
 

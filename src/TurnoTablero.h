@@ -95,7 +95,7 @@ public:
 	 * pre: -
 	 * post: Se guarda el archivo BMP del tablero
 	 */
-	void guardarBMP();
+	void actualizarBMP();
 
 	/*
 	 * pre: -
