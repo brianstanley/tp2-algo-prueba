@@ -126,6 +126,7 @@ void TurnoTablero::concretarCambios() {
 		this->tableroAsociado->getDatosTablero()->setCongeladoTurnoActual(
 				false);
 	}
+	this->tableroAsociado->getDatosTablero()->setCantidadTurnosCongeladosTablero();
 }
 
 void TurnoTablero::plasmarCambiosEnArchivo() {
