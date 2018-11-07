@@ -32,3 +32,7 @@ RGB* Celula::getRGB() {
 bool Celula::getEstado() {
 	return this->estadoCelula;
 }
+
+Celula::~Celula(){
+	delete this->RGBCelula;
+}
