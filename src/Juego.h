@@ -45,12 +45,6 @@ public:
 	void ejecutarTurno();
 
 	/*
-	 * pre: -
-	 * post: devuelve por pantalla los tableros en formato BMP.
-	 */
-	void mostrarJuego();
-
-	/*
 	 * pre: este método pide al usuario de ingresar lo que quiere hacer al proximo turno.
 	 * post: devuelve un caracter correspondiente a la proxima accion.
 	 */
@@ -68,7 +62,6 @@ public:
 	 * post: termina el juego y cierra las representaciones BMP de los tableros.
 	 */
 	void terminarJuego();
-
 };
 
 #endif /* JUEGO_H_ */

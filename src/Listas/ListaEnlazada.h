@@ -2,7 +2,6 @@
 #define LISTA_H_
 
 #include "Nodo.h"
-
 template<class T> class ListaEnlazada {
 
     private:
@@ -247,7 +246,6 @@ template<class T> bool ListaEnlazada<T>::avanzarCursor() {
 }
 
 template<class T> T ListaEnlazada<T>::obtenerCursor() {
-
     T elemento;
 
     if (this->cursor != NULL) {
@@ -259,10 +257,9 @@ template<class T> T ListaEnlazada<T>::obtenerCursor() {
 }
 
 template<class T> ListaEnlazada<T>::~ListaEnlazada() {
-
     while (this->primero != NULL) {
+    	Nodo<T>* aBorrar = this->primero;
 
-        Nodo<T>* aBorrar = this->primero;
         this->primero = this->primero->obtenerSiguiente();
 
         delete aBorrar;

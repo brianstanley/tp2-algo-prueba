@@ -59,7 +59,8 @@ RGB* TurnoTablero::promedioColoresCelulasCircundantes(
 	colorParaCelulaANacer->calcularPromedioRGBes(
 			coloresCelulasVivasCircundantes[0],
 			coloresCelulasVivasCircundantes[1],
-			coloresCelulasVivasCircundantes[2]);
+			coloresCelulasVivasCircundantes[2]
+	);
 	return colorParaCelulaANacer;
 }
 
@@ -117,6 +118,8 @@ void TurnoTablero::concretarCambios() {
 		}
 		if (CambioARealizar->hayPortal()) {
 			cambiosPorPortal.agregar(CambioARealizar);
+		} else {
+			delete CambioARealizar;
 		}
 
 	}
