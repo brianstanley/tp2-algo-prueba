@@ -3,7 +3,7 @@
 Celula::Celula() {
 	this->estadoCelula = MUERTA;
 	this->energiaCelula = 0;
-	this->RGBCelula = 0;
+	this->RGBCelula = new RGB;
 }
 
 bool Celula::restarEnergia(float factorMuerteParcela) {
@@ -22,7 +22,8 @@ bool Celula::restarEnergia(float factorMuerteParcela) {
 void Celula::nacer(float factorNacimientoParcela, RGB* RGBParcela) {
 	this->estadoCelula = VIVA;
 	this->energiaCelula = ENERGIA_MAX * factorNacimientoParcela;
-	this->RGBCelula = RGBParcela;
+	//this->RGBCelula = RGBParcela;
+	this->RGBCelula->setRGB(RGBParcela->getRed(), RGBParcela->getGreen(), RGBParcela->getBlue());
 }
 
 RGB* Celula::getRGB() {
@@ -33,8 +34,8 @@ bool Celula::getEstado() {
 	return this->estadoCelula;
 }
 
-/*Celula::~Celula(){
+Celula::~Celula(){
 	if (this->RGBCelula){
 		delete this->RGBCelula;
 	}
-}*/
+}

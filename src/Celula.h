@@ -40,7 +40,7 @@ public:
 	 */
 	bool getEstado();
 
-//	~Celula();
+	~Celula();
 };
 
 #endif /* CELULA_H_ */
