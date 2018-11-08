@@ -33,8 +33,8 @@ bool Celula::getEstado() {
 	return this->estadoCelula;
 }
 
-Celula::~Celula(){
+/*Celula::~Celula(){
 	if (this->RGBCelula){
 		delete this->RGBCelula;
 	}
-}
+}*/
