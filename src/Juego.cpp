@@ -60,6 +60,7 @@ void Juego::afectarCambiosPortalPorTablero(TurnoTablero * turnoTablero) {
 		CambioARealizar->getParcela().getPortal()->accionarPortal(nacer,
 				CambioARealizar->getColorPromedio(), factorNacimientoOrigen,
 				factorMuertetoOrigen);
+		delete CambioARealizar;
 	}
 }
 
@@ -98,6 +99,7 @@ void Juego::ejecutarTurno() {
 		for (int i = 0; i < cantidadTableros; i++) {
 			TurnoTablero * turnoDelTablero = turnos[i];
 			turnoDelTablero->actualizarBMP();
+			delete turnoDelTablero;
 		}
 		delete[] turnos;
 	}
