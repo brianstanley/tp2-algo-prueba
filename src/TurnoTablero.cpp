@@ -53,13 +53,11 @@ int TurnoTablero::chequearCelulasCircundantes(unsigned int fila,
 	return celulasCircundantesVivas;
 }
 
-RGB* TurnoTablero::promedioColoresCelulasCircundantes(
+RGB TurnoTablero::promedioColoresCelulasCircundantes(
 		RGB* coloresCelulasVivasCircundantes[]) {
-	RGB* colorParaCelulaANacer = new RGB();
-	colorParaCelulaANacer->calcularPromedioRGBes(
-			coloresCelulasVivasCircundantes[0],
-			coloresCelulasVivasCircundantes[1],
-			coloresCelulasVivasCircundantes[2]);
+	RGB colorParaCelulaANacer;
+	colorParaCelulaANacer.calcularPromedioRGBes(coloresCelulasVivasCircundantes[0],
+			coloresCelulasVivasCircundantes[1],coloresCelulasVivasCircundantes[2]);
 	return colorParaCelulaANacer;
 }
 
@@ -75,9 +73,9 @@ void TurnoTablero::decidirVidaOMuerte(int celulasVivasCircundantes,
 		marcarCelulaMorir(coordenadaEnCuestion);
 	} else {
 		if (!estaViva && (celulasVivasCircundantes == 3)) {
-			RGB* colorParaCelulaANacer = promedioColoresCelulasCircundantes(
+			RGB colorParaCelulaANacer = promedioColoresCelulasCircundantes(
 					coloresCelulasVivasCircundantes);
-			marcarCelulaNacer(coordenadaEnCuestion, colorParaCelulaANacer);
+			marcarCelulaNacer(coordenadaEnCuestion, &colorParaCelulaANacer);
 		}
 	}
 }

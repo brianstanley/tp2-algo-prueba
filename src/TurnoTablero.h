@@ -33,7 +33,7 @@ private:
 	 * pre:-
 	 * post: se devuelve un puntero al promedio de los colores de las celulas vivas circundantes
 	 */
-	RGB* promedioColoresCelulasCircundantes(
+	RGB promedioColoresCelulasCircundantes(
 			RGB* coloresCelulasVivasCircundantes[]);
 
 	/*
