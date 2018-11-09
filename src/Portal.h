@@ -2,9 +2,9 @@
 #define PORTAL_H_
 #include "CoordenadaParcela.h"
 
-const std::string ACTIVO = "A";
-const std::string NORMAL = "N";
-const std::string PASIVO = "P";
+const std::string ACTIVO = "activo";
+const std::string NORMAL = "normal";
+const std::string PASIVO = "pasivo";
 const std::string NOPORTAL = "-";
 
 class CoordenadaParcela;
