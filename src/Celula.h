@@ -39,6 +39,8 @@ public:
 	 * post: se devuelve true si la celula esta viva y false en caso contrario
 	 */
 	bool getEstado();
+
+	~Celula();
 };
 
 #endif /* CELULA_H_ */

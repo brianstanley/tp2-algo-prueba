@@ -67,5 +67,6 @@ Tablero::~Tablero() {
 		delete[] this->parcelas[i];
 	}
 	delete[] this->parcelas;
+	delete this->BMPDelTablero;
 }
 

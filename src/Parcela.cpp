@@ -6,7 +6,6 @@ Parcela::Parcela() {
 	this->celula = new Celula;
 	this->factorNacimiento = FACTOR_NACIMIENTO_DEFAULT;
 	this->factorMuerte = FACTOR_MUERTE_DEFAULT;
-	this->RGBParcela = RGBParcela;
 }
 
 void Parcela::setPortal(Portal * portal) {
@@ -59,5 +58,13 @@ void Parcela::setRBGparcela(RGB RGBParcela) {
 
 RGB* Parcela::getRBGparcela() {
 	return &this->RGBParcela;
+}
+
+Parcela::~Parcela(){
+	delete this->celula;
+	delete this->coordenadaParcela;
+	if (this->portal){
+		delete this->portal;
+	}
 }
 

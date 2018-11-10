@@ -97,6 +97,8 @@ public:
 	 */
 	RGB* getRBGparcela();
 
+	~Parcela();
+
 };
 
 #endif /* SRC_PARCELA_H_ */

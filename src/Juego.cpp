@@ -34,6 +34,14 @@ void Juego::iniciarJuego() {
 
 void Juego::terminarJuego() {
 	std::cout << "\nTerminaste el juego\n";
+	this->datosDelJuego->iniciarCursor();
+	this->tablerosDelJuego->iniciarCursor();
+	while(this->datosDelJuego->avanzarCursor()){
+		delete this->datosDelJuego->obtenerCursor();
+	}
+	while(this->tablerosDelJuego->avanzarCursor()){
+		delete this->tablerosDelJuego->obtenerCursor();
+	}
 	delete this->datosDelJuego;
 	delete this->tablerosDelJuego;
 }
@@ -52,6 +60,7 @@ void Juego::afectarCambiosPortalPorTablero(TurnoTablero * turnoTablero) {
 		CambioARealizar->getParcela().getPortal()->accionarPortal(nacer,
 				CambioARealizar->getColorPromedio(), factorNacimientoOrigen,
 				factorMuertetoOrigen);
+		delete CambioARealizar;
 	}
 }
 
@@ -90,6 +99,7 @@ void Juego::ejecutarTurno() {
 		for (int i = 0; i < cantidadTableros; i++) {
 			TurnoTablero * turnoDelTablero = turnos[i];
 			turnoDelTablero->actualizarBMP();
+			delete turnoDelTablero;
 		}
 		delete[] turnos;
 	}
