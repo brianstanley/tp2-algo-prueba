@@ -1,8 +1,9 @@
-#include "Lectura.h"
+#include "../CreacionTablero/Lectura.h"
+
 #include <iostream>
 #include <fstream>
 #include <errno.h>
-#include "Excepciones/ExcepcionesArchivo.h"
+#include "../Excepciones/ExcepcionesArchivo.h"
 
 void Lectura::abrir(std::string rutaEntrada, std::ifstream& entrada) {
 	entrada.open(rutaEntrada.c_str());

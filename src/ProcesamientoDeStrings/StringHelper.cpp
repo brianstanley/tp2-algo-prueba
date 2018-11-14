@@ -1,4 +1,4 @@
-#include "StringHelper.h"
+#include "../ProcesamientoDeStrings/StringHelper.h"
 
 std::string StringHelper::enteroIndividualAString(int entero) {
 	switch (entero) {

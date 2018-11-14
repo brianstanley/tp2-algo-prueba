@@ -1,4 +1,4 @@
-#include "CoordenadaParcela.h"
+#include "../Parcela/CoordenadaParcela.h"
 
 void CoordenadaParcela::setCoordenada(Tablero * tablero, int fila,
 		int columna) {

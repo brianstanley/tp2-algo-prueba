@@ -1,6 +1,6 @@
 #ifndef PORTAL_H_
 #define PORTAL_H_
-#include "CoordenadaParcela.h"
+#include "../Parcela/CoordenadaParcela.h"
 
 const std::string ACTIVO = "activo";
 const std::string NORMAL = "normal";

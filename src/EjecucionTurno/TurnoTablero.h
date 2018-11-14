@@ -1,10 +1,10 @@
 #ifndef SRC_TURNOTABLERO_H_
 #define SRC_TURNOTABLERO_H_
 
-#include "Tablero.h"
-#include "Listas/Cola.h"
-#include "Listas/ListaEnlazada.h"
-#include "ParcelaAfectada.h"
+#include "../Tablero/Tablero.h"
+#include "../Portal/ParcelaAfectada.h"
+#include "../Listas/Cola.h"
+#include "../Listas/ListaEnlazada.h"
 
 const int MAX_CANTIDAD_CELULAS_CIRCUNDANTES = 3;
 

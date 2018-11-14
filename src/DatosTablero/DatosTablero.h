@@ -1,7 +1,7 @@
 #ifndef SRC_DATOSTABLERO_H_
 #define SRC_DATOSTABLERO_H_
 
-#include "Tablero.h"
+#include "../Tablero/Tablero.h"
 
 class Tablero;
 

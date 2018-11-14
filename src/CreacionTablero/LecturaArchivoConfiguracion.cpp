@@ -1,4 +1,4 @@
-#include "LecturaArchivoConfiguracion.h"
+#include "../CreacionTablero/LecturaArchivoConfiguracion.h"
 
 void LecturaArchivoConfiguracion::procesarArchivo(std::string ruta) {
 	StringHelper stringHelper;

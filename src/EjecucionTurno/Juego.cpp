@@ -1,4 +1,4 @@
-#include "Juego.h"
+#include "../EjecucionTurno/Juego.h"
 
 std::string Juego::pedirProximoTurno() {
 	std::string proximoTurno;

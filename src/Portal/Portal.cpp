@@ -1,4 +1,4 @@
-#include "Portal.h"
+#include "../Portal/Portal.h"
 
 Portal::Portal(bool esPortalDeOrigen, std::string tipoDelPortal,
 		CoordenadaParcela * parcelaPareja) {

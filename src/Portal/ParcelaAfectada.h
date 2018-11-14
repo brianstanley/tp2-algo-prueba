@@ -1,9 +1,9 @@
 #ifndef SRC_PARCELAAFECTADA_H_
 #define SRC_PARCELAAFECTADA_H_
 
-#include "RGB.h"
-#include "CoordenadaParcela.h"
-#include "Parcela.h"
+#include "../Parcela/CoordenadaParcela.h"
+#include "../Parcela/Parcela.h"
+#include "../RGB/RGB.h"
 
 /*
  * La clase ParcelaAfectada crea instancias de las parcelas que son afectadas por el cambio del proximo turno.

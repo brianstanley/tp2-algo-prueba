@@ -1,4 +1,4 @@
-#include "TurnoTablero.h"
+#include "../EjecucionTurno/TurnoTablero.h"
 
 TurnoTablero::TurnoTablero(Tablero* tableroAsociado) {
 	this->tableroAsociado = tableroAsociado;

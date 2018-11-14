@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Juego.h"
+#include "EjecucionTurno/Juego.h"
 
 int main() {
 	Juego miJuego;

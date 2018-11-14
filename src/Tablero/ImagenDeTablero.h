@@ -5,9 +5,9 @@
 #include <sstream>
 #include <iostream>
 
-#include "libreriaBMP/EasyBMP.h"
-#include "RGB.h"
-#include "StringHelper.h"
+#include "../ProcesamientoDeStrings/StringHelper.h"
+#include "../libreriaBMP/EasyBMP.h"
+#include "../RGB/RGB.h"
 
 class ImagenDeTablero {
 private:

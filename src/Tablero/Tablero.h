@@ -3,9 +3,10 @@
 
 #include <iostream>
 #include <string>
-#include "Parcela.h"
-#include "DatosTablero.h"
-#include "ImagenDeTablero.h"
+
+#include "../DatosTablero/DatosTablero.h"
+#include "../Parcela/Parcela.h"
+#include "../Tablero/ImagenDeTablero.h"
 
 class Parcela;
 class DatosTablero;
