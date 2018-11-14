@@ -40,7 +40,8 @@ void Portal::nacer(RGB* color, float factorNacimientoOrigen) {
 	int fila = this->parcelaAsociada->getCoordenadaX();
 	int columna = this->parcelaAsociada->getCoordenadaY();
 	Tablero * tableroAsociado = this->parcelaAsociada->getTablero();
-	if (! tableroAsociado->getParcela(fila, columna).getCelula()->getEstado()){
+	bool celulaDestinoEstaViva = tableroAsociado->getParcela(fila, columna).getCelula()->getEstado();
+	if (! celulaDestinoEstaViva){
 		tableroAsociado->getParcela(fila, columna).getCelula()->nacer(
 				factorNacimientoOrigen, color);
 		tableroAsociado->getDatosTablero()->sumarCelulaViva();
@@ -54,7 +55,8 @@ void Portal::morir(float factorMuerteOrigen) {
 	int fila = this->parcelaAsociada->getCoordenadaX();
 	int columna = this->parcelaAsociada->getCoordenadaY();
 	Tablero * tableroAsociado = this->parcelaAsociada->getTablero();
-	if (tableroAsociado->getParcela(fila, columna).getCelula()->getEstado()){
+	bool celulaDestinoEstaViva = tableroAsociado->getParcela(fila, columna).getCelula()->getEstado();
+	if (celulaDestinoEstaViva){
 		bool murio = tableroAsociado->getParcela(fila, columna).getCelula()->restarEnergia(
 						factorMuerteOrigen);
 		if (murio) {
