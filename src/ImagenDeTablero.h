@@ -4,8 +4,9 @@
 #include <string>
 #include <sstream>
 #include <iostream>
+
+#include "libreriaBMP/EasyBMP.h"
 #include "RGB.h"
-#include "../librerias/EasyBMP.h"
 #include "StringHelper.h"
 
 class ImagenDeTablero {
