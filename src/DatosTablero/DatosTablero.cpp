@@ -1,4 +1,4 @@
-#include "DatosTablero.h"
+#include "../DatosTablero/DatosTablero.h"
 
 DatosTablero::DatosTablero(Tablero* tableroAsociado) {
 	this->cantidadCelulasVivas = 0;

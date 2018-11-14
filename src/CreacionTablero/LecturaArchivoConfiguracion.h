@@ -2,11 +2,12 @@
 #define SRC_LECTURAARCHIVOCONFIGURACION_H_
 #include <string>
 #include <fstream>
-#include "Lectura.h"
-#include "Excepciones/ExcepcionesArchivo.h"
-#include "Tablero.h"
-#include "StringHelper.h"
-#include "Listas/ListaEnlazada.h"
+
+#include "../CreacionTablero/Lectura.h"
+#include "../ProcesamientoDeStrings/StringHelper.h"
+#include "../Tablero/Tablero.h"
+#include "../Excepciones/ExcepcionesArchivo.h"
+#include "../Listas/ListaEnlazada.h"
 
 std::string const PARCELA = "parcela";
 std::string const PORTAL = "portal";

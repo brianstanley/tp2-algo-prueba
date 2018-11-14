@@ -4,9 +4,10 @@
 #include <string>
 #include <sstream>
 #include <iostream>
-#include "RGB.h"
-#include "../librerias/EasyBMP.h"
-#include "StringHelper.h"
+
+#include "../ProcesamientoDeStrings/StringHelper.h"
+#include "../libreriaBMP/EasyBMP.h"
+#include "../RGB/RGB.h"
 
 class ImagenDeTablero {
 private:

@@ -1,4 +1,4 @@
-#include "ImagenDeTablero.h"
+#include "../Tablero/ImagenDeTablero.h"
 
 const int FACTOR_AUMENTO_IMAGEN = 30;
 const std::string GUION_BAJO = "_";

@@ -1,6 +1,6 @@
 #ifndef SRC_COORDENADAPARCELA_H_
 #define SRC_COORDENADAPARCELA_H_
-#include "Tablero.h"
+#include "../Tablero/Tablero.h"
 
 class Parcela;
 class Tablero;

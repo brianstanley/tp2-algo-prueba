@@ -1,4 +1,4 @@
-#include "ParcelaAfectada.h"
+#include "../Portal/ParcelaAfectada.h"
 
 ParcelaAfectada::ParcelaAfectada(CoordenadaParcela * coordenadaParcela) {
 	coordenadaParcelaTocada = coordenadaParcela;

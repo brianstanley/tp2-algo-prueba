@@ -1,4 +1,4 @@
-#include "Celula.h"
+#include "../Celula/Celula.h"
 
 Celula::Celula() {
 	this->estadoCelula = MUERTA;

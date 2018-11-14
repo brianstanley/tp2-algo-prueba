@@ -1,4 +1,4 @@
-#include "Portal.h"
+#include "../Portal/Portal.h"
 
 Portal::Portal(bool esPortalDeOrigen, std::string tipoDelPortal,
 		CoordenadaParcela * parcelaPareja) {
@@ -40,11 +40,14 @@ void Portal::nacer(RGB* color, float factorNacimientoOrigen) {
 	int fila = this->parcelaAsociada->getCoordenadaX();
 	int columna = this->parcelaAsociada->getCoordenadaY();
 	Tablero * tableroAsociado = this->parcelaAsociada->getTablero();
-	tableroAsociado->getParcela(fila, columna).getCelula()->nacer(
-			factorNacimientoOrigen, color);
-	tableroAsociado->getDatosTablero()->sumarCelulaViva();
-	if (tableroAsociado->getDatosTablero()->estaCongelado()) {
-		tableroAsociado->getDatosTablero()->setCongeladoTurnoActual(false);
+	bool celulaDestinoEstaViva = tableroAsociado->getParcela(fila, columna).getCelula()->getEstado();
+	if (! celulaDestinoEstaViva){
+		tableroAsociado->getParcela(fila, columna).getCelula()->nacer(
+				factorNacimientoOrigen, color);
+		tableroAsociado->getDatosTablero()->sumarCelulaViva();
+		if (tableroAsociado->getDatosTablero()->estaCongelado()) {
+			tableroAsociado->getDatosTablero()->setCongeladoTurnoActual(false);
+		}
 	}
 }
 
@@ -52,13 +55,15 @@ void Portal::morir(float factorMuerteOrigen) {
 	int fila = this->parcelaAsociada->getCoordenadaX();
 	int columna = this->parcelaAsociada->getCoordenadaY();
 	Tablero * tableroAsociado = this->parcelaAsociada->getTablero();
-	bool murio =
-			tableroAsociado->getParcela(fila, columna).getCelula()->restarEnergia(
-					factorMuerteOrigen);
-	if (murio) {
-		tableroAsociado->getDatosTablero()->sumarCelulaMuerta();
-	}
-	if (tableroAsociado->getDatosTablero()->estaCongelado()) {
-		tableroAsociado->getDatosTablero()->setCongeladoTurnoActual(false);
+	bool celulaDestinoEstaViva = tableroAsociado->getParcela(fila, columna).getCelula()->getEstado();
+	if (celulaDestinoEstaViva){
+		bool murio = tableroAsociado->getParcela(fila, columna).getCelula()->restarEnergia(
+						factorMuerteOrigen);
+		if (murio) {
+			tableroAsociado->getDatosTablero()->sumarCelulaMuerta();
+		}
+		if (tableroAsociado->getDatosTablero()->estaCongelado()) {
+			tableroAsociado->getDatosTablero()->setCongeladoTurnoActual(false);
+		}
 	}
 }

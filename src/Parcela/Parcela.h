@@ -1,10 +1,10 @@
 #ifndef SRC_PARCELA_H_
 #define SRC_PARCELA_H_
 
-#include "Celula.h"
-#include "Portal.h"
-#include "RGB.h"
-#include "CoordenadaParcela.h"
+#include "../Celula/Celula.h"
+#include "../Parcela/CoordenadaParcela.h"
+#include "../Portal/Portal.h"
+#include "../RGB/RGB.h"
 
 class CoordenadaParcela;
 class Portal;

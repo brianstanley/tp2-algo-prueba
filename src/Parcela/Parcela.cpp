@@ -1,4 +1,4 @@
-#include "Parcela.h"
+#include "../Parcela/Parcela.h"
 
 Parcela::Parcela() {
 	this->coordenadaParcela = NULL;

@@ -1,7 +1,7 @@
 #ifndef CELULA_H_
 #define CELULA_H_
 
-#include"RGB.h"
+#include"../RGB/RGB.h"
 
 const int ENERGIA_MAX = 100;
 const bool MUERTA = false;

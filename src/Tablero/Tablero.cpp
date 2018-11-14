@@ -1,4 +1,4 @@
-#include "Tablero.h"
+#include "../Tablero/Tablero.h"
 
 Tablero::Tablero(std::string nombre, int filas, int columnas) {
 	this->nombre = nombre;
