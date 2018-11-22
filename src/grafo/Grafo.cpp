@@ -7,7 +7,7 @@ Grafo::Grafo(){
 }
 
 void Grafo::crearMatrizGrafo(){
-	this->MatrizDegrafo = new Arista()[][];
+	this->MatrizDegrafo = new Arista[this->cantidadVertices][this->cantidadVertices];
 }
 
 void Grafo::agregarVertice(Tablero* tableroAsociado){
