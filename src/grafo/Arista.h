@@ -1,5 +1,6 @@
-
 const int PESO_ARISTA_NULA = -1;
+const bool ACTIVADA = true;
+const bool DESACTIVADA = false;
 
 class Arista{
 private:
@@ -8,11 +9,25 @@ private:
 public:
 	/*
 	 * pre: -
-	 * post: se crea una instancia de arista "muerta" con un peso de -1
+	 * post: se crea una instancia de arista DESACTIVADA con un peso PESO_ARISTA_NULA
 	 */
 	Arista();
 
-	void setArista();
+	/*
+	 * pre: -
+	 * post: se setea una arista como ACTIVADA
+	 */
+	void Activar();
 
-	void
+	/*
+	 * pre: -
+	 * post: se setea una arista como DESACTIVADA
+	 */
+	void Desctivar();
+
+	/*
+	 * pre: -
+	 * post: se suma la cantidad pasada por parametro al peso actual de la arista
+	 */
+	void SumarPeso(int pesoASumar);
 };
