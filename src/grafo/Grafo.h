@@ -1,11 +1,10 @@
 #include "../Listas/ListaEnlazada.h"
-#include "Vertice.h"
 
 class Grafo{
 private:
 	int cantidadVertices;
 	int* MatrizDegrafo;
-	ListaEnlazada<Vertice*>* listaDeVertices;
+	ListaEnlazada<Tablero*>* listaDeVertices;
 
 public:
 

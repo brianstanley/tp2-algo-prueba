@@ -7,8 +7,8 @@ Grafo::Grafo(int cantidadVertices){
 }
 
 void Grafo::agregarVertice(Tablero* tableroAsociado){
-	this->cantidadVertices ++;
-	Vertice* nuevoVertice = new Vertice(tableroAsociado);
-	if ()
-	this->listaDeVertices
+	if (! this->listaDeVertices->esta(tableroAsociado)){
+		this->cantidadVertices++;
+		this->listaDeVertices->agregar(tableroAsociado);
+	}
 }
