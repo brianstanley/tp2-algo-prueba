@@ -105,6 +105,12 @@ template<class T> class ListaEnlazada {
          */
         ~ListaEnlazada();
 
+        /*
+         * pre: -
+         * post: si el elemento pasado por parametro esta en la lista se devuelve true, en caso contrario se devuelve false
+         */
+        bool esta(T elemento);
+
     private:
 
         /*
@@ -278,6 +284,18 @@ template<class T> Nodo<T>* ListaEnlazada<T>::obtenerNodo(unsigned int posicion) 
     }
 
     return actual;
+}
+
+template<class T> bool ListaEnlazada<T>::esta(T elemento){
+	Nodo<T>* nodoIterador = this->primero;
+	bool elementoEsta = false;
+	while(nodoIterador && !elementoEsta){
+		if (nodoIterador->obtenerDato() == elemento){
+			elementoEsta = true;
+		}
+		nodoIterador = nodoIterador->obtenerSiguiente();
+	}
+	return elementoEsta;
 }
 
 #endif /* LISTA_H_ */
