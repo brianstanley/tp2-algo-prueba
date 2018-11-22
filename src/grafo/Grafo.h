@@ -20,4 +20,5 @@ public:
 	 */
 	void agregarVertice(Tablero* tableroAsociado);
 
+
 };
