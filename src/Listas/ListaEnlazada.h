@@ -69,8 +69,9 @@ template<class T> class ListaEnlazada {
         void asignar(T elemento, unsigned int posicion);
 
         /*
-         * pre: el elemento pasado debe ser un elemento de la lista
-         * post: se devuelve la posicion del elemento en la lista
+         * pre:
+         * post: se devuelve la posicion del elemento en la lista, si el elemento
+         * pasado no esta en la lista se devuelve 0
          */
         int obtenerPosicion(T elemento);
 
