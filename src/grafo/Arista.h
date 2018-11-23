@@ -25,4 +25,10 @@ public:
 	 * post: se devuelve el peso de la arista
 	 */
 	int getPeso();
+
+	/*resolutionresolution
+	 * pre: -
+	 * post: Libera la memoria utilizada para crear el objeto en cuestion
+	 */
+	~Arista();
 };

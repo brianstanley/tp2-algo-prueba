@@ -12,7 +12,7 @@ private:
 	//los vertices adyacentes a dicho vertice en la lista. El orden de los nodos se puede obtener
 	//a traves de la "listaDeVertices"
 
-	ListaEnlazada<ListaEnlazada<Tablero*>*>* verticesAdyacentes;
+	ListaEnlazada<ListaEnlazada<Arista*>*>* verticesAdyacentes;
 
 	//Aca se listan los vertices que tiene el grafo (tableros, en este caso)
 
@@ -21,8 +21,8 @@ private:
 public:
 
 	/*
-	 * pre: la cantidad de vertices pasada por parametro debe ser mayor a 0
-	 * post: se crea una iteracion de la clase grafo con todo en 0
+	 * pre: -
+	 * post: se crea una iteracion de la clase grafo sin vertices ni aristas
 	 */
 	Grafo();
 

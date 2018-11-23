@@ -12,3 +12,7 @@ void Arista::sumarPeso(int pesoASumar){
 int Arista::getPeso(){
 	return this->pesoArista;
 }
+
+Arista::~Arista(){
+
+}

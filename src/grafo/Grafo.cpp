@@ -11,7 +11,7 @@ void Grafo::agregarVertice(Tablero* tableroAsociado){
 		this->cantidadVertices++;
 		this->listaDeVertices->agregar(tableroAsociado);
 
-		ListaEnlazada<Tablero*>* adyacentesAlVerticeAsociado = new ListaEnlazada<Tablero*>;
+		ListaEnlazada<Arista*>* adyacentesAlVerticeAsociado = new ListaEnlazada<Tablero*>;
 		this->verticesAdyacentes->agregar(adyacentesAlVerticeAsociado);
 	}
 }
@@ -24,7 +24,8 @@ void Grafo::agregarArista(Tablero* verticeEmisor, Tablero* verticeReceptor){
 		while(this->verticesAdyacentes->avanzarCursor() && posicionCursor != posicionVerticeEmisor){
 			posicionCursor++;
 		}
-		this->verticesAdyacentes->obtenerCursor()->agregar(verticeReceptor);
+		Arista* nuevaArista = new Arista(verticeReceptor);
+		this->verticesAdyacentes->obtenerCursor()->agregar(nuevaArista);
 	}
 }
 
