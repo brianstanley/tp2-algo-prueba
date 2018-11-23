@@ -34,5 +34,22 @@ void Grafo::eliminarVertice(Tablero* tableroAsociado){
 }
 
 void Grafo::elminimarArista(Tablero* verticeEmisor, Tablero* verticeReceptor){
+	unsigned int posicionVerticeEmisor = this->listaDeVertices->obtenerPosicion(verticeEmisor);
+	if (posicionVerticeEmisor != 0){
+		unsigned int posicionCursor = 1;
+		this->verticesAdyacentes->iniciarCursor();
+		while(this->verticesAdyacentes->avanzarCursor() && posicionCursor != posicionVerticeEmisor){
+			posicionCursor++;
+		}
 
+		ListaEnlazada<Arista*> AristasVerticeEmisor = this->verticesAdyacentes->obtenerCursor();
+		AristasVerticeEmisor.iniciarCursor();
+		Arista* aristaBuscada = 0;
+		while(!aristaBuscada && AristasVerticeEmisor.avanzarCursor()){
+			if (AristasVerticeEmisor.obtenerCursor()->getVerticeAsociado() == verticeReceptor){
+				aristaBuscada = AristasVerticeEmisor.obtenerCursor()->getVerticeAsociado();
+			}
+		}
+		delete aristaBuscada;
+	}
 }

@@ -26,9 +26,9 @@ public:
 	 */
 	int getPeso();
 
-	/*resolutionresolution
+	/*
 	 * pre: -
-	 * post: Libera la memoria utilizada para crear el objeto en cuestion
+	 * post: se devuelve un puntero al tablero al que esta conectado el vertice
 	 */
-	~Arista();
+	Tablero* getVerticeAsociado();
 };

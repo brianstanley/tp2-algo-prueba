@@ -13,6 +13,6 @@ int Arista::getPeso(){
 	return this->pesoArista;
 }
 
-Arista::~Arista(){
-
+Tablero* Arista::getVerticeAsociado(){
+	return this->tableroDeDestino;
 }

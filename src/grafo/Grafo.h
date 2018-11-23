@@ -39,7 +39,7 @@ public:
 	void agregarArista(Tablero* verticeEmisor, Tablero* verticeReceptor);
 
 	/*
-	 * pre: -
+	 * pre: solo se puede eliminar un vertice si no existen aristas que esten vinculadas con este
 	 * post: se elimina un vertice del grafo
 	 */
 	void eliminarVertice(Tablero* tableroAsociado);
