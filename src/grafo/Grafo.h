@@ -5,15 +5,17 @@
 class Grafo{
 private:
 
-	// Bastante simple, la cantidad de vertices del grafo
+	// Bastante simple, la cantidad de vertices del grafo (medio que sobra)
 	int cantidadVertices;
 
 	//Aca se crea un nodo de la lista de listas por cada vertice que se agrega y despues se ponen
 	//los vertices adyacentes a dicho vertice en la lista. El orden de los nodos se puede obtener
 	//a traves de la "listaDeVertices"
+
 	ListaEnlazada<ListaEnlazada<Tablero*>*>* verticesAdyacentes;
 
 	//Aca se listan los vertices que tiene el grafo (tableros, en este caso)
+
 	ListaEnlazada<Tablero*>* listaDeVertices;
 
 public:

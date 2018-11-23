@@ -1,34 +1,28 @@
-const int PESO_ARISTA_NULA = -1;
 const int PESO_ARISTA_INICIAL = 0;
-const bool ACTIVADA = true;
-const bool DESACTIVADA = false;
+
+#include "../Tablero/Tablero.h"
 
 class Arista{
 private:
-	bool estadoArista;
 	int pesoArista;
+	Tablero* tableroDeDestino;
 public:
 	/*
 	 * pre: -
-	 * post: se crea una instancia de arista DESACTIVADA con un peso PESO_ARISTA_NULA
+	 * post: se crea una instancia de arista con un peso PESO_ARISTA_INICIAL
+	 * y el tablero de destino asociado
 	 */
-	Arista();
-
-	/*
-	 * pre: -
-	 * post: se setea una arista como ACTIVADA
-	 */
-	void Activar();
-
-	/*
-	 * pre: -
-	 * post: se setea una arista como DESACTIVADA
-	 */
-	void Desctivar();
+	Arista(Tablero* tableroDeDestino);
 
 	/*
 	 * pre: -
 	 * post: se suma la cantidad pasada por parametro al peso actual de la arista
 	 */
-	void SumarPeso(int pesoASumar);
+	void sumarPeso(int pesoASumar);
+
+	/*
+	 * pre; -
+	 * post: se devuelve el peso de la arista
+	 */
+	int getPeso();
 };

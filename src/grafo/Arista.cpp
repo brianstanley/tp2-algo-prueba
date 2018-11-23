@@ -1,20 +1,14 @@
 #include "Arista.h"
 
-Arista::Arista(){
-	this->estadoArista = DESACTIVADA;
-	this->pesoArista = PESO_ARISTA_NULA;
-}
-
-void Arista::Activar(){
-	this->estadoArista = ACTIVADA;
+Arista::Arista(Tablero* tableroDeDestino){
 	this->pesoArista = PESO_ARISTA_INICIAL;
+	this->tableroDeDestino = tableroDeDestino;
 }
 
-void Arista::Desctivar(){
-	this->estadoArista = DESACTIVADA;
-	this->pesoArista = PESO_ARISTA_NULA;
-}
-
-void Arista::SumarPeso(int pesoASumar){
+void Arista::sumarPeso(int pesoASumar){
 	this->pesoArista += pesoASumar;
+}
+
+int Arista::getPeso(){
+	return this->pesoArista;
 }
