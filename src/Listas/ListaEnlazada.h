@@ -73,7 +73,7 @@ template<class T> class ListaEnlazada {
          * post: se devuelve la posicion del elemento en la lista, si el elemento
          * pasado no esta en la lista se devuelve 0
          */
-        int obtenerPosicion(T elemento);
+        unsigned int obtenerPosicion(T elemento);
 
         /*
          * pre : posición pertenece al intervalo: [1, contarElementos()]
@@ -205,7 +205,7 @@ template<class T> T ListaEnlazada<T>::obtener(unsigned int posicion) {
     return elemento;
 }
 
-template<class T> int ListaEnlazada<T>::obtenerPosicion(T elemento){
+template<class T> unsigned int ListaEnlazada<T>::obtenerPosicion(T elemento){
 
 	Nodo<T>* nodoIterador = this->primero;
 	int posicionDelElemento = 0;

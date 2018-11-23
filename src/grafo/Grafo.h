@@ -29,4 +29,10 @@ public:
 	 * post: se agrega un vertice a la lista de vertices
 	 */
 	void agregarVertice(Tablero* tableroAsociado);
+
+	/*
+	 * pre: los vertices emisor y receptor no pueden estar previamente conectados
+	 * post: se crea una arista entre los vertices emisor y receptor
+	 */
+	void agregarArista(Tablero* verticeEmisor, Tablero* verticeReceptor);
 };

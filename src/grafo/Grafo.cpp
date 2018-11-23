@@ -15,3 +15,14 @@ void Grafo::agregarVertice(Tablero* tableroAsociado){
 		this->verticesAdyacentes->agregar(adyacentesAlVerticeAsociado);
 	}
 }
+
+void Grafo::agregarArista(Tablero* verticeEmisor, Tablero* verticeReceptor){
+	unsigned int posicionVerticeEmisor = this->listaDeVertices->obtenerPosicion(verticeEmisor);
+	unsigned int posicionCursor = 1;
+	this->verticesAdyacentes->iniciarCursor();
+	while(this->verticesAdyacentes->avanzarCursor() && posicionCursor != posicionVerticeEmisor){
+		posicionCursor++;
+	}
+	this->verticesAdyacentes->obtenerCursor()->agregar(verticeReceptor);
+}
+
