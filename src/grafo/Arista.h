@@ -1,4 +1,5 @@
 const int PESO_ARISTA_NULA = -1;
+const int PESO_ARISTA_INICIAL = 0;
 const bool ACTIVADA = true;
 const bool DESACTIVADA = false;
 
