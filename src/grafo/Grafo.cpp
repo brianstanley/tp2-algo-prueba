@@ -18,11 +18,20 @@ void Grafo::agregarVertice(Tablero* tableroAsociado){
 
 void Grafo::agregarArista(Tablero* verticeEmisor, Tablero* verticeReceptor){
 	unsigned int posicionVerticeEmisor = this->listaDeVertices->obtenerPosicion(verticeEmisor);
-	unsigned int posicionCursor = 1;
-	this->verticesAdyacentes->iniciarCursor();
-	while(this->verticesAdyacentes->avanzarCursor() && posicionCursor != posicionVerticeEmisor){
-		posicionCursor++;
+	if (posicionVerticeEmisor != 0){
+		unsigned int posicionCursor = 1;
+		this->verticesAdyacentes->iniciarCursor();
+		while(this->verticesAdyacentes->avanzarCursor() && posicionCursor != posicionVerticeEmisor){
+			posicionCursor++;
+		}
+		this->verticesAdyacentes->obtenerCursor()->agregar(verticeReceptor);
 	}
-	this->verticesAdyacentes->obtenerCursor()->agregar(verticeReceptor);
 }
 
+void Grafo::eliminarVertice(Tablero* tableroAsociado){
+
+}
+
+void Grafo::elminimarArista(Tablero* verticeEmisor, Tablero* verticeReceptor){
+
+}

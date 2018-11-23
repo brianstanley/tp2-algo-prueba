@@ -3,7 +3,6 @@
 
 #include "Nodo.h"
 
-const bool NULL = 0;
 
 template<class T> class ListaEnlazada {
 

@@ -26,7 +26,7 @@ public:
 
 	/*
 	 * pre: -
-	 * post: se agrega un vertice a la lista de vertices
+	 * post: se agrega un vertice al grafo
 	 */
 	void agregarVertice(Tablero* tableroAsociado);
 
@@ -35,4 +35,16 @@ public:
 	 * post: se crea una arista entre los vertices emisor y receptor
 	 */
 	void agregarArista(Tablero* verticeEmisor, Tablero* verticeReceptor);
+
+	/*
+	 * pre: -
+	 * post: se elimina un vertice del grafo
+	 */
+	void eliminarVertice(Tablero* tableroAsociado);
+
+	/*
+	 * pre: la arista en cuestion debe existir
+	 * post: se elimina una arista entre los vertices emisor y receptor
+	 */
+	void elminimarArista(Tablero* verticeEmisor, Tablero* verticeReceptor);
 };
