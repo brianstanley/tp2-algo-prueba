@@ -24,6 +24,13 @@ public:
 
 	/*
 	 * pre: -
+	 * post: siempre y cuando exista, se elimina una arista con origen en el nodo en cuestion
+	 * y destino en el nodo pasado por parametro
+	 */
+	void eliminarArista(Tablero* tableroDestino);
+
+	/*
+	 * pre: -
 	 * post: se devuelve el peso del vertice en cuestion
 	 */
 	Tablero* getPeso();

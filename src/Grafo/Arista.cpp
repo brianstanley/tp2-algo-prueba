@@ -13,3 +13,11 @@ void Arista::incrementarPeso(){
 int Arista::getPeso(){
 	return this->pesoArista;
 }
+
+Tablero* Arista::getVerticeEmisor(){
+	return this->verticeEmisor;
+}
+
+Tablero* Arista::getVerticeReceptor(){
+	return this->verticeReceptor;
+}

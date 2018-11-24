@@ -10,6 +10,22 @@ void Vertice::crearArista(Tablero* tableroDestino){
 	this->AristasDelGrafo->agregar(nuevaArista);
 }
 
+void Vertice::eliminarArista(Tablero* tableroDestino){
+	this->AristasDelGrafo->iniciarCursor();
+	Arista* aristaBuscada;
+	bool seHayoLaArista = false;
+	int posicion = 1;
+	while (!seHayoLaArista && this->AristasDelGrafo->avanzarCursor()){
+		if (this->AristasDelGrafo->obtenerCursor()->getVerticeReceptor() == tableroDestino){
+			aristaBuscada = this->AristasDelGrafo->obtenerCursor();
+			delete aristaBuscada;
+			this->AristasDelGrafo->remover(posicion);
+			seHayoLaArista = true;
+		}
+		posicion ++;
+	}
+}
+
 Tablero* Vertice::getPeso(){
 	return this->pesoVertice;
 }

@@ -42,10 +42,10 @@ public:
 
 	/*
 	 * pre: -
-	 * post: se devuelve verdadero si existe un vertice en el grafo cuyo peso sea igual al tablero
-	 * pasado por parametro y falso en caso contrario
+	 * post: se devuelve el vertice asociado al tablero pasado por parametro, si el vertice en
+	 * cuestion no existe se devuelve un puntero a 0
 	 */
-	bool existeVertice(Tablero* tableroBuscado);
+	Vertice* buscarVertice(Tablero* tableroBuscado);
 
 	/*
 	 * pre: -

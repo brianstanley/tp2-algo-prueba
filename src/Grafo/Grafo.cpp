@@ -5,7 +5,7 @@ Grafo::Grafo(){
 }
 
 void Grafo::agregarVertice(Tablero* tableroAsociado){
-	if (!this->existeVertice(tableroAsociado)){
+	if (!this->buscarVertice(tableroAsociado)){
 		Vertice* nuevoVertice = new Vertice(tableroAsociado);
 		this->VerticesDelGrafo->agregar(nuevoVertice);
 	}
@@ -16,22 +16,30 @@ void Grafo::eliminarVertice(Tablero* tableroAsociado){
 }
 
 void Grafo::agregarArista(Tablero* tableroOrigen, Tablero* tableroDestino){
-
+	Vertice* VerticeOrigen = this->buscarVertice(tableroOrigen);
+	Vertice* VerticeDestino = this->buscarVertice(tableroDestino);
+	if (VerticeOrigen && VerticeDestino){
+		VerticeOrigen->crearArista(tableroDestino);
+	}
 }
 
 void Grafo::eliminarArista(Tablero* tableroOrigen, Tablero* tableroDestino){
-
+	Vertice* VerticeOrigen = this->buscarVertice(tableroOrigen);
+	Vertice* VerticeDestino = this->buscarVertice(tableroDestino);
+	if (VerticeOrigen && VerticeDestino){
+		VerticeOrigen->eliminarArista(tableroDestino);
+	}
 }
 
-bool Grafo::existeVertice(Tablero* tableroBuscado){
+Vertice* Grafo::buscarVertice(Tablero* tableroBuscado){
 	this->VerticesDelGrafo->iniciarCursor();
-	bool hayadoTableroBuscado = false;
-	while (!hayadoTableroBuscado && this->VerticesDelGrafo->avanzarCursor()){
-		if (this->VerticesDelGrafo->obtenerCursor()->getPeso() == hayadoTableroBuscado){
-			hayadoTableroBuscado = true;
+	bool verticeBuscado = 0;
+	while (!verticeBuscado && this->VerticesDelGrafo->avanzarCursor()){
+		if (this->VerticesDelGrafo->obtenerCursor()->getPeso() == tableroBuscado){
+			verticeBuscado = this->VerticesDelGrafo->obtenerCursor();
 		}
 	}
-	return hayadoTableroBuscado;
+	return verticeBuscado;
 }
 
 Grafo::~Grafo(){

@@ -28,4 +28,16 @@ public:
 	 * post: se devuelve el peso de la arista
 	 */
 	int getPeso();
+
+	/*
+	 * pre: -
+	 * post: se obtiene el vertice emisor
+	 */
+	Tablero* getVerticeEmisor();
+
+	/*
+	 * pre: -
+	 * post: se obtiene el vertice receptor
+	 */
+	Tablero* getVerticeReceptor();
 };
