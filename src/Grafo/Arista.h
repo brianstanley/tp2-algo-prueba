@@ -1,9 +1,11 @@
 #include "../Tablero/Tablero.h"
 
+const int PESO_NULO = 0;
+
 class Arista{
 private:
-	Tablero* VerticeEmisor;
-	Tablero* VerticeReceptor;
+	Tablero* verticeEmisor;
+	Tablero* verticeReceptor;
 	int pesoArista;
 
 public:
@@ -13,7 +15,7 @@ public:
 	 * post: se crea un objeto de la clase arista con un peso nulo y los vertices emisor y receptor
 	 * pasados por parametro
 	 */
-	Arista(Tablero* VerticeEmisor, Tablero* VerticeReceptor);
+	Arista(Tablero* verticeEmisor, Tablero* verticeReceptor);
 
 	/*
 	 * pre:
@@ -26,10 +28,4 @@ public:
 	 * post: se devuelve el peso de la arista
 	 */
 	int getPeso();
-
-	/*
-	 * pre: -
-	 * post: se libera toda la memoria utilizada para la creacion de un objeto de clase Arista
-	 */
-	~Arista();
 };
