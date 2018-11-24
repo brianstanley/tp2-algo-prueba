@@ -29,6 +29,8 @@ public:
 	 */
 	void eliminarArista(Tablero* tableroDestino);
 
+	}
+
 	/*
 	 * pre: -
 	 * post: se devuelve el peso del vertice en cuestion

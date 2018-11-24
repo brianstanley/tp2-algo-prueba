@@ -20,9 +20,8 @@ public:
 	void agregarVertice(Tablero* tableroAsociado);
 
 	/*
-	 * pre: -
-	 * post: se elimina el vertice que tiene como peso al tableroAsociado, asi como a todas las
-	 * aristas que este tenga con otros vertices o que otros vertices puedan tener con este
+	 * pre: el vertice en cuestion no debe tener aristas con ningun otro nodo
+	 * post:siempre y cuando exista, se elimina el vertice que tiene como peso al tableroAsociado
 	 */
 	void eliminarVertice(Tablero* TableroAsociado);
 
