@@ -14,21 +14,10 @@ void Grafo::agregarVertice(Tablero* tableroAsociado){
 void Grafo::eliminarVertice(Tablero* tableroAsociado){
 	Vertice* verticeBuscado = this->buscarVertice(tableroAsociado);
 	if (verticeBuscado){
-		Vertice* verticeBuscado;
-		this->VerticesDelGrafo->iniciarCursor();
-		while (this->VerticesDelGrafo->avanzarCursor()){
-			if (this->VerticesDelGrafo->obtenerCursor() != verticeBuscado){
-				Vertice* verticeActual = this->VerticesDelGrafo->obtenerCursor();
-				verticeActual->AristasDelGrafo->iniciarCursor();
-				while (verticeActual->AristasDelGrafo->avanzarCursor()){
-					Arista* aristaActual = verticeActual->AristasDelGrafo->avanzarCursor();
-					if (aristaActual->getVerticeEmisor() == tableroAsociado ||
-					aristaActual->getVerticeReceptor() == tableroAsociado){
-
-					}
-				}
-			}
-		}
+		delete verticeBuscado->AristasDelGrafo;
+		int posicionVerticeBuscado = this->VerticesDelGrafo->obtenerPosicion(verticeBuscado);
+		this->VerticesDelGrafo->remover(posicionVerticeBuscado);
+		delete verticeBuscado;
 	}
 }
 
