@@ -5,6 +5,11 @@ Vertice::Vertice(Tablero* tableroAsociado){
 	this->pesoVertice = tableroAsociado;
 }
 
+void Vertice::crearArista(Tablero* tableroDestino){
+	Arista* nuevaArista = new Arista(this->pesoVertice, tableroDestino);
+	this->AristasDelGrafo->agregar(nuevaArista);
+}
+
 Tablero* Vertice::getPeso(){
 	return this->pesoVertice;
 }

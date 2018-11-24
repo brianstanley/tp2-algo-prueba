@@ -31,7 +31,7 @@ public:
 	 * post: se agrega una arista que conecta el vertice sobre el cual se aplica este metodo con el
 	 * vertice que tiene como peso al tablero pasado por parametro
 	 */
-	void agregarArista(Tablero* TableroAdyacente);
+	void agregarArista(Tablero* tableroOrigen, Tablero* tableroDestino);
 
 	/*
 	 * pre: -
@@ -39,6 +39,13 @@ public:
 	 * con el de peso tableroDestino
 	 */
 	void eliminarArista(Tablero* tableroOrigen, Tablero* tableroDestino);
+
+	/*
+	 * pre: -
+	 * post: se devuelve verdadero si existe un vertice en el grafo cuyo peso sea igual al tablero
+	 * pasado por parametro y falso en caso contrario
+	 */
+	bool existeVertice(Tablero* tableroBuscado);
 
 	/*
 	 * pre: -

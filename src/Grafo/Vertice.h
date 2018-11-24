@@ -16,6 +16,13 @@ public:
 	Vertice(Tablero* tableroAsociado);
 
 	/*
+	 * pre:-
+	 * post: siepre y cuando exista, se crea una arista con origen en el nodo en cuestion y
+	 * destino en el nodo pasado por parametro
+	 */
+	void crearArista(Tablero* tableroDestino);
+
+	/*
 	 * pre: -
 	 * post: se devuelve el peso del vertice en cuestion
 	 */
