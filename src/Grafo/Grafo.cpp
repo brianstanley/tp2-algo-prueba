@@ -14,7 +14,12 @@ void Grafo::agregarVertice(Tablero* tableroAsociado){
 void Grafo::eliminarVertice(Tablero* tableroAsociado){
 	Vertice* verticeBuscado = this->buscarVertice(tableroAsociado);
 	if (verticeBuscado){
-		delete verticeBuscado->AristasDelGrafo;
+		ListaEnlazada<Arista*>* AristasVerticeBuscado = verticeBuscado->getAristas();
+		AristasVerticeBuscado->iniciarCursor();
+		while (AristasVerticeBuscado->avanzarCursor()){
+			Arista* aristaActual = AristasVerticeBuscado->obtenerCursor();
+			verticeBuscado->eliminarArista(aristaActual->getVerticeReceptor());
+		}
 		int posicionVerticeBuscado = this->VerticesDelGrafo->obtenerPosicion(verticeBuscado);
 		this->VerticesDelGrafo->remover(posicionVerticeBuscado);
 		delete verticeBuscado;
@@ -39,7 +44,7 @@ void Grafo::eliminarArista(Tablero* tableroOrigen, Tablero* tableroDestino){
 
 Vertice* Grafo::buscarVertice(Tablero* tableroBuscado){
 	this->VerticesDelGrafo->iniciarCursor();
-	bool verticeBuscado = 0;
+	Vertice* verticeBuscado = 0;
 	while (!verticeBuscado && this->VerticesDelGrafo->avanzarCursor()){
 		if (this->VerticesDelGrafo->obtenerCursor()->getPeso() == tableroBuscado){
 			verticeBuscado = this->VerticesDelGrafo->obtenerCursor();
@@ -49,5 +54,9 @@ Vertice* Grafo::buscarVertice(Tablero* tableroBuscado){
 }
 
 Grafo::~Grafo(){
-
+	this->VerticesDelGrafo->iniciarCursor();
+	while (this->VerticesDelGrafo->avanzarCursor()){
+		delete this->VerticesDelGrafo->obtenerCursor();
+	}
+	delete this->VerticesDelGrafo;
 }

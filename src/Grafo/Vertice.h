@@ -29,13 +29,17 @@ public:
 	 */
 	void eliminarArista(Tablero* tableroDestino);
 
-	}
-
 	/*
 	 * pre: -
 	 * post: se devuelve el peso del vertice en cuestion
 	 */
 	Tablero* getPeso();
+
+	/*
+	 * pre: -
+	 * post: se devuelve la lista de aristas asociadas al vertice en cuestion
+	 */
+	ListaEnlazada<Arista*>* getAristas();
 
 	/*
 	 * pre: -

@@ -30,6 +30,10 @@ Tablero* Vertice::getPeso(){
 	return this->pesoVertice;
 }
 
+ListaEnlazada<Arista*>* Vertice::getAristas(){
+	return this->AristasDelGrafo;
+}
+
 Vertice::~Vertice(){
 	this->AristasDelGrafo->iniciarCursor();
 	while(this->AristasDelGrafo->avanzarCursor()){
