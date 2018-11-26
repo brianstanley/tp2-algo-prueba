@@ -205,7 +205,7 @@ template<class T> int ListaEnlazada<T>::obtenerPosicion(T elemento) {
 	int posicion = 1;
 	bool seHayoElemento = false;
 
-	do{
+	while (nodoIterador && ! seHayoElemento);{
 		if (nodoIterador->obtenerDato() == elemento){
 			seHayoElemento = true;
 		}
@@ -213,7 +213,7 @@ template<class T> int ListaEnlazada<T>::obtenerPosicion(T elemento) {
 			posicion ++;
 			nodoIterador = nodoIterador->obtenerSiguiente();
 		}
-	} while (nodoIterador && ! seHayoElemento);
+	}
 
 	if (seHayoElemento){
 		return posicion;
