@@ -1,5 +1,10 @@
+#ifndef SRC_GRAFO_VERTICE_H_
+#define SRC_GRAFO_VERTICE_H_
+
 #include "../Listas/ListaEnlazada.h"
 #include "Arista.h"
+
+class Arista;
 
 class Vertice{
 private:
@@ -20,14 +25,14 @@ public:
 	 * post: siepre y cuando exista, se crea una arista con origen en el nodo en cuestion y
 	 * destino en el nodo pasado por parametro
 	 */
-	void crearArista(Tablero* tableroDestino);
+	void crearArista(Vertice* verticeOrigen, Vertice* verticeDestino);
 
 	/*
 	 * pre: -
 	 * post: siempre y cuando exista, se elimina una arista con origen en el nodo en cuestion
 	 * y destino en el nodo pasado por parametro
 	 */
-	void eliminarArista(Tablero* tableroDestino);
+	void eliminarArista(Vertice* verticeDestino);
 
 	/*
 	 * pre: -
@@ -47,3 +52,5 @@ public:
 	 */
 	~Vertice();
 };
+
+#endif

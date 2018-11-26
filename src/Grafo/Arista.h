@@ -1,11 +1,18 @@
+#ifndef SRC_GRAFO_ARISTA_H_
+#define SRC_GRAFO_ARISTA_H_
+
 #include "../Tablero/Tablero.h"
+#include "Vertice.h"
+
+class Vertice; //forward declaration
 
 const int PESO_NULO = 0;
 
+
 class Arista{
 private:
-	Tablero* verticeEmisor;
-	Tablero* verticeReceptor;
+	Vertice* verticeEmisor;
+	Vertice* verticeReceptor;
 	int pesoArista;
 
 public:
@@ -15,7 +22,7 @@ public:
 	 * post: se crea un objeto de la clase arista con un peso nulo y los vertices emisor y receptor
 	 * pasados por parametro
 	 */
-	Arista(Tablero* verticeEmisor, Tablero* verticeReceptor);
+	Arista(Vertice* verticeEmisor, Vertice* verticeReceptor);
 
 	/*
 	 * pre:
@@ -33,11 +40,13 @@ public:
 	 * pre: -
 	 * post: se obtiene el vertice emisor
 	 */
-	Tablero* getVerticeEmisor();
+	Vertice* getVerticeEmisor();
 
 	/*
 	 * pre: -
 	 * post: se obtiene el vertice receptor
 	 */
-	Tablero* getVerticeReceptor();
+	Vertice* getVerticeReceptor();
 };
+
+#endif /* SRC_GRAFO_ARISTA_H_ */

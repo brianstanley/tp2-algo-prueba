@@ -1,6 +1,6 @@
 #include "Arista.h"
 
-Arista::Arista(Tablero* verticeEmisor, Tablero* verticeReceptor){
+Arista::Arista(Vertice* verticeEmisor, Vertice* verticeReceptor){
 	this->pesoArista = PESO_NULO;
 	this->verticeEmisor = verticeEmisor;
 	this->verticeReceptor = verticeReceptor;
@@ -14,10 +14,10 @@ int Arista::getPeso(){
 	return this->pesoArista;
 }
 
-Tablero* Arista::getVerticeEmisor(){
+Vertice* Arista::getVerticeEmisor(){
 	return this->verticeEmisor;
 }
 
-Tablero* Arista::getVerticeReceptor(){
+Vertice* Arista::getVerticeReceptor(){
 	return this->verticeReceptor;
 }

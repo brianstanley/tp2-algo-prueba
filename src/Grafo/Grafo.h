@@ -1,3 +1,6 @@
+#ifndef SRC_GRAFO_GRAFO_H_
+#define SRC_GRAFO_GRAFO_H_
+
 #include "Vertice.h"
 
 class Grafo{
@@ -52,3 +55,5 @@ public:
 	 */
 	~Grafo();
 };
+
+#endif

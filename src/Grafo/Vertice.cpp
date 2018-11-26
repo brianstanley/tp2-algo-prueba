@@ -5,18 +5,18 @@ Vertice::Vertice(Tablero* tableroAsociado){
 	this->pesoVertice = tableroAsociado;
 }
 
-void Vertice::crearArista(Tablero* tableroDestino){
-	Arista* nuevaArista = new Arista(this->pesoVertice, tableroDestino);
+void Vertice::crearArista(Vertice* verticeOrigen, Vertice* verticeDestino){
+	Arista* nuevaArista = new Arista(verticeOrigen, verticeDestino);
 	this->AristasDelGrafo->agregar(nuevaArista);
 }
 
-void Vertice::eliminarArista(Tablero* tableroDestino){
+void Vertice::eliminarArista(Vertice* verticeDestino){
 	this->AristasDelGrafo->iniciarCursor();
 	Arista* aristaBuscada;
 	bool seHayoLaArista = false;
 	int posicion = 1;
 	while (!seHayoLaArista && this->AristasDelGrafo->avanzarCursor()){
-		if (this->AristasDelGrafo->obtenerCursor()->getVerticeReceptor() == tableroDestino){
+		if (this->AristasDelGrafo->obtenerCursor()->getVerticeReceptor() == verticeDestino){
 			aristaBuscada = this->AristasDelGrafo->obtenerCursor();
 			delete aristaBuscada;
 			this->AristasDelGrafo->remover(posicion);

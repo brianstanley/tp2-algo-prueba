@@ -30,7 +30,7 @@ void Grafo::agregarArista(Tablero* tableroOrigen, Tablero* tableroDestino){
 	Vertice* VerticeOrigen = this->buscarVertice(tableroOrigen);
 	Vertice* VerticeDestino = this->buscarVertice(tableroDestino);
 	if (VerticeOrigen && VerticeDestino){
-		VerticeOrigen->crearArista(tableroDestino);
+		VerticeOrigen->crearArista(VerticeOrigen, VerticeDestino);
 	}
 }
 
@@ -38,7 +38,7 @@ void Grafo::eliminarArista(Tablero* tableroOrigen, Tablero* tableroDestino){
 	Vertice* VerticeOrigen = this->buscarVertice(tableroOrigen);
 	Vertice* VerticeDestino = this->buscarVertice(tableroDestino);
 	if (VerticeOrigen && VerticeDestino){
-		VerticeOrigen->eliminarArista(tableroDestino);
+		VerticeOrigen->eliminarArista(VerticeDestino);
 	}
 }
 
