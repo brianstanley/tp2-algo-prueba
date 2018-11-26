@@ -4,12 +4,12 @@
 #include "../Listas/ListaEnlazada.h"
 #include "Arista.h"
 
-class Arista;
+class Arista; //forward declaration
 
 class Vertice{
 private:
 	ListaEnlazada<Arista*>* AristasDelGrafo;
-	Tablero* pesoVertice;
+	Tablero* tableroAsociado;
 
 public:
 
@@ -38,7 +38,7 @@ public:
 	 * pre: -
 	 * post: se devuelve el peso del vertice en cuestion
 	 */
-	Tablero* getPeso();
+	Tablero* getTableroAsociado();
 
 	/*
 	 * pre: -

@@ -2,7 +2,7 @@
 
 Vertice::Vertice(Tablero* tableroAsociado){
 	this->AristasDelGrafo = new ListaEnlazada<Arista*>;
-	this->pesoVertice = tableroAsociado;
+	this->tableroAsociado = tableroAsociado;
 }
 
 void Vertice::crearArista(Vertice* verticeOrigen, Vertice* verticeDestino){
@@ -26,8 +26,8 @@ void Vertice::eliminarArista(Vertice* verticeDestino){
 	}
 }
 
-Tablero* Vertice::getPeso(){
-	return this->pesoVertice;
+Tablero* Vertice::getTableroAsociado(){
+	return this->tableroAsociado;
 }
 
 ListaEnlazada<Arista*>* Vertice::getAristas(){
