@@ -26,17 +26,17 @@ void Grafo::eliminarVertice(Tablero* tableroAsociado){
 	}
 }
 
-void Grafo::agregarArista(Tablero* tableroOrigen, Tablero* tableroDestino){
-	Vertice* VerticeOrigen = this->buscarVertice(tableroOrigen);
-	Vertice* VerticeDestino = this->buscarVertice(tableroDestino);
+void Grafo::agregarArista(Tablero* IDVerticeOrigen, Tablero* DIVerticeDestino){
+	Vertice* VerticeOrigen = this->buscarVertice(IDVerticeOrigen);
+	Vertice* VerticeDestino = this->buscarVertice(DIVerticeDestino);
 	if (VerticeOrigen && VerticeDestino){
 		VerticeOrigen->crearArista(VerticeOrigen, VerticeDestino);
 	}
 }
 
-void Grafo::eliminarArista(Tablero* tableroOrigen, Tablero* tableroDestino){
-	Vertice* VerticeOrigen = this->buscarVertice(tableroOrigen);
-	Vertice* VerticeDestino = this->buscarVertice(tableroDestino);
+void Grafo::eliminarArista(Tablero* IDVerticeOrigen, Tablero* DIVerticeDestino){
+	Vertice* VerticeOrigen = this->buscarVertice(IDVerticeOrigen);
+	Vertice* VerticeDestino = this->buscarVertice(DIVerticeDestino);
 	if (VerticeOrigen && VerticeDestino){
 		VerticeOrigen->eliminarArista(VerticeDestino);
 	}
