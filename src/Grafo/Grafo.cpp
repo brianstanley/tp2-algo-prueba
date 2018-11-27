@@ -80,14 +80,12 @@ int Grafo::buscarRecorridoMinimo(Vertice* verticeOrigen, Vertice* verticeDestino
 			while (verticeActual->getAristas()->avanzarCursor()){
 				Arista* aristaConectora = verticeActual->getAristas()->obtenerCursor();
 				Vertice* verticeCursor = aristaConectora->getVerticeReceptor();
-				if (! verticeCursor->fueVisitado()){
-					int pesoAristaConectora = aristaConectora->getPeso();
-					int pesoTotal = pesoAristaConectora + verticeCursor->getDistanciaRecorrida();
-					if (pesoTotal < verticeCursor->getDistanciaRecorrida()){
-						verticeCursor->setDistanciaRecorrida(pesoTotal);
-					}
-					aVisitar->acolar(verticeCursor);
+				int pesoAristaConectora = aristaConectora->getPeso();
+				int pesoTotal = pesoAristaConectora + verticeActual->getDistanciaRecorrida();
+				if (pesoTotal < verticeCursor->getDistanciaRecorrida()){
+					verticeCursor->setDistanciaRecorrida(pesoTotal);
 				}
+				aVisitar->acolar(verticeCursor);
 			}
 		}
 	}
