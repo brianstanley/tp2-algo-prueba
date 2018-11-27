@@ -4,12 +4,16 @@
 #include "../Listas/ListaEnlazada.h"
 #include "Arista.h"
 
+const int DISTANCIA_POR_DEFECTO = 10000;
+
 class Arista; //forward declaration
 
 class Vertice{
 private:
 	ListaEnlazada<Arista*>* AristasDelGrafo;
 	Tablero* tableroAsociado;
+	int distanciaRecorridaParaLLegar;  //para Dijkstra
+	bool visitado;                     //para Dijkstra
 
 public:
 

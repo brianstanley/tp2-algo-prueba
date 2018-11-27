@@ -3,6 +3,8 @@
 Vertice::Vertice(Tablero* tableroAsociado){
 	this->AristasDelGrafo = new ListaEnlazada<Arista*>;
 	this->tableroAsociado = tableroAsociado;
+	this->distanciaRecorridaParaLLegar = DISTANCIA_POR_DEFECTO;
+	this->visitado = false;
 }
 
 void Vertice::crearArista(Vertice* verticeOrigen, Vertice* verticeDestino){
