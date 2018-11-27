@@ -46,11 +46,46 @@ Vertice* Grafo::buscarVertice(Tablero* tableroBuscado){
 	this->VerticesDelGrafo->iniciarCursor();
 	Vertice* verticeBuscado = 0;
 	while (!verticeBuscado && this->VerticesDelGrafo->avanzarCursor()){
-		if (this->VerticesDelGrafo->obtenerCursor()->getPeso() == tableroBuscado){
+		if (this->VerticesDelGrafo->obtenerCursor()->getTableroAsociado() == tableroBuscado){
 			verticeBuscado = this->VerticesDelGrafo->obtenerCursor();
 		}
 	}
 	return verticeBuscado;
+}
+
+Arista* Grafo::buscarArista(Vertice* verticeOrigen, Vertice* verticeDestino){
+	Arista* aristaBuscada = 0;
+	bool halladaLaArista = false;
+	verticeOrigen->getAristas()->iniciarCursor();
+	while (! halladaLaArista && verticeOrigen->getAristas()->avanzarCursor()){
+		Arista* aristaActual = verticeOrigen->getAristas()->obtenerCursor();
+		if (aristaActual->getVerticeReceptor() == verticeDestino){
+			aristaBuscada = aristaActual;
+			halladaLaArista = true;
+		}
+	}
+	return aristaBuscada;
+}
+
+void Grafo::buscarRecorridoMinimo(Vertice* verticeOrigen, Vertice* verticeDestino){
+	Cola<Vertice*>* aVisitar = new Cola<Vertice*>;
+	Vertice* verticeActual = verticeOrigen;
+	verticeActual->setDistanciaRecorrida(0);
+	do{
+		verticeActual->marcarVisitado();
+		verticeActual->listaAristas->iniciarCursor();
+		while (verticeActual->listaAristas->avanzarCursor){
+			Vertice* verticeCursor = verticeActual->listaAristas->obtenerCursor();
+			Arista* aristaConectora = this->buscarArista(verticeActual, verticeCursor);
+			int pesoAristaConectora = aristaConectora->getPeso();
+			verticeCursor->setDistanciaRecorrida(verticeActual->getDistRec() + pesoAristaConectora);
+			aVisitar->encolar(verticeCursor);
+		}
+		if (! aVisitar->estaVacia()){
+			verticeActual = aVisitar->desencolar();
+		}
+	}while (! adyacentes->estaVacia());
+	delete aVisitar;
 }
 
 Grafo::~Grafo(){
