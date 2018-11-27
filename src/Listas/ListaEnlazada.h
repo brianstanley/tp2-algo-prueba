@@ -62,6 +62,13 @@ template<class T> class ListaEnlazada {
         T obtener(unsigned int posicion);
 
         /*
+         * pre: -
+         * post: si el elemento forma parte de la lista se devuelve su posicion en la lista
+         * si este no pertenece se devuelve 0
+         */
+        int obtenerPosicion(T elemento);
+
+        /*
          * pre : posicioó pertenece al intervalo: [1, contarElementos()]
          * post: cambia el elemento en la posición indicada por el
          *       elemento dado.
@@ -190,6 +197,30 @@ template<class T> T ListaEnlazada<T>::obtener(unsigned int posicion) {
     }
 
     return elemento;
+}
+
+template<class T> int ListaEnlazada<T>::obtenerPosicion(T elemento) {
+
+	Nodo<T>* nodoIterador = this->primero;
+	int posicion = 1;
+	bool seHayoElemento = false;
+
+	while (nodoIterador && ! seHayoElemento);{
+		if (nodoIterador->obtenerDato() == elemento){
+			seHayoElemento = true;
+		}
+		else{
+			posicion ++;
+			nodoIterador = nodoIterador->obtenerSiguiente();
+		}
+	}
+
+	if (seHayoElemento){
+		return posicion;
+	}
+	else{
+		return 0;
+	}
 }
 
 template<class T> void ListaEnlazada<T>::asignar(T elemento, unsigned int posicion) {
