@@ -62,7 +62,7 @@ public:
 	 * post: se devuelve el recorrido para llegar del vertice de origen al de destino pasando por
 	 * las aristas de menor peso
 	 */
-	void buscarRecorridoMinimo(Vertice* verticeOrigen, Vertice* verticeDestino);
+	int buscarRecorridoMinimo(Vertice* verticeOrigen, Vertice* verticeDestino);
 
 	/*
 	 * pre: -
