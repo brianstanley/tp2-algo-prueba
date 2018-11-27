@@ -12,7 +12,7 @@ class Vertice{
 private:
 	ListaEnlazada<Arista*>* AristasDelGrafo;
 	Tablero* tableroAsociado;
-	int distanciaRecorridaParaLLegar;  //para Dijkstra
+	int distanciaRecorrida;  //para Dijkstra
 	bool visitado;                     //para Dijkstra
 
 public:
@@ -49,6 +49,30 @@ public:
 	 * post: se devuelve la lista de aristas asociadas al vertice en cuestion
 	 */
 	ListaEnlazada<Arista*>* getAristas();
+
+	/*
+	 * pre: -
+	 * post: se setea el valor de DistanciaRecorrida como el valor pasado por parametro
+	 */
+	void setDistanciaRecorrida(int distancia);
+
+	/*
+	 * pre: -
+	 * post: se devuelve el valor de DistanciaRecorrida
+	 */
+	int getDistanciaRecorrida();
+
+	/*
+	 * pre: -
+	 * post: el valor de visitado se setea a true
+	 */
+	void marcarVisitado();
+
+	/*
+	 * pre: -
+	 * post: se devuelve true si el vertice fue visitado y false en caso contrario
+	 */
+	bool fueVisitado();
 
 	/*
 	 * pre: -
