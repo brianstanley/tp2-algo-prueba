@@ -69,29 +69,30 @@ Arista* Grafo::buscarArista(Vertice* verticeOrigen, Vertice* verticeDestino){
 
 int Grafo::buscarRecorridoMinimo(Vertice* verticeOrigen, Vertice* verticeDestino){
 	Cola<Vertice*>* aVisitar = new Cola<Vertice*>;
-	Vertice* verticeActual = verticeOrigen;
-	verticeActual->setDistanciaRecorrida(0);
-	while (! aVisitar->estaVacia()) { //todavia es problema
-		verticeActual->marcarVisitado();
-		verticeActual->listaAristas->iniciarCursor();
-		while (verticeActual->listaAristas->avanzarCursor()){
-			Arista* aristaConectora = verticeActual->listaAristas->obtenerCursor();
-			Vertice* verticeCursor = aristaConectora->getVerticeReceptor;
-			if (! verticeCursor->yaVisitado()){
-				int pesoAristaConectora = aristaConectora->getPeso();
-				int pesoTotal = pesoAristaConectora + verticeCursor->getDistRec();
-				if (pesoTotal < verticeCursor->getDistRec()){
-					verticeCursor->setDistanciaRecorrida(pesoTotal);
+	Vertice* verticeActual;
+	aVisitar->acolar(verticeOrigen);
+	verticeOrigen->setDistanciaRecorrida(0);
+	while (! aVisitar->estaVacia()) {
+		verticeActual = aVisitar->desacolar();
+		if (! verticeActual->fueVisitado()){
+			verticeActual->marcarVisitado();
+			verticeActual->getAristas()->iniciarCursor();
+			while (verticeActual->getAristas()->avanzarCursor()){
+				Arista* aristaConectora = verticeActual->getAristas()->obtenerCursor();
+				Vertice* verticeCursor = aristaConectora->getVerticeReceptor();
+				if (! verticeCursor->fueVisitado()){
+					int pesoAristaConectora = aristaConectora->getPeso();
+					int pesoTotal = pesoAristaConectora + verticeCursor->getDistanciaRecorrida();
+					if (pesoTotal < verticeCursor->getDistanciaRecorrida()){
+						verticeCursor->setDistanciaRecorrida(pesoTotal);
+					}
+					aVisitar->acolar(verticeCursor);
 				}
-				aVisitar->encolar(verticeCursor);
 			}
-		}
-		if (! aVisitar->estaVacia()){
-			verticeActual = aVisitar->desencolar();
 		}
 	}
 	delete aVisitar;
-	return verticeDestino->getDistRec();
+	return verticeDestino->getDistanciaRecorrida();
 }
 
 Grafo::~Grafo(){
