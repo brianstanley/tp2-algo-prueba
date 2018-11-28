@@ -2,6 +2,7 @@
 #define PORTAL_H_
 #include "../Parcela/CoordenadaParcela.h"
 
+
 const std::string ACTIVO = "activo";
 const std::string NORMAL = "normal";
 const std::string PASIVO = "pasivo";
@@ -27,7 +28,7 @@ private:
 	std::string tipoDePortal;
 	CoordenadaParcela * parcelaAsociada;
 
-	void nacer(RGB* color, float factorNacimientoOrigen);
+	void nacer(RGB* color, float factorNacimientoOrigen, Grafo* grafoAsociado, Tablero* tableroOrigen);
 
 	void morir(float factorMuerteOrigen);
 
@@ -50,7 +51,7 @@ public:
 	 * post: se acciona el portal correspondiente, es decir hace nacer o morir segun el tipo de portal que lleva.
 	 */
 	void accionarPortal(bool nace, RGB* color, float factorNacimientoOrigen,
-			float factorMuerteOrigen);
+			float factorMuerteOrigen, Grafo* grafoAsociado, Tablero* tableroOrigen);
 };
 
 #endif /* PORTAL_H_ */

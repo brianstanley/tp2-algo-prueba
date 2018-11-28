@@ -12,11 +12,11 @@ std::string Portal::getTipoDePortal() {
 }
 
 void Portal::accionarPortal(bool nace, RGB* color, float factorNacimientoOrigen,
-		float factorMuerteOrigen) {
+		float factorMuerteOrigen, Grafo* grafoAsociado, Tablero* tableroOrigen) {
 	if (this->tipoDePortal == "activo") {
 		if (this->portalOrigen) {
 			if (nace) {
-				this->nacer(color, factorNacimientoOrigen);
+				this->nacer(color, factorNacimientoOrigen, grafoAsociado, tableroOrigen);
 			} else {
 				this->morir(factorMuerteOrigen);
 			}
@@ -26,17 +26,18 @@ void Portal::accionarPortal(bool nace, RGB* color, float factorNacimientoOrigen,
 	} else if (this->tipoDePortal == "normal") {
 		if (this->portalOrigen) {
 			if (nace) {
-				this->nacer(color, factorNacimientoOrigen);
+				this->nacer(color, factorNacimientoOrigen, grafoAsociado, tableroOrigen);
 			} else {
 				this->morir(factorMuerteOrigen);
 			}
 		}
 	} else if (this->portalOrigen && nace) { //Pasivo
-		this->nacer(color, factorNacimientoOrigen);
+		this->nacer(color, factorNacimientoOrigen, grafoAsociado, tableroOrigen);
 	}
 }
 
-void Portal::nacer(RGB* color, float factorNacimientoOrigen) {
+void Portal::nacer(RGB* color, float factorNacimientoOrigen, Grafo* grafoAsociado,
+		Tablero* tableroOrigen) {
 	int fila = this->parcelaAsociada->getCoordenadaX();
 	int columna = this->parcelaAsociada->getCoordenadaY();
 	Tablero * tableroAsociado = this->parcelaAsociada->getTablero();
@@ -48,6 +49,7 @@ void Portal::nacer(RGB* color, float factorNacimientoOrigen) {
 		if (tableroAsociado->getDatosTablero()->estaCongelado()) {
 			tableroAsociado->getDatosTablero()->setCongeladoTurnoActual(false);
 		}
+		grafoAsociado->incrementarPesoAristaConectora(tableroOrigen, tableroAsociado);
 	}
 }
 

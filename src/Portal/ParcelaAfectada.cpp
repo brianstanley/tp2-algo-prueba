@@ -27,6 +27,10 @@ Parcela & ParcelaAfectada::getParcela() {
 	return this->coordenadaParcelaTocada->getParcela();
 }
 
+Tablero* ParcelaAfectada::getTablero(){
+	return this->coordenadaParcelaTocada->getTablero();
+}
+
 bool ParcelaAfectada::naceLaCelula() {
 	return this->celulaNace;
 }

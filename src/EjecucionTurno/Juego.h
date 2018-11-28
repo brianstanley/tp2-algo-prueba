@@ -5,6 +5,7 @@
 #include "../EjecucionTurno/TurnoTablero.h"
 #include "../Tablero/Tablero.h"
 #include "../Listas/ListaEnlazada.h"
+#include "../Grafo/Grafo.h"
 
 const std::string EJECUTAR_TURNO = "e";
 const std::string INICIAR_JUEGO = "r";
@@ -18,6 +19,7 @@ class Juego {
 private:
 	ListaEnlazada<Tablero*>* tablerosDelJuego;
 	ListaEnlazada<DatosTablero*>* datosDelJuego;
+
 
 	/*
 	 * pre: recibe un turnoTablero* procesado que lleva los portales afectados.
@@ -38,6 +40,9 @@ private:
 	void procesarDatos();
 
 public:
+
+	Grafo* grafoAsociado;
+
 	/*
 	 * pre:
 	 * post: Aplica la ejecucion de un turno para cada uno de los tableros cambiando las parcelas.
