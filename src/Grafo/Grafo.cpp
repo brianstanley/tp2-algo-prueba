@@ -46,7 +46,7 @@ Vertice* Grafo::buscarVertice(Tablero* tableroBuscado){
 	this->VerticesDelGrafo->iniciarCursor();
 	Vertice* verticeBuscado = 0;
 	while (!verticeBuscado && this->VerticesDelGrafo->avanzarCursor()){
-		if (this->VerticesDelGrafo->obtenerCursor()->getPeso() == tableroBuscado){
+		if (this->VerticesDelGrafo->obtenerCursor()->getTableroAsociado() == tableroBuscado){
 			verticeBuscado = this->VerticesDelGrafo->obtenerCursor();
 		}
 	}
