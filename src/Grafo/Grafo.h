@@ -3,7 +3,7 @@
 
 #include "Vertice.h"
 
-
+class Vertice;
 class Grafo{
 private:
 	ListaEnlazada<Vertice*>* VerticesDelGrafo;

@@ -1,7 +1,7 @@
 #ifndef PORTAL_H_
 #define PORTAL_H_
 #include "../Parcela/CoordenadaParcela.h"
-
+#include "../Grafo/Grafo.h"
 
 const std::string ACTIVO = "activo";
 const std::string NORMAL = "normal";
@@ -13,6 +13,7 @@ class CoordenadaParcela;
  * La clase Portal esta siempre asociada con una parcela, por lo tanto no lleva las coordenadas de la parcela.
  */
 
+class Grafo;
 class Portal {
 
 private:
