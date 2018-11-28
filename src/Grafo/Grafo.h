@@ -2,6 +2,8 @@
 #define SRC_GRAFO_GRAFO_H_
 
 #include "Vertice.h"
+#include "../Listas/Cola.h"
+
 
 class Grafo{
 private:
@@ -48,6 +50,8 @@ public:
 	 * cuestion no existe se devuelve un puntero a 0
 	 */
 	Vertice* buscarVertice(Tablero* tableroBuscado);
+
+	int buscarRecorridosMinimoParaTablero(Vertice* verticeOrigen, Vertice* verticeDestino);
 
 	/*
 	 * pre: -

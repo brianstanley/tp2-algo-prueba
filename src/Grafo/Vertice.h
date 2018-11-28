@@ -3,6 +3,7 @@
 
 #include "../Listas/ListaEnlazada.h"
 #include "Arista.h"
+#include "RecorridoTablero.h"
 
 class Arista; //forward declaration
 
@@ -10,6 +11,7 @@ class Vertice{
 private:
 	ListaEnlazada<Arista*>* AristasDelGrafo;
 	Tablero* tableroAsociado;
+	//ListaEnlazada<RecorridoTablero*>* recorridosALosTableros;
 
 public:
 

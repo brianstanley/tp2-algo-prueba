@@ -53,6 +53,39 @@ Vertice* Grafo::buscarVertice(Tablero* tableroBuscado){
 	return verticeBuscado;
 }
 
+int Grafo::buscarRecorridosMinimoParaTablero(Vertice* verticeOrigen, Vertice* verticeDestino){
+	//this->resetearVerticesParaRecorrido();
+	RecorridoTablero recorridoBuscado(verticeOrigen, verticeDestino);
+	//ListaEnlazada<Vertice*>* aVisitar = new ListaEnlazada<Vertice*>;
+	ListaEnlazada<Vertice*>* aVisitar = this->VerticesDelGrafo;
+	int posicionOrigen = aVisitar->obtenerPosicion(verticeOrigen); //aca quiero sacar el vertice de Origen de la lista a recorrer
+	Vertice* verticeActual;
+	verticeActual = verticeOrigen;
+	aVisitar->remover(posicionOrigen);
+	verticeOrigen->setDistanciaRecorrida(0); //eso si tendriamos que tener este método.
+	while (! aVisitar->estaVacia()) {
+		if (! verticeActual->fueVisitado()){
+			verticeActual->marcarVisitado();
+			verticeActual->getAristas()->iniciarCursor();
+			// aca tenemos que recorrer la lista para encontrar la arista conectada al actual con menor peso
+			// de aca por abajo no llegué, hay que ver y cambiar.
+			cambiarCostoAdyacentes(verticeActual, aVisitar);
+			/*while (verticeActual->getAristas()->avanzarCursor()){
+				Arista* aristaConectora = verticeActual->getAristas()->obtenerCursor();
+				Vertice* verticeCursor = aristaConectora->getVerticeReceptor();
+				int pesoAristaConectora = aristaConectora->getPeso();
+				int pesoTotal = pesoAristaConectora + verticeActual->getDistanciaRecorrida();
+				if (pesoTotal < verticeCursor->getDistanciaRecorrida()){
+					verticeCursor->setDistanciaRecorrida(pesoTotal);
+				}
+				aVisitar->acolar(verticeCursor);
+			}*/
+		}
+	}
+	delete aVisitar;
+	return verticeDestino->getDistanciaRecorrida();
+}
+
 Grafo::~Grafo(){
 	this->VerticesDelGrafo->iniciarCursor();
 	while (this->VerticesDelGrafo->avanzarCursor()){
