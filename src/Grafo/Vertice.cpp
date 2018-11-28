@@ -3,7 +3,7 @@
 Vertice::Vertice(Tablero* tableroAsociado){
 	this->AristasDelGrafo = new ListaEnlazada<Arista*>;
 	this->tableroAsociado = tableroAsociado;
-	this->distanciaRecorrida = DISTANCIA_POR_DEFECTO;
+	this->costo = DISTANCIA_POR_DEFECTO;
 	this->visitado = false;
 }
 
@@ -37,11 +37,11 @@ ListaEnlazada<Arista*>* Vertice::getAristas(){
 }
 
 void Vertice::setDistanciaRecorrida(int distancia){
-	this->distanciaRecorrida = distancia;
+	this->costo = distancia;
 }
 
 int Vertice::getDistanciaRecorrida(){
-	return this->distanciaRecorrida;
+	return this->costo;
 }
 
 void Vertice::marcarVisitado(){
@@ -52,6 +52,11 @@ void Vertice::marcarVisitado(){
 
 bool Vertice::fueVisitado(){
 	return this->visitado;
+}
+
+void Vertice::resetValoresRecorridoMinimo(){
+	this->visitado = false;
+	this->costo = DISTANCIA_POR_DEFECTO;
 }
 
 Vertice::~Vertice(){

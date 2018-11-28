@@ -12,7 +12,7 @@ class Vertice{
 private:
 	ListaEnlazada<Arista*>* AristasDelGrafo;
 	Tablero* tableroAsociado;
-	int distanciaRecorrida;  //para Dijkstra
+	int costo;  //para Dijkstra
 	bool visitado;                     //para Dijkstra
 
 public:
@@ -73,6 +73,12 @@ public:
 	 * post: se devuelve true si el vertice fue visitado y false en caso contrario
 	 */
 	bool fueVisitado();
+
+	/*
+	 * pre:-
+	 * post: se resetean los valores de visitado y costo
+	 */
+	void resetValoresRecorridoMinimo();
 
 	/*
 	 * pre: -
