@@ -3,7 +3,7 @@
 RecorridoTablero::RecorridoTablero(Vertice* verticeDeOrigen,
 		Vertice* verticeDeDestino) {
 	this->peso = NULL;
-	this->recorridoPosible = false;
+	this->esRecorridoPosible = false;
 	this->verticeOrigen = verticeDeOrigen;
 	this->verticeDestino = verticeDeDestino;
 	this->recorrido = verticeDeOrigen->getTableroAsociado()->getNombre();
@@ -31,9 +31,9 @@ void RecorridoTablero::actualizarPeso(int pesoActualizado) {
 }
 
 bool RecorridoTablero::esPosibleElRecorrido() {
-	return this->recorridoPosible;
+	return this->esRecorridoPosible;
 }
 
 void RecorridoTablero::setPosibleElRecorrido() {
-	this->recorridoPosible = true;
+	this->esRecorridoPosible = true;
 }
