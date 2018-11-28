@@ -4,10 +4,14 @@
 #include "Arista.h"
 #include <string>
 
+/*
+ * Esta clase almacena los datos del recorrido de un tablero hasta el otro.
+ */
+
 class RecorridoTablero {
 private:
 	int peso;
-	bool recorridoPosible;
+	bool esRecorridoPosible;
 	Vertice * verticeOrigen;
 	Vertice * verticeDestino;
 	std::string recorrido;
@@ -22,13 +26,13 @@ public:
 	RecorridoTablero(Vertice * verticeDeOrigen, Vertice* verticeDeDestino);
 
 	/*
-	 * pre: Se puede llamar solo si el recorrido esta posible
+	 * pre: Se puede llamar solo si el recorrido es posible
 	 * pos: devuelve el recorrido entre origen y destino.
 	 */
 	std::string getRecorrido();
 
 	/*
-	 * pre: Se puede llamar solo si el recorrido esta posible
+	 * pre: Se puede llamar solo si el recorrido es posible
 	 * pos: devuelve el peso del recorrido entre origen y destino.
 	 */
 	int getPesoRecorrido();
