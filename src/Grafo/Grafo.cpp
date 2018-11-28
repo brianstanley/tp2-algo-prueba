@@ -77,7 +77,8 @@ int Grafo::buscarRecorridoMinimo(Vertice* verticeOrigen, Vertice* verticeDestino
 		if (! verticeActual->fueVisitado()){
 			verticeActual->marcarVisitado();
 			verticeActual->getAristas()->iniciarCursor();
-			while (verticeActual->getAristas()->avanzarCursor()){
+			cambiarCostoAdyacentes(verticeActual, aVisitar);
+			/*while (verticeActual->getAristas()->avanzarCursor()){
 				Arista* aristaConectora = verticeActual->getAristas()->obtenerCursor();
 				Vertice* verticeCursor = aristaConectora->getVerticeReceptor();
 				int pesoAristaConectora = aristaConectora->getPeso();
@@ -86,11 +87,25 @@ int Grafo::buscarRecorridoMinimo(Vertice* verticeOrigen, Vertice* verticeDestino
 					verticeCursor->setDistanciaRecorrida(pesoTotal);
 				}
 				aVisitar->acolar(verticeCursor);
-			}
+			}*/
 		}
 	}
 	delete aVisitar;
 	return verticeDestino->getDistanciaRecorrida();
+}
+
+void Grafo::cambiarCostoAdyacentes(Vertice* verticeActual, Cola<Vertice*>* aVisitar){
+	verticeActual->getAristas()->iniciarCursor();
+	while (verticeActual->getAristas()->avanzarCursor()){
+		Arista* aristaConectora = verticeActual->getAristas()->obtenerCursor();
+		Vertice* verticeCursor = aristaConectora->getVerticeReceptor();
+		int pesoAristaConectora = aristaConectora->getPeso();
+		int pesoTotal = pesoAristaConectora + verticeActual->getDistanciaRecorrida();
+		if (pesoTotal < verticeCursor->getDistanciaRecorrida()){
+			verticeCursor->setDistanciaRecorrida(pesoTotal);
+		}
+		aVisitar->acolar(verticeCursor);
+	}
 }
 
 Grafo::~Grafo(){

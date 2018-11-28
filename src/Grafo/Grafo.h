@@ -64,6 +64,8 @@ public:
 	 */
 	int buscarRecorridoMinimo(Vertice* verticeOrigen, Vertice* verticeDestino);
 
+	void cambiarCostoAdyacentes(Vertice* verticeActual, Cola<Vertice*>* aVisitar);
+
 	/*
 	 * pre: -
 	 * post: se libera toda la memoria utilizada en la creacion de un objeto de tipo Grafo
