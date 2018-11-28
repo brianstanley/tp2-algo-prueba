@@ -68,6 +68,7 @@ Arista* Grafo::buscarArista(Vertice* verticeOrigen, Vertice* verticeDestino){
 }
 
 int Grafo::buscarRecorridoMinimo(Vertice* verticeOrigen, Vertice* verticeDestino){
+	this->resetearVerticesParaRecorrido();
 	Cola<Vertice*>* aVisitar = new Cola<Vertice*>;
 	Vertice* verticeActual;
 	aVisitar->acolar(verticeOrigen);
