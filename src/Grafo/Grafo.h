@@ -66,6 +66,8 @@ public:
 
 	void cambiarCostoAdyacentes(Vertice* verticeActual, Cola<Vertice*>* aVisitar);
 
+	void resetearVerticesParaRecorrido();
+
 	/*
 	 * pre: -
 	 * post: se libera toda la memoria utilizada en la creacion de un objeto de tipo Grafo

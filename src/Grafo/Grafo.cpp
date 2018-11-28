@@ -108,6 +108,13 @@ void Grafo::cambiarCostoAdyacentes(Vertice* verticeActual, Cola<Vertice*>* aVisi
 	}
 }
 
+void Grafo::resetearVerticesParaRecorrido(){
+	this->VerticesDelGrafo->iniciarCursor();
+	while (this->VerticesDelGrafo->avanzarCursor()){
+		this->VerticesDelGrafo->obtenerCursor()->resetValoresRecorridoMinimo();
+	}
+}
+
 Grafo::~Grafo(){
 	this->VerticesDelGrafo->iniciarCursor();
 	while (this->VerticesDelGrafo->avanzarCursor()){
