@@ -3,6 +3,7 @@
 
 #include "Vertice.h"
 
+class Vertice;
 class Grafo{
 private:
 	ListaEnlazada<Vertice*>* VerticesDelGrafo;
@@ -48,11 +49,36 @@ public:
 	 * cuestion no existe se devuelve un puntero a 0
 	 */
 	Vertice* buscarVertice(Tablero* tableroBuscado);
+	/*
+	 * pre: -
+	 * post: si en el grafo existe una arista que une verticeOrigen con verticeDestino se devuelve
+	 * true, en caso contrario se devuelve false
+	 */
+	bool chequearExistenciaArista(Vertice* verticeOrigen, Vertice* verticeDestino);
 
-	int obtenerMenorTransferencia(Vertice* verticeOrigen, Vertice* verticeDestino);
+	/*
+	 * pre: -
+	 * post: en caso de existir se incrementa el peso de la arista que une
+	 * el tableroOrigen con el tableroDestino
+	 */
+	void incrementarPesoAristaConectora(Tablero* tableroOrigen, Tablero* tableroDestino);
 
+	/*
+	 * pre: -
+	 * post: se devuelve la menor transferencia entre los vertices asociados a los tableros pasados por parametro
+	 */
+	int obtenerMenorTransferencia(Tablero* tableroOrigen, Tablero* tableroDestino);
+
+	/*
+	 * pre: -
+	 * post: se devuelve true si todos los vertices del grafo ya fueron chequeados por obtenerMenorTransferencia
+	 */
 	bool chequearEstadoDeTodosLosVertices(bool verticesVisitados[], int cantidadVertices);
 
+	/*
+	 * pre:-
+	 * post: se devuelve la menor posicion del array costosVertices que no haya sido visitada hasta el momento
+	 */
 	int obtenerPosicionMenor(bool verticesVisitados[], int costosVertices[],int cantidadVertices);
 
 	/*

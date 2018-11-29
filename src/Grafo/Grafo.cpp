@@ -26,12 +26,29 @@ void Grafo::eliminarVertice(Tablero* tableroAsociado){
 	}
 }
 
-void Grafo::agregarArista(Tablero* IDVerticeOrigen, Tablero* DIVerticeDestino){
-	Vertice* VerticeOrigen = this->buscarVertice(IDVerticeOrigen);
-	Vertice* VerticeDestino = this->buscarVertice(DIVerticeDestino);
-	if (VerticeOrigen && VerticeDestino){
-		VerticeOrigen->crearArista(VerticeOrigen, VerticeDestino);
+void Grafo::agregarArista(Tablero* IDVerticeOrigen, Tablero* IDVerticeDestino){
+	Vertice* verticeOrigen = this->buscarVertice(IDVerticeOrigen);
+	Vertice* verticeDestino = this->buscarVertice(IDVerticeDestino);
+	if (verticeOrigen && verticeDestino){
+		if(!this->chequearExistenciaArista(verticeOrigen, verticeDestino))
+			verticeOrigen->crearArista(verticeOrigen, verticeDestino);
 	}
+}
+
+bool Grafo::chequearExistenciaArista(Vertice* verticeOrigen, Vertice* verticeDestino){
+	ListaEnlazada<Arista*>* verticesAsociados = verticeOrigen->getAristas();
+
+	bool aristaExiste = false;
+
+	verticesAsociados->iniciarCursor();
+	// Mientras que haya aristas
+	while(verticesAsociados->avanzarCursor()){
+		// el receptor (destino) sea el tableroDestino
+		if(verticesAsociados->obtenerCursor()->getVerticeReceptor() == verticeDestino){
+			aristaExiste = true;
+		}
+	}
+	return aristaExiste;
 }
 
 void Grafo::eliminarArista(Tablero* IDVerticeOrigen, Tablero* DIVerticeDestino){
@@ -53,10 +70,23 @@ Vertice* Grafo::buscarVertice(Tablero* tableroBuscado){
 	return verticeBuscado;
 }
 
-int Grafo::obtenerMenorTransferencia(Vertice* verticeOrigen,
-		Vertice* verticeDestino) {
+void Grafo::incrementarPesoAristaConectora(Tablero* tableroOrigen, Tablero* tableroDestino){
+	Vertice* verticeOrigen = this->buscarVertice(tableroOrigen);
+	Vertice* verticeDestino = this->buscarVertice(tableroDestino);
+	ListaEnlazada<Arista*>* verticesAsociados = verticeOrigen->getAristas();
+	verticesAsociados->iniciarCursor();
+	bool seEncontroArista = false;
+	while(verticesAsociados->avanzarCursor() && ! seEncontroArista){
+		if(verticesAsociados->obtenerCursor()->getVerticeReceptor() == verticeDestino){
+			verticesAsociados->obtenerCursor()->incrementarPeso();
+			seEncontroArista = true;
+		}
+	}
+}
 
-	Vertice* verticeActual = verticeOrigen;
+int Grafo::obtenerMenorTransferencia(Tablero* tableroOrigen, Tablero* tableroDestino) {
+	Vertice* verticeDestino = this->buscarVertice(tableroOrigen);
+	Vertice* verticeActual = this->buscarVertice(tableroDestino);
 	unsigned int cantidadVertices = this->VerticesDelGrafo->contarElementos();
 	int costosVertices[cantidadVertices] = {10000};
 	bool verticesVisitados[cantidadVertices] = {0};
@@ -103,7 +133,7 @@ int Grafo::obtenerPosicionMenor(bool verticesVisitados[], int costosVertices[], 
 	int menorCosto = 10000;
 	int iMenorCosto = 0;
 	for (int i=0; i<cantidadVertices; i++){
-		if (verticesVisitados[i]){
+		if (! verticesVisitados[i]){
 			if (costosVertices[i] < menorCosto){
 				menorCosto = costosVertices[i];
 				iMenorCosto = i;

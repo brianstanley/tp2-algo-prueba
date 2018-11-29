@@ -38,6 +38,8 @@ public:
 	 */
 	Parcela & getParcela();
 
+	Tablero* getTablero();
+
 	/*
 	 * pre: -
 	 * post: devuelve "true" si naceLaCelula y "false" sino.

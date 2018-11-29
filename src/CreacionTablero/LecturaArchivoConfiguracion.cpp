@@ -1,6 +1,6 @@
 #include "../CreacionTablero/LecturaArchivoConfiguracion.h"
 
-void LecturaArchivoConfiguracion::procesarArchivo(std::string ruta) {
+void LecturaArchivoConfiguracion::procesarArchivo(std::string ruta, Grafo* grafoAsociado) {
 	StringHelper stringHelper;
 	this->tableros = new ListaEnlazada<Tablero*>;
 	std::ifstream archivoDeConfiguracion;
@@ -16,9 +16,9 @@ void LecturaArchivoConfiguracion::procesarArchivo(std::string ruta) {
 		if (tipoDeOperacion == PARCELA) {
 			this->procesarParcela(nombreTablero, archivoDeConfiguracion);
 		} else if (tipoDeOperacion == PORTAL) {
-			this->procesarPortal(nombreTablero, archivoDeConfiguracion);
+			this->procesarPortal(nombreTablero, archivoDeConfiguracion, grafoAsociado);
 		} else if (tipoDeOperacion == TABLERO) {
-			this->procesarTablero(nombreTablero, archivoDeConfiguracion);
+			this->procesarTablero(nombreTablero, archivoDeConfiguracion, grafoAsociado);
 		} else if (tipoDeOperacion == CELULA) {
 			this->procesarCelula(nombreTablero, archivoDeConfiguracion);
 		} else {
@@ -30,15 +30,15 @@ void LecturaArchivoConfiguracion::procesarArchivo(std::string ruta) {
 }
 
 void LecturaArchivoConfiguracion::procesarTablero(std::string nombreTablero,
-		std::ifstream& archivoDeConfiguracion) {
+		std::ifstream& archivoDeConfiguracion, Grafo* grafoAsociado) {
 	int ancho, alto;
 	archivoDeConfiguracion >> alto;
 	archivoDeConfiguracion >> ancho;
-	this->crearTablero(nombreTablero, alto, ancho);
+	this->crearTablero(nombreTablero, alto, ancho, grafoAsociado);
 }
 
 void LecturaArchivoConfiguracion::procesarPortal(std::string tableroId,
-		std::ifstream& archivoDeConfiguracion) {
+		std::ifstream& archivoDeConfiguracion, Grafo* grafoAsociado) {
 	int filaOrigen, columnaOrigen, filaDestino, columnaDestino;
 	std::string tableroDestino, tipoPortal;
 	archivoDeConfiguracion >> tableroDestino;
@@ -48,7 +48,7 @@ void LecturaArchivoConfiguracion::procesarPortal(std::string tableroId,
 	archivoDeConfiguracion >> columnaDestino;
 	archivoDeConfiguracion >> tipoPortal;
 	this->crearPortales(tableroId, tableroDestino, filaOrigen - 1,
-			columnaOrigen - 1, filaDestino - 1, columnaDestino - 1, tipoPortal);
+			columnaOrigen - 1, filaDestino - 1, columnaDestino - 1, tipoPortal, grafoAsociado);
 }
 
 void LecturaArchivoConfiguracion::procesarParcela(std::string tableroId,
@@ -80,10 +80,11 @@ void LecturaArchivoConfiguracion::procesarCelula(std::string nombreTablero,
 }
 
 void LecturaArchivoConfiguracion::crearTablero(std::string nombreTablero,
-		int fila, int columna) {
+		int fila, int columna, Grafo* grafoAsociado) {
 	Tablero * tablero = new Tablero(nombreTablero, fila, columna);
 	tablero->crearParcelas();
 	this->tableros->agregar(tablero);
+	grafoAsociado->agregarVertice(tablero);
 }
 
 void LecturaArchivoConfiguracion::crearCelula(std::string tableroId, int fila,
@@ -114,9 +115,10 @@ Tablero* LecturaArchivoConfiguracion::string2punteroTablero(
 
 void LecturaArchivoConfiguracion::crearPortales(std::string tableroId,
 		std::string tableroDestino, int filaOrigen, int columnaOrigen,
-		int filaDestino, int columnaDestino, std::string tipoDePortal) {
+		int filaDestino, int columnaDestino, std::string tipoDePortal, Grafo* grafoAsociado) {
 	Tablero * tableroOrigen = this->string2punteroTablero(tableroId);
 	Tablero * tableroDeDestino = this->string2punteroTablero(tableroDestino);
+	grafoAsociado->agregarArista(tableroOrigen, tableroDeDestino);
 
 	Parcela & parcelaOrigen = tableroOrigen->getParcela(filaOrigen,
 			columnaOrigen);

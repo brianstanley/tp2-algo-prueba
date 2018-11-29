@@ -15,8 +15,9 @@ void Juego::iniciarJuego() {
 	std::cout
 			<< "Ingresa la ruta del archivo de texto que quieres utilizar: \n";
 	std::cin >> rutaDelArchivo;
+	this->grafoAsociado = new Grafo;
 	LecturaArchivoConfiguracion lectura;
-	lectura.procesarArchivo(rutaDelArchivo);
+	lectura.procesarArchivo(rutaDelArchivo, this->grafoAsociado);
 	ListaEnlazada<Tablero*>* tableros = lectura.obtenerListaTableros();
 	this->tablerosDelJuego = tableros;
 	ListaEnlazada<DatosTablero*> * datos = new ListaEnlazada<DatosTablero*>;
@@ -83,7 +84,10 @@ void Juego::preguntarCaminoMasCorto() {
 		if (cantidadTablerosEncontrados < 2) {
 			std::cout << "Alguna de las opciones que ingreso es incorrecta." << std::endl;
 		}
-		std::cout << "Tableros encontrado: " << cantidadTablerosEncontrados;
+		else{
+			std::cout << "Tableros encontrado: " << cantidadTablerosEncontrados;
+			this->grafoAsociado->obtenerMenorTransferencia(tableroOrigen, tableroDestino);
+		}
 	}
 }
 
@@ -113,9 +117,10 @@ void Juego::afectarCambiosPortalPorTablero(TurnoTablero * turnoTablero) {
 		float factorNacimientoOrigen =
 				CambioARealizar->getParcela().getfactorNacimiento();
 		bool nacer = CambioARealizar->naceLaCelula();
+		Tablero* tableroOrigen = CambioARealizar->getTablero();
 		CambioARealizar->getParcela().getPortal()->accionarPortal(nacer,
 				CambioARealizar->getColorPromedio(), factorNacimientoOrigen,
-				factorMuertetoOrigen);
+				factorMuertetoOrigen, this->grafoAsociado, tableroOrigen);
 		delete CambioARealizar;
 	}
 }
