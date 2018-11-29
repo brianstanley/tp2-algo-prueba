@@ -85,11 +85,15 @@ void Grafo::incrementarPesoAristaConectora(Tablero* tableroOrigen, Tablero* tabl
 }
 
 int Grafo::obtenerMenorTransferencia(Tablero* tableroOrigen, Tablero* tableroDestino) {
-	Vertice* verticeDestino = this->buscarVertice(tableroOrigen);
-	Vertice* verticeActual = this->buscarVertice(tableroDestino);
+	Vertice* verticeDestino = this->buscarVertice(tableroDestino);
+	Vertice* verticeActual = this->buscarVertice(tableroOrigen);
 	unsigned int cantidadVertices = this->VerticesDelGrafo->contarElementos();
-	int costosVertices[cantidadVertices] = {10000};
-	bool verticesVisitados[cantidadVertices] = {0};
+	int costosVertices[cantidadVertices];
+	bool verticesVisitados[cantidadVertices];
+	for (unsigned int i = 0; i < cantidadVertices; i++){
+		costosVertices[i] = 10000;
+		verticesVisitados[i] = false;
+	}
 	bool todosLosVerticesVisitados = false;
 	int posicionVerticeActual = this->VerticesDelGrafo->obtenerPosicion(verticeActual);
 	costosVertices[posicionVerticeActual-1] = 0;
@@ -115,7 +119,7 @@ int Grafo::obtenerMenorTransferencia(Tablero* tableroOrigen, Tablero* tableroDes
 		}
 	}
 	int posicionVerticeDestino = this->VerticesDelGrafo->obtenerPosicion(verticeDestino);
-	return costosVertices[posicionVerticeDestino];
+	return costosVertices[posicionVerticeDestino - 1];
 }
 
 
@@ -123,7 +127,7 @@ bool Grafo::chequearEstadoDeTodosLosVertices(bool verticesVisitados[], int canti
 	bool todosLosVerticesVisitados = true;
 	for (int i=0; i<cantidadVertices; i++){
 		if (! verticesVisitados[i]){
-			todosLosVerticesVisitados = true;
+			todosLosVerticesVisitados = false;
 		}
 	}
 	return todosLosVerticesVisitados;
@@ -131,16 +135,16 @@ bool Grafo::chequearEstadoDeTodosLosVertices(bool verticesVisitados[], int canti
 
 int Grafo::obtenerPosicionMenor(bool verticesVisitados[], int costosVertices[], int cantidadVertices) {
 	int menorCosto = 10000;
-	int iMenorCosto = 0;
+	int nuevaPosicion = 0;
 	for (int i=0; i<cantidadVertices; i++){
 		if (! verticesVisitados[i]){
-			if (costosVertices[i] < menorCosto){
+			if (costosVertices[i] <= menorCosto){
 				menorCosto = costosVertices[i];
-				iMenorCosto = i;
+				nuevaPosicion = i;
 			}
 		}
 	}
-	return iMenorCosto;
+	return nuevaPosicion + 1;
 }
 
 Grafo::~Grafo(){

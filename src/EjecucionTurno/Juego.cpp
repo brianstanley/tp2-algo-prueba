@@ -78,7 +78,9 @@ void Juego::preguntarCaminoMasCorto() {
 		Tablero * tableroOrigen = this->obtenerTableroParaTrasferenciaMinima(opcion1);
 		Tablero * tableroDestino = this->obtenerTableroParaTrasferenciaMinima(opcion2);
 		if (tableroOrigen && tableroDestino) {
-			this->grafoAsociado->obtenerMenorTransferencia(tableroOrigen, tableroDestino);
+			int menorTransferencia = this->grafoAsociado->obtenerMenorTransferencia(tableroOrigen, tableroDestino);
+			std::cout << "la minima transferencia de celulas desde " << tableroOrigen->getNombre() << " hasta "
+			<< tableroDestino->getNombre() << " es de " << menorTransferencia << std::endl;
 		}
 		else{
 			std::cout << "Alguna de las opciones que ingreso es incorrecta." << std::endl;

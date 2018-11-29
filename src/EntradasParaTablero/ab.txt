@@ -1,0 +1,20 @@
+Tablero alfa 5 5
+Tablero beta 5 5
+Portal alfa beta 1 1 1 1 normal
+Portal beta alfa 1 1 1 1 normal
+Parcela alfa 1 4 255 0 0 0.1 0.1
+Parcela alfa 2 2 255 0 0 0.1 0.1
+Parcela alfa 2 3 255 0 0 0.1 0.1
+Parcela alfa 2 4 255 0 0 0.1 0.1
+Parcela alfa 3 2 255 0 0 0.1 0.1
+Celula alfa 1 4
+Celula alfa 2 2
+Celula alfa 2 3
+Celula alfa 2 4
+Celula alfa 3 2
+Parcela beta 2 3 255 0 0 0.1 0.1
+Parcela beta 2 4 255 0 0 0.1 0.1
+Parcela beta 3 4 255 0 0 0.1 0.1
+Celula beta 2 3
+Celula beta 2 4
+Celula beta 3 4
