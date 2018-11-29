@@ -84,7 +84,10 @@ void Juego::preguntarCaminoMasCorto() {
 		if (cantidadTablerosEncontrados < 2) {
 			std::cout << "Alguna de las opciones que ingreso es incorrecta." << std::endl;
 		}
-		std::cout << "Tableros encontrado: " << cantidadTablerosEncontrados;
+		else{
+			std::cout << "Tableros encontrado: " << cantidadTablerosEncontrados;
+			this->grafoAsociado->obtenerMenorTransferencia(tableroOrigen, tableroDestino);
+		}
 	}
 }
 

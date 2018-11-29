@@ -70,10 +70,10 @@ Vertice* Grafo::buscarVertice(Tablero* tableroBuscado){
 	return verticeBuscado;
 }
 
-int Grafo::obtenerMenorTransferencia(Vertice* verticeOrigen,
-		Vertice* verticeDestino) {
+int Grafo::obtenerMenorTransferencia(Tablero* tableroOrigen, Tablero* tableroDestino) {
 
-	Vertice* verticeActual = verticeOrigen;
+	Vertice* verticeDestino = this->buscarVertice(tableroOrigen);
+	Vertice* verticeActual = this->buscarVertice(tableroDestino);
 	unsigned int cantidadVertices = this->VerticesDelGrafo->contarElementos();
 	int costosVertices[cantidadVertices] = {10000};
 	bool verticesVisitados[cantidadVertices] = {0};

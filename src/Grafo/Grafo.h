@@ -63,7 +63,7 @@ public:
 	 */
 	void incrementarPesoAristaConectora(Tablero* tableroOrigen, Tablero* tableroDestino);
 
-	int obtenerMenorTransferencia(Vertice* verticeOrigen, Vertice* verticeDestino);
+	int obtenerMenorTransferencia(Tablero* tableroOrigen, Tablero* tableroDestino);
 
 	bool chequearEstadoDeTodosLosVertices(bool verticesVisitados[], int cantidadVertices);
 
