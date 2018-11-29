@@ -101,6 +101,7 @@ void Juego::terminarJuego() {
 	}
 	delete this->datosDelJuego;
 	delete this->tablerosDelJuego;
+	delete this->grafoAsociado;
 }
 
 void Juego::afectarCambiosPortalPorTablero(TurnoTablero * turnoTablero) {
