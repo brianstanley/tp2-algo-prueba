@@ -27,11 +27,28 @@ void Grafo::eliminarVertice(Tablero* tableroAsociado){
 }
 
 void Grafo::agregarArista(Tablero* IDVerticeOrigen, Tablero* DIVerticeDestino){
-	Vertice* VerticeOrigen = this->buscarVertice(IDVerticeOrigen);
-	Vertice* VerticeDestino = this->buscarVertice(DIVerticeDestino);
-	if (VerticeOrigen && VerticeDestino){
-		VerticeOrigen->crearArista(VerticeOrigen, VerticeDestino);
+	Vertice* verticeOrigen = this->buscarVertice(IDVerticeOrigen);
+	Vertice* verticeDestino = this->buscarVertice(DIVerticeDestino);
+	if (verticeOrigen && verticeDestino){
+		if(!this->chequearExistenciaArista(verticeOrigen, verticeDestino))
+			verticeOrigen->crearArista(verticeOrigen, verticeDestino);
 	}
+}
+
+bool Grafo::chequearExistenciaArista(Vertice* verticeOrigen, Vertice* verticeDestino){
+	ListaEnlazada<Arista*>* verticesAsociados = verticeOrigen->getAristas();
+
+	bool aristaExiste = false;
+
+	verticesAsociados->iniciarCursor();
+	// Mientras que haya aristas
+	while(verticesAsociados->avanzarCursor()){
+		// el receptor (destino) sea el tableroDestino
+		if(verticesAsociados->obtenerCursor()->getVerticeReceptor() == verticeDestino){
+			aristaExiste = true;
+		}
+	}
+	return aristaExiste;
 }
 
 void Grafo::eliminarArista(Tablero* IDVerticeOrigen, Tablero* DIVerticeDestino){

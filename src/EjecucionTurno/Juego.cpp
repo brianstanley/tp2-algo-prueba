@@ -15,8 +15,9 @@ void Juego::iniciarJuego() {
 	std::cout
 			<< "Ingresa la ruta del archivo de texto que quieres utilizar: \n";
 	std::cin >> rutaDelArchivo;
+	this->grafoAsociado = new Grafo;
 	LecturaArchivoConfiguracion lectura;
-	lectura.procesarArchivo(rutaDelArchivo);
+	lectura.procesarArchivo(rutaDelArchivo, this->grafoAsociado);
 	ListaEnlazada<Tablero*>* tableros = lectura.obtenerListaTableros();
 	this->tablerosDelJuego = tableros;
 	ListaEnlazada<DatosTablero*> * datos = new ListaEnlazada<DatosTablero*>;
@@ -113,9 +114,10 @@ void Juego::afectarCambiosPortalPorTablero(TurnoTablero * turnoTablero) {
 		float factorNacimientoOrigen =
 				CambioARealizar->getParcela().getfactorNacimiento();
 		bool nacer = CambioARealizar->naceLaCelula();
+		Tablero* tableroOrigen = CambioARealizar->getTablero();
 		CambioARealizar->getParcela().getPortal()->accionarPortal(nacer,
 				CambioARealizar->getColorPromedio(), factorNacimientoOrigen,
-				factorMuertetoOrigen);
+				factorMuertetoOrigen, this->grafoAsociado, tableroOrigen);
 		delete CambioARealizar;
 	}
 }
