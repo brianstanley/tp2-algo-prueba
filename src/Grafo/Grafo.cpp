@@ -104,7 +104,7 @@ int Grafo::obtenerMenorTransferencia(Tablero* tableroOrigen, Tablero* tableroDes
 			Arista* aristaConectora = verticeActual->getAristas()->obtenerCursor();
 			Vertice* verticeCursor = aristaConectora->getVerticeReceptor();
 			int posicionVerticeCursor = this->VerticesDelGrafo->obtenerPosicion(verticeCursor);
-			if (! verticesVisitados[posicionVerticeCursor]){
+			if (! verticesVisitados[posicionVerticeCursor - 1]){
 				int pesoAristaConectora = aristaConectora->getPeso();
 				int costoVerticeCursor = costosVertices[posicionVerticeActual - 1] + pesoAristaConectora;
 				if (costosVertices[posicionVerticeCursor - 1] > costoVerticeCursor){
