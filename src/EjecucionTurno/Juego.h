@@ -83,12 +83,11 @@ public:
 	void imprimirOpcionesTransferenciaMinima();
 
 	/**
-	 * pre: Recibe un puntero nulo al origen y otro nulo al tablero destino junto con las opciones
-	 * elegidas de la lista de tableros
-	 * pos: Modifica los punteros de los tableros a origen y destino buscados y devuelve la cantidad
-	 * de tableros encontrados.
+	 * pre: -
+	 * pos: busca al tablero en la posicion de la lista pasada por parametro, si no existe un tablero en dicha posicion
+	 * se devuelve un puntero a 0
 	 */
-	int obtenerTablerosParaTrasferenciaMinima(Tablero * origen, Tablero * destino, int opcion1, int opcion2);
+	Tablero* obtenerTableroParaTrasferenciaMinima(int opcionElegida);
 
 	/**
 	 * pre: -
