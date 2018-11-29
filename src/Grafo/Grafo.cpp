@@ -70,8 +70,21 @@ Vertice* Grafo::buscarVertice(Tablero* tableroBuscado){
 	return verticeBuscado;
 }
 
-int Grafo::obtenerMenorTransferencia(Tablero* tableroOrigen, Tablero* tableroDestino) {
+void Grafo::incrementarPesoAristaConectora(Tablero* tableroOrigen, Tablero* tableroDestino){
+	Vertice* verticeOrigen = this->buscarVertice(tableroOrigen);
+	Vertice* verticeDestino = this->buscarVertice(tableroDestino);
+	ListaEnlazada<Arista*>* verticesAsociados = verticeOrigen->getAristas();
+	verticesAsociados->iniciarCursor();
+	bool seEncontroArista = false;
+	while(verticesAsociados->avanzarCursor() && seEncontroArista){
+		if(verticesAsociados->obtenerCursor()->getVerticeReceptor() == verticeDestino){
+			verticesAsociados->obtenerCursor()->incrementarPeso();
+			seEncontroArista = true;
+		}
+	}
+}
 
+int Grafo::obtenerMenorTransferencia(Tablero* tableroOrigen, Tablero* tableroDestino) {
 	Vertice* verticeDestino = this->buscarVertice(tableroOrigen);
 	Vertice* verticeActual = this->buscarVertice(tableroDestino);
 	unsigned int cantidadVertices = this->VerticesDelGrafo->contarElementos();
