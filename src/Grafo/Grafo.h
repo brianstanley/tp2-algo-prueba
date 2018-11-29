@@ -49,6 +49,12 @@ public:
 	 */
 	Vertice* buscarVertice(Tablero* tableroBuscado);
 
+	int obtenerMenorTransferencia(Vertice* verticeOrigen, Vertice* verticeDestino);
+
+	bool chequearEstadoDeTodosLosVertices(bool verticesVisitados[], int cantidadVertices);
+
+	int obtenerPosicionMenor(bool verticesVisitados[], int costosVertices[],int cantidadVertices);
+
 	/*
 	 * pre: -
 	 * post: se libera toda la memoria utilizada en la creacion de un objeto de tipo Grafo
