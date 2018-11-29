@@ -26,9 +26,9 @@ void Grafo::eliminarVertice(Tablero* tableroAsociado){
 	}
 }
 
-void Grafo::agregarArista(Tablero* IDVerticeOrigen, Tablero* DIVerticeDestino){
+void Grafo::agregarArista(Tablero* IDVerticeOrigen, Tablero* IDVerticeDestino){
 	Vertice* verticeOrigen = this->buscarVertice(IDVerticeOrigen);
-	Vertice* verticeDestino = this->buscarVertice(DIVerticeDestino);
+	Vertice* verticeDestino = this->buscarVertice(IDVerticeDestino);
 	if (verticeOrigen && verticeDestino){
 		if(!this->chequearExistenciaArista(verticeOrigen, verticeDestino))
 			verticeOrigen->crearArista(verticeOrigen, verticeDestino);
@@ -76,7 +76,7 @@ void Grafo::incrementarPesoAristaConectora(Tablero* tableroOrigen, Tablero* tabl
 	ListaEnlazada<Arista*>* verticesAsociados = verticeOrigen->getAristas();
 	verticesAsociados->iniciarCursor();
 	bool seEncontroArista = false;
-	while(verticesAsociados->avanzarCursor() && seEncontroArista){
+	while(verticesAsociados->avanzarCursor() && ! seEncontroArista){
 		if(verticesAsociados->obtenerCursor()->getVerticeReceptor() == verticeDestino){
 			verticesAsociados->obtenerCursor()->incrementarPeso();
 			seEncontroArista = true;
@@ -133,7 +133,7 @@ int Grafo::obtenerPosicionMenor(bool verticesVisitados[], int costosVertices[], 
 	int menorCosto = 10000;
 	int iMenorCosto = 0;
 	for (int i=0; i<cantidadVertices; i++){
-		if (verticesVisitados[i]){
+		if (! verticesVisitados[i]){
 			if (costosVertices[i] < menorCosto){
 				menorCosto = costosVertices[i];
 				iMenorCosto = i;
