@@ -63,6 +63,34 @@ public:
 	 */
 	void iniciarJuego();
 
+	/**
+	 * pre: -
+	 * pos: Imprime por pantalla la pregunta de si desea  averiguar
+	 * la transferencia mínima entre dos tableros (S/N)
+	 * y devuelve el caracter ingresado.
+	 */
+	char imprimirPreguntaTransferenciaMinima();
+
+	/**
+	 * pre: Lista de tableros no vacia.
+	 * pos: Imprime en una lista los tableros existentes.
+	 */
+	void imprimirOpcionesTransferenciaMinima();
+
+	/**
+	 * pre: Recibe un puntero nulo al origen y otro nulo al tablero destino junto con las opciones
+	 * elegidas de la lista de tableros
+	 * pos: Modifica los punteros de los tableros a origen y destino buscados y devuelve la cantidad
+	 * de tableros encontrados.
+	 */
+	int obtenerTablerosParaTrasferenciaMinima(Tablero * origen, Tablero * destino, int opcion1, int opcion2);
+
+	/**
+	 * pre: -
+	 * pos: Pregunta si desea conocer la transferencia mínima de celulas entre dos tableros
+	 */
+	void preguntarCaminoMasCorto();
+
 	/*
 	 * pre: el juego ya esta inciciado
 	 * post: termina el juego y cierra las representaciones BMP de los tableros.

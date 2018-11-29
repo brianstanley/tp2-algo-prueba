@@ -53,6 +53,66 @@ Vertice* Grafo::buscarVertice(Tablero* tableroBuscado){
 	return verticeBuscado;
 }
 
+int Grafo::obtenerMenorTransferencia(Vertice* verticeOrigen,
+		Vertice* verticeDestino) {
+
+	Vertice* verticeActual = verticeOrigen;
+	unsigned int cantidadVertices = this->VerticesDelGrafo->contarElementos();
+	int costosVertices[cantidadVertices] = {10000};
+	bool verticesVisitados[cantidadVertices] = {0};
+	bool todosLosVerticesVisitados = false;
+	int posicionVerticeActual = this->VerticesDelGrafo->obtenerPosicion(verticeActual);
+	costosVertices[posicionVerticeActual-1] = 0;
+	while (! todosLosVerticesVisitados){
+		verticesVisitados[posicionVerticeActual-1] = true;
+		verticeActual->getAristas()->iniciarCursor();
+		while (verticeActual->getAristas()->avanzarCursor()){
+			Arista* aristaConectora = verticeActual->getAristas()->obtenerCursor();
+			Vertice* verticeCursor = aristaConectora->getVerticeReceptor();
+			int posicionVerticeCursor = this->VerticesDelGrafo->obtenerPosicion(verticeCursor);
+			if (! verticesVisitados[posicionVerticeCursor]){
+				int pesoAristaConectora = aristaConectora->getPeso();
+				int costoVerticeCursor = costosVertices[posicionVerticeActual - 1] + pesoAristaConectora;
+				if (costosVertices[posicionVerticeCursor - 1] > costoVerticeCursor){
+					costosVertices[posicionVerticeCursor - 1] = costoVerticeCursor;
+				}
+			}
+		}
+		todosLosVerticesVisitados = chequearEstadoDeTodosLosVertices(verticesVisitados, cantidadVertices);
+		if (! todosLosVerticesVisitados){
+			posicionVerticeActual = this->obtenerPosicionMenor(verticesVisitados, costosVertices, cantidadVertices);
+			verticeActual = this->VerticesDelGrafo->obtener(posicionVerticeActual);
+		}
+	}
+	int posicionVerticeDestino = this->VerticesDelGrafo->obtenerPosicion(verticeDestino);
+	return costosVertices[posicionVerticeDestino];
+}
+
+
+bool Grafo::chequearEstadoDeTodosLosVertices(bool verticesVisitados[], int cantidadVertices) {
+	bool todosLosVerticesVisitados = true;
+	for (int i=0; i<cantidadVertices; i++){
+		if (! verticesVisitados[i]){
+			todosLosVerticesVisitados = true;
+		}
+	}
+	return todosLosVerticesVisitados;
+}
+
+int Grafo::obtenerPosicionMenor(bool verticesVisitados[], int costosVertices[], int cantidadVertices) {
+	int menorCosto = 10000;
+	int iMenorCosto = 0;
+	for (int i=0; i<cantidadVertices; i++){
+		if (verticesVisitados[i]){
+			if (costosVertices[i] < menorCosto){
+				menorCosto = costosVertices[i];
+				iMenorCosto = i;
+			}
+		}
+	}
+	return iMenorCosto;
+}
+
 Grafo::~Grafo(){
 	this->VerticesDelGrafo->iniciarCursor();
 	while (this->VerticesDelGrafo->avanzarCursor()){

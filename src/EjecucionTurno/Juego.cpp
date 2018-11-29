@@ -32,7 +32,63 @@ void Juego::iniciarJuego() {
 
 }
 
+char Juego::imprimirPreguntaTransferenciaMinima() {
+	char respuesta;
+	std::cout << "Desea averiguar la transferencia mínima de células entre dos portales?" << std::endl;
+	std::cout << "Ingrese S o N" << std::endl;
+	std::cin >> respuesta;
+	return respuesta;
+}
+
+void Juego::imprimirOpcionesTransferenciaMinima() {
+	this->tablerosDelJuego->iniciarCursor();
+	int i = 1;
+	while(this->tablerosDelJuego->avanzarCursor()){
+		std::cout << i << ": " << this->tablerosDelJuego->obtenerCursor()->getNombre() << std::endl;
+		i++;
+	}
+}
+
+int Juego::obtenerTablerosParaTrasferenciaMinima(Tablero * origen, Tablero * destino, int opcion1, int opcion2) {
+	this->tablerosDelJuego->iniciarCursor();
+	int cantidadTablerosEncontrados = 0;
+	int i = 1;
+	while(this->tablerosDelJuego->avanzarCursor() && cantidadTablerosEncontrados < 2){
+		if (i == opcion1) {
+			origen = this->tablerosDelJuego->obtenerCursor();
+			cantidadTablerosEncontrados++;
+		}
+		if (i == opcion2) {
+			destino = this->tablerosDelJuego->obtenerCursor();
+			cantidadTablerosEncontrados++;
+		}
+	}
+
+	return cantidadTablerosEncontrados;
+}
+
+void Juego::preguntarCaminoMasCorto() {
+	char respuesta = this->imprimirPreguntaTransferenciaMinima();
+	if (respuesta == 'S' || respuesta == 's') {
+		std::cout << "Ingrese el numero de tablero origen: Ejemplo 1 para el primero de la lista.: " << std::endl;
+		this->imprimirOpcionesTransferenciaMinima();
+		int opcion1;
+		int opcion2;
+		std::cin >> opcion1;
+		std::cout << "Ingrese el tablero destino: " << std::endl;
+		std::cin >> opcion2;
+		Tablero * tableroOrigen;
+		Tablero * tableroDestino;
+		int cantidadTablerosEncontrados = this->obtenerTablerosParaTrasferenciaMinima(tableroOrigen, tableroDestino, opcion1, opcion2);
+		if (cantidadTablerosEncontrados < 2) {
+			std::cout << "Alguna de las opciones que ingreso es incorrecta." << std::endl;
+		}
+		std::cout << "Tableros encontrado: " << cantidadTablerosEncontrados;
+	}
+}
+
 void Juego::terminarJuego() {
+	this->preguntarCaminoMasCorto();
 	std::cout << "\nTerminaste el juego\n";
 	this->datosDelJuego->iniciarCursor();
 	this->tablerosDelJuego->iniciarCursor();
