@@ -50,22 +50,19 @@ void Juego::imprimirOpcionesTransferenciaMinima() {
 	}
 }
 
-int Juego::obtenerTablerosParaTrasferenciaMinima(Tablero * origen, Tablero * destino, int opcion1, int opcion2) {
+Tablero* Juego::obtenerTableroParaTransferenciaMinima(int opcionElegida) {
+	Tablero * buscado = 0;
+	int posicionTablero = 1;
+	bool tableroEncontrado = false;
 	this->tablerosDelJuego->iniciarCursor();
-	int cantidadTablerosEncontrados = 0;
-	int i = 1;
-	while(this->tablerosDelJuego->avanzarCursor() && cantidadTablerosEncontrados < 2){
-		if (i == opcion1) {
-			origen = this->tablerosDelJuego->obtenerCursor();
-			cantidadTablerosEncontrados++;
+	while(this->tablerosDelJuego->avanzarCursor() && ! tableroEncontrado){
+		if (posicionTablero == opcionElegida) {
+			buscado = this->tablerosDelJuego->obtenerCursor();
+			tableroEncontrado = true;
 		}
-		if (i == opcion2) {
-			destino = this->tablerosDelJuego->obtenerCursor();
-			cantidadTablerosEncontrados++;
-		}
+		posicionTablero++;
 	}
-
-	return cantidadTablerosEncontrados;
+	return buscado;
 }
 
 void Juego::preguntarCaminoMasCorto() {
@@ -78,15 +75,15 @@ void Juego::preguntarCaminoMasCorto() {
 		std::cin >> opcion1;
 		std::cout << "Ingrese el tablero destino: " << std::endl;
 		std::cin >> opcion2;
-		Tablero * tableroOrigen;
-		Tablero * tableroDestino;
-		int cantidadTablerosEncontrados = this->obtenerTablerosParaTrasferenciaMinima(tableroOrigen, tableroDestino, opcion1, opcion2);
-		if (cantidadTablerosEncontrados < 2) {
-			std::cout << "Alguna de las opciones que ingreso es incorrecta." << std::endl;
+		Tablero * tableroOrigen = this->obtenerTableroParaTransferenciaMinima(opcion1);
+		Tablero * tableroDestino = this->obtenerTableroParaTransferenciaMinima(opcion2);
+		if (tableroOrigen && tableroDestino) {
+			int menorTransferencia = this->grafoAsociado->obtenerMenorTransferencia(tableroOrigen, tableroDestino);
+			std::cout << "la minima transferencia de celulas desde " << tableroOrigen->getNombre() << " hasta "
+			<< tableroDestino->getNombre() << " es de " << menorTransferencia << std::endl;
 		}
 		else{
-			std::cout << "Tableros encontrado: " << cantidadTablerosEncontrados;
-			this->grafoAsociado->obtenerMenorTransferencia(tableroOrigen, tableroDestino);
+			std::cout << "Alguna de las opciones que ingreso es incorrecta." << std::endl;
 		}
 	}
 }
@@ -104,6 +101,7 @@ void Juego::terminarJuego() {
 	}
 	delete this->datosDelJuego;
 	delete this->tablerosDelJuego;
+	delete this->grafoAsociado;
 }
 
 void Juego::afectarCambiosPortalPorTablero(TurnoTablero * turnoTablero) {

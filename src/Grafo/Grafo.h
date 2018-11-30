@@ -73,7 +73,7 @@ public:
 	 * pre: -
 	 * post: se devuelve true si todos los vertices del grafo ya fueron chequeados por obtenerMenorTransferencia
 	 */
-	bool chequearEstadoDeTodosLosVertices(bool verticesVisitados[], int cantidadVertices);
+	bool estanTodosLosVerticesVisitados(bool verticesVisitados[], int cantidadVertices);
 
 	/*
 	 * pre:-

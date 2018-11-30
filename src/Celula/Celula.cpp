@@ -22,7 +22,6 @@ bool Celula::restarEnergia(float factorMuerteParcela) {
 void Celula::nacer(float factorNacimientoParcela, RGB* RGBParcela) {
 	this->estadoCelula = VIVA;
 	this->energiaCelula = ENERGIA_MAX * factorNacimientoParcela;
-	//this->RGBCelula = RGBParcela;
 	this->RGBCelula->setRGB(RGBParcela->getRed(), RGBParcela->getGreen(), RGBParcela->getBlue());
 }
 
