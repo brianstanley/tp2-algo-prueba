@@ -50,7 +50,7 @@ void Juego::imprimirOpcionesTransferenciaMinima() {
 	}
 }
 
-Tablero* Juego::obtenerTableroParaTrasferenciaMinima(int opcionElegida) {
+Tablero* Juego::obtenerTableroParaTransferenciaMinima(int opcionElegida) {
 	Tablero * buscado = 0;
 	int posicionTablero = 1;
 	bool tableroEncontrado = false;
@@ -75,8 +75,8 @@ void Juego::preguntarCaminoMasCorto() {
 		std::cin >> opcion1;
 		std::cout << "Ingrese el tablero destino: " << std::endl;
 		std::cin >> opcion2;
-		Tablero * tableroOrigen = this->obtenerTableroParaTrasferenciaMinima(opcion1);
-		Tablero * tableroDestino = this->obtenerTableroParaTrasferenciaMinima(opcion2);
+		Tablero * tableroOrigen = this->obtenerTableroParaTransferenciaMinima(opcion1);
+		Tablero * tableroDestino = this->obtenerTableroParaTransferenciaMinima(opcion2);
 		if (tableroOrigen && tableroDestino) {
 			int menorTransferencia = this->grafoAsociado->obtenerMenorTransferencia(tableroOrigen, tableroDestino);
 			std::cout << "la minima transferencia de celulas desde " << tableroOrigen->getNombre() << " hasta "

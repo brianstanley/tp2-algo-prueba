@@ -87,7 +87,7 @@ public:
 	 * pos: busca al tablero en la posicion de la lista pasada por parametro, si no existe un tablero en dicha posicion
 	 * se devuelve un puntero a 0
 	 */
-	Tablero* obtenerTableroParaTrasferenciaMinima(int opcionElegida);
+	Tablero* obtenerTableroParaTransferenciaMinima(int opcionElegida);
 
 	/**
 	 * pre: -

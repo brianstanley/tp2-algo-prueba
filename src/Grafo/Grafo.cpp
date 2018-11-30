@@ -112,7 +112,7 @@ int Grafo::obtenerMenorTransferencia(Tablero* tableroOrigen, Tablero* tableroDes
 				}
 			}
 		}
-		todosLosVerticesVisitados = chequearEstadoDeTodosLosVertices(verticesVisitados, cantidadVertices);
+		todosLosVerticesVisitados = estanTodosLosVerticesVisitados(verticesVisitados, cantidadVertices);
 		if (! todosLosVerticesVisitados){
 			posicionVerticeActual = this->obtenerPosicionMenor(verticesVisitados, costosVertices, cantidadVertices);
 			verticeActual = this->VerticesDelGrafo->obtener(posicionVerticeActual);
@@ -123,7 +123,7 @@ int Grafo::obtenerMenorTransferencia(Tablero* tableroOrigen, Tablero* tableroDes
 }
 
 
-bool Grafo::chequearEstadoDeTodosLosVertices(bool verticesVisitados[], int cantidadVertices) {
+bool Grafo::estanTodosLosVerticesVisitados(bool verticesVisitados[], int cantidadVertices) {
 	bool todosLosVerticesVisitados = true;
 	for (int i=0; i<cantidadVertices; i++){
 		if (! verticesVisitados[i]){

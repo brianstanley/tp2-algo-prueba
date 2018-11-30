@@ -1,0 +1,4 @@
+Tablero alfa 2 2
+Tablero beta 2 2
+Portal alfa beta 1 1 1 1 pasivo
+Portal beta alfa 2 2 2 2 pasivo
