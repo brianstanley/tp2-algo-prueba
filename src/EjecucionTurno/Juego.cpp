@@ -119,6 +119,7 @@ void Juego::afectarCambiosPortalPorTablero(TurnoTablero * turnoTablero) {
 		CambioARealizar->getParcela().getPortal()->accionarPortal(nacer,
 				CambioARealizar->getColorPromedio(), factorNacimientoOrigen,
 				factorMuertetoOrigen, this->grafoAsociado, tableroOrigen);
+		delete CambioARealizar->getColorPromedio();
 		delete CambioARealizar;
 	}
 }
